@@ -1,9 +1,9 @@
 {
-  "name": "electron-es6-react",
+  "name": "Study-Helper",
   "version": "0.1.0",
   "main": "main.js",
   "license": "MIT",
-  "repository": "b52/electron-es6-react",
+  "repository": "Study-Helper/study-helper",
   "scripts": {
     "start": "electron -r babel-register ."
   },
@@ -13,7 +13,8 @@
     "babel-register": "^6.3.13",
     "material-ui": "^0.19.4",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "electron": "^1.4.3"

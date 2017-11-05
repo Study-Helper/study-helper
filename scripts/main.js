@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from '../views/main.jsx';
+import App from '../views/App.jsx';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-const App = () => (
+const WrappedApp = () => (
   <MuiThemeProvider>
-    <Main />
+    <App />
   </MuiThemeProvider>
 );
 
 window.onload = function() {
-  ReactDOM.render(<App />, document.getElementById('app'));
+  ReactDOM.render(<WrappedApp />, document.getElementById('app'));
 }
