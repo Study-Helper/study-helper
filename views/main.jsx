@@ -1,9 +1,16 @@
 'use babel';
 
 import React from 'react';
+import DrawerSimpleExample from '../components/SideBar.jsx'
 
-export default class Main extends React.Component {
+class Main extends React.Component {
   render() {
-    return <div>Hello from React with ES6 :)</div>;
+    return (
+      <div>
+        <DrawerSimpleExample />
+      </div>
+    );
   }
 }
+
+export default Main;
