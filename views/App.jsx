@@ -14,7 +14,14 @@ import Book from 'material-ui/svg-icons/action/book';
 import Settings from 'material-ui/svg-icons/action/settings';
 
 /* Import the components for each menu item. */
-import TodayComponent from '../components/Today.jsx';
+import TodayComponent from '../components/home/Today.jsx';
+import TaskHistoryComponent from '../components/history/TaskHistory.jsx';
+import CalendarComponent from '../components/calendar/Calendar.jsx';
+import GradesComponent from '../components/grades/Grades.jsx';
+import ScheduleComponent from '../components/schedule/Schedule.jsx';
+import SettingsComponent from '../components/settings/Settings.jsx';
+import StatisticsComponent from '../components/statistics/Statistics.jsx';
+
 
 /* Import custom styles. */
 import { sidebar } from '../styles/styles.css.js';
@@ -25,6 +32,10 @@ const App = () => (
       <Drawer open width='22%' zDepth={1}>
         <Link to='/' style={sidebar.link}>
           <MenuItem primaryText='Home' leftIcon={<Home />} style={sidebar.menuItem} />
+        </Link>
+        <Divider />
+        <Link to='/schedule' style={sidebar.link}>
+          <MenuItem primaryText='Schedule' leftIcon={<Book />} style={sidebar.menuItem} />
         </Link>
         <Divider />
         <Link to='/calendar' style={sidebar.link}>
@@ -43,10 +54,6 @@ const App = () => (
           <MenuItem primaryText='History' leftIcon={<History />} style={sidebar.menuItem} />
         </Link>
         <Divider />
-        <Link to='/categories' style={sidebar.link}>
-          <MenuItem primaryText='Categories' leftIcon={<Book />} style={sidebar.menuItem} />
-        </Link>
-        <Divider />
         <Link to='/settings' style={sidebar.link}>
           <MenuItem primaryText='Settings' leftIcon={<Settings />} style={sidebar.menuItem} />
         </Link>
@@ -55,12 +62,12 @@ const App = () => (
 
       <div style={sidebar.component}>
         <Route exact path='/' component={TodayComponent} />
-        <Route path='/calendar' component={() => <div>Calendar!</div>} />
-        <Route path='/grades' component={() => <div>Grades!</div>} />
-        <Route path='/statistics' component={() => <div>Statistics!</div>} />
-        <Route path='/history' component={() => <div>History!</div>} />
-        <Route path='/categories' component={() => <div>Categories!</div>} />
-        <Route path='/settings' component={() => <div>Settings!</div>} />
+        <Route path='/schedule' component={ScheduleComponent} />
+        <Route path='/calendar' component={CalendarComponent} />
+        <Route path='/grades' component={GradesComponent} />
+        <Route path='/statistics' component={StatisticsComponent} />
+        <Route path='/history' component={TaskHistoryComponent} />
+        <Route path='/settings' component={SettingsComponent} />
       </div>
     </div>
   </Router>

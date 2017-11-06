@@ -4,9 +4,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
-import { appbar } from '../styles/styles.css.js';
+import { appbar } from '../../styles/styles.css.js';
 
-class Today extends React.Component {
+class Settings extends React.Component {
 
   constructor(props) {
     super(props);
@@ -16,16 +16,12 @@ class Today extends React.Component {
     return (
       <Toolbar style={appbar.barLayout}>
         <ToolbarGroup firstChild>
-          <ToolbarTitle style={{'marginLeft': '15px'}} text="Today" />
+          <ToolbarTitle style={{'marginLeft': '15px'}} text="Settings" />
           <FontIcon className="muidocs-icon-custom-sort" />
-        </ToolbarGroup>
-        <ToolbarGroup lastChild>
-          <TextField hintText="Search..." style={{'width':'90px'}} />
-          <RaisedButton label="Add Task" primary />
         </ToolbarGroup>
       </Toolbar>
     );
   }
 }
 
-export default Today;
+export default Settings;

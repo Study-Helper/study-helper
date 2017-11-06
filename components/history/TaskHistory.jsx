@@ -2,15 +2,14 @@ import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
-import Add from 'material-ui/svg-icons/content/add';
+import Clear from 'material-ui/svg-icons/action/delete';
 import Search from 'material-ui/svg-icons/action/search';
 
 import { appbar } from '../../styles/styles.css.js';
 
-class Today extends React.Component {
+class TaskHistory extends React.Component {
 
   constructor(props) {
     super(props);
@@ -20,7 +19,7 @@ class Today extends React.Component {
     return (
       <Toolbar style={appbar.barLayout}>
         <ToolbarGroup firstChild>
-          <ToolbarTitle style={{'marginLeft': '15px'}} text="Today" />
+          <ToolbarTitle style={{'marginLeft': '15px'}} text="Task History" />
           <FontIcon className="muidocs-icon-custom-sort" />
         </ToolbarGroup>
         <ToolbarGroup lastChild>
@@ -29,10 +28,10 @@ class Today extends React.Component {
               <TextField hintText="Search" style={{textIndent: 30, 'width':'120px', paddingRight: 30}}/>
           </div>
           <RaisedButton 
-            label="Add Task"
-            labelPosition="before"
-            primary
-            icon={<Add/>}
+            label="Clear All"
+            labelPosition="before" 
+            primary 
+            icon={<Clear/>}
           />
         </ToolbarGroup>
       </Toolbar>
@@ -40,4 +39,4 @@ class Today extends React.Component {
   }
 }
 
-export default Today;
+export default TaskHistory;
