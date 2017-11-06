@@ -22,7 +22,6 @@ import ScheduleComponent from '../components/schedule/Schedule.jsx';
 import SettingsComponent from '../components/settings/Settings.jsx';
 import StatisticsComponent from '../components/statistics/Statistics.jsx';
 
-
 /* Import custom styles. */
 import { sidebar } from '../styles/styles.css.js';
 
