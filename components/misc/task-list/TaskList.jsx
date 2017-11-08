@@ -26,7 +26,7 @@ const TaskList = ({ tasks }) => (
           style={taskList.avatar}
         />}
         // leftAvatar={<CategoryAvatar category={task.category} />}
-        primaryText={task.text}
+        primaryText={task.name}
         secondaryText={task.estimatedDuration}
         nestedItems={[<TaskDescription key={1} task={task} />]}>
         <MoreOptionsButton options={['Edit', 'Remove']} />

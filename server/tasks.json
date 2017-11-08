@@ -1,0 +1,58 @@
+{
+    "tasks": {
+        "1": {
+            "id": 1,
+            "name": "Study for the maths test.",
+            "description": "I need to study for the maths test which will take place on Wednesday.",
+            "estimatedDuration": "2 hours, 30 minutes",
+            "category": "Studying",
+            "startDate": "",
+            "endDate": ""
+        },
+        "2": {
+            "id": 2,
+            "name": "Email over my IPM project.",
+            "description": "The Professors email is tir@fct.unl.pt.",
+            "estimatedDuration": "2 minutes",
+            "category": "Studying",
+            "startDate": "",
+            "endDate": ""
+        },
+        "3": {
+            "id": 3,
+            "name": "Cleanup my room.",
+            "description": "No description.",
+            "estimatedDuration": "45 minutes",
+            "category": "Housekeeping",
+            "startDate": "",
+            "endDate": ""
+        },
+        "4": {
+            "id": 4,
+            "name": "Go buy fireworks for Johhnys birthday party.",
+            "description": "Fun times.",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "",
+            "endDate": ""
+        },
+        "5": {
+            "id": 5,
+            "name": "Order pizza for dinner.",
+            "description": "Pepperoni #1.",
+            "estimatedDuration": "5 minutes",
+            "category": "Studying",
+            "startDate": "",
+            "endDate": ""
+        },
+        "10": {
+            "id": 10,
+            "name": "New name!",
+            "description": "New description!",
+            "category": "Exam",
+            "estimatedDuration": "2 minutes",
+            "startDate": "",
+            "endDate": ""
+        }
+    }
+}

@@ -9,6 +9,8 @@ import Search from 'material-ui/svg-icons/action/search';
 import { appbar } from '../../styles/styles.css.js';
 import tasks from '../../server/tasks.js';
 
+import TaskManager from '../../server/managers/TaskManager.js';
+
 class Today extends React.Component {
 
   constructor(props) {
