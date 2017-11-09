@@ -34,7 +34,8 @@ export const taskDescription = {
 
 export const taskList = {
   list: {
-    width: '665px'
+    width: '665px',
+    marginTop: '-9px'
   },
   avatar: {
     marginTop: '3px'

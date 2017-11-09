@@ -1,6 +1,5 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
-import CategoryAvatar from '../CategoryAvatar.js';
 import Avatar from 'material-ui/Avatar';
 import PlayArrow from 'material-ui/svg-icons/AV/play-arrow';
 import Done from 'material-ui/svg-icons/action/done';
@@ -25,7 +24,8 @@ const TaskList = ({ tasks }) => (
         />}
         primaryText={task.name}
         secondaryText={task.estimatedDuration}
-        nestedItems={[<TaskDescription key={1} task={task} />]}>
+        nestedItems={[<TaskDescription key={1} task={task} />]}
+      >
         <MoreOptionsButton options={['Edit', 'Remove']} />
         <IconButton tooltip='Check!' style={taskList.iconButton}><Done /></IconButton>
         <IconButton tooltip='Start!' style={taskList.iconButton}><PlayArrow /></IconButton>
