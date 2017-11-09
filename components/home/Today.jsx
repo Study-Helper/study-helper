@@ -7,7 +7,6 @@ import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-
 import Add from 'material-ui/svg-icons/content/add';
 import Search from 'material-ui/svg-icons/action/search';
 import { appbar } from '../../styles/styles.css.js';
-import tasks from '../../server/tasks.js';
 
 import TaskManager from '../../server/managers/TaskManager.js';
 
@@ -15,6 +14,10 @@ class Today extends React.Component {
 
   constructor(props) {
     super(props);
+    // Synchronously load "today's" tasks.
+    this.state = {
+      tasks: TaskManager.loadTasksByDate('2017-09-05')
+    }
   }
 
   render() {
@@ -38,7 +41,7 @@ class Today extends React.Component {
             />
           </ToolbarGroup>
         </Toolbar>
-        <TaskList tasks={tasks} />
+        <TaskList tasks={this.state.tasks} />
       </div>
     );
   }

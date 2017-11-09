@@ -6,8 +6,8 @@
             "description": "I need to study for the maths test which will take place on Wednesday.",
             "estimatedDuration": "2 hours, 30 minutes",
             "category": "Studying",
-            "startDate": "",
-            "endDate": ""
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
         },
         "2": {
             "id": 2,
@@ -15,8 +15,8 @@
             "description": "The Professors email is tir@fct.unl.pt.",
             "estimatedDuration": "2 minutes",
             "category": "Studying",
-            "startDate": "",
-            "endDate": ""
+            "startDate": "2017-08-13",
+            "endDate": "2017-08-13"
         },
         "3": {
             "id": 3,
@@ -24,8 +24,8 @@
             "description": "No description.",
             "estimatedDuration": "45 minutes",
             "category": "Housekeeping",
-            "startDate": "",
-            "endDate": ""
+            "startDate": "2017-08-13",
+            "endDate": "2017-08-13"
         },
         "4": {
             "id": 4,
@@ -33,8 +33,8 @@
             "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
-            "startDate": "",
-            "endDate": ""
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
         },
         "5": {
             "id": 5,
@@ -42,17 +42,26 @@
             "description": "Pepperoni #1.",
             "estimatedDuration": "5 minutes",
             "category": "Studying",
-            "startDate": "",
-            "endDate": ""
+            "startDate": "2017-08-13",
+            "endDate": "2017-08-13"
         },
-        "10": {
-            "id": 10,
+        "6": {
+            "id": 6,
             "name": "New name!",
             "description": "New description!",
             "category": "Exam",
             "estimatedDuration": "2 minutes",
-            "startDate": "",
-            "endDate": ""
+            "startDate": "2017-08-13",
+            "endDate": "2017-08-13"
+        },
+        "7": {
+            "name": "VERY NEW TASK",
+            "description": "Wohoo",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": 7
         }
     }
 }

@@ -4,7 +4,7 @@ import categories from '../../server/categories.js';
 import { taskList } from '../../styles/styles.css.js';
 
 /** @private */
-const getCategoryAvatarData = (category) => categories[category];
+const getCategoryAvatarData = category => categories[category];
 
 const CategoryAvatar = ({ category }) => (
   <Avatar
