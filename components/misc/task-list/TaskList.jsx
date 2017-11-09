@@ -8,11 +8,9 @@ import IconButton from 'material-ui/IconButton';
 import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../MoreOptionsButton.jsx';
 import { taskList } from '../../../styles/styles.css.js';
-
-// TODO: Why isn't CategoryAvatar working?
 import categories from '../../../server/categories.js';
+
 const getCategoryAvatarData = (category) => categories[category];
-// -------------------------------------------------------------------
 
 const TaskList = ({ tasks }) => (
   <List style={taskList.list}>
@@ -25,7 +23,6 @@ const TaskList = ({ tasks }) => (
           backgroundColor={getCategoryAvatarData(task.category).backgroundColor}
           style={taskList.avatar}
         />}
-        // leftAvatar={<CategoryAvatar category={task.category} />}
         primaryText={task.name}
         secondaryText={task.estimatedDuration}
         nestedItems={[<TaskDescription key={1} task={task} />]}>
