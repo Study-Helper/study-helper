@@ -11,9 +11,11 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-register": "^6.3.13",
+    "chart.js": "^2.7.1",
     "easyjson": "^0.1.2",
     "material-ui": "^0.19.4",
     "react": "^15.3.2",
+    "react-chartjs-2": "^2.6.4",
     "react-dom": "^15.3.2",
     "react-router-dom": "^4.2.2"
   },
