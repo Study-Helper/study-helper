@@ -20,7 +20,7 @@ class RemoveTaskModal extends React.Component {
     this.closeWithoutSave = this.closeWithoutSave.bind(this);
     this.closeAndSave = this.closeAndSave.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
-    this.handleActionTouchTap = this.handleActionTouchTap.bind(this);
+    this.handleUndo = this.handleUndo.bind(this);
   }
 
   /**
@@ -58,7 +58,7 @@ class RemoveTaskModal extends React.Component {
     this.setState({ shouldRenderSnackbar: false });
   }
 
-  handleActionTouchTap() {
+  handleUndo() {
     this.setState({ shouldRenderSnackbar: false });
     TaskManager.add(this.state.forTask);
     PubSub.publish('Task Added', this.state.forTask);
@@ -99,7 +99,7 @@ class RemoveTaskModal extends React.Component {
           message='Your task was deleted!'
           action='undo'
           autoHideDuration={3000}
-          onActionTouchTap={this.handleActionTouchTap}
+          onActionTouchTap={this.handleUndo}
           onRequestClose={this.closeSnackbar}
         />
       </div>

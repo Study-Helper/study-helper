@@ -53,7 +53,7 @@ class TaskList extends React.Component {
   subscribeToTaskAddedEvents() {
      this.taskAddedToken = PubSub.subscribe(
       'Task Added',
-      (message, addedTask) => this.setState((prevState, props) =>{
+      (message, addedTask) => this.setState((prevState, props) => {
         const tasks = prevState.tasks;
         // Remember we passed an extra field, "indexInTheList".
         // If we're adding from an UNDO, use that same index.
