@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListItem } from 'material-ui/List';
 import ActionInfo from 'material-ui/svg-icons/action/info';
-import {taskDescription } from '../../../styles/styles.css.js';
+import { taskDescription } from '../../styles/styles.css.js';
 
 /**
  * Example usage: <TaskDescription task={myTask} />

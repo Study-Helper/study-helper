@@ -2,7 +2,7 @@ import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import TaskList from '../misc/task-list/TaskList.jsx';
+import TaskList from '../list/TaskList.jsx';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 import Add from 'material-ui/svg-icons/content/add';
 import Search from 'material-ui/svg-icons/action/search';

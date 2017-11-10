@@ -15,12 +15,20 @@ const iconButtonElement = (
 
 /**
  * Inject the options that you want.
- * Example: <MoreOptionsButton options={['Edit', 'Delete']} />
+ * IMPORTANT: touchTapCloseDelay should be as small as possible, otherwise it looks strange.
+ * @see http://www.material-ui.com/#/components/icon-menu
+ * @param options - Objects of type { name: string, onClickFunction: function }
  */
 const MoreOptionsButton = ({ options }) => (
-  <IconMenu iconButtonElement={iconButtonElement} style={moreOptions.icon}>
+  <IconMenu 
+    iconButtonElement={iconButtonElement} 
+    touchTapCloseDelay={1} 
+    style={moreOptions.icon}
+  >
     {options.map((option, index) =>
-      <MenuItem key={index}>{option}</MenuItem>
+      <MenuItem key={index} onClick={option.onClickFunction}>
+        {option.name}
+      </MenuItem>
     )}
   </IconMenu>
 );

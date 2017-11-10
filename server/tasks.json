@@ -2,8 +2,8 @@
     "tasks": {
         "1": {
             "id": 1,
-            "name": "Study for the maths test.",
-            "description": "I need to study for the maths test which will take place on Wednesday.",
+            "name": "Really need to study something...",
+            "description": "Hello World",
             "estimatedDuration": "2 hours, 30 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",
