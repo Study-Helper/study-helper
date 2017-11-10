@@ -2,7 +2,7 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom';
 
 /* Import the sidebar icons. */
 import Home from 'material-ui/svg-icons/action/home';
@@ -29,7 +29,7 @@ const App = () => (
   <Router>
      <div>
       <Drawer open width='22%' zDepth={1}>
-        <Link to='/' style={sidebar.link}>
+        <Link to='/home' style={sidebar.link}>
           <MenuItem primaryText='Home' leftIcon={<Home />} style={sidebar.menuItem} />
         </Link>
         <Divider />
@@ -60,13 +60,16 @@ const App = () => (
       </Drawer>
 
       <div style={sidebar.component}>
-        <Route exact path='/' component={TodayComponent} />
-        <Route path='/schedule' component={ScheduleComponent} />
-        <Route path='/calendar' component={CalendarComponent} />
-        <Route path='/grades' component={GradesComponent} />
-        <Route path='/statistics' component={StatisticsComponent} />
-        <Route path='/history' component={TaskHistoryComponent} />
-        <Route path='/settings' component={SettingsComponent} />
+        <Switch>
+          <Route exact path='/home' component={TodayComponent} />
+          <Route path='/schedule' component={ScheduleComponent} />
+          <Route path='/calendar' component={CalendarComponent} />
+          <Route path='/grades' component={GradesComponent} />
+          <Route path='/statistics' component={StatisticsComponent} />
+          <Route path='/history' component={TaskHistoryComponent} />
+          <Route path='/settings' component={SettingsComponent} />
+          <Redirect to='/home' />
+        </Switch>
       </div>
     </div>
   </Router>
