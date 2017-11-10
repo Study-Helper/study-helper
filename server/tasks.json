@@ -2,13 +2,12 @@
     "tasks": {
         "1": {
             "id": 1,
-            "name": "Did I update? 5",
-            "description": "Hello World",
-            "estimatedDuration": "2 hours, 30 minutes",
+            "name": "Email over my IPM project.",
+            "description": "The Professors email is tir@fct.unl.pt.",
+            "estimatedDuration": "2 minutes",
             "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "indexInTheList": 0
+            "startDate": "2017-08-13",
+            "endDate": "2017-08-13"
         },
         "2": {
             "id": 2,
@@ -58,7 +57,7 @@
         },
         "7": {
             "name": "VERY NEW TASK!",
-            "description": "Wohoo",
+            "description": "Wohoolplp",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",

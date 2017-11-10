@@ -54,16 +54,12 @@ export const moreOptions = {
 };
 
 export const statisticButtons = {
-  toDoComplete: {
-    marginTop: '10px',
-    marginLeft: '60px'
-  },
-  toDoIncomplete: {
-    marginTop: '10px',
-    marginLeft: '60px'
+  tasks: {
+    marginTop: '20px',
+    marginLeft: '162px'
   },
   grades: {
-    marginTop: '10px',
-    marginLeft: '60px'
+    marginTop: '20px',
+    marginLeft: '162px'
   }
 };
