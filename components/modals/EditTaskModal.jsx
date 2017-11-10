@@ -41,7 +41,7 @@ class EditTaskModal extends React.Component {
   }
 
   componentWillUnmount() {
-    PubSub.unsubscribe(token);
+    PubSub.unsubscribe(this.token);
   }
 
   /** @private */
@@ -60,14 +60,21 @@ class EditTaskModal extends React.Component {
     const task = this.state.forTask;
     const { newName, newDescription, newCategory } = this.editedValues;
     // Update only if the values actually changed.
+    let somethingChanged = false;
     if (newName && task.name !== newName) {
       TaskManager.updateName(task, newName);
+      somethingChanged = true;
     }
     if (newDescription && task.description !== newDescription) {
       TaskManager.updateDescription(task, newDescription);
+      somethingChanged = true;
     }
     if (newCategory && task.category !== newCategory) {
       TaskManager.updateCategory(task, newCategory);
+      somethingChanged = true;
+    }
+    if (somethingChanged) {
+      PubSub.publish('Updated Tasks');
     }
   }
 
@@ -109,6 +116,7 @@ class EditTaskModal extends React.Component {
           floatingLabelText="Task Description" 
           onChange={(e, newValue) => this.editedValues.newDescription = newValue}
         /><br />
+        {/* TODO: Categories */}
       </Dialog>
     );
   }

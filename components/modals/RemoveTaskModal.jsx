@@ -29,7 +29,7 @@ class RemoveTaskModal extends React.Component {
   }
 
   componentWillUnmount() {
-    PubSub.unsubscribe(token);
+    PubSub.unsubscribe(this.token);
   }
 
   /** @private */

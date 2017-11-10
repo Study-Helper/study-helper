@@ -17,6 +17,18 @@ class TaskList extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = { lastUpdateTime: new Date() }
+  }
+
+  componentWillMount() {
+    this.token = PubSub.subscribe(
+      'Tasks Updated',
+      (message, task) => this.setState({ lastUpdateTime: new Date() })
+    );
+  }
+
+  componentWillUnmount() {
+    PubSub.unsubscribe(this.token);
   }
 
   /** @private */
