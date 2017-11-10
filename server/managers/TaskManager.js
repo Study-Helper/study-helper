@@ -36,10 +36,12 @@ const TaskManager = {
 
   /**
    * Adds a new task to the JSON file.
+   * NOTE: If the task has an ID, then it's a task that was removed, and
+   * we're undoing that action.
    * @param task - task object.
    */
   add(task) {
-    const id = ++taskCounter;
+    const id = task.id || ++taskCounter;
     task.id = id;
     data.add(`tasks[${id}]`, task);
   },

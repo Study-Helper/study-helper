@@ -18,21 +18,66 @@ class TaskList extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tasks: props.tasks }
+
+    this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
+    this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
+    this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
   }
 
   componentWillMount() {
-    this.token = PubSub.subscribe(
+    this.subscribeToTaskUpdatedEvents();
+    this.subscribeToTaskRemovedEvents();
+    this.subscribeToTaskAddedEvents(); 
+  }
+
+  componentWillUnmount() {
+    PubSub.unsubscribe(this.taskUpdatedToken);
+    PubSub.unsubscribe(this.taskAddedToken);
+    PubSub.unsubscribe(this.taskRemovedToken);
+  }
+
+  /** @private */
+  subscribeToTaskUpdatedEvents() {
+    this.taskUpdatedToken = PubSub.subscribe(
       'Task Updated',
       (message, updatedTask) => this.setState((prevState, props) => {
         const tasks = prevState.tasks;
-        tasks[updatedTask.id - 1] = updatedTask;
+        const localIndex = tasks.findIndex(i => i.id === updatedTask.id);
+        tasks[localIndex] = updatedTask;
         return { tasks: tasks }
       })
     );
   }
 
-  componentWillUnmount() {
-    PubSub.unsubscribe(this.token);
+  /** @private */
+  subscribeToTaskAddedEvents() {
+     this.taskAddedToken = PubSub.subscribe(
+      'Task Added',
+      (message, addedTask) => this.setState((prevState, props) =>{
+        const tasks = prevState.tasks;
+        // Remember we passed an extra field, "indexInTheList".
+        // If we're adding from an UNDO, use that same index.
+        // Otherwise, add it to the end.
+        const indexToInsert = addedTask.indexInTheList !== undefined
+          ? addedTask.indexInTheList
+          : tasks.length;
+        tasks.splice(indexToInsert, 0, addedTask);
+        return { tasks: tasks }
+      })
+    );
+  }
+
+  /** @private */
+  subscribeToTaskRemovedEvents() {
+    this.taskRemovedToken = PubSub.subscribe(
+      'Task Removed',
+      (message, removedTask) => this.setState((prevState, props) => {
+        const tasks = prevState.tasks;
+        const localIndex = tasks.findIndex(i => i.id === removedTask.id);
+        tasks.splice(localIndex, 1);
+        return { tasks: tasks }
+      })
+    );
   }
 
   /** @private */
@@ -47,6 +92,11 @@ class TaskList extends React.Component {
 
   /** @private */
   openRemoveModal(task) {
+    // Because this is a rescue from and UNDO, we pass a special
+    // flag, "indexInTheList".
+    // Pass it directly on the forTask object to simplify parsing.
+    const indexInTheList = this.state.tasks.findIndex(i => i.id === task.id);
+    task.indexInTheList = indexInTheList;
     RemoveTaskModal.openSelf(task);
   }
 

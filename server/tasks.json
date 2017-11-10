@@ -2,12 +2,13 @@
     "tasks": {
         "1": {
             "id": 1,
-            "name": "Did I update? 28",
+            "name": "Did I update? 3",
             "description": "Hello World",
             "estimatedDuration": "2 hours, 30 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
+            "endDate": "2017-09-05",
+            "indexInTheList": 0
         },
         "2": {
             "id": 2,
@@ -34,7 +35,8 @@
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
+            "endDate": "2017-09-05",
+            "indexInTheList": 1
         },
         "5": {
             "id": 5,
@@ -55,7 +57,7 @@
             "endDate": "2017-08-13"
         },
         "7": {
-            "name": "VERY NEW TASK",
+            "name": "VERY NEW TASK!",
             "description": "Wohoo",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",

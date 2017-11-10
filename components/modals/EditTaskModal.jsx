@@ -63,13 +63,8 @@ class EditTaskModal extends React.Component {
   }
 
   /** @private */
-  closeSnackbar() {
-    this.setState({ shouldRenderSnackbar: false });
-  }
-
-  /** @private */
   closeAndSave() {
-    this.setState({ open: false });
+    this.setState({ open: false, shouldRenderSnackbar: true });
     // We'll be comparing (previous -> new) values.
     const task = this.state.forTask;
     const { newName, newDescription, newCategory } = this.editedValues;
@@ -78,26 +73,29 @@ class EditTaskModal extends React.Component {
     // but it's the easiest way right now... :(
     let somethingChanged = false;
     if (newName && task.name !== newName) {
-      TaskManager.updateName(task, newName);
       task.name = newName;
       somethingChanged = true;
+      TaskManager.updateName(task, newName);
     }
     if (newDescription && task.description !== newDescription) {
-      TaskManager.updateDescription(task, newDescription);
       task.description = newDescription;
       somethingChanged = true;
+      TaskManager.updateDescription(task, newDescription);
     }
     if (newCategory && task.category !== newCategory) {
-      TaskManager.updateCategory(task, newCategory);
       task.category = newCategory;
       somethingChanged = true;
+      TaskManager.updateCategory(task, newCategory);
     }
-    // Render the SnackBar (regardless of any real change).
-    this.setState({ shouldRenderSnackbar: true });
     // This event will be caught by a TaskList object.
     if (somethingChanged) {
       PubSub.publish('Task Updated', task);
     }
+  }
+
+  /** @private */
+  closeSnackbar() {
+    this.setState({ shouldRenderSnackbar: false });
   }
 
   /** @private */
@@ -144,7 +142,7 @@ class EditTaskModal extends React.Component {
         </Dialog>
         <Snackbar
           open={this.state.shouldRenderSnackbar}
-          message="Task successfuly modified!"
+          message='Task successfuly modified!'
           autoHideDuration={2000}
           onRequestClose={this.closeSnackbar}
         />
