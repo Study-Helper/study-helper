@@ -17,13 +17,17 @@ class TaskList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { lastUpdateTime: new Date() }
+    this.state = { tasks: props.tasks }
   }
 
   componentWillMount() {
     this.token = PubSub.subscribe(
-      'Tasks Updated',
-      (message, task) => this.setState({ lastUpdateTime: new Date() })
+      'Task Updated',
+      (message, updatedTask) => this.setState((prevState, props) => {
+        const tasks = prevState.tasks;
+        tasks[updatedTask.id - 1] = updatedTask;
+        return { tasks: tasks }
+      })
     );
   }
 
@@ -63,7 +67,7 @@ class TaskList extends React.Component {
   }
 
   render() {
-    const { tasks } = this.props;
+    const tasks = this.state.tasks;
     return (
       <div>
         <List style={taskList.list}>
