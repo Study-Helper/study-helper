@@ -24,13 +24,14 @@ const TaskManager = {
    */
   loadTasksByDate(date) {
     const tasks = [];
-    for (let i = 0; i < taskCounter; i++) {
-      const task = data.get(`tasks[${i + 1}]`);
+    const taskKeys = Object.keys(data.get('tasks'));
+    taskKeys.forEach(function(key) {
+      const task = data.get(`tasks[${parseInt(key)}]`);
       const startDate = task.startDate;
       if (startDate === date) {
         tasks.push(task);
       }
-    }
+    });
     return tasks;
   },
 

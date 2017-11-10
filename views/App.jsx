@@ -56,7 +56,6 @@ const App = () => (
         <Link to='/settings' style={sidebar.link}>
           <MenuItem primaryText='Settings' leftIcon={<Settings />} style={sidebar.menuItem} />
         </Link>
-        <Divider />
       </Drawer>
 
       <div style={sidebar.component}>
