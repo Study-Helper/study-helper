@@ -1,7 +1,7 @@
 {
     "tasks": {
-        "2": {
-            "id": 2,
+        "_30mmt3qpypo": {
+            "id": "_30mmt3qpypo",
             "name": "Email over my IPM project.",
             "description": "The Professors email is tir@fct.unl.pt.",
             "estimatedDuration": "2 minutes",
@@ -9,8 +9,8 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "3": {
-            "id": 3,
+        "_5kb2v3na13": {
+            "id": "_5kb2v3na13",
             "name": "Cleanup my room.",
             "description": "No description.",
             "estimatedDuration": "45 minutes",
@@ -18,8 +18,8 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "4": {
-            "id": 4,
+        "_reae8nfsx2k": {
+            "id": "_reae8nfsx2k",
             "name": "Go buy fireworks for Johhnys birthday party.",
             "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
@@ -28,8 +28,8 @@
             "endDate": "2017-09-05",
             "indexInTheList": 1
         },
-        "5": {
-            "id": 5,
+        "_o6n3bpjs3r": {
+            "id": "_o6n3bpjs3r",
             "name": "Order pizza for dinner.",
             "description": "Pepperoni #1.",
             "estimatedDuration": "5 minutes",
@@ -37,8 +37,8 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "6": {
-            "id": 6,
+        "_3wa8g8ppiie": {
+            "id": "_3wa8g8ppiie",
             "name": "New name!",
             "description": "New description!",
             "category": "Exam",
@@ -46,14 +46,15 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "7": {
-            "name": "VERY NEW TASK!",
+        "_gkfpulgbj8r": {
+            "name": "VERY NEW TASK!!",
             "description": "Wohoolplp",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
-            "id": 7
+            "id": "_gkfpulgbj8r",
+            "indexInTheList": 1
         }
     }
 }

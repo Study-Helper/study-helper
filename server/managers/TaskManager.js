@@ -6,11 +6,14 @@ const TASKS_JSON = './server/tasks.json';
 const data = require('easyjson').path(TASKS_JSON);
 
 /**
- * Every task has an ID.
- * The JSON file will store (taskCounter + 1) tasks.
- * The ID is given to each task when #add is called.
+ * Generate and return a random id.
+ * @private
+ * @return generated id, a String.
+ * @see taken from https://gist.github.com/gordonbrander/2230317
  */
-let taskCounter = Object.keys(data.get('tasks')).length;
+function generateRandomId() {
+  return '_' + Math.random().toString(36).substr(2, 12);
+}
 
 /**
  * Singleton-like task manager.
@@ -26,7 +29,7 @@ const TaskManager = {
     const tasks = [];
     const taskKeys = Object.keys(data.get('tasks'));
     taskKeys.forEach(function(key) {
-      const task = data.get(`tasks[${parseInt(key)}]`);
+      const task = data.get(`tasks[${key}]`);
       const startDate = task.startDate;
       if (startDate === date) {
         tasks.push(task);
@@ -42,7 +45,7 @@ const TaskManager = {
    * @param task - task object.
    */
   add(task) {
-    const id = task.id || ++taskCounter;
+    const id = task.id || generateRandomId();
     task.id = id;
     data.add(`tasks[${id}]`, task);
   },
@@ -53,8 +56,8 @@ const TaskManager = {
    * @param task - task object.
    */
   remove(task) {
-    const taskId = task.id;
-    data.del(`tasks[${taskId}]`);
+    const id = task.id;
+    data.del(`tasks[${id}]`);
   },
 
   /**
@@ -63,8 +66,8 @@ const TaskManager = {
    * @param newName - string.
    */
   updateName(task, newName) {
-    const taskId = task.id;
-    data.modify(`tasks[${taskId}][name]`, newName);
+    const id = task.id;
+    data.modify(`tasks[${id}][name]`, newName);
   },
 
   /**
@@ -73,8 +76,8 @@ const TaskManager = {
    * @param newDescription - string.
    */
   updateDescription(task, newDescription) {
-    const taskId = task.id;
-    data.modify(`tasks[${taskId}][description]`, newDescription);
+    const id = task.id;
+    data.modify(`tasks[${id}][description]`, newDescription);
   },
 
   /**
@@ -83,8 +86,8 @@ const TaskManager = {
    * @param newCategory - string.
    */
   updateCategory(task, newCategory) {
-    const taskId = task.id;
-    data.modify(`tasks[${taskId}][category]`, newCategory);
+    const id = task.id;
+    data.modify(`tasks[${id}][category]`, newCategory);
   }
 
   // TODO: Update Estimated Time?
