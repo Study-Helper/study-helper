@@ -6,6 +6,8 @@ import Done from 'material-ui/svg-icons/action/done';
 import IconButton from 'material-ui/IconButton';
 import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
+import EditIcon from 'material-ui/svg-icons/content/create';
+import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { taskList } from '../../styles/styles.css.js';
 import categories from '../../server/categories.js';
 
@@ -18,7 +20,6 @@ class TaskList extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tasks: props.tasks }
-
     this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
     this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
     this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
@@ -92,9 +93,6 @@ class TaskList extends React.Component {
 
   /** @private */
   openRemoveModal(task) {
-    // Because this is a rescue from and UNDO, we pass a special
-    // flag, "indexInTheList".
-    // Pass it directly on the forTask object to simplify parsing.
     const indexInTheList = this.state.tasks.findIndex(i => i.id === task.id);
     task.indexInTheList = indexInTheList;
     RemoveTaskModal.openSelf(task);
@@ -104,6 +102,7 @@ class TaskList extends React.Component {
   editTaskOption(task) {
     return {
       name: 'Edit',
+      icon: <EditIcon />,
       onClickFunction: () => this.openEditModal(task)
     }
   }
@@ -112,6 +111,7 @@ class TaskList extends React.Component {
   removeTaskOption(task) {
     return {
       name: 'Remove',
+      icon: <DeleteIcon />,
       onClickFunction: () => this.openRemoveModal(task)
     }
   }

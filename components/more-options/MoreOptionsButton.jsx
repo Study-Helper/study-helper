@@ -20,14 +20,17 @@ const iconButtonElement = (
  * @param options - Objects of type { name: string, onClickFunction: function }
  */
 const MoreOptionsButton = ({ options }) => (
-  <IconMenu 
+  <IconMenu
     iconButtonElement={iconButtonElement} 
     touchTapCloseDelay={1} 
     style={moreOptions.icon}
   >
     {options.map((option, index) =>
-      <MenuItem key={index} onClick={option.onClickFunction}>
-        {option.name}
+      <MenuItem 
+        key={index}
+        primaryText={option.name}
+        leftIcon={option.icon}
+        onClick={option.onClickFunction}>
       </MenuItem>
     )}
   </IconMenu>
