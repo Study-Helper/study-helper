@@ -18,16 +18,6 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "_reae8nfsx2k": {
-            "id": "_reae8nfsx2k",
-            "name": "Go buy fireworks for Johhnys birthday party.",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "indexInTheList": 1
-        },
         "_o6n3bpjs3r": {
             "id": "_o6n3bpjs3r",
             "name": "Order pizza for dinner.",
@@ -47,7 +37,7 @@
             "endDate": "2017-08-13"
         },
         "_gkfpulgbj8r": {
-            "name": "VERY NEW TASK!!",
+            "name": "Edited Name",
             "description": "Wohoolplp",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
@@ -55,6 +45,16 @@
             "endDate": "2017-09-05",
             "id": "_gkfpulgbj8r",
             "indexInTheList": 1
+        },
+        "_reae8nfsx2k": {
+            "id": "_reae8nfsx2k",
+            "name": "Go buy fireworks for Johhnys birthday party.",
+            "description": "Fun times.",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "indexInTheList": 0
         }
     }
 }

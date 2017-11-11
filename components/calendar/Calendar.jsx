@@ -24,13 +24,11 @@ class Calendar extends Component {
     const { startDate, endDate } = this.state;
     return (
       <div>
-
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
             <ToolbarTitle style={{'marginLeft': '15px'}} text="Calendar" />
-            <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
-       </Toolbar>
+        </Toolbar>
         <DatePicker onChange={this.setDate} />
         <p />
         <Today title="Sheduled Tasks" range={[startDate, endDate]} /> :
