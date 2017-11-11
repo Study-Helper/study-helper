@@ -1,14 +1,5 @@
 {
     "tasks": {
-        "1": {
-            "id": 1,
-            "name": "Did I update? 1",
-            "description": "Hello World",
-            "estimatedDuration": "2 hours, 30 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "2": {
             "id": 2,
             "name": "Email over my IPM project.",
