@@ -11,7 +11,7 @@ import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
 
 import TaskDescription from '../list/TaskDescription.jsx';
 import Timer from './Timer.jsx';
-import categories from '../../server/categories.js';
+import categories from '../../server/categories.jsx';
 import { appbar } from '../../styles/styles.css.js';
 
 class TaskStarted extends Component {
