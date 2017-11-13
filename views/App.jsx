@@ -22,6 +22,7 @@ import ScheduleComponent from '../components/schedule/Schedule.jsx';
 import SettingsComponent from '../components/settings/Settings.jsx';
 import StatisticsComponent from '../components/statistics/Statistics.jsx';
 import AddTaskComponent from '../components/add-task/AddTaskComponent.jsx';
+import TaskStarted from '../components/task-started/TaskStarted.jsx';
 
 /* Import custom styles. */
 import { sidebar } from '../styles/styles.css.js';
@@ -69,6 +70,7 @@ const App = () => (
           <Route path='/history' component={TaskHistoryComponent} />
           <Route path='/settings' component={SettingsComponent} />
           <Route path='/add-task' component={AddTaskComponent} />
+          <Route path='/task-started' component={TaskStarted} />
           <Redirect to='/home' />
         </Switch>
       </div>

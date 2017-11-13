@@ -1,0 +1,51 @@
+.timer {
+    min-width: 320px;
+    height: 400px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    transition: background-color .5s;
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 40px 0;
+    color: white;
+    cursor: default;
+}
+
+.timer-count {
+    padding-left: 3px;
+}
+
+.timer-count__wrap {
+    display: inline-block;
+    position: relative;
+    width: 170px;
+    height: 170px;
+    border: 5px solid;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.timer-count__chart {
+    position: absolute;
+    top: 0;
+    left: 7px;
+}
+
+.timer-count__text {
+    display: block;
+    padding-top: 45px;
+    font-size: 3em;
+    text-align: center;
+}
+
+.timer-count__label {
+    display: block;
+    text-align: center;
+    opacity: .8;
+}
+
+.timer-status__label {
+  margin-top: 30px;
+  font-size: 25px;
+}

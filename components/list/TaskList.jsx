@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import PlayArrow from 'material-ui/svg-icons/AV/play-arrow';
@@ -28,7 +29,7 @@ class TaskList extends React.Component {
   componentWillMount() {
     this.subscribeToTaskUpdatedEvents();
     this.subscribeToTaskRemovedEvents();
-    this.subscribeToTaskAddedEvents(); 
+    this.subscribeToTaskAddedEvents();
   }
 
   componentWillUnmount() {
@@ -139,7 +140,16 @@ class TaskList extends React.Component {
                 this.removeTaskOption(task)
               ]} />
               <IconButton tooltip='Check!' style={taskList.iconButton}><Done /></IconButton>
-              <IconButton tooltip='Start!' style={taskList.iconButton}><PlayArrow /></IconButton>
+              <Link to={{ pathname: 'task-started',
+                state: {
+                task,
+                taskList
+                } }}
+              >
+                <IconButton tooltip='Start!' style={taskList.iconButton}>
+                  <PlayArrow />
+                </IconButton>
+              </Link>
             </ListItem>
           )}
         </List>
