@@ -7,6 +7,10 @@ export const sidebar = {
   menuItem: {
     height: '60px'
   },
+  focusedItem: {
+    height: '60px',
+    backgroundColor: 'rgba(0, 0, 255, 0.2)'
+  },
   component: {
     paddingLeft: '179px'
   }

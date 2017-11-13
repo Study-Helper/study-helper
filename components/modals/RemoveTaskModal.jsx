@@ -57,7 +57,6 @@ class RemoveTaskModal extends React.Component {
    */
   onUndoTimeOut() {
     if (!this.state.taskWasRescued) {
-      console.log("Removing...");
       TaskManager.remove(this.state.forTask);
     }
   }
@@ -69,7 +68,6 @@ class RemoveTaskModal extends React.Component {
 
   /** @private */
   closeAndSave() {
-    console.log("closeAndSave: " + this.state.indexInTheList);
     this.setState({ open: false, shouldRenderSnackbar: true });
     // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
     setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
