@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import IconButton from 'material-ui/IconButton';
+import Dialog from 'material-ui/Dialog';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import { ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
@@ -8,6 +9,7 @@ import Done from 'material-ui/svg-icons/action/done';
 import Pause from 'material-ui/svg-icons/av/pause';
 import Stop from 'material-ui/svg-icons/av/stop';
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
+import FlatButton from 'material-ui/FlatButton';
 
 import TaskDescription from '../list/TaskDescription.jsx';
 import Timer from './Timer.jsx';
@@ -18,16 +20,58 @@ class TaskStarted extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { paused: false };
+    this.state = { paused: false, wasPaused: undefined, open: false };
     this.changeStatus = this.changeStatus.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.confirmStopTask = this.confirmStopTask.bind(this);
+    this.stopTask = this.stopTask.bind(this);
+    this.checkTask = this.checkTask.bind(this);
   }
 
   changeStatus() {
     this.setState({ paused: !this.state.paused });
   }
 
+  confirmStopTask() {
+    const { wasPaused, paused } = this.state;
+    const result = (wasPaused === undefined || paused === false);
+    this.setState({ paused: true, open: true, wasPaused: !result });
+  }
+
+  stopTask() {
+    this.handleClose();
+    this.props.history.push('/home');
+  }
+
+  checkTask() {
+    this.props.history.push('/home');
+  }
+
+  handleOpen() {
+   this.setState({ open: true });
+  }
+
+  handleClose() {
+    const paused = this.state.wasPaused;
+    this.setState({ paused, open: false });
+  }
+
   render() {
     const { task, taskList } = this.props.location.state;
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary
+        keyboardFocused
+        onClick={this.handleClose}
+      />,
+      <FlatButton
+        label="Submit"
+        primary
+        onClick={this.stopTask}
+      />,
+    ];
     return (
       <div>
         <Toolbar style={appbar.barLayout}>
@@ -47,8 +91,18 @@ class TaskStarted extends Component {
             style={taskList.avatar}
           />}
         >
-          <IconButton tooltip='Check!' style={taskList.iconButton}><Done /></IconButton>
-          <IconButton tooltip='Stop!' style={taskList.iconButton}>
+          <IconButton
+            tooltip='Check!'
+            onClick={() => this.checkTask()}
+            style={taskList.iconButton}
+          >
+            <Done />
+          </IconButton>
+          <IconButton
+            tooltip='Stop!'
+            onClick={() => this.confirmStopTask()}
+            style={taskList.iconButton}
+          >
             <Stop />
           </IconButton>
           {
@@ -70,6 +124,15 @@ class TaskStarted extends Component {
           }
         </ListItem>
         <Timer paused={this.state.paused} />
+        <Dialog
+          title="Warning"
+          actions={actions}
+          modal={false}
+          open={this.state.open}
+          onRequestClose={this.handleClose}
+        >
+          Are you sure you want to stop this task?
+        </Dialog>
       </div>
     );
   }
