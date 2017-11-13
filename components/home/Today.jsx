@@ -26,7 +26,8 @@ class Today extends React.Component {
     //TODO: consider endDate (range[1])
     const { range } = nextProps;
     this.setState({
-      tasks: TaskManager.loadTasksByDate(range[0])
+      tasks: TaskManager.loadTasksByDate('2017-09-05')
+      // tasks: TaskManager.loadTasksByDate(range[0])
     });
   }
 

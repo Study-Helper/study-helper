@@ -5,10 +5,12 @@ import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 
 const categories = {
   'Studying': {
+    title: 'Exam',
     icon: <ActionAssignment />,
     backgroundColor: blue500
   },
-  'Housekeeping': {
+  'House': {
+    title: 'Studying',
     icon: <EditorInsertChart />,
     backgroundColor: red500
   }

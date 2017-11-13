@@ -31,7 +31,7 @@ const App = () => (
   <Router>
      <div>
       <Drawer open width='22%' zDepth={1}>
-        <Link to='/home' style={sidebar.link}>
+        <Link to='/home' style={sidebar.link} onClick={() => console.log("hhh")}>
           <MenuItem primaryText='Home' leftIcon={<Home />} style={sidebar.menuItem} />
         </Link>
         <Divider />

@@ -8,6 +8,8 @@ import TaskManager from '../../server/managers/TaskManager.js';
 /* Use PubSub to handle modal popups. */
 import PubSub from 'pubsub-js';
 
+const UNDO_TIME_MS = 3000
+
 class RemoveTaskModal extends React.Component {
 
   constructor(props) {
@@ -15,30 +17,49 @@ class RemoveTaskModal extends React.Component {
     this.state = {
       open: false,
       forTask: null,
-      shouldRenderSnackbar: false
+      indexInTheList: -1,
+      shouldRenderSnackbar: false,
+      taskWasRescued: false
     }
     this.closeWithoutSave = this.closeWithoutSave.bind(this);
     this.closeAndSave = this.closeAndSave.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
     this.handleUndo = this.handleUndo.bind(this);
+    this.onUndoTimeOut = this.onUndoTimeOut.bind(this);
   }
 
   /**
    * Call this function to open the Remove Task Modal.
    */
-  static openSelf(task) {
-    PubSub.publish('Open Remove Task Modal', task);
+  static openSelf(task, indexInTheList) {
+    PubSub.publish('Open Remove Task Modal', { task, indexInTheList } );
   }
 
   componentWillMount() {
     this.token = PubSub.subscribe(
       'Open Remove Task Modal',
-      (message, task) => this.setState({ open: true, forTask: task })
+      (message, data) => this.setState({
+        open: true,
+        forTask: data.task,
+        indexInTheList: data.indexInTheList
+      })
     );
   }
 
   componentWillUnmount() {
     PubSub.unsubscribe(this.token);
+  }
+
+  /**
+   * After {UNDO_TIME_MS} miliseconds, if the removed task was not rescued (i.e. the
+   * undo button wasn't clicked), then actually erase the task from the JSON.
+   * @private
+   */
+  onUndoTimeOut() {
+    if (!this.state.taskWasRescued) {
+      console.log("Removing...");
+      TaskManager.remove(this.state.forTask);
+    }
   }
 
   /** @private */
@@ -48,8 +69,11 @@ class RemoveTaskModal extends React.Component {
 
   /** @private */
   closeAndSave() {
+    console.log("closeAndSave: " + this.state.indexInTheList);
     this.setState({ open: false, shouldRenderSnackbar: true });
-    TaskManager.remove(this.state.forTask);
+    // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
+    setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
+    // Logically remove, don't actually erase from the JSON.
     PubSub.publish('Task Removed', this.state.forTask);
   }
 
@@ -59,9 +83,11 @@ class RemoveTaskModal extends React.Component {
   }
 
   handleUndo() {
-    this.setState({ shouldRenderSnackbar: false });
-    TaskManager.add(this.state.forTask);
-    PubSub.publish('Task Added', this.state.forTask);
+    this.setState({ shouldRenderSnackbar: false, taskWasRescued: true });
+    // Don't add a new task to the JSON, as it was never actually deleted.
+    const addedTask = this.state.forTask;
+    const indexInTheList = this.state.indexInTheList;
+    PubSub.publish('Task Added', { addedTask, indexInTheList });
   }
 
   /** @private */
@@ -98,7 +124,7 @@ class RemoveTaskModal extends React.Component {
           open={this.state.shouldRenderSnackbar}
           message='Your task was deleted!'
           action='undo'
-          autoHideDuration={3000}
+          autoHideDuration={UNDO_TIME_MS}
           onActionTouchTap={this.handleUndo}
           onRequestClose={this.closeSnackbar}
         />
