@@ -92,13 +92,13 @@ class RemoveTaskModal extends React.Component {
   actions() {
     return [
       <FlatButton
+        secondary
         label='Cancel'
-        primary={true}
         onClick={this.closeWithoutSave}
       />,
       <FlatButton
-        label='Ok'
-        primary={true}
+        primary
+        label='Delete'
         onClick={this.closeAndSave}
       />,
     ];

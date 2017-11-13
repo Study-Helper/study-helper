@@ -102,13 +102,13 @@ class EditTaskModal extends React.Component {
   actions() {
     return [
       <FlatButton
+        secondary
         label='Cancel'
-        primary={true}
         onClick={this.closeWithoutSave}
       />,
       <FlatButton
+        primary
         label='Save'
-        primary={true}
         onClick={this.closeAndSave}
       />,
     ];
