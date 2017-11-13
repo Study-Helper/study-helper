@@ -2,11 +2,11 @@ import React from 'react';
 import IconButton from 'material-ui/IconButton';
 import GoBack from 'material-ui/svg-icons/navigation/chevron-left';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
-import { appbar } from '../../styles/styles.css.js';
+import { appbar, addTask } from '../../styles/styles.css.js';
 
 import TextField from 'material-ui/TextField';
 import CategoryPicker from './category/CategoryPicker.jsx';
-import Divider from 'material-ui/Divider';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class AddTaskComponent extends React.Component {
 
@@ -24,23 +24,39 @@ class AddTaskComponent extends React.Component {
             <ToolbarTitle style={{'marginLeft': '15px'}} text='Add Task' />
           </ToolbarGroup>
         </Toolbar>
-        <div style={{marginLeft: '20px', marginRight: '20px'}}>
+        <div style={addTask.window}>
           <TextField
             fullWidth
             hintText={'Title'}
-            floatingLabelText="Task Title" 
+            floatingLabelText='Task Title'
           />
+          <TextField fullWidth hintText={'TODO: Something for the start/end dates here'} />
           <CategoryPicker />
-          <br />
-          <p style={{
-            fontSize: 'small',
-            fontFamily: 'Roboto',
-            color: 'rgba(0, 0, 0, 0.87)',
-          }}>Optional</p>
-          <TextField hintText="First name" style={{marginLeft: '20'}} underlineShow={false} />
-          <Divider />
-          <TextField hintText="Middle name" style={{marginLeft: '20'}} underlineShow={false} />
-          <Divider />
+          <TextField
+            fullWidth
+            hintText={'Estimated Duration'}
+            floatingLabelText='Duration (Optional)'
+          />
+          <TextField
+            fullWidth
+            hintText={'Add a Description'}
+            floatingLabelText='Description (Optional)' 
+          />
+          <RaisedButton
+            label='Confirm'
+            style={addTask.button}
+            primary
+          />
+          <RaisedButton
+            label='Add More'
+            style={addTask.button}
+            secondary
+          />
+          <RaisedButton
+            label='Cancel'
+            onClick={goBack}
+            style={addTask.button}
+          />          
         </div>
       </div>
     );

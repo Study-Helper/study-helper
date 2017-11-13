@@ -67,3 +67,55 @@ export const statisticButtons = {
     marginLeft: '162px'
   }
 };
+
+export const addTask = {
+  window: {
+    marginLeft: '20px',
+    marginRight: '20px'
+  },
+  button: {
+    float: 'right',
+    marginTop: '40px'
+  }
+};
+
+export const categoryPicker = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  grid: {
+    display: 'flex',
+    width: 650,
+    height: 125,
+    overflowY: 'auto',
+    border: '1px solid #E0E0E0'
+  },
+  // TODO: This is not well.
+  infoText: {
+    color: '#BDBDBD',
+    fontFamily: 'Roboto'
+  },
+  categoryItemDefault: {
+    height: '85px'
+  },
+  categoryItemSelected: {
+    height: '85px',
+    backgroundColor: 'rgba(220, 220, 220, 1)'
+  }
+};
+
+export const categoryItem = {
+  avatar: {
+    marginLeft: '24px',
+    marginTop: '7px'
+  },
+  font: {
+    textAlign:'center',
+    fontSize: 'small',
+    fontFamily: 'Roboto',
+    color: 'rgba(0, 0, 0, 0.87)',
+    marginTop: '6px',
+    wordWrap: 'pre-line'
+  }
+}
