@@ -45,7 +45,7 @@ class TaskList extends React.Component {
         const tasks = prevState.tasks;
         const localIndex = tasks.findIndex(i => i.id === updatedTask.id);
         tasks[localIndex] = updatedTask;
-        return { tasks: tasks }
+        return { tasks }
       })
     );
   }
@@ -54,16 +54,16 @@ class TaskList extends React.Component {
   subscribeToTaskAddedEvents() {
      this.taskAddedToken = PubSub.subscribe(
       'Task Added',
-      (message, addedTask) => this.setState((prevState, props) => {
+      (message, data) => this.setState((prevState, props) => {
         const tasks = prevState.tasks;
-        // Remember we passed an extra field, "indexInTheList".
-        // If we're adding from an UNDO, use that same index.
+        // NOTE: data = { task, indexInTheList || undefined }
+        const task = data.addedTask;
+        const index = data.indexInTheList;
+        // Iff we're coming from and undo, indexInTheList is not undefined.
         // Otherwise, add it to the end.
-        const indexToInsert = addedTask.indexInTheList !== undefined
-          ? addedTask.indexInTheList
-          : tasks.length;
-        tasks.splice(indexToInsert, 0, addedTask);
-        return { tasks: tasks }
+        const indexToInsert = index !== undefined ? index : tasks.length;
+        tasks.splice(indexToInsert, 0, task);
+        return { tasks }
       })
     );
   }
@@ -76,7 +76,7 @@ class TaskList extends React.Component {
         const tasks = prevState.tasks;
         const localIndex = tasks.findIndex(i => i.id === removedTask.id);
         tasks.splice(localIndex, 1);
-        return { tasks: tasks }
+        return { tasks }
       })
     );
   }
@@ -94,8 +94,7 @@ class TaskList extends React.Component {
   /** @private */
   openRemoveModal(task) {
     const indexInTheList = this.state.tasks.findIndex(i => i.id === task.id);
-    task.indexInTheList = indexInTheList;
-    RemoveTaskModal.openSelf(task);
+    RemoveTaskModal.openSelf(task, indexInTheList);
   }
 
   /** @private */

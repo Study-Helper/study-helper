@@ -1,5 +1,14 @@
 {
     "tasks": {
+        "_rd5e1naaffk": {
+            "id": "_rd5e1naaffk",
+            "name": "Do something!",
+            "description": "Fun times.",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
         "_30mmt3qpypo": {
             "id": "_30mmt3qpypo",
             "name": "Email over my IPM project.",
@@ -17,16 +26,6 @@
             "category": "Studying",
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
-        },
-        "_ds1pulgb8zr": {
-            "name": "Filler task",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr",
-            "indexInTheList": 1
         },
         "_o6n3bpjs3r": {
             "id": "_o6n3bpjs3r",
@@ -46,16 +45,6 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "_gkfpulgbj8r": {
-            "name": "Edited Name",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_gkfpulgbj8r",
-            "indexInTheList": 1
-        },
         "_reae8nfsx2k": {
             "id": "_reae8nfsx2k",
             "name": "Go buy fireworks for Johhnys birthday party.",
@@ -63,45 +52,53 @@
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
+        "_ds1pulgb8zr": {
+            "name": "Filler task",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
             "endDate": "2017-09-05",
-            "indexInTheList": 0
+            "id": "_ds1pulgb8zr"
         }
     },
     "categories": {
         "_dsbz186sd4c": {
             "id": "_dsbz186sd4c",
             "title": "Presentation",
-            "icon":"ActionAssignment"
+            "icon": "ActionAssignment"
         },
         "_re6potwcn": {
             "id": "_re6potwcn",
             "title": "Exam",
-            "icon":"ActionAssignment"
+            "icon": "ActionAssignment"
         },
         "_re1pzzwcn": {
             "id": "_re1pzzwcn",
             "title": "Note",
-            "icon":"ActionAssignment"
+            "icon": "ActionAssignment"
         },
         "_ff9potwxc": {
             "id": "_ff9potwxc",
             "title": "Email",
-            "icon":"ActionAssignment"
+            "icon": "ActionAssignment"
         },
         "_op7potdvc": {
             "id": "_op7potdvc",
             "title": "Sport",
-            "icon":"ActionAssignment"
+            "icon": "ActionAssignment"
         },
         "_yu0phhdvc": {
             "id": "_yu0phhdvc",
             "title": "Sport",
-            "icon":"ActionAssignment"
+            "icon": "ActionAssignment"
         },
         "_uivp9tdvc": {
             "id": "_uivp9tdvc",
             "title": "Sport",
-            "icon":"ActionAssignment"
+            "icon": "ActionAssignment"
         }
     }
 }
