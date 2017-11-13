@@ -128,11 +128,13 @@ class EditTaskModal extends React.Component {
           onRequestClose={this.closeWithoutSave}
         >
           <TextField
+            fullWidth
             defaultValue={name} 
             floatingLabelText="Task Name" 
             onChange={(e, newValue) => this.editedValues.newName = newValue}
           /><br />
-          <TextField 
+          <TextField
+            fullWidth
             defaultValue={description}
             floatingLabelText="Task Description" 
             onChange={(e, newValue) => this.editedValues.newDescription = newValue}

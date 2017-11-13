@@ -9,7 +9,7 @@ import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import { taskList } from '../../styles/styles.css.js';
-import categories from '../../server/categories.js';
+import categories from '../../server/categories.jsx';
 
 /* Import these to call their static#openSelf. */
 import EditTaskModal from '../modals/EditTaskModal.jsx';

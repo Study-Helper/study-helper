@@ -4,7 +4,7 @@ let mainWindow = null;
 let splash = null;
 
 const WINDOW_WIDTH = 850;
-const WINDOW_HEIGHT = 550;
+const WINDOW_HEIGHT = 615;
 
 app.on('window-all-closed', () => {
   if (process.platform != 'darwin') {

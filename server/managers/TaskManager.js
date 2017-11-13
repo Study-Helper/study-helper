@@ -1,9 +1,9 @@
-const TASKS_JSON = './server/tasks.json';
+const DATA_JSON = './server/data.json';
 
 /**
  * Import the module (old way) and read the JSON file.
  */
-const data = require('easyjson').path(TASKS_JSON);
+const data = require('easyjson').path(DATA_JSON);
 
 /**
  * Generate and return a random id.
