@@ -100,5 +100,44 @@
             "title": "Sport",
             "icon": "ActionAssignment"
         }
+    },
+    "subjects": {
+        "_30mmt3qpypo": {
+            "id": "_30mmt3qpypo",
+            "name": "Maths",
+            "tests": {
+                "_5kb223vg13": {
+                    "id": "_5kb223vg13",
+                    "name": "T1",
+                    "grade": 10
+                }, 
+                "_30mmtd45ypo": {
+                    "id": "_30mmtd45ypo",
+                    "name": "T2",
+                    "grade": 13
+                }
+            }
+        },
+        "_5kb2v3na13": {
+            "id": "_5kb2v3na13",
+            "name": "Physics",
+            "tests": {
+                "_5kb2233a13": {
+                    "id": "_5kb2233a13",
+                    "name": "T1",
+                    "grade": 14
+                }, 
+                "_30mmtdgpypo": {
+                    "id": "_30mmtdgpypo",
+                    "name": "T2",
+                    "grade": 16
+                }
+            }
+        }, 
+        "_5kb2vwwa13": {
+            "id": "_5kb2vwwa13",
+            "name": "Chemestry",
+            "tests": {}
+        }
     }
 }

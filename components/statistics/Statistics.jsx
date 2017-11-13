@@ -3,96 +3,11 @@ import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
-import {Pie, Bar} from 'react-chartjs-2';
+import TasksChart from './charts/TasksChart.jsx';
+import GradesChart from './charts/GradesChart.jsx';
+
 
 import { appbar, statisticButtons } from '../../styles/styles.css.js';
-
-function format_chart_data(completed, incompleted) {
-  return { 
-    labels: ["Tasks Completed", "Tasks Incompleted"],
-    datasets: [{
-      label: 'Incompleted Vs Completed Taks',
-      data: [completed, incompleted],
-      backgroundColor: [
-          'rgba(255, 99, 132, 0.4)',
-          'rgba(54, 162, 235, 0.4)'
-      ],
-      borderColor: [
-          'rgba(255,255,255,1)',
-          'rgba(255, 255, 255, 1)'
-      ],
-      borderWidth: 1
-    }]
-  }
-}
-
-function da() {
-  return { 
-    labels: ["Maths", "Chemestry", "Physics", "History", "English"],
-    datasets: [{
-      label: 'Grade',
-      data: [18, 15, 14, 13, 16],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255,99,132,1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)'
-      ],
-      borderWidth: 1
-    }]
-  }
-}
-
-const options = {
-  maintainAspectRatio: false,
-  layout: {
-    padding: {
-      bottom: 30
-    }
-  },
-  scales: {
-    xAxes: [{
-      gridLines: {
-        display:false
-      }
-    }],
-    yAxes: [{
-      gridLines: {
-        display:true,
-      },
-      ticks: {
-        suggestedMax: 20,
-        min: 0,
-        stepSize: 5
-      }   
-    }]
-  },
-  legend: {
-    display: false
-  },
-  title: { 
-    display: true,
-    text: 'Grades' 
-  }
-}
-
-const legend = {
-  "display": true,
-  "position": "bottom",
-  "fullWidth": true,
-  "reverse": false,
-  "labels": {
-    "fontColor": "rgb(255, 99, 132)"
-  }
-}
 
 class Statistics extends React.Component {
 
@@ -110,25 +25,7 @@ class Statistics extends React.Component {
   }
 
   render() {
-    var chart = this.state.chart == "task" ? <Pie
-            data={format_chart_data(12, 16)}
-            width={900}
-            height={300}
-            legend={legend}
-            options={{
-              maintainAspectRatio: false,
-              title: { 
-                display: true,
-                text: 'Tasks Done' 
-              }
-            }}
-          /> : 
-          <Bar
-            data={da()}
-            width={900}
-            height={350}
-            options={options}
-          />;
+    var chart = this.state.chart == "task" ? <TasksChart/> : <GradesChart/>;
 
     return (
       <div>
