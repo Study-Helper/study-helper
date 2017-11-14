@@ -16,7 +16,7 @@ export const sidebar = {
   },
   focusedItem: {
     height: '60px',
-    lineHeight: '55px',
+    lineHeight: '57px',
     backgroundColor: 'rgba(0, 0, 255, 0.2)'
   },
   component: {
