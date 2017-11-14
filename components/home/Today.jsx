@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Scrollbars } from 'react-custom-scrollbars';
 import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
@@ -25,18 +26,20 @@ class Today extends React.Component {
   componentWillReceiveProps(nextProps) {
     //TODO: consider endDate (range[1])
     const { range } = nextProps;
+    const date = range ? range[0] : '2017-09-05';
     this.setState({
-      tasks: TaskManager.loadTasksByDate('2017-09-05')
+      tasks: TaskManager.loadTasksByDate(date)
       // tasks: TaskManager.loadTasksByDate(range[0])
     });
   }
 
   render() {
+    const { title, height } = this.props;
     return (
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{'marginLeft': '15px'}} text={this.props.title ? this.props.title : 'Today'} />
+            <ToolbarTitle style={{'marginLeft': '15px'}} text={title || 'Today'} />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
@@ -52,7 +55,9 @@ class Today extends React.Component {
         </Toolbar>
         {
           this.state.tasks.length > 0 ?
-          <TaskList tasks={this.state.tasks} /> :
+          <Scrollbars style={{ height: height || 585 }}>
+            <TaskList tasks={this.state.tasks} />
+          </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
             <div><ErrorIcon /></div>
             <div>No tasks to show</div>
@@ -66,6 +71,7 @@ class Today extends React.Component {
 Today.propTypes = {
   title: PropTypes.string,
   range: PropTypes.array,
+  height: PropTypes.number,
 };
 
 export default Today;

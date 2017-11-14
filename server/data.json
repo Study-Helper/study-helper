@@ -62,6 +62,87 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_ds1pulgb8zr"
+        },
+        "_ds1pulgb8zr1": {
+            "name": "Filler task",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr1"
+        },
+        "_ds1pulgb8zr2": {
+            "name": "Filler task2",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr2"
+        },
+        "_ds1pulgb8zr3": {
+            "name": "Filler task3",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr3"
+        },
+        "_ds1pulgb8zr4": {
+            "name": "Filler task4",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr4"
+        },
+        "_ds1pulgb8zr5": {
+            "name": "Filler task5",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr5"
+        },
+        "_ds1pulgb8zr6": {
+            "name": "Filler task6",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr6"
+        },
+        "_ds1pulgb8zr7": {
+            "name": "Filler task7",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr7"
+        },
+        "_ds1pulgb8zr8": {
+            "name": "Filler task8",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr8"
+        },
+        "_ds1pulgb8zr9": {
+            "name": "Filler task9",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr9"
         }
     },
     "categories": {
@@ -95,7 +176,7 @@
                     "id": "_5kb223vg13",
                     "name": "T1",
                     "grade": 10
-                }, 
+                },
                 "_30mmtd45ypo": {
                     "id": "_30mmtd45ypo",
                     "name": "T2",
@@ -111,14 +192,14 @@
                     "id": "_5kb2233a13",
                     "name": "T1",
                     "grade": 14
-                }, 
+                },
                 "_30mmtdgpypo": {
                     "id": "_30mmtdgpypo",
                     "name": "T2",
                     "grade": 16
                 }
             }
-        }, 
+        },
         "_5kb2vwwa13": {
             "id": "_5kb2vwwa13",
             "name": "Chemestry",
