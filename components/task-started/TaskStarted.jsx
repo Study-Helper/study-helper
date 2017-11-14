@@ -45,7 +45,10 @@ class TaskStarted extends Component {
   }
 
   checkTask() {
-    this.props.history.push('/home');
+    this.props.history.push({
+      pathname: '/home',
+      state: { from: 'task-started', task: this.props.location.state.task }
+    });
   }
 
   handleOpen() {

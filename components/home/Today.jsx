@@ -23,6 +23,18 @@ class Today extends React.Component {
     }
   }
 
+  componentWillMount() {
+    const { location } = this.props;
+    if (location && location.state) {
+      const { from, task } = this.props.location.state;
+
+      if (from === 'task-started') {
+        //task completed. TODO: show feedback message
+        console.log('Task completed:', task);
+      }
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     //TODO: consider endDate (range[1])
     const { range } = nextProps;
