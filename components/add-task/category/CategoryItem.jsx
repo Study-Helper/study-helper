@@ -3,21 +3,18 @@ import { GridList, GridTile } from 'material-ui/GridList';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Avatar from 'material-ui/Avatar';
 
-import { blue500, red500 } from 'material-ui/styles/colors';
-import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
-
+import CategoryManager from '../../../server/managers/CategoryManager.jsx';
 import { categoryItem } from '../../../styles/styles.css.js';
 
-// TODO: props would be icon/color? Or maybe string (depends on some external map).
-const CategoryItem = () => (
+const CategoryItem = ({ category }) => (
   <div>
    <Avatar
     size={50}
-    icon={<EditorInsertChart />}
-    backgroundColor={red500}
+    icon={CategoryManager.getCategoryIcon(category)}
+    backgroundColor={CategoryManager.getCategoryBackgroundColor(category)}
     style={categoryItem.avatar}
   />
-  <p style={categoryItem.font}>Exam</p>
+  <p style={categoryItem.font}>{category.title}</p>
   </div>
 );
 

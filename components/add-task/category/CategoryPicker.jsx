@@ -2,7 +2,7 @@ import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Avatar from 'material-ui/Avatar';
-import CategoryManager from '../../../server/managers/CategoryManager.js';
+import CategoryManager from '../../../server/managers/CategoryManager.jsx';
 import CategoryItem from './CategoryItem.jsx';
 
 import { blue500, red500 } from 'material-ui/styles/colors';
@@ -26,6 +26,7 @@ class CategoryPicker extends React.Component {
 
   render() {
     const categories = this.state.categories;
+    console.log(categories)
     return (
       <div>
         <p style={categoryPicker.infoText}>Choose a Category</p>

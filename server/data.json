@@ -14,7 +14,7 @@
             "name": "Email over my IPM project.",
             "description": "The Professors email is tir@fct.unl.pt.",
             "estimatedDuration": "2 minutes",
-            "category": "Studying",
+            "category": "Presentation",
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
@@ -32,7 +32,7 @@
             "name": "Order pizza for dinner.",
             "description": "Pepperoni #1.",
             "estimatedDuration": "5 minutes",
-            "category": "Studying",
+            "category": "Note",
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
@@ -67,38 +67,23 @@
     "categories": {
         "_dsbz186sd4c": {
             "id": "_dsbz186sd4c",
-            "title": "Presentation",
-            "icon": "ActionAssignment"
+            "title": "Presentation"
         },
         "_re6potwcn": {
             "id": "_re6potwcn",
-            "title": "Exam",
-            "icon": "ActionAssignment"
+            "title": "Exam"
         },
         "_re1pzzwcn": {
             "id": "_re1pzzwcn",
-            "title": "Note",
-            "icon": "ActionAssignment"
+            "title": "Note"
         },
         "_ff9potwxc": {
             "id": "_ff9potwxc",
-            "title": "Email",
-            "icon": "ActionAssignment"
+            "title": "Email"
         },
         "_op7potdvc": {
             "id": "_op7potdvc",
-            "title": "Sport",
-            "icon": "ActionAssignment"
-        },
-        "_yu0phhdvc": {
-            "id": "_yu0phhdvc",
-            "title": "Sport",
-            "icon": "ActionAssignment"
-        },
-        "_uivp9tdvc": {
-            "id": "_uivp9tdvc",
-            "title": "Sport",
-            "icon": "ActionAssignment"
+            "title": "Sport"
         }
     },
     "subjects": {

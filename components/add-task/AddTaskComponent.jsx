@@ -29,6 +29,7 @@ class AddTaskComponent extends React.Component {
             fullWidth
             hintText={'Title'}
             floatingLabelText='Task Title'
+            // errorText='This field is required'
           />
           <TextField fullWidth hintText={'TODO: Something for the start/end dates here'} />
           <CategoryPicker />
@@ -48,14 +49,10 @@ class AddTaskComponent extends React.Component {
             primary
           />
           <RaisedButton
-            label='Add More'
-            style={addTask.button}
-            secondary
-          />
-          <RaisedButton
             label='Cancel'
             onClick={goBack}
             style={addTask.button}
+            secondary
           />          
         </div>
       </div>
