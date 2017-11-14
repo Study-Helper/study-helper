@@ -59,7 +59,7 @@ class Today extends React.Component {
               this.state.tasks.length > 0 &&
               <div style={{position: 'relative', display: 'inline-block'}}>
                 <Search style={{position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red'}}/>
-                <TextField hintText="Search" style={{textIndent: 30, 'width':'120px', paddingRight: 30}}/>
+                <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
               </div>
             }
             <AddTaskButton startDate={'2017-09-05'} endDate={'2017-09-05'} />

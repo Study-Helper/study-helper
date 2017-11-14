@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const AddTaskButton = ({ startDate, endDate }) => (
   <Link to={{ pathname: '/add-task', state: { startDate, endDate }}}>
     <RaisedButton
-      style={{margin: '0px 20px 0px 20px'}}
+      style={{margin: '0px 25px 0px 20px'}}
       primary
       label='Add Task'
       labelPosition='before'

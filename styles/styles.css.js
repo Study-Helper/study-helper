@@ -5,20 +5,28 @@ export const sidebar = {
     textDecoration: 'none'
   },
   menuItem: {
-    height: '60px'
+    height: '60px',
+    lineHeight: '57px',
+    verticalAlign: 'top'
+  },
+  icon: {
+    width: '23px',
+    height: '23px',
+    marginTop: '17px'
   },
   focusedItem: {
     height: '60px',
+    lineHeight: '55px',
     backgroundColor: 'rgba(0, 0, 255, 0.2)'
   },
   component: {
-    paddingLeft: '179px'
+    paddingLeft: '177px'
   }
 };
 
 export const appbar = {
   barLayout: {
-    width: '663px',
+    width: '705px',
     height: '60px',
     marginTop: '-8px'
   }
@@ -38,7 +46,7 @@ export const taskDescription = {
 
 export const taskList = {
   list: {
-    width: '665px',
+    width: '695px',
     marginTop: '-9px'
   },
   avatar: {
@@ -101,13 +109,14 @@ export const categoryPicker = {
   },
   categoryItemSelected: {
     height: '85px',
-    backgroundColor: 'rgba(220, 220, 220, 1)'
+    backgroundColor: 'rgba(220, 220, 220, 1)',
+    borderRadius: '5px'
   }
 };
 
 export const categoryItem = {
   avatar: {
-    marginLeft: '24px',
+    marginLeft: '28px',
     marginTop: '7px'
   },
   font: {
@@ -118,4 +127,4 @@ export const categoryItem = {
     marginTop: '6px',
     wordWrap: 'pre-line'
   }
-}
+};

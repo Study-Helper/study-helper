@@ -27,7 +27,7 @@ class DatePicker extends Component {
           linkedCalendars
           theme={{
             Calendar: {
-              width: 300,
+              width: 303
             },
             DateRange: {
                 fontFamily: 'Roboto',

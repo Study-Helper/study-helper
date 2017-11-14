@@ -15,7 +15,7 @@ class GradesChart extends React.Component {
 
     labels = [];
     grades = [];
-
+  
     this.load_data();
 
     data = { 

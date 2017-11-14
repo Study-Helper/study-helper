@@ -42,65 +42,65 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Drawer open width='22%' zDepth={1}>
+          <Drawer open width='21%' zDepth={1}>
             <Link to='/home' style={sidebar.link}>
               <MenuItem
                 primaryText='Home'
-                leftIcon={<Home />}
+                leftIcon={<Home style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('Home')}
                 style={this.state.activeTab === 'Home' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider />
+            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/schedule' style={sidebar.link}>
               <MenuItem
                 primaryText='Schedule'
-                leftIcon={<Book />}
+                leftIcon={<Book style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('Schedule')}
                 style={this.state.activeTab === 'Schedule' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider />
+            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/calendar' style={sidebar.link}>
               <MenuItem
                 primaryText='Calendar'
-                leftIcon={<Today />}
+                leftIcon={<Today style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('Calendar')}
                 style={this.state.activeTab === 'Calendar' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider />
+            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/grades' style={sidebar.link}>
               <MenuItem
                 primaryText='Grades'
-                leftIcon={<Grades />}
+                leftIcon={<Grades style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('Grades')}
                 style={this.state.activeTab === 'Grades' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider />
+            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/statistics' style={sidebar.link}>
               <MenuItem
                 primaryText='Statistics'
-                leftIcon={<Timeline />}
+                leftIcon={<Timeline style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('Statistics')}
                 style={this.state.activeTab === 'Statistics' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider />
+            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/history' style={sidebar.link}>
               <MenuItem
                 primaryText='History'
-                leftIcon={<History />}
+                leftIcon={<History style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('History')}
                 style={this.state.activeTab === 'History' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider />
+            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/settings' style={sidebar.link}>
               <MenuItem
                 primaryText='Settings'
-                leftIcon={<Settings />}
+                leftIcon={<Settings style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('Settings')}
                 style={this.state.activeTab === 'Settings' ? sidebar.focusedItem : sidebar.menuItem}
               />

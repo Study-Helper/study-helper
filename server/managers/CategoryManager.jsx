@@ -1,7 +1,17 @@
 import React from 'react';
 
 /* Import a whole lot of background colors. */
-import { blue500, red500, amber400, greenA400, limeA400 } from 'material-ui/styles/colors';
+// TODO: All 300 or 200 or whatever.
+import {
+  blue500,
+  redA200,
+  amber400,
+  greenA700,
+  cyan500,
+  blueA200,
+  red400,
+  pink300
+} from 'material-ui/styles/colors';
 
 /* Import a whole lot of icons. */
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
@@ -9,6 +19,9 @@ import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import AssignmentTurnedIn from 'material-ui/svg-icons/action/assignment-turned-in';
 import ChangeHistory from 'material-ui/svg-icons/action/change-history';
 import Dashboard from 'material-ui/svg-icons/action/dashboard';
+import Message from 'material-ui/svg-icons/communication/message';
+import Headset from 'material-ui/svg-icons/hardware/headset';
+import Idk from 'material-ui/svg-icons/image/adjust';
 
 const DATA_JSON = './server/data.json';
 
@@ -61,7 +74,7 @@ const categoryMap = {
   },
   Note: {
     icon: <EditorInsertChart />,
-    backgroundColor: red500
+    backgroundColor: redA200
   },
   Exam: {
     icon: <AssignmentTurnedIn />,
@@ -69,12 +82,24 @@ const categoryMap = {
   },
   Presentation: {
     icon: <ChangeHistory />,
-    backgroundColor: greenA400
+    backgroundColor: greenA700
   },
   Email: {
     icon: <Dashboard />,
-    backgroundColor: limeA400
+    backgroundColor: cyan500
   },
+  Misc: {
+    icon: <Message />,
+    backgroundColor: red400
+  },
+  Friends: {
+    icon: <Headset />,
+    backgroundColor: blueA200
+  },
+  Family: {
+    icon: <Idk />,
+    backgroundColor: pink300
+  }
 };
 
 export default CategoryManager;

@@ -3,7 +3,7 @@ import { app, BrowserWindow } from 'electron';
 let mainWindow = null;
 let splash = null;
 
-const WINDOW_WIDTH = 850;
+const WINDOW_WIDTH = 880;
 const WINDOW_HEIGHT = 615;
 
 app.on('window-all-closed', () => {

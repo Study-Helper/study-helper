@@ -25,7 +25,7 @@ class Statistics extends React.Component {
   }
 
   render() {
-    var chart = this.state.chart == "task" ? <TasksChart/> : <GradesChart/>;
+    const chart = this.state.chart == "task" ? <TasksChart/> : <GradesChart/>;
 
     return (
       <div>

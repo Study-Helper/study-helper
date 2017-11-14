@@ -9,12 +9,15 @@ import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import CheckButton from './CheckButton.jsx';
+import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
 import categories from '../../server/categories.jsx';
 
 /* Import these to call their static#openSelf. */
 import EditTaskModal from '../modals/EditTaskModal.jsx';
 import RemoveTaskModal from '../modals/RemoveTaskModal.jsx';
+import TaskManager from '../../server/managers/TaskManager.js';
 
 class TaskList extends React.Component {
 
@@ -122,6 +125,7 @@ class TaskList extends React.Component {
       <div>
         <List style={taskList.list}>
           {tasks.map((task, index) =>
+            <div>
             <ListItem
               key={index}
               primaryText={task.name}
@@ -138,18 +142,19 @@ class TaskList extends React.Component {
                 this.editTaskOption(task),
                 this.removeTaskOption(task)
               ]} />
-              <IconButton tooltip='Check!' style={taskList.iconButton}><Done /></IconButton>
-              <Link to={{ pathname: 'task-started',
-                state: {
-                task,
-                taskList
-                } }}
-              >
+              <CheckButton
+                task={task}
+                indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
+              />
+              <Link to={{ pathname: 'task-started', state: { task, taskList} }}>
                 <IconButton tooltip='Start!' style={taskList.iconButton}>
                   <PlayArrow />
                 </IconButton>
               </Link>
             </ListItem>
+            {index < tasks.length - 1 && 
+              <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
+            </div>
           )}
         </List>
         <EditTaskModal />

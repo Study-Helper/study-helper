@@ -27,13 +27,23 @@ const TaskManager = {
    */
   loadTasksByDate(date) {
     const tasks = [];
-    const taskKeys = Object.keys(data.get('tasks'));
+    const taskKeys = Object.keys(data.get('todo_tasks'));
     taskKeys.forEach(function(key) {
-      const task = data.get(`tasks[${key}]`);
+      const task = data.get(`todo_tasks[${key}]`);
       const startDate = task.startDate;
       if (startDate === date) {
         tasks.push(task);
       }
+    });
+    return tasks;
+  },
+
+  loadMissedTasks() {
+    const tasks = [];
+    const taskKeys = Object.keys(data.get('missed_tasks'));
+    taskKeys.forEach(function(key) {
+      const task = data.get(`missed_tasks[${key}]`);
+      tasks.push(task);
     });
     return tasks;
   },
@@ -47,7 +57,7 @@ const TaskManager = {
   add(task) {
     const id = task.id || generateRandomId();
     task.id = id;
-    data.add(`tasks[${id}]`, task);
+    data.add(`todo_tasks[${id}]`, task);
   },
 
   /**
@@ -57,7 +67,7 @@ const TaskManager = {
    */
   remove(task) {
     const id = task.id;
-    data.del(`tasks[${id}]`);
+    data.del(`todo_tasks[${id}]`);
   },
 
   /**
@@ -67,7 +77,7 @@ const TaskManager = {
    */
   updateName(task, newName) {
     const id = task.id;
-    data.modify(`tasks[${id}][name]`, newName);
+    data.modify(`todo_tasks[${id}][name]`, newName);
   },
 
   /**
@@ -77,7 +87,7 @@ const TaskManager = {
    */
   updateDescription(task, newDescription) {
     const id = task.id;
-    data.modify(`tasks[${id}][description]`, newDescription);
+    data.modify(`todo_tasks[${id}][description]`, newDescription);
   },
 
   /**
@@ -87,7 +97,13 @@ const TaskManager = {
    */
   updateCategory(task, newCategory) {
     const id = task.id;
-    data.modify(`tasks[${id}][category]`, newCategory);
+    data.modify(`todo_tasks[${id}][category]`, newCategory);
+  },
+
+  checkTask(task) {
+    const id = task.id;
+    data.del(`todo_tasks[${id}]`);
+    data.add(`missed_tasks[${id}]`, task);
   }
 
   // TODO: Update Estimated Time?

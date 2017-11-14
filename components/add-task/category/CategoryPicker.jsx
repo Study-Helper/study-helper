@@ -32,7 +32,7 @@ class CategoryPicker extends React.Component {
         <p style={categoryPicker.infoText}>Choose a Category</p>
         <div style={categoryPicker.root}>
           <GridList
-            cellHeight={105}
+            cellHeight={100}
             cols={6}
             style={categoryPicker.grid}
           >
