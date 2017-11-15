@@ -1,6 +1,7 @@
 import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
+import { Scrollbars } from 'react-custom-scrollbars';
 import TextField from 'material-ui/TextField';
 import TaskList from '../list/TaskList.jsx';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
@@ -46,7 +47,9 @@ class TaskHistory extends React.Component {
         </Toolbar>
         {
           this.state.missedTasks.length > 0 ?
-          <TaskList tasks={this.state.missedTasks} /> :
+          <Scrollbars style={{ width: 697, height: 540 }}>
+            <TaskList tasks={this.state.missedTasks} />
+          </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
             <div><ErrorIcon /></div>
             <div>No tasks to show</div>

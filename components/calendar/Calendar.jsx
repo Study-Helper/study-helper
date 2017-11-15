@@ -30,7 +30,7 @@ class Calendar extends Component {
         </Toolbar>
         <DatePicker onChange={this.setDate} />
         <p />
-        <Today title="Scheduled Tasks" height={115} range={[startDate, endDate]} />
+        <Today title="Scheduled Tasks" height={150} range={[startDate, endDate]} />
       </div>
     );
   }

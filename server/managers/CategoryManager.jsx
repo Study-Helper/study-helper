@@ -59,8 +59,16 @@ const CategoryManager = {
     return categoryMap[category.title].icon;
   },
 
+  getCategoryIconFromString(categoryString) {
+    return categoryMap[categoryString].icon;
+  },
+
   getCategoryBackgroundColor(category) {
     return categoryMap[category.title].backgroundColor;
+  },
+
+  getCategoryBackgroundColorFromString(categoryString) {
+    return categoryMap[categoryString].backgroundColor;
   }
 }
 
@@ -88,7 +96,7 @@ const categoryMap = {
     icon: <Dashboard />,
     backgroundColor: cyan500
   },
-  Misc: {
+  Studying: {
     icon: <Message />,
     backgroundColor: red400
   },

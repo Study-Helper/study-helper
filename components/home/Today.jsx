@@ -67,7 +67,7 @@ class Today extends React.Component {
         </Toolbar>
         {
           this.state.tasks.length > 0 ?
-          <Scrollbars style={{ height: height || 585 }}>
+          <Scrollbars style={{ width: 697, height: height || 540 }}>
             <TaskList tasks={this.state.tasks} />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>

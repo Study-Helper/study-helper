@@ -12,12 +12,12 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import CheckButton from './CheckButton.jsx';
 import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
-import categories from '../../server/categories.jsx';
 
 /* Import these to call their static#openSelf. */
 import EditTaskModal from '../modals/EditTaskModal.jsx';
 import RemoveTaskModal from '../modals/RemoveTaskModal.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
+import CategoryManager from '../../server/managers/CategoryManager.jsx';
 
 class TaskList extends React.Component {
 
@@ -133,8 +133,8 @@ class TaskList extends React.Component {
               nestedItems={[<TaskDescription key={1} task={task} />]}
               leftAvatar={<Avatar
                 size={35}
-                icon={this.getCategoryAvatarData(task.category).icon}
-                backgroundColor={this.getCategoryAvatarData(task.category).backgroundColor}
+                icon={CategoryManager.getCategoryIconFromString(task.category)}
+                backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
                 style={taskList.avatar}
               />}
             >
