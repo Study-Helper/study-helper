@@ -1,9 +1,11 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
 import SubjectManager from '../../../server/managers/SubjectManager.js'
+import {StudentsMeanText} from '../../../styles/styles.css.js';
 
 let labels;
 let grades;
+let colors;
 
 class GradesChart extends React.Component {
 
@@ -12,16 +14,17 @@ class GradesChart extends React.Component {
 
     this.state = {
       data: {},
-      options: {}
+      options: {},
+      mean: 0
     }
 
     labels = [];
     grades = [];
-  
-    this.load_data();
+    colors = [];
   }
 
   componentWillMount(){
+    this.load_data();
     this.set_chart_data();
     this.set_chart_options();
   }
@@ -32,16 +35,8 @@ class GradesChart extends React.Component {
         datasets: [{
           label: 'Grade',
           data: grades,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
-          ],
+          backgroundColor: colors,
+          borderColor: colors,
           borderWidth: 1
         }]
       }
@@ -85,6 +80,7 @@ class GradesChart extends React.Component {
   }
 
   load_data(){
+    let loc_total_mean = 0;
     const subjects = SubjectManager.loadSubjects();
     subjects.forEach(subject => {
       labels.push(subject.name);
@@ -96,18 +92,27 @@ class GradesChart extends React.Component {
         len++;
       }
       mean_grade = len != 0 ? mean_grade/len : 0;
+      loc_total_mean += mean_grade;
       grades.push(mean_grade);
+      colors.push(subject.color);
     });
+    loc_total_mean = subjects.length != 0 ? loc_total_mean/subjects.length : 0;
+    this.setState({ mean: loc_total_mean });
   }
 
   render() {
     return (
-      <Bar
-        data={this.state.data}
-        width={900}
-        height={350}
-        options={this.state.options}
-      />
+      <div>
+        <Bar
+          data={this.state.data}
+          width={900}
+          height={350}
+          options={this.state.options}
+        />
+        <div style={StudentsMeanText}>
+          Your Average Score is {this.state.mean}!
+        </div>
+      </div>
     )
   }
 

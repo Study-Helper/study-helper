@@ -35,20 +35,24 @@ class Statistics extends React.Component {
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
         </Toolbar>
-        <RaisedButton 
-          label="Tasks"
-          primary
-          style={statisticButtons.tasks}
-          onClick={this.switchToTasks.bind(this)}
-        />
-        <RaisedButton 
-          label="Grades"
-          primary
-          style={statisticButtons.grades}
-          onClick={this.switchToGrades.bind(this)}
-        />
-        <div style={{'marginTop':'50px', 'marginLeft':'50px', 'marginRight':'50px'}}>
-          {chart}
+        <div style={{'width': '50%', 'margin': '0 auto'}}>
+          <RaisedButton 
+            label="Tasks"
+            primary
+            style={statisticButtons.tasks}
+            onClick={this.switchToTasks.bind(this)}
+          />
+          <RaisedButton 
+            label="Grades"
+            primary
+            style={statisticButtons.grades}
+            onClick={this.switchToGrades.bind(this)}
+          />
+        </div>
+        <div style={{'width': '50%', 'margin': '0 auto'}}>
+          <div style={{'marginTop':'40px'}}>
+            {chart}
+          </div>
         </div>
       </div>
     )

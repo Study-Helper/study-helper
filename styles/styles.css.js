@@ -67,12 +67,11 @@ export const moreOptions = {
 
 export const statisticButtons = {
   tasks: {
-    marginTop: '20px',
-    marginLeft: '162px'
+    marginTop: '15px'
   },
   grades: {
-    marginTop: '20px',
-    marginLeft: '162px'
+    marginTop: '15px',
+    marginLeft: '165px'
   }
 };
 
@@ -128,3 +127,10 @@ export const categoryItem = {
     wordWrap: 'pre-line'
   }
 };
+
+export const StudentsMeanText = {
+  textAlign:'center',
+  fontFamily: 'Roboto',
+  color: 'rgba(0, 0, 0, 1)'
+};
+
