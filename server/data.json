@@ -27,24 +27,6 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
-        "_uhgggjh992k": {
-            "id": "_uhgggjh992k",
-            "name": "Read the lecture notes from last Wednesday.",
-            "description": "Fun times.",
-            "estimatedDuration": "3 hours, 30 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_rd5e1xcaffk": {
-            "id": "_rd5e1xcaffk",
-            "name": "Do something else!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_30mmt3qpypo": {
             "id": "_30mmt3qpypo",
             "name": "Email over my IPM project.",
@@ -187,6 +169,24 @@
             "name": "Email over my IPM project.",
             "description": "The Professors email is tir@fct.unl.pt.",
             "estimatedDuration": "2 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
+        "_rd5e1xcaffk": {
+            "id": "_rd5e1xcaffk",
+            "name": "Do something else!",
+            "description": "Fun times.",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
+        "_uhgggjh992k": {
+            "id": "_uhgggjh992k",
+            "name": "Read the lecture notes from last Wednesday.",
+            "description": "Fun times.",
+            "estimatedDuration": "3 hours, 30 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"

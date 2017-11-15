@@ -2,73 +2,86 @@ import React from 'react';
 import {Bar} from 'react-chartjs-2';
 import SubjectManager from '../../../server/managers/SubjectManager.js'
 
-let data;
-let options;
 let labels;
 let grades;
-
 
 class GradesChart extends React.Component {
 
   constructor(props) {
     super(props);
 
+    this.state = {
+      data: {},
+      options: {}
+    }
+
     labels = [];
     grades = [];
   
     this.load_data();
+  }
 
-    data = { 
-      labels: labels,
-      datasets: [{
-        label: 'Grade',
-        data: grades,
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)'
-        ],
-        borderWidth: 1
-      }]
-    };
+  componentWillMount(){
+    this.set_chart_data();
+    this.set_chart_options();
+  }
 
-    options = {
-      maintainAspectRatio: false,
-      layout: {
-        padding: {
-          bottom: 30
-        }
-      },
-      scales: {
-        xAxes: [{
-          gridLines: {
-            display:false
-          }
-        }],
-        yAxes: [{
-          gridLines: {
-            display:true,
-          },
-          ticks: {
-            suggestedMax: 20,
-            min: 0,
-            stepSize: 5
-          }   
+  set_chart_data(){
+    this.setState({data: { 
+        labels: labels,
+        datasets: [{
+          label: 'Grade',
+          data: grades,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
         }]
-      },
-      legend: {
-        display: false
-      },
-      title: { 
-        display: true,
-        text: 'Grades' 
       }
-    };
+    });
+  }
+
+  set_chart_options(){
+    this.setState({options: {
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+            bottom: 30
+          }
+        },
+        scales: {
+          xAxes: [{
+            gridLines: {
+              display:false
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              display:true,
+            },
+            ticks: {
+              suggestedMax: 20,
+              min: 0,
+              stepSize: 5
+            }   
+          }]
+        },
+        legend: {
+          display: false
+        },
+        title: { 
+          display: true,
+          text: 'Grades' 
+        }
+      }
+    });
   }
 
   load_data(){
@@ -90,10 +103,10 @@ class GradesChart extends React.Component {
   render() {
     return (
       <Bar
-        data={data}
+        data={this.state.data}
         width={900}
         height={350}
-        options={options}
+        options={this.state.options}
       />
     )
   }
