@@ -5,7 +5,7 @@ import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
-import TaskList from '../list/TaskList.jsx';
+import RegularTaskList from '../list/RegularTaskList.jsx';
 import AddTaskButton from '../add-task/AddTaskButton.jsx';
 import Search from 'material-ui/svg-icons/action/search';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
@@ -68,7 +68,7 @@ class Today extends React.Component {
         {
           this.state.tasks.length > 0 ?
           <Scrollbars style={{ width: 697, height: height || 540 }}>
-            <TaskList tasks={this.state.tasks} />
+            <RegularTaskList tasks={this.state.tasks} />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
             <div><ErrorIcon /></div>

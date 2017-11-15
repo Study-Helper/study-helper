@@ -63,7 +63,6 @@ class CheckButton extends React.Component {
   }
 
   render() {
-    console.log(this.state.shouldRenderSnackbar)
     return (
       <div>
         <IconButton 

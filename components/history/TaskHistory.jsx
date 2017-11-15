@@ -3,7 +3,7 @@ import FontIcon from 'material-ui/FontIcon';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Scrollbars } from 'react-custom-scrollbars';
 import TextField from 'material-ui/TextField';
-import TaskList from '../list/TaskList.jsx';
+import HistoryTaskList from '../list/HistoryTaskList.jsx';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import Clear from 'material-ui/svg-icons/action/delete';
@@ -17,7 +17,8 @@ class TaskHistory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      missedTasks: TaskManager.loadMissedTasks()
+      deletedTasks: TaskManager.loadStoredDeletedTasks(),
+      completedTasks: TaskManager.loadStoredCompletedTasks()
     }
   }
 
@@ -31,7 +32,7 @@ class TaskHistory extends React.Component {
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             {
-              this.state.missedTasks.length > 0 &&
+              this.state.deletedTasks.length > 0 &&
               <div style={{position: 'relative', display: 'inline-block'}}>
                 <Search style={{position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red'}}/>
                 <TextField hintText="Search" style={{textIndent: 30, 'width':'120px', paddingRight: 30}}/>
@@ -46,9 +47,12 @@ class TaskHistory extends React.Component {
           </ToolbarGroup>
         </Toolbar>
         {
-          this.state.missedTasks.length > 0 ?
+          this.state.deletedTasks.length > 0 ? // TODO: STUFF HERE
           <Scrollbars style={{ width: 697, height: 540 }}>
-            <TaskList tasks={this.state.missedTasks} />
+            <HistoryTaskList
+              deletedTasks={this.state.deletedTasks}
+              completedTasks={this.state.completedTasks}
+            />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
             <div><ErrorIcon /></div>

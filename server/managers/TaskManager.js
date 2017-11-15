@@ -20,6 +20,8 @@ function generateRandomId() {
  */
 const TaskManager = {
 
+  // MARK: Task loads.
+
   /**
    * Returns an array with all of the tasks in which (task.startDate === date).
    * @param date - a string in the standard ISO format: "YYYY-MM-DD".
@@ -38,15 +40,27 @@ const TaskManager = {
     return tasks;
   },
 
-  loadMissedTasks() {
+  loadStoredCompletedTasks() {
     const tasks = [];
-    const taskKeys = Object.keys(data.get('missed_tasks'));
+    const taskKeys = Object.keys(data.get('completed_tasks'));
     taskKeys.forEach(function(key) {
-      const task = data.get(`missed_tasks[${key}]`);
+      const task = data.get(`completed_tasks[${key}]`);
       tasks.push(task);
     });
     return tasks;
   },
+
+  loadStoredDeletedTasks() {
+    const tasks = [];
+    const taskKeys = Object.keys(data.get('deleted_tasks'));
+    taskKeys.forEach(function(key) {
+      const task = data.get(`deleted_tasks[${key}]`);
+      tasks.push(task);
+    });
+    return tasks;
+  },
+
+  // MARK: CRUD task operations.
 
   /**
    * Adds a new task to the JSON file.
@@ -100,14 +114,13 @@ const TaskManager = {
     data.modify(`todo_tasks[${id}][category]`, newCategory);
   },
 
+  // MARK: Task-History.
+
   checkTask(task) {
     const id = task.id;
     data.del(`todo_tasks[${id}]`);
-    data.add(`missed_tasks[${id}]`, task);
+    data.add(`completed_tasks[${id}]`, task);
   }
-
-  // TODO: Update Estimated Time?
-
 }
 
 export default TaskManager;

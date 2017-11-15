@@ -1,16 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import PlayArrow from 'material-ui/svg-icons/AV/play-arrow';
-import Done from 'material-ui/svg-icons/action/done';
+import Rescue from 'material-ui/svg-icons/av/loop';
 import IconButton from 'material-ui/IconButton';
 import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
-import CheckButton from './CheckButton.jsx';
 import Divider from 'material-ui/Divider';
+import Subheader from 'material-ui/Subheader';
 import { taskList } from '../../styles/styles.css.js';
 
 /* Import these to call their static#openSelf. */
@@ -19,11 +17,25 @@ import RemoveTaskModal from '../modals/RemoveTaskModal.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
 import CategoryManager from '../../server/managers/CategoryManager.jsx';
 
-class TaskList extends React.Component {
+/**
+ * Very similar to the RegularTaskList, but the events will change so much
+ * that it's not worth keeping it all in a single component with a shitload
+ * of condition checks...
+ */
+class HistoryTaskList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { tasks: props.tasks }
+    this.state = { 
+      deleted: {
+        tasks: props.deletedTasks,
+        subheaderText: 'Deleted Tasks'
+      },
+      completed: {
+        tasks: props.completedTasks,
+        subheaderText: 'Completed Tasks'
+      }
+    }
     this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
     this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
     this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
@@ -119,41 +131,44 @@ class TaskList extends React.Component {
     }
   }
 
+  // TODO: Collapsable subheader?
   render() {
     const tasks = this.state.tasks;
+    const { completed, deleted } = this.state;
+    // Put them into an array to use map.
+    const dataArray = [completed, deleted];
     return (
       <div>
         <List style={taskList.list}>
-          {tasks.map((task, index) =>
+          {asArray.map((data, index) =>
             <div>
-            <ListItem
-              key={index}
-              primaryText={task.name}
-              secondaryText={task.estimatedDuration}
-              nestedItems={[<TaskDescription key={1} task={task} />]}
-              leftAvatar={<Avatar
-                size={35}
-                icon={CategoryManager.getCategoryIconFromString(task.category)}
-                backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
-                style={taskList.avatar}
-              />}
-            >
-              <MoreOptionsButton options={[
-                this.editTaskOption(task),
-                this.removeTaskOption(task)
-              ]} />
-              <CheckButton
-                task={task}
-                indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
-              />
-              <Link to={{ pathname: 'task-started', state: { task, taskList} }}>
-                <IconButton tooltip='Start!' style={taskList.iconButton}>
-                  <PlayArrow />
-                </IconButton>
-              </Link>
-            </ListItem>
-            {index < tasks.length - 1 && 
-              <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
+              <Subheader style={{fontFamily: 'Roboto'}}>{data.subheaderText}</Subheader>
+              {data.tasks.map((task, index) =>
+                <div key={index}>
+                  <ListItem
+                    key={index}
+                    primaryText={task.name}
+                    secondaryText={task.estimatedDuration}
+                    nestedItems={[<TaskDescription key={1} task={task} />]}
+                    leftAvatar={<Avatar
+                      size={35}
+                      icon={CategoryManager.getCategoryIconFromString(task.category)}
+                      backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
+                      style={taskList.avatar}
+                    />}
+                  >
+                    <MoreOptionsButton options={[
+                      this.editTaskOption(task),
+                      this.removeTaskOption(task)
+                    ]} />
+                    <IconButton tooltip='Start!' style={taskList.iconButton}>
+                      <PlayArrow />
+                    </IconButton>
+                  </ListItem>
+                  {index < data.tasks.length - 1 && 
+                    <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
+                </div>
+              )}
             </div>
           )}
         </List>
@@ -164,4 +179,4 @@ class TaskList extends React.Component {
   }
 }
 
-export default TaskList;
+export default HistoryTaskList;

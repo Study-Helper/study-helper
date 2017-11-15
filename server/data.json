@@ -127,7 +127,7 @@
             "endDate": "2017-09-05"
         }
     },
-    "missed_tasks": {
+    "deleted_tasks": {
         "_rd5e1naappk": {
             "id": "_rd5e1naappk",
             "name": "Do something!",
@@ -172,7 +172,9 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_ds1pulgb8zr3"
-        },
+        }
+    },
+    "completed_tasks": {
         "_ds1pulgb8zr4": {
             "name": "Filler task4",
             "description": "Wohoolplp",
@@ -208,51 +210,6 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_ds1pulgb8zr7"
-        },
-        "_ds1pulgb8zr8": {
-            "name": "Filler task8",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr8"
-        },
-        "_ds1pulgb8zr9": {
-            "name": "Filler task9",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr9"
-        },
-        "_30mmt344ypo": {
-            "id": "_30mmt344ypo",
-            "name": "Email over my IPM project.",
-            "description": "The Professors email is tir@fct.unl.pt.",
-            "estimatedDuration": "2 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_rd5e1xcaffk": {
-            "id": "_rd5e1xcaffk",
-            "name": "Do something else!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_uhgggjh992k": {
-            "id": "_uhgggjh992k",
-            "name": "Read the lecture notes from last Wednesday.",
-            "description": "Fun times.",
-            "estimatedDuration": "3 hours, 30 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
         }
     },
     "categories": {
