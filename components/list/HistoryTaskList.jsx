@@ -140,7 +140,7 @@ class HistoryTaskList extends React.Component {
     return (
       <div>
         <List style={taskList.list}>
-          {asArray.map((data, index) =>
+          {dataArray.map((data, index) =>
             <div>
               <Subheader style={{fontFamily: 'Roboto'}}>{data.subheaderText}</Subheader>
               {data.tasks.map((task, index) =>
@@ -162,7 +162,7 @@ class HistoryTaskList extends React.Component {
                       this.removeTaskOption(task)
                     ]} />
                     <IconButton tooltip='Start!' style={taskList.iconButton}>
-                      <PlayArrow />
+                      <Rescue />
                     </IconButton>
                   </ListItem>
                   {index < data.tasks.length - 1 && 
