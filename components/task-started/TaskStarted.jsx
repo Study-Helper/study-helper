@@ -13,7 +13,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 import TaskDescription from '../list/TaskDescription.jsx';
 import Timer from './Timer.jsx';
-import categories from '../../server/categories.jsx';
+import CategoryManager from '../../server/managers/CategoryManager.jsx';
 import { appbar } from '../../styles/styles.css.js';
 
 class TaskStarted extends Component {
@@ -89,8 +89,8 @@ class TaskStarted extends Component {
           nestedItems={[<TaskDescription key={1} task={task} />]}
           leftAvatar={<Avatar
             size={35}
-            icon={categories[task.category].icon}
-            backgroundColor={categories[task.category].backgroundColor}
+            icon={CategoryManager.getCategoryIconFromString(task.category)}
+            backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
             style={taskList.avatar}
           />}
         >
