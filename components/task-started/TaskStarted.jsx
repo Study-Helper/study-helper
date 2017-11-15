@@ -64,14 +64,13 @@ class TaskStarted extends Component {
     const { task, taskList } = this.props.location.state;
     const actions = [
       <FlatButton
-        label="Cancel"
         primary
-        keyboardFocused
+        label='No'
         onClick={this.handleClose}
       />,
       <FlatButton
-        label="Submit"
         primary
+        label='Yes'
         onClick={this.stopTask}
       />,
     ];
@@ -83,6 +82,7 @@ class TaskStarted extends Component {
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
         </Toolbar>
+        <div style={{width: '695px'}}>
         <ListItem
           primaryText={task.name}
           secondaryText={task.estimatedDuration}
@@ -127,6 +127,7 @@ class TaskStarted extends Component {
           }
         </ListItem>
         <Timer paused={this.state.paused} />
+        </div>
         <Dialog
           title="Warning"
           actions={actions}
