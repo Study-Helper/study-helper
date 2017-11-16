@@ -26,7 +26,6 @@ class CategoryPicker extends React.Component {
 
   render() {
     const categories = this.state.categories;
-    console.log(categories)
     return (
       <div>
         <p style={categoryPicker.infoText}>Choose a Category</p>

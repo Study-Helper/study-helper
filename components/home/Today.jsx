@@ -51,7 +51,7 @@ class Today extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{'marginLeft': '15px'}} text={title || 'Today'} />
+            <ToolbarTitle style={{marginLeft: '15px'}} text={title || 'Today'} />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
@@ -70,9 +70,9 @@ class Today extends React.Component {
           <Scrollbars style={{ width: 697, height: height || 540 }}>
             <RegularTaskList tasks={this.state.tasks} />
           </Scrollbars> :
-          <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
+          <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
             <div><ErrorIcon /></div>
-            <div>No tasks to show</div>
+            <div>No tasks to show!</div>
           </div>
         }
       </div>

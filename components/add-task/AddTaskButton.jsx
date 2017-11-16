@@ -1,6 +1,6 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import Add from 'material-ui/svg-icons/content/add';
+import Add from 'material-ui/svg-icons/av/playlist-add';
 import { Link } from 'react-router-dom';
 
 /**

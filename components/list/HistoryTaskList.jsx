@@ -6,7 +6,8 @@ import IconButton from 'material-ui/IconButton';
 import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
-import DeleteIcon from 'material-ui/svg-icons/action/delete';
+import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
+import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import { taskList } from '../../styles/styles.css.js';
@@ -125,8 +126,8 @@ class HistoryTaskList extends React.Component {
   /** @private */
   removeTaskOption(task) {
     return {
-      name: 'Remove',
-      icon: <DeleteIcon />,
+      name: 'Delete Forever',
+      icon: <DeleteForeverIcon />,
       onClickFunction: () => this.openRemoveModal(task)
     }
   }
@@ -141,34 +142,48 @@ class HistoryTaskList extends React.Component {
       <div>
         <List style={taskList.list}>
           {dataArray.map((data, index) =>
-            <div>
-              <Subheader style={{fontFamily: 'Roboto'}}>{data.subheaderText}</Subheader>
-              {data.tasks.map((task, index) =>
-                <div key={index}>
-                  <ListItem
-                    key={index}
-                    primaryText={task.name}
-                    secondaryText={task.estimatedDuration}
-                    nestedItems={[<TaskDescription key={1} task={task} />]}
-                    leftAvatar={<Avatar
-                      size={35}
-                      icon={CategoryManager.getCategoryIconFromString(task.category)}
-                      backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
-                      style={taskList.avatar}
-                    />}
-                  >
-                    <MoreOptionsButton options={[
-                      this.editTaskOption(task),
-                      this.removeTaskOption(task)
-                    ]} />
-                    <IconButton tooltip='Start!' style={taskList.iconButton}>
-                      <Rescue />
-                    </IconButton>
-                  </ListItem>
-                  {index < data.tasks.length - 1 && 
-                    <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
+            <div key={index}>
+              <ListItem
+                disabled
+                primaryText={data.subheaderText}
+                secondaryText={`${data.tasks.length} items`}
+                style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
+                initiallyOpen
+                nestedItems={
+                  data.tasks.map((task, index) =>
+                    <div key={index}>
+                      <ListItem
+                        key={index}
+                        primaryText={task.name}
+                        secondaryText={task.estimatedDuration}
+                        nestedItems={[<TaskDescription key={1} task={task} />]}
+                        leftAvatar={<Avatar
+                          size={35}
+                          icon={CategoryManager.getCategoryIconFromString(task.category)}
+                          backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
+                          style={taskList.avatar}
+                        />}
+                      >
+                        <MoreOptionsButton options={[
+                          this.editTaskOption(task),
+                          this.removeTaskOption(task)
+                        ]} />
+                        <IconButton tooltip='Start!' style={taskList.iconButton}>
+                          <Rescue />
+                        </IconButton>
+                      </ListItem>
+                      {index < data.tasks.length - 1 && 
+                        <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
+                    </div>
+                  )}
+              />
+              {
+                data.tasks.length === 0 &&
+                  <div style={{ textAlign: 'center', fontFamily: 'Roboto', padding: '20px 0 20px 0' }}>
+                    <div><ErrorIcon /></div>
+                  <div>No tasks to show!</div>
                 </div>
-              )}
+              }
             </div>
           )}
         </List>

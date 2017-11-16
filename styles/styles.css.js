@@ -35,7 +35,6 @@ export const appbar = {
 export const taskDescription = {
   description: {
     fontFamily: 'Roboto',
-    marginTop: '-20px',
     paddingLeft: '73px'
   },
   icon: {

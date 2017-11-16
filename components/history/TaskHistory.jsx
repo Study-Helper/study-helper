@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField';
 import HistoryTaskList from '../list/HistoryTaskList.jsx';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
-import Clear from 'material-ui/svg-icons/action/delete';
+import Clear from 'material-ui/svg-icons/action/delete-forever';
 import Search from 'material-ui/svg-icons/action/search';
 import TaskManager from '../../server/managers/TaskManager.js';
 
@@ -47,17 +47,13 @@ class TaskHistory extends React.Component {
           </ToolbarGroup>
         </Toolbar>
         {
-          this.state.deletedTasks.length > 0 ? // TODO: STUFF HERE
-          <Scrollbars style={{ width: 697, height: 540 }}>
+          this.state.deletedTasks.length > 0 &&
+          <Scrollbars style={{ width: 697, height: 550 }}>
             <HistoryTaskList
               deletedTasks={this.state.deletedTasks}
               completedTasks={this.state.completedTasks}
             />
-          </Scrollbars> :
-          <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
-            <div><ErrorIcon /></div>
-            <div>No tasks to show</div>
-          </div>
+          </Scrollbars>
         }
       </div>
     );

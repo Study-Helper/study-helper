@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListItem } from 'material-ui/List';
-import ActionInfo from 'material-ui/svg-icons/action/info';
+import ActionInfo from 'material-ui/svg-icons/action/description';
 import { taskDescription } from '../../styles/styles.css.js';
 
 /**
