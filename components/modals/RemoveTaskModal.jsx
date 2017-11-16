@@ -17,6 +17,7 @@ class RemoveTaskModal extends React.Component {
     this.state = {
       open: false,
       forTask: null,
+      taskLocation: 'todo_tasks',
       indexInTheList: -1,
       shouldRenderSnackbar: false,
       taskWasRescued: false
@@ -31,8 +32,8 @@ class RemoveTaskModal extends React.Component {
   /**
    * Call this function to open the Remove Task Modal.
    */
-  static openSelf(task, indexInTheList) {
-    PubSub.publish('Open Remove Task Modal', { task, indexInTheList } );
+  static openSelf(task, indexInTheList, taskLocation = 'todo_tasks') {
+    PubSub.publish('Open Remove Task Modal', { task, indexInTheList, taskLocation } );
   }
 
   componentWillMount() {
@@ -41,6 +42,7 @@ class RemoveTaskModal extends React.Component {
       (message, data) => this.setState({
         open: true,
         forTask: data.task,
+        taskLocation: data.taskLocation,
         indexInTheList: data.indexInTheList
       })
     );
@@ -57,7 +59,7 @@ class RemoveTaskModal extends React.Component {
    */
   onUndoTimeOut() {
     if (!this.state.taskWasRescued) {
-      TaskManager.remove(this.state.forTask);
+      TaskManager.remove(this.state.forTask, this.state.taskLocation);
     }
   }
 
@@ -72,7 +74,10 @@ class RemoveTaskModal extends React.Component {
     // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
     setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
     // Logically remove, don't actually erase from the JSON.
-    PubSub.publish('Task Removed', this.state.forTask);
+    PubSub.publish('Task Removed', {
+      removedTask: this.state.forTask,
+      removedTaskLocation: this.state.taskLocation
+    });
   }
 
   /** @private */
@@ -85,7 +90,11 @@ class RemoveTaskModal extends React.Component {
     // Don't add a new task to the JSON, as it was never actually deleted.
     const addedTask = this.state.forTask;
     const indexInTheList = this.state.indexInTheList;
-    PubSub.publish('Task Added', { addedTask, indexInTheList });
+    PubSub.publish('Task Added', {
+      addedTask,
+      indexInTheList,
+      addedTaskLocation: this.state.taskLocation
+    });
   }
 
   /** @private */

@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import Rescue from 'material-ui/svg-icons/av/loop';
+import Rescue from 'material-ui/svg-icons/content/redo';
 import IconButton from 'material-ui/IconButton';
 import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
@@ -30,11 +30,13 @@ class HistoryTaskList extends React.Component {
     this.state = { 
       deleted: {
         tasks: props.deletedTasks,
-        subheaderText: 'Deleted Tasks'
+        subheaderText: 'Deleted Tasks',
+        source: 'deleted_tasks'
       },
       completed: {
         tasks: props.completedTasks,
-        subheaderText: 'Completed Tasks'
+        subheaderText: 'Completed Tasks',
+        source: 'completed_tasks'
       }
     }
     this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
@@ -50,7 +52,7 @@ class HistoryTaskList extends React.Component {
 
   componentWillUnmount() {
     PubSub.unsubscribe(this.taskUpdatedToken);
-    PubSub.unsubscribe(this.taskAddedToken);
+    // PubSub.unsubscribe(this.taskAddedToken);
     PubSub.unsubscribe(this.taskRemovedToken);
   }
 
@@ -58,10 +60,14 @@ class HistoryTaskList extends React.Component {
   subscribeToTaskUpdatedEvents() {
     this.taskUpdatedToken = PubSub.subscribe(
       'Task Updated',
-      (message, updatedTask) => this.setState((prevState, props) => {
-        const tasks = prevState.tasks;
-        const localIndex = tasks.findIndex(i => i.id === updatedTask.id);
-        tasks[localIndex] = updatedTask;
+      (message, data) => this.setState((prevState, props) => {
+        console.log(data.editedTaskLocation)
+        const tasks = data.editedTaskLocation === 'deleted_tasks' 
+          ? this.state.deleted.tasks
+          : this.state.completed.tasks;
+        const editedTask = data.editedTask;
+        const localIndex = tasks.findIndex(i => i.id === editedTask.id);
+        tasks[localIndex] = editedTask;
         return { tasks }
       })
     );
@@ -72,7 +78,9 @@ class HistoryTaskList extends React.Component {
      this.taskAddedToken = PubSub.subscribe(
       'Task Added',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = prevState.tasks;
+        const tasks = data.addedTaskLocation === 'deleted_tasks' 
+          ? this.state.deleted.tasks
+          : this.state.completed.tasks;
         // NOTE: data = { task, indexInTheList || undefined }
         const task = data.addedTask;
         const index = data.indexInTheList;
@@ -89,9 +97,11 @@ class HistoryTaskList extends React.Component {
   subscribeToTaskRemovedEvents() {
     this.taskRemovedToken = PubSub.subscribe(
       'Task Removed',
-      (message, removedTask) => this.setState((prevState, props) => {
-        const tasks = prevState.tasks;
-        const localIndex = tasks.findIndex(i => i.id === removedTask.id);
+      (message, data) => this.setState((prevState, props) => {
+        const tasks = data.removedTaskLocation === 'deleted_tasks' 
+          ? this.state.deleted.tasks
+          : this.state.completed.tasks;
+        const localIndex = tasks.findIndex(i => i.id === data.removedTask.id);
         tasks.splice(localIndex, 1);
         return { tasks }
       })
@@ -104,31 +114,34 @@ class HistoryTaskList extends React.Component {
   }
 
   /** @private */
-  openEditModal(task) {
-    EditTaskModal.openSelf(task);
+  openEditModal(task, taskLocation) {
+    EditTaskModal.openSelf(task, taskLocation);
   }
 
   /** @private */
-  openRemoveModal(task) {
-    const indexInTheList = this.state.tasks.findIndex(i => i.id === task.id);
-    RemoveTaskModal.openSelf(task, indexInTheList);
+  openRemoveModal(task, taskLocation) {
+    const tasks = taskLocation === 'deleted_tasks' 
+      ? this.state.deleted.tasks
+      : this.state.completed.tasks;
+    const indexInTheList = tasks.findIndex(i => i.id === task.id);
+    RemoveTaskModal.openSelf(task, indexInTheList, taskLocation);
   }
 
   /** @private */
-  editTaskOption(task) {
+  editTaskOption(task, taskLocation) {
     return {
       name: 'Edit',
       icon: <EditIcon />,
-      onClickFunction: () => this.openEditModal(task)
+      onClickFunction: () => this.openEditModal(task, taskLocation)
     }
   }
 
   /** @private */
-  removeTaskOption(task) {
+  removeTaskOption(task, taskLocation) {
     return {
       name: 'Delete Forever',
       icon: <DeleteForeverIcon />,
-      onClickFunction: () => this.openRemoveModal(task)
+      onClickFunction: () => this.openRemoveModal(task, taskLocation)
     }
   }
 
@@ -149,6 +162,7 @@ class HistoryTaskList extends React.Component {
                 secondaryText={`${data.tasks.length} items`}
                 style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
                 initiallyOpen
+                nestedListStyle={{marginTop: '-9px'}}
                 nestedItems={
                   data.tasks.map((task, index) =>
                     <div key={index}>
@@ -165,8 +179,8 @@ class HistoryTaskList extends React.Component {
                         />}
                       >
                         <MoreOptionsButton options={[
-                          this.editTaskOption(task),
-                          this.removeTaskOption(task)
+                          this.editTaskOption(task, data.source),
+                          this.removeTaskOption(task, data.source)
                         ]} />
                         <IconButton tooltip='Start!' style={taskList.iconButton}>
                           <Rescue />

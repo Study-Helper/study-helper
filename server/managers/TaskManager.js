@@ -75,43 +75,48 @@ const TaskManager = {
   },
 
   /**
-   * Removes a given task object from the JSON file.
+   * Removes a given task object from todo_tasks.
+   * This task will, however, be stored in removed_tasks.
    * Assumes that the task is in the file...
    * @param task - task object.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
    */
-  remove(task) {
+  remove(task, taskLocation) {
     const id = task.id;
-    data.del(`todo_tasks[${id}]`);
+    data.del(`${taskLocation}[${id}]`);
   },
 
   /**
    * Update a task's name.
    * @param task - task object.
    * @param newName - string.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
    */
-  updateName(task, newName) {
+  updateName(task, newName, taskLocation) {
     const id = task.id;
-    data.modify(`todo_tasks[${id}][name]`, newName);
+    data.modify(`${taskLocation}[${id}][name]`, newName);
   },
 
   /**
    * Update a task's description.
    * @param task - task object.
    * @param newDescription - string.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
    */
-  updateDescription(task, newDescription) {
+  updateDescription(task, newDescription, taskLocation) {
     const id = task.id;
-    data.modify(`todo_tasks[${id}][description]`, newDescription);
+    data.modify(`${taskLocation}[${id}][description]`, newDescription);
   },
 
   /**
    * Update a task's description.
    * @param task - task object.
    * @param newCategory - string.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
    */
-  updateCategory(task, newCategory) {
+  updateCategory(task, newCategory, taskLocation) {
     const id = task.id;
-    data.modify(`todo_tasks[${id}][category]`, newCategory);
+    data.modify(`${taskLocation}[${id}][category]`, newCategory);
   },
 
   // MARK: Task-History.

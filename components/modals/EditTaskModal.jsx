@@ -18,6 +18,7 @@ class EditTaskModal extends React.Component {
     this.state = {
       open: false,
       forTask: null,
+      taskLocation: 'todo_tasks',
       shouldRenderSnackbar: false
     }
 
@@ -37,14 +38,18 @@ class EditTaskModal extends React.Component {
   /**
    * Call this function to open the Edit Task Modal.
    */
-  static openSelf(task) {
-    PubSub.publish('Open Edit Task Modal', task);
+  static openSelf(task, taskLocation = 'todo_tasks') {
+    PubSub.publish('Open Edit Task Modal', { task, taskLocation });
   }
 
   componentWillMount() {
     this.token = PubSub.subscribe(
       'Open Edit Task Modal',
-      (message, task) => this.setState({ open: true, forTask: task })
+      (message, data) => this.setState({
+        open: true,
+        forTask: data.task,
+        taskLocation: data.taskLocation
+      })
     );
   }
 
@@ -75,21 +80,24 @@ class EditTaskModal extends React.Component {
     if (newName && task.name !== newName) {
       task.name = newName;
       somethingChanged = true;
-      TaskManager.updateName(task, newName);
+      TaskManager.updateName(task, newName, this.state.taskLocation);
     }
     if (newDescription && task.description !== newDescription) {
       task.description = newDescription;
       somethingChanged = true;
-      TaskManager.updateDescription(task, newDescription);
+      TaskManager.updateDescription(task, newDescription, this.state.taskLocation);
     }
     if (newCategory && task.category !== newCategory) {
       task.category = newCategory;
       somethingChanged = true;
-      TaskManager.updateCategory(task, newCategory);
+      TaskManager.updateCategory(task, newCategory, this.state.taskLocation);
     }
     // This event will be caught by a TaskList object.
     if (somethingChanged) {
-      PubSub.publish('Task Updated', task);
+      PubSub.publish('Task Updated', {
+        editedTask: task,
+        editedTaskLocation: this.state.taskLocation
+      });
     }
   }
 

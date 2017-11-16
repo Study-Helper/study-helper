@@ -2,8 +2,8 @@
     "todo_tasks": {
         "_rd5e1naaffk": {
             "id": "_rd5e1naaffk",
-            "name": "Do something!fdsfsf",
-            "description": "Fun times.",
+            "name": "Am I working now????",
+            "description": "Fun times!",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
             "startDate": "2017-09-05",
@@ -81,18 +81,9 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "_rd5ehhhuffk": {
-            "id": "_rd5ehhhuffk",
-            "name": "Do something2!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_rh77azaaffk": {
             "id": "_rh77azaaffk",
-            "name": "Do something!",
+            "name": "Do something2!",
             "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
@@ -127,10 +118,48 @@
             "endDate": "2017-09-05"
         }
     },
+    "completed_tasks": {
+        "_ds1pulgb8zr4": {
+            "name": "Filler task4",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Note",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr4"
+        },
+        "_ds1pulgb8zr5": {
+            "name": "Filler task5",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Email",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr5"
+        },
+        "_ds1pulgb8zr6": {
+            "name": "Filler task6",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Presentation",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr6"
+        },
+        "_ds1pulgb8zr7": {
+            "name": "Filler task2222",
+            "description": "Wohoolplp",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_ds1pulgb8zr7"
+        }
+    },
     "deleted_tasks": {
         "_rd5e1naappk": {
             "id": "_rd5e1naappk",
-            "name": "Do something!",
+            "name": "Do something...",
             "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Note",
@@ -138,7 +167,7 @@
             "endDate": "2017-09-05"
         },
         "_ds1pulgb8zr": {
-            "name": "Filler task",
+            "name": "Filler task!",
             "description": "Wohoolplp",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Presentation",
@@ -173,9 +202,6 @@
             "endDate": "2017-09-05",
             "id": "_ds1pulgb8zr3"
         }
-    },
-    "completed_tasks": {
-        
     },
     "categories": {
         "_dsbz186sd4c": {
