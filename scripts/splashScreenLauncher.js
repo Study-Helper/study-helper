@@ -6,19 +6,41 @@ import Avatar from 'material-ui/Avatar';
 import CircularProgress from 'material-ui/CircularProgress';
 import TextField from 'material-ui/TextField';
 
-import ActionFlightTakeoff from 'material-ui/svg-icons/action/flight-takeoff';
-import {red500, yellow500, blue500} from 'material-ui/styles/colors';
-
 const WrappedApp = () => (
   <MuiThemeProvider>
     <div>
-      <img src="assets/app-icon-256.png" width="200" height="200" />
-      <TextField floatingLabelText="Study Helper" />
-      <CircularProgress size={60} thickness={7} />
+      <div style={styles.logoLayout}>
+        <img src="assets/pen-5.png" width="100" height="100" />
+      </div>
+      <p style={styles.header}>Study Helper</p>
+      <p style={styles.subheader}>Getting everything ready for you...</p>
+      <CircularProgress style={styles.progress} size={30} thickness={3} />
     </div>
   </MuiThemeProvider>
 );
 
 window.onload = function() {
   ReactDOM.render(<WrappedApp />, document.getElementById('splash-screen'));
+}
+
+const styles = {
+  logoLayout: {
+    margin: '40px 0 0 165px'
+  },
+  header: {
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    fontSize: '135%'
+  },
+  subheader: {
+    textAlign: 'center',
+    fontFamily: 'Roboto',
+    marginTop: '-15px',
+    fontSize: '90%',
+    color: '#BDBDBD'
+  },
+  progress: {
+    paddingTop: '10px',
+    marginLeft: '185px'
+  }
 }
