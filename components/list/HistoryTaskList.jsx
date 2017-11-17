@@ -52,7 +52,7 @@ class HistoryTaskList extends React.Component {
 
   componentWillUnmount() {
     PubSub.unsubscribe(this.taskUpdatedToken);
-    // PubSub.unsubscribe(this.taskAddedToken);
+    PubSub.unsubscribe(this.taskAddedToken);
     PubSub.unsubscribe(this.taskRemovedToken);
   }
 
@@ -61,7 +61,6 @@ class HistoryTaskList extends React.Component {
     this.taskUpdatedToken = PubSub.subscribe(
       'Task Updated',
       (message, data) => this.setState((prevState, props) => {
-        console.log(data.editedTaskLocation)
         const tasks = data.editedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks
           : this.state.completed.tasks;

@@ -18,24 +18,6 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
-        "_uhgggjh992k": {
-            "id": "_uhgggjh992k",
-            "name": "Read the lecture notes from last Wednesday.",
-            "description": "Fun times.",
-            "estimatedDuration": "3 hours, 30 minutes",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_rd5e1xcaffk": {
-            "id": "_rd5e1xcaffk",
-            "name": "Do something else!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Exam",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_30mmt3qpypo": {
             "id": "_30mmt3qpypo",
             "name": "Email over my IPM project.",
@@ -90,15 +72,6 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
-        "_rd5e7ggts6k": {
-            "id": "_rd5e7ggts6k",
-            "name": "Do something4!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_rd5e1j87gfk": {
             "id": "_rd5e1j87gfk",
             "name": "Do something5!",
@@ -107,9 +80,7 @@
             "category": "Email",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
-        }
-    },
-    "completed_tasks": {
+        },
         "_ds1pulgb8zr4": {
             "name": "Filler task4",
             "description": "Wohoolplp",
@@ -146,12 +117,32 @@
             "endDate": "2017-09-05",
             "id": "_ds1pulgb8zr7"
         },
-        "_rd5e1naaffk": {
-            "id": "_rd5e1naaffk",
-            "name": "Am I working now????",
-            "description": "Fun times!",
+        "_rd5e7ggts6k": {
+            "id": "_rd5e7ggts6k",
+            "name": "Do something4!",
+            "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
+            "category": "Presentation",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        }
+    },
+    "completed_tasks": {
+        "_uhgggjh992k": {
+            "id": "_uhgggjh992k",
+            "name": "Read the lecture notes from last Wednesday.",
+            "description": "Fun times.",
+            "estimatedDuration": "3 hours, 30 minutes",
+            "category": "Email",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
+        "_rd5e1xcaffk": {
+            "id": "_rd5e1xcaffk",
+            "name": "Do something else!",
+            "description": "Fun times.",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Exam",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         }

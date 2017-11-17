@@ -32,7 +32,10 @@ class CheckButton extends React.Component {
     // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
     setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
     // Logically remove, don't actually erase from the JSON.
-    PubSub.publish('Task Removed', this.state.forTask);
+    PubSub.publish('Task Removed', {
+      removedTask: this.state.forTask,
+      removedTaskLocation: this.state.taskLocation
+    });
   }
 
   /** @private */
