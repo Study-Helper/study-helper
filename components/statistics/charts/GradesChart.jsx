@@ -1,6 +1,6 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
-import SubjectManager from '../../../server/managers/SubjectManager.js'
+import SubjectManager from '../../../server/managers/SubjectManager.js';
 import {StudentsMeanText} from '../../../styles/styles.css.js';
 
 let labels;
@@ -97,25 +97,26 @@ class GradesChart extends React.Component {
       colors.push(subject.color);
     });
     loc_total_mean = subjects.length != 0 ? loc_total_mean/subjects.length : 0;
-    this.setState({ mean: loc_total_mean });
+    this.setState({ mean: parseFloat(loc_total_mean).toFixed(2) });
   }
 
   render() {
     return (
       <div>
-        <Bar
-          data={this.state.data}
-          width={900}
-          height={350}
-          options={this.state.options}
-        />
+        <div>
+          <Bar
+            data={this.state.data}
+            width={900}
+            height={350}
+            options={this.state.options}
+          />
+        </div>
         <div style={StudentsMeanText}>
           Your Average Score is {this.state.mean}!
         </div>
       </div>
     )
   }
-
 }
 
 export default GradesChart;
