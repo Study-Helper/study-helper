@@ -252,7 +252,8 @@
                     "name": "T2",
                     "grade": 13
                 }
-            }
+            },
+            "color": "rgba(211, 47, 47, 1)"
         },
         "_5kb2v3na13": {
             "id": "_5kb2v3na13",
@@ -268,12 +269,20 @@
                     "name": "T2",
                     "grade": 16
                 }
-            }
+            },
+            "color": "rgba(123, 31, 162, 1)"
         },
         "_5kb2vwwa13": {
             "id": "_5kb2vwwa13",
             "name": "Chemestry",
-            "tests": {}
+            "tests": {
+                "_30mmtggpypo": {
+                    "id": "_30mmtggpypo",
+                    "name": "T1",
+                    "grade": 16
+                }
+            },
+            "color": "rgba(2, 136, 209, 1)"
         }
     }
 }
