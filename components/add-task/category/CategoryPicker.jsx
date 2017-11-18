@@ -1,6 +1,8 @@
 import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
+import TextField from 'material-ui/TextField';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import Search from 'material-ui/svg-icons/action/search';
 import Avatar from 'material-ui/Avatar';
 import CategoryManager from '../../../server/managers/CategoryManager.jsx';
 import CategoryItem from './CategoryItem.jsx';
@@ -28,7 +30,11 @@ class CategoryPicker extends React.Component {
     const categories = this.state.categories;
     return (
       <div>
-        <p style={categoryPicker.infoText}>Choose a Category</p>
+        <span style={categoryPicker.infoText}>Choose a Category</span>
+        <div style={{ position: 'relative', display: 'inline-block', float: 'right' }}>
+          <Search style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red' }}/>
+          <TextField hintText="Search" style={{ textIndent: 30, width: '120px', paddingRight: 30 }}/>
+        </div>
         <div style={categoryPicker.root}>
           <GridList
             cellHeight={100}
