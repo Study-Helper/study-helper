@@ -26,6 +26,7 @@ class AddTaskComponent extends React.Component {
       endDate: moment().format('YYYY-MM-DD'),
       estimatedTime: undefined,
       description: undefined,
+      searchText: undefined
      };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
