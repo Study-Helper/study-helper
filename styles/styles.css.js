@@ -81,7 +81,7 @@ export const addTask = {
   },
   button: {
     float: 'right',
-    marginTop: '40px'
+    marginLeft: '10px'
   }
 };
 
@@ -89,6 +89,7 @@ export const categoryPicker = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    float: 'right',
   },
   grid: {
     display: 'flex',
@@ -100,7 +101,7 @@ export const categoryPicker = {
   // TODO: This is not well.
   infoText: {
     color: '#BDBDBD',
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto',
   },
   categoryItemDefault: {
     height: '85px'
@@ -132,4 +133,3 @@ export const StudentsMeanText = {
   fontFamily: 'Roboto',
   color: 'rgba(0, 0, 0, 1)'
 };
-
