@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { GridList, GridTile } from 'material-ui/GridList';
 import TextField from 'material-ui/TextField';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
@@ -24,6 +25,7 @@ class CategoryPicker extends React.Component {
 
   setCategory(category) {
     this.setState({ chosenCategory: category });
+    this.props.onChange(category);
   }
 
   render() {
@@ -62,5 +64,9 @@ class CategoryPicker extends React.Component {
     );
   }
 }
+
+CategoryPicker.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 export default CategoryPicker;

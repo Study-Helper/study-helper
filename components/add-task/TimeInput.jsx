@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 
 class TimeInput extends Component {
@@ -19,6 +20,7 @@ class TimeInput extends Component {
       const minutes = value.split(':')[1];
       if (!isNaN(hours) && !isNaN(minutes)) {
         this.setState({ currentValue: value });
+        this.props.onChange(value);
       }
     }
   }
@@ -35,5 +37,9 @@ class TimeInput extends Component {
   }
 
 }
+
+TimeInput.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
 
 export default TimeInput;

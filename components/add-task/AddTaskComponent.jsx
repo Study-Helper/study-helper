@@ -21,16 +21,39 @@ class AddTaskComponent extends React.Component {
     super(props);
     this.state = {
       open: false,
-      startDate: undefined,
-      endDate: undefined
+      title: undefined,
+      startDate: moment().format('YYYY-MM-DD'),
+      endDate: moment().format('YYYY-MM-DD'),
+      estimatedTime: undefined,
+      description: undefined,
      };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.setTitle = this.setTitle.bind(this);
     this.setDate = this.setDate.bind(this);
+    this.setTime = this.setTime.bind(this);
+    this.setCategory = this.setCategory.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+  }
+
+  setTitle(event) {
+    this.setState({ title: event.target.value });
   }
 
   setDate(startDate, endDate) {
-    this.setState({ startDate, endDate });
+    this.setState({ nstartDate: startDate, nendDate: endDate });
+  }
+
+  setCategory(category) {
+    this.setState({ category });
+  }
+
+  setTime(estimatedTime) {
+    this.setState({ estimatedTime });
+  }
+
+  setDescription(event) {
+    this.setState({ description: event.target.value });
   }
 
   handleOpen() {
@@ -39,6 +62,14 @@ class AddTaskComponent extends React.Component {
 
   handleClose() {
     this.setState({ open: false });
+  }
+
+  handleConfirm() {
+    this.setState({
+      startDate: this.state.nstartDate,
+      endDate: this.state.nendDate,
+      open: false,
+    });
   }
 
   render() {
@@ -53,9 +84,11 @@ class AddTaskComponent extends React.Component {
         label="Submit"
         primary
         keyboardFocused
-        onClick={this.handleClose}
+        onClick={this.handleConfirm}
       />,
     ];
+
+    const { startDate, endDate } = this.state;
 
     return (
       <div>
@@ -70,9 +103,10 @@ class AddTaskComponent extends React.Component {
             fullWidth
             hintText={'Title'}
             floatingLabelText='Task Title'
+            onChange={this.setTitle}
             // errorText='This field is required'
           />
-          <CategoryPicker />
+          <CategoryPicker onChange={this.setCategory} />
           <div>
             <RaisedButton
               label="Click to change date"
@@ -83,24 +117,25 @@ class AddTaskComponent extends React.Component {
             <div style={{ float: 'right' }}>
               <TextField
                 style={{ width: '150px', marginRight: '20px' }}
-                value={moment().format('YYYY-MM-DD')}
+                value={startDate}
                 floatingLabelText="Start date"
-                disabled
+                onClick={() => this.handleOpen()}
               />
               <TextField
                 style={{ width: '150px' }}
-                value={moment().format('YYYY-MM-DD')}
+                value={endDate}
                 floatingLabelText="End date"
-                disabled
+                onClick={() => this.handleOpen()}
               />
             </div>
           </div>
-          <TimeInput />
+          <TimeInput onChange={this.setTime} />
           <TextField
             fullWidth
             hintText={'Add a Description'}
             floatingLabelText='Description (Optional)'
             floatingLabelFixed
+            onChange={this.setDescription}
           />
           <RaisedButton
             label='Confirm'
@@ -121,7 +156,7 @@ class AddTaskComponent extends React.Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <DatePicker onChange={this.setDate} />
+          <DatePicker startDate={startDate} endDate={endDate} onChange={this.setDate} />
         </Dialog>
       </div>
     );
