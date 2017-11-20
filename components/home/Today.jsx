@@ -11,6 +11,7 @@ import Search from 'material-ui/svg-icons/action/search';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import { appbar } from '../../styles/styles.css.js';
+import Snackbar from 'material-ui/Snackbar';
 import TaskManager from '../../server/managers/TaskManager.js';
 
 class Today extends React.Component {
@@ -19,19 +20,22 @@ class Today extends React.Component {
     super(props);
     // Synchronously load "today's" tasks.
     this.state = {
-      tasks: TaskManager.loadTasksByDate('2017-09-05')
+      tasks: TaskManager.loadTasksByDate('2017-09-05'),
+      shouldRenderSnackbar: false,
+      snackbarMessage: ""
     }
+    this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
   componentWillMount() {
     const { location } = this.props;
     if (location && location.state) {
       const { from, task } = this.props.location.state;
-
-      if (from === 'task-started') {
-        //task completed. TODO: show feedback message
-        console.log('Task completed:', task);
-      }
+      const message = from === 'task-started' ? 'Task completed!' : 'Task added!'
+      setTimeout(() => this.setState({
+        shouldRenderSnackbar: true,
+        snackbarMessage: message
+      }), 150);
     }
   }
 
@@ -43,6 +47,11 @@ class Today extends React.Component {
       tasks: TaskManager.loadTasksByDate(date)
       // tasks: TaskManager.loadTasksByDate(range[0])
     });
+  }
+
+  /** @private */
+  closeSnackbar() {
+    this.setState({ shouldRenderSnackbar: false });
   }
 
   render() {
@@ -75,6 +84,12 @@ class Today extends React.Component {
             <div>No tasks to show!</div>
           </div>
         }
+        <Snackbar
+          open={this.state.shouldRenderSnackbar}
+          message='Task successfuly added!'
+          autoHideDuration={2000}
+          onRequestClose={this.closeSnackbar}
+        />
       </div>
     );
   }

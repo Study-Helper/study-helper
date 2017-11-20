@@ -64,14 +64,16 @@ const TaskManager = {
 
   /**
    * Adds a new task to the JSON file.
-   * NOTE: If the task has an ID, then it's a task that was removed, and
-   * we're undoing that action.
+   * NOTE: If the task has an ID, either:
+   * - It's a task that was removed, and we're undoing that action.
+   * - Or we're adding it to some list in the history.
    * @param task - task object.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
    */
-  add(task) {
+  add(task, taskLocation) {
     const id = task.id || generateRandomId();
     task.id = id;
-    data.add(`todo_tasks[${id}]`, task);
+    data.add(`${taskLocation}[${id}]`, task);
   },
 
   /**

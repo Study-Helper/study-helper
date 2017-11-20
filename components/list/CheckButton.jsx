@@ -40,7 +40,6 @@ class CheckButton extends React.Component {
 
   /** @private */
   closeSnackbar() {
-    console.log("onRequestClose")
     this.setState({ shouldRenderSnackbar: false });
   }
 
@@ -50,14 +49,12 @@ class CheckButton extends React.Component {
    * @private
    */
   onUndoTimeOut() {
-    console.log("Undo Timeout")
     if (!this.state.taskWasRescued) {
       TaskManager.checkTask(this.state.forTask);
     }
   }
 
   handleUndo() {
-    console.log("Handling undo")
     this.setState({ shouldRenderSnackbar: false, taskWasRescued: true });
     // Don't add a new task to the JSON, as it was never actually deleted.
     const addedTask = this.state.forTask;

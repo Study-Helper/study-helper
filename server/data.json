@@ -1,14 +1,5 @@
 {
     "todo_tasks": {
-        "_hy789saaffk": {
-            "id": "_hy789saaffk",
-            "name": "Finish Stage 4 of the IPM project.",
-            "description": "This will take a while, but the tasks are fun.",
-            "estimatedDuration": "12 hours",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_872hgf52ffk": {
             "id": "_872hgf52ffk",
             "name": "Go meet Johnny at the coffee shop.",
@@ -99,32 +90,41 @@
             "endDate": "2017-09-05",
             "id": "_ds1pulgb8zr5"
         },
-        "_ds1pulgb8zr6": {
-            "name": "Filler task6",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr6"
+        "_ududspx6ibt": {
+            "name": "New task!",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Exam",
+            "startDate": "2017-11-20",
+            "endDate": "2017-11-20",
+            "id": "_ududspx6ibt"
         },
-        "_ds1pulgb8zr7": {
-            "name": "Filler task2222",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
+        "_uve1kechsh": {
+            "name": "Hello World",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Studying",
+            "startDate": "2017-11-20",
+            "endDate": "2017-11-20",
+            "id": "_uve1kechsh"
+        },
+        "_0c263k67ezur": {
+            "name": "Hellooooo",
+            "description": "kksd",
+            "estimatedDuration": "-",
             "category": "Studying",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr7"
+            "id": "_0c263k67ezur"
         },
-        "_rd5e7ggts6k": {
-            "id": "_rd5e7ggts6k",
-            "name": "Do something4!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Presentation",
+        "_d7919n84hvm": {
+            "name": "ddfdgd",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Email",
             "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
+            "endDate": "2017-09-05",
+            "id": "_d7919n84hvm"
         }
     },
     "completed_tasks": {

@@ -59,6 +59,7 @@ class RemoveTaskModal extends React.Component {
    */
   onUndoTimeOut() {
     if (!this.state.taskWasRescued) {
+      console.log(this.state.taskLocation)
       TaskManager.remove(this.state.forTask, this.state.taskLocation);
     }
   }

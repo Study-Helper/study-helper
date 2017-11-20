@@ -14,6 +14,7 @@ import { appbar, addTask } from '../../styles/styles.css.js';
 import DatePicker from '../calendar/DatePicker.jsx';
 import CategoryPicker from './category/CategoryPicker.jsx';
 import TimeInput from './TimeInput.jsx';
+import TaskManager from '../../server/managers/TaskManager.js';
 
 class AddTaskComponent extends React.Component {
 
@@ -26,15 +27,19 @@ class AddTaskComponent extends React.Component {
       endDate: moment().format('YYYY-MM-DD'),
       estimatedTime: undefined,
       description: undefined,
-      searchText: undefined
+      searchText: undefined,
+      category: undefined,
+      requiredFieldsFilled: false
      };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.setTitle = this.setTitle.bind(this);
     this.setDate = this.setDate.bind(this);
     this.setTime = this.setTime.bind(this);
+    this.setDescription = this.setDescription.bind(this);
     this.setCategory = this.setCategory.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
+    this.confirmAddTask = this.confirmAddTask.bind(this);
   }
 
   setTitle(event) {
@@ -70,6 +75,23 @@ class AddTaskComponent extends React.Component {
       startDate: this.state.nstartDate,
       endDate: this.state.nendDate,
       open: false,
+    });
+  }
+
+  confirmAddTask() {
+    const { title, description, startDate, endDate, estimatedDuration, category } = this.state; 
+    const taskToAdd = {
+      name: title,
+      description: description || 'No description available',
+      estimatedDuration: estimatedDuration || '-',
+      category: category.title,
+      startDate: startDate,
+      endDate: endDate
+    }
+    TaskManager.add(taskToAdd, 'todo_tasks');
+    this.props.history.push({
+      pathname: '/home',
+      state: { from: 'task-added', task: this.props.location.state.task }
     });
   }
 
@@ -140,6 +162,8 @@ class AddTaskComponent extends React.Component {
           />
           <RaisedButton
             label='Confirm'
+            onClick={this.confirmAddTask}
+            disabled={this.state.requiredFieldsFilled}
             style={addTask.button}
             primary
           />
