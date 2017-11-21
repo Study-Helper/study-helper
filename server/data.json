@@ -1,22 +1,13 @@
 {
     "todo_tasks": {
-        "_872hgf52ffk": {
-            "id": "_872hgf52ffk",
-            "name": "Go meet Johnny at the coffee shop.",
-            "description": "Fun times.",
-            "estimatedDuration": "2 hours, 15 minutes",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_30mmt3qpypo": {
             "id": "_30mmt3qpypo",
             "name": "Email over my IPM project.",
             "description": "The Professors email is tir@fct.unl.pt.",
             "estimatedDuration": "2 minutes",
             "category": "Presentation",
-            "startDate": "2017-08-13",
-            "endDate": "2017-08-13"
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
         },
         "_5kb2v3na13": {
             "id": "_5kb2v3na13",
@@ -45,6 +36,15 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
+        "_lqi88q0s3d": {
+            "name": "Hello World 01",
+            "description": "No description available.",
+            "estimatedDuration": "-",
+            "category": "Studying",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_lqi88q0s3d"
+        },
         "_rd5e1nh7sfa": {
             "id": "_rd5e1nh7sfa",
             "name": "Do something3!",
@@ -54,148 +54,14 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
-        "_rd5e1j87gfk": {
-            "id": "_rd5e1j87gfk",
-            "name": "Do something5!",
+        "_872hgf52ffk": {
+            "id": "_872hgf52ffk",
+            "name": "Go meet Johnny at the coffee shop.",
             "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Email",
+            "estimatedDuration": "2 hours, 15 minutes",
+            "category": "Note",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
-        },
-        "_ds1pulgb8zr4": {
-            "name": "Filler task4",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr4"
-        },
-        "_ududspx6ibt": {
-            "name": "New task!",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Exam",
-            "startDate": "2017-11-20",
-            "endDate": "2017-11-20",
-            "id": "_ududspx6ibt"
-        },
-        "_uve1kechsh": {
-            "name": "Hello World",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Studying",
-            "startDate": "2017-11-20",
-            "endDate": "2017-11-20",
-            "id": "_uve1kechsh"
-        },
-        "_4eqsw7om04y": {
-            "name": "Hello, World!!!!",
-            "description": "No description available.",
-            "estimatedDuration": "-",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_0c263k67ezur"
-        },
-        "_cu24vvirj27": {
-            "name": "Test task",
-            "description": "frrffr",
-            "estimatedDuration": "-",
-            "category": "Note",
-            "startDate": "2017-10-19",
-            "endDate": "2017-11-16",
-            "id": "_cu24vvirj27"
-        },
-        "_57bw3efp2vc": {
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Note",
-            "startDate": "2017-11-21",
-            "endDate": "2017-11-21",
-            "id": "_57bw3efp2vc"
-        },
-        "_ai30juwwlxp": {
-            "name": "huiohfrf",
-            "description": "deed",
-            "estimatedDuration": "-",
-            "category": "Exam",
-            "startDate": "2017-10-16",
-            "endDate": "2017-10-27",
-            "id": "_ai30juwwlxp"
-        },
-        "_k5xp92gcejf": {
-            "name": "e123",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Sport",
-            "startDate": "2017-11-21",
-            "endDate": "2017-11-21",
-            "id": "_k5xp92gcejf"
-        },
-        "_tkhlbnho16": {
-            "name": "rfrfrffr",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Sport",
-            "startDate": "2017-11-21",
-            "endDate": "2017-11-21",
-            "id": "_tkhlbnho16"
-        },
-        "_cxmp44qdzww": {
-            "name": "frrf",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Sport",
-            "startDate": "2017-11-21",
-            "endDate": "2017-11-21",
-            "id": "_cxmp44qdzww"
-        },
-        "_yqt6v93ypw": {
-            "name": "dede",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Exam",
-            "startDate": "2017-11-21",
-            "endDate": "2017-11-21",
-            "id": "_yqt6v93ypw"
-        },
-        "_8yw4k3zuow": {
-            "name": "rffrrffr",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Email",
-            "startDate": "2017-11-21",
-            "endDate": "2017-11-21",
-            "id": "_8yw4k3zuow"
-        },
-        "_fsaawefqwnl": {
-            "name": "ededdeded",
-            "description": "No description available",
-            "estimatedDuration": "-",
-            "category": "Exam",
-            "startDate": "2017-11-21",
-            "endDate": "2017-11-21",
-            "id": "_fsaawefqwnl"
-        },
-        "_307i7yckv4y": {
-            "name": "frfrfrfr",
-            "description": "ddede",
-            "estimatedDuration": "-",
-            "category": "Exam",
-            "startDate": "2017-10-05",
-            "endDate": "2017-11-15",
-            "id": "_307i7yckv4y"
-        },
-        "_c94ee0j435": {
-            "name": "frrrf",
-            "description": "frrffr",
-            "estimatedDuration": "-",
-            "category": "Note",
-            "startDate": "2017-10-12",
-            "endDate": "2017-11-22",
-            "id": "_c94ee0j435"
         }
     },
     "completed_tasks": {
@@ -216,107 +82,35 @@
             "category": "Exam",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
-        },
-        "_rd5e1nh7sfa": {
-            "id": "_rd5e1nh7sfa",
-            "name": "Do something3!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_rd5e1j87gfk": {
-            "id": "_rd5e1j87gfk",
-            "name": "Do something5!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_872hgf52ffk": {
-            "id": "_872hgf52ffk",
-            "name": "Go meet Johnny at the coffee shop.",
-            "description": "Fun times.",
-            "estimatedDuration": "2 hours, 15 minutes",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_mdduqlqp01f": {
-            "name": "Test 123",
-            "description": "No description available.",
-            "estimatedDuration": "-",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_mdduqlqp01f"
-        },
-        "_smxgelkb2oa": {
-            "name": "Hello Woooooooorld",
-            "description": "No description available.",
-            "estimatedDuration": "-",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_smxgelkb2oa"
-        },
-        "_jng3ehp0svh": {
-            "name": "Wooooooo",
-            "description": "No description available.",
-            "estimatedDuration": "-",
-            "category": "Exam",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_jng3ehp0svh"
         }
     },
     "deleted_tasks": {
         "_rd5e1naappk": {
             "id": "_rd5e1naappk",
-            "name": "Do something...",
+            "name": "Do something.........",
             "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Note",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
-        "_ds1pulgb8zr": {
-            "name": "Filler task!",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
+        "_30mmt3qpypo": {
+            "id": "_30mmt3qpypo",
+            "name": "Email over my IPM project!",
+            "description": "The Professors email is tir@fct.unl.pt.",
+            "estimatedDuration": "2 minutes",
             "category": "Presentation",
             "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr"
+            "endDate": "2017-09-05"
         },
-        "_ds1pulgb8zr1": {
-            "name": "Filler task",
-            "description": "Wohoolplp",
+        "_rh77azaaffk": {
+            "id": "_rh77azaaffk",
+            "name": "!!!!Do something!!!!!!",
+            "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Note",
+            "category": "Studying",
             "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr1"
-        },
-        "_ds1pulgb8zr2": {
-            "name": "Filler task2",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Exam",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr2"
-        },
-        "_ds1pulgb8zr3": {
-            "name": "Filler task3",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr3"
+            "endDate": "2017-09-05"
         }
     },
     "categories": {

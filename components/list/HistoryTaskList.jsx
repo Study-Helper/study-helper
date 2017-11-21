@@ -1,11 +1,11 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import Rescue from 'material-ui/svg-icons/content/redo';
 import IconButton from 'material-ui/IconButton';
 import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
+import RescueButton from './RescueButton.jsx';
 import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
 import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import Divider from 'material-ui/Divider';
@@ -75,7 +75,7 @@ class HistoryTaskList extends React.Component {
   /** @private */
   subscribeToTaskAddedEvents() {
      this.taskAddedToken = PubSub.subscribe(
-      'Task Added',
+      'History - Task Added',
       (message, data) => this.setState((prevState, props) => {
         const tasks = data.addedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks
@@ -95,7 +95,7 @@ class HistoryTaskList extends React.Component {
   /** @private */
   subscribeToTaskRemovedEvents() {
     this.taskRemovedToken = PubSub.subscribe(
-      'Task Removed',
+      'History - Task Removed',
       (message, data) => this.setState((prevState, props) => {
         const tasks = data.removedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks
@@ -181,9 +181,11 @@ class HistoryTaskList extends React.Component {
                           this.editTaskOption(task, data.source),
                           this.removeTaskOption(task, data.source)
                         ]} />
-                        <IconButton tooltip='Start!' style={taskList.iconButton}>
-                          <Rescue />
-                        </IconButton>
+                        <RescueButton 
+                          task={task}
+                          taskLocation={data.source}
+                          indexInTheList={data.tasks.findIndex(i => i.id === task.id)}
+                        />
                       </ListItem>
                       {index < data.tasks.length - 1 && 
                         <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}

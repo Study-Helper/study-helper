@@ -57,7 +57,7 @@ class RegularTaskList extends React.Component {
   /** @private */
   subscribeToTaskAddedEvents() {
      this.taskAddedToken = PubSub.subscribe(
-      'Task Added',
+      'Regular - Task Added',
       (message, data) => this.setState((prevState, props) => {
         const tasks = prevState.tasks;
         // NOTE: data = { task, indexInTheList || undefined }
@@ -75,7 +75,7 @@ class RegularTaskList extends React.Component {
   /** @private */
   subscribeToTaskRemovedEvents() {
     this.taskRemovedToken = PubSub.subscribe(
-      'Task Removed',
+      'Regular - Task Removed',
       (message, data) => this.setState((prevState, props) => {
         const tasks = prevState.tasks;
         const localIndex = tasks.findIndex(i => i.id === data.removedTask.id);

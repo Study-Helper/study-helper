@@ -1,16 +1,13 @@
 import React from 'react';
+import Rescue from 'material-ui/svg-icons/content/redo';
 import IconButton from 'material-ui/IconButton';
 import Snackbar from 'material-ui/Snackbar';
-import Done from 'material-ui/svg-icons/action/done';
 import TaskManager from '../../server/managers/TaskManager.js';
 import { taskList } from '../../styles/styles.css.js';
 
-/* Use PubSub to handle modal popups. */
-import PubSub from 'pubsub-js';
-
 const UNDO_TIME_MS = 3000
 
-class CheckButton extends React.Component {
+class RescueButton extends React.Component {
 
   constructor(props) {
     super(props);
@@ -20,39 +17,30 @@ class CheckButton extends React.Component {
       shouldRenderSnackbar: false,
       taskWasRescued: false
     }
-    this.check = this.check.bind(this);
+    this.rescue = this.rescue.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
     this.onUndoTimeOut = this.onUndoTimeOut.bind(this);
     this.handleUndo = this.handleUndo.bind(this);
   }
 
-  /** @private */
-  check() {
+  rescue() {
     this.setState({ shouldRenderSnackbar: true });
-    
+
     // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
     setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
 
-    // Prepare the data for the publishing.
-    const eventName = 'Regular - Task Removed';
+    // Prepare the parameters for the publishing.
+    const eventName = 'History - Task Removed';
     const eventData = {
       removedTask: this.state.forTask,
-      removedTaskLocation: this.state.taskLocation
-    };
+      removedTaskLocation: this.props.taskLocation
+    }
 
     // Publish the event.
     PubSub.publish(eventName, eventData);
 
-    // Add the task to History's 'completed_tasks'.
-    TaskManager.add(this.state.forTask, 'completed_tasks');
-
-    // If we're checking from 'TaskStarted', go back to 'Home'.
-    if (this.props.redirectsToHome) {
-      this.props.history.push({
-        pathname: '/home',
-        state: { from: 'task-started' }
-      });
-    }
+    // Add the task to 'todo_tasks'.
+    TaskManager.add(this.state.forTask, 'todo_tasks');
   }
 
   /** @private */
@@ -67,7 +55,7 @@ class CheckButton extends React.Component {
    */
   onUndoTimeOut() {
     if (!this.state.taskWasRescued) {
-      TaskManager.remove(this.state.forTask, 'todo_tasks');
+      TaskManager.remove(this.state.forTask, this.props.taskLocation);
     } else {
       this.setState({ taskWasRescued: false });
     }
@@ -81,37 +69,38 @@ class CheckButton extends React.Component {
     const indexInTheList = this.state.indexInTheList;
 
     // Prepare the parameters for the publishing.
-    const eventName = 'Regular - Task Added';
-    const eventData = { addedTask, indexInTheList, addedTaskLocation: 'todo_tasks' };
+    const eventName = 'History - Task Added';
+    const eventData = {
+      addedTask,
+      indexInTheList,
+      addedTaskLocation: this.props.taskLocation
+    }
     
-    // Task will be added back to 'todo_tasks'.
+    // Publish the event.
     PubSub.publish(eventName, eventData);
-
-    // False alarm; remove the task from History's 'completed_tasks'.
-    TaskManager.remove(this.state.forTask, 'completed_tasks');
   }
 
   render() {
     return (
       <div>
         <IconButton 
-          tooltip='Check!'
+          tooltip='Rescue!'
           style={taskList.iconButton}
-          onClick={this.check}
+          onClick={this.rescue}
         >
-          <Done />
+          <Rescue />
         </IconButton>
         <Snackbar
           open={this.state.shouldRenderSnackbar}
-          message='Your task was completed!'
+          message='Your task was rescued!'
           action='undo'
           autoHideDuration={UNDO_TIME_MS}
           onActionTouchTap={this.handleUndo}
           onRequestClose={this.closeSnackbar}
         />
       </div>
-    )
+    );
   }
 }
 
-export default CheckButton;
+export default RescueButton;

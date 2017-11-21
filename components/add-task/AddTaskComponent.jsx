@@ -104,7 +104,7 @@ class AddTaskComponent extends React.Component {
     const { title, description, startDate, endDate, estimatedDuration, category } = this.state;
     const taskToAdd = {
       name: title,
-      description: description || 'No description available',
+      description: description || 'No description available.',
       estimatedDuration: estimatedDuration || '-',
       category: category.title,
       startDate: startDate,
