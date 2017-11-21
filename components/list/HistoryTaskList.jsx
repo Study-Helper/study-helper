@@ -75,7 +75,7 @@ class HistoryTaskList extends React.Component {
   /** @private */
   subscribeToTaskAddedEvents() {
      this.taskAddedToken = PubSub.subscribe(
-      'Task Added',
+      'History - Task Added',
       (message, data) => this.setState((prevState, props) => {
         const tasks = data.addedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks
@@ -95,7 +95,7 @@ class HistoryTaskList extends React.Component {
   /** @private */
   subscribeToTaskRemovedEvents() {
     this.taskRemovedToken = PubSub.subscribe(
-      'Task Removed',
+      'History - Task Removed',
       (message, data) => this.setState((prevState, props) => {
         const tasks = data.removedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks

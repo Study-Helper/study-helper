@@ -14,6 +14,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TaskDescription from '../list/TaskDescription.jsx';
 import Timer from './Timer.jsx';
 import CategoryManager from '../../server/managers/CategoryManager.jsx';
+import TaskManager from '../../server/managers/TaskManager.js';
 import { appbar } from '../../styles/styles.css.js';
 
 class TaskStarted extends Component {
@@ -45,6 +46,11 @@ class TaskStarted extends Component {
   }
 
   checkTask() {
+    // TODO: This will probably be re-done (to use the CheckButton component,
+    // which grants the undo option).
+    TaskManager.add(this.props.location.state.task, 'completed_tasks');
+    TaskManager.remove(this.props.location.state.task, 'todo_tasks');
+    // Back to the home screen.
     this.props.history.push({
       pathname: '/home',
       state: { from: 'task-started', task: this.props.location.state.task }

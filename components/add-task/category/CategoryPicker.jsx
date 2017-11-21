@@ -16,9 +16,10 @@ class CategoryPicker extends React.Component {
 
   constructor(props) {
     super(props);
+    const categories = CategoryManager.loadCategories();
     this.state = {
-      categories: CategoryManager.loadCategories(),
-      chosenCategory: null, // TODO: Default to the first item
+      categories: categories,
+      chosenCategory: categories[0],
       searchText: undefined
     };
     this.setCategory = this.setCategory.bind(this);

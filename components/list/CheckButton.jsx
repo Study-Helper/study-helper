@@ -29,13 +29,22 @@ class CheckButton extends React.Component {
   /** @private */
   check() {
     this.setState({ shouldRenderSnackbar: true });
+    
     // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
     setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
-    // Logically remove, don't actually erase from the JSON.
-    PubSub.publish('Task Removed', {
+
+    // Prepare the data for the publishing.
+    const eventName = 'Regular - Task Removed';
+    const eventData = {
       removedTask: this.state.forTask,
       removedTaskLocation: this.state.taskLocation
-    });
+    }
+
+    // Publish the event.
+    PubSub.publish(eventName, eventData);
+
+    // Add the task to History's 'completed_tasks'.
+    TaskManager.add(this.state.forTask, 'completed_tasks');
   }
 
   /** @private */
@@ -51,15 +60,27 @@ class CheckButton extends React.Component {
   onUndoTimeOut() {
     if (!this.state.taskWasRescued) {
       TaskManager.checkTask(this.state.forTask);
+    } else {
+      this.setState({ taskWasRescued: false });
     }
   }
 
   handleUndo() {
     this.setState({ shouldRenderSnackbar: false, taskWasRescued: true });
+    
     // Don't add a new task to the JSON, as it was never actually deleted.
     const addedTask = this.state.forTask;
     const indexInTheList = this.state.indexInTheList;
-    PubSub.publish('Task Added', { addedTask, indexInTheList });
+
+    // Prepare the parameters for the publishing.
+    const eventName = 'Regular - Task Added';
+    const eventData = { addedTask, indexInTheList, addedTaskLocation: 'todo_tasks' };
+    
+    // Task will be added back to 'todo_tasks'.
+    PubSub.publish(eventName, eventData);
+
+    // False alarm; remove the task from History's 'completed_tasks'.
+    TaskManager.remove(this.state.forTask, 'completed_tasks');
   }
 
   render() {

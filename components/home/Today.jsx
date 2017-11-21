@@ -22,7 +22,7 @@ class Today extends React.Component {
     this.state = {
       tasks: TaskManager.loadTasksByDate('2017-09-05'),
       shouldRenderSnackbar: false,
-      snackbarMessage: ""
+      snackbarMessage: ''
     }
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
@@ -86,7 +86,7 @@ class Today extends React.Component {
         }
         <Snackbar
           open={this.state.shouldRenderSnackbar}
-          message='Task successfuly added!'
+          message={this.state.snackbarMessage}
           autoHideDuration={2000}
           onRequestClose={this.closeSnackbar}
         />
