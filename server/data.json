@@ -1,14 +1,5 @@
 {
     "todo_tasks": {
-        "_30mmt3qpypo": {
-            "id": "_30mmt3qpypo",
-            "name": "Email over my IPM project.",
-            "description": "The Professors email is tir@fct.unl.pt.",
-            "estimatedDuration": "2 minutes",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_5kb2v3na13": {
             "id": "_5kb2v3na13",
             "name": "Cleanup my room.",
@@ -36,6 +27,53 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
+        "_872hgf52ffk": {
+            "id": "_872hgf52ffk",
+            "name": "Go meet Johnny at the coffee shop.",
+            "description": "Fun times.",
+            "estimatedDuration": "2 hours, 15 minutes",
+            "category": "Note",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
+        "_30mmt3qpypo": {
+            "id": "_30mmt3qpypo",
+            "name": "Email over my IPM project.",
+            "description": "The Professors email is tir@fct.unl.pt.",
+            "estimatedDuration": "2 minutes",
+            "category": "Presentation",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
+        "_uhgggjh992k": {
+            "id": "_uhgggjh992k",
+            "name": "Read the lecture notes from last Friday.",
+            "description": "Fun times.",
+            "estimatedDuration": "3 hours, 30 minutes",
+            "category": "Email",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
+        "_nh7tuhmuo7p": {
+            "name": "Hello 123",
+            "description": "Nothing to say here!",
+            "estimatedDuration": "-",
+            "category": "Note",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_nh7tuhmuo7p"
+        }
+    },
+    "completed_tasks": {
+        "_rd5e1xcaffk": {
+            "id": "_rd5e1xcaffk",
+            "name": "Do something else!",
+            "description": "Fun times.",
+            "estimatedDuration": "1 hour, 15 minutes",
+            "category": "Exam",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
         "_lqi88q0s3d": {
             "name": "Hello World 01",
             "description": "No description available.",
@@ -51,35 +89,6 @@
             "description": "Fun times.",
             "estimatedDuration": "1 hour, 15 minutes",
             "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_872hgf52ffk": {
-            "id": "_872hgf52ffk",
-            "name": "Go meet Johnny at the coffee shop.",
-            "description": "Fun times.",
-            "estimatedDuration": "2 hours, 15 minutes",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        }
-    },
-    "completed_tasks": {
-        "_uhgggjh992k": {
-            "id": "_uhgggjh992k",
-            "name": "Read the lecture notes from last Wednesday.",
-            "description": "Fun times.",
-            "estimatedDuration": "3 hours, 30 minutes",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_rd5e1xcaffk": {
-            "id": "_rd5e1xcaffk",
-            "name": "Do something else!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Exam",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         }

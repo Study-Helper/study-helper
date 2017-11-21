@@ -78,6 +78,9 @@ class RescueButton extends React.Component {
     
     // Publish the event.
     PubSub.publish(eventName, eventData);
+
+    // False alarm; remove from 'todo_tasks'.
+    TaskManager.remove(addedTask, 'todo_tasks');
   }
 
   render() {
