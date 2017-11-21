@@ -36,6 +36,20 @@ class CheckButton extends React.Component {
       removedTask: this.state.forTask,
       removedTaskLocation: this.state.taskLocation
     });
+
+    // Publish the event.
+    PubSub.publish(eventName, eventData);
+
+    // Add the task to History's 'completed_tasks'.
+    TaskManager.add(this.state.forTask, 'completed_tasks');
+
+    // If we're checking from 'TaskStarted', go back to 'Home'.
+    if (this.props.redirectsToHome) {
+      this.props.history.push({
+        pathname: '/home',
+        state: { from: 'task-started' }
+      });
+    }
   }
 
   /** @private */

@@ -146,11 +146,14 @@ class RegularTaskList extends React.Component {
                   task={task}
                   indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
                 />
-                <Link to={{ pathname: 'task-started', state: { task, taskList} }}>
+                {/* TODO: Replace by a single component (like CheckButton) */}
+                <Link to={{ pathname: 'task-started', state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
                   <IconButton tooltip='Start!' style={taskList.iconButton}>
                     <PlayArrow />
                   </IconButton>
                 </Link>
+                {/* TODO: Replace by a single component (like CheckButton) */}
+                {/* TODO: Rescue from history. */}
               </ListItem>
               {index < tasks.length - 1 && 
                 <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}

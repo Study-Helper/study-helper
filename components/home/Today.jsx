@@ -31,7 +31,7 @@ class Today extends React.Component {
     const { location } = this.props;
     if (location && location.state) {
       const { from, task } = this.props.location.state;
-      const message = from === 'task-started' ? 'Task completed!' : 'Task added!'
+      const message = from === 'task-started' ? 'Task completed!' : 'Task added!';
       setTimeout(() => this.setState({
         shouldRenderSnackbar: true,
         snackbarMessage: message

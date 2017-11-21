@@ -8,6 +8,7 @@ import Avatar from 'material-ui/Avatar';
 import Done from 'material-ui/svg-icons/action/done';
 import Pause from 'material-ui/svg-icons/av/pause';
 import Stop from 'material-ui/svg-icons/av/stop';
+import CheckButton from '../list/CheckButton.jsx';
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -26,7 +27,7 @@ class TaskStarted extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.confirmStopTask = this.confirmStopTask.bind(this);
     this.stopTask = this.stopTask.bind(this);
-    this.checkTask = this.checkTask.bind(this);
+    // this.checkTask = this.checkTask.bind(this);
   }
 
   changeStatus() {
@@ -50,6 +51,18 @@ class TaskStarted extends Component {
       state: { from: 'task-started', task: this.props.location.state.task }
     });
   }
+
+  // checkTask() {
+  //   // TODO: This will probably be re-done (to use the CheckButton component,
+  //   // which grants the undo option).
+  //   TaskManager.add(this.props.location.state.task, 'completed_tasks');
+  //   TaskManager.remove(this.props.location.state.task, 'todo_tasks');
+  //   // Back to the home screen.
+  //   this.props.history.push({
+  //     pathname: '/home',
+  //     state: { from: 'task-started', task: this.props.location.state.task }
+  //   });
+  // }
 
   handleOpen() {
    this.setState({ open: true });
@@ -94,13 +107,12 @@ class TaskStarted extends Component {
             style={taskList.avatar}
           />}
         >
-          <IconButton
-            tooltip='Check!'
-            onClick={() => this.checkTask()}
-            style={taskList.iconButton}
-          >
-            <Done />
-          </IconButton>
+          <CheckButton
+            task={task}
+            indexInTheList={this.props.location.state.index}
+            history={this.props.history}
+            redirectsToHome
+          />
           <IconButton
             tooltip='Stop!'
             onClick={() => this.confirmStopTask()}
