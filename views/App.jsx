@@ -9,6 +9,7 @@ import Home from 'material-ui/svg-icons/action/home';
 import Today from 'material-ui/svg-icons/action/today';
 import Grades from 'material-ui/svg-icons/action/chrome-reader-mode';
 import Timeline from 'material-ui/svg-icons/action/timeline';
+import Face from 'material-ui/svg-icons/action/face';
 import History from 'material-ui/svg-icons/action/history';
 import Book from 'material-ui/svg-icons/action/book';
 import Settings from 'material-ui/svg-icons/action/settings';
@@ -23,6 +24,7 @@ import SettingsComponent from '../components/settings/Settings.jsx';
 import StatisticsComponent from '../components/statistics/Statistics.jsx';
 import AddTaskComponent from '../components/add-task/AddTaskComponent.jsx';
 import TaskStarted from '../components/task-started/TaskStarted.jsx';
+import CategoriesManager from '../components/categories/CategoriesManager.jsx';
 
 /* Import custom styles. */
 import { sidebar } from '../styles/styles.css.js';
@@ -87,6 +89,15 @@ class App extends React.Component {
                 style={this.state.activeTab === 'Statistics' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
+            <Divider style={{ backgroundColor: '#EEEEEE' }} />
+            <Link to='/categories' style={sidebar.link}>
+              <MenuItem
+                primaryText='Categories'
+                leftIcon={<Face style={sidebar.icon} />}
+                onClick={() => this.setActiveTab('Categories')}
+                style={this.state.activeTab === 'Categories' ? sidebar.focusedItem : sidebar.menuItem}
+              />
+            </Link>
             <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/history' style={sidebar.link}>
               <MenuItem
@@ -118,6 +129,7 @@ class App extends React.Component {
               <Route path='/settings' component={SettingsComponent} />
               <Route path='/add-task' component={AddTaskComponent} />
               <Route path='/task-started' component={TaskStarted} />
+              <Route path='/categories' component={CategoriesManager} />
               <Redirect to='/home' />
             </Switch>
           </div>
