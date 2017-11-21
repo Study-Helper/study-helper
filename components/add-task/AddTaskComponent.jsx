@@ -6,8 +6,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import GoBack from 'material-ui/svg-icons/navigation/chevron-left';
-import CalendarIcon from 'material-ui/svg-icons/action/date-range';
+import CalendarIcon from 'material-ui/svg-icons/action/today';
+import Clear from 'material-ui/svg-icons/content/delete-sweep';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Toggle from 'material-ui/Toggle';
 
 import { appbar, addTask } from '../../styles/styles.css.js';
 
@@ -22,11 +25,11 @@ class AddTaskComponent extends React.Component {
     super(props);
     this.state = {
       open: false,
-      title: undefined,
+      title: '',
       startDate: moment().format('YYYY-MM-DD'),
       endDate: moment().format('YYYY-MM-DD'),
       estimatedTime: undefined,
-      description: undefined,
+      description: '',
       searchText: undefined,
       category: undefined,
       requiredFieldsFilled: false
@@ -40,6 +43,11 @@ class AddTaskComponent extends React.Component {
     this.setCategory = this.setCategory.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.confirmAddTask = this.confirmAddTask.bind(this);
+    this.resetFields = this.resetFields.bind(this);
+  }
+
+  componentDidMount() {
+    this.taskTitleField.focus();
   }
 
   setTitle(event) {
@@ -78,8 +86,22 @@ class AddTaskComponent extends React.Component {
     });
   }
 
-  confirmAddTask() {
-    const { title, description, startDate, endDate, estimatedDuration, category } = this.state; 
+  resetFields() {
+    console.log('resetFields');
+    this.setState({
+      title: '',
+      startDate: moment().format('YYYY-MM-DD'),
+      endDate: moment().format('YYYY-MM-DD'),
+      estimatedTime: undefined,
+      description: '',
+      searchText: undefined,
+      category: undefined,
+      requiredFieldsFilled: false
+    });
+  }
+
+  confirmAddTask(reset) {
+    const { title, description, startDate, endDate, estimatedDuration, category } = this.state;
     const taskToAdd = {
       name: title,
       description: description || 'No description available',
@@ -87,12 +109,17 @@ class AddTaskComponent extends React.Component {
       category: category.title,
       startDate: startDate,
       endDate: endDate
-    }
+    };
     TaskManager.add(taskToAdd, 'todo_tasks');
-    this.props.history.push({
-      pathname: '/home',
-      state: { from: 'task-added', task: this.props.location.state.task }
-    });
+
+    if (reset) {
+      this.resetFields();
+    } else {
+      this.props.history.push({
+        pathname: '/home',
+        state: { from: 'task-added', task: this.props.location.state.task }
+      });
+    }
   }
 
   render() {
@@ -111,7 +138,12 @@ class AddTaskComponent extends React.Component {
       />,
     ];
 
-    const { startDate, endDate } = this.state;
+    const { startDate, endDate, estimatedTime } = this.state;
+
+    const style = {
+      marginLeft: 40,
+      marginRight: 20,
+    };
 
     return (
       <div>
@@ -120,49 +152,71 @@ class AddTaskComponent extends React.Component {
             <IconButton onClick={goBack} tooltip='Back'><GoBack /></IconButton>
             <ToolbarTitle style={{ marginLeft: '15px' }} text='Add Task' />
           </ToolbarGroup>
+          <ToolbarGroup lastChild>
+            <RaisedButton
+              style={{ margin: '0px 25px 0px 20px' }}
+              primary
+              onClick={() => this.resetFields()}
+              label='Clear fields'
+              icon={<Clear />}
+            />
+          </ToolbarGroup>
         </Toolbar>
         <div style={addTask.window}>
           <TextField
+            ref={textField => { this.taskTitleField = textField; }}
+            value={this.state.title}
             fullWidth
             hintText={'Title'}
             floatingLabelText='Task Title'
             onChange={this.setTitle}
             // errorText='This field is required'
           />
-          <CategoryPicker onChange={this.setCategory} />
-          <div>
-            <RaisedButton
-              label="Click to change date"
-              style={{ width: '300px', marginTop: '27px' }}
-              icon={<CalendarIcon />}
+          <CategoryPicker
+            onChange={this.setCategory}
+            category={this.state.category}
+            filter={this.state.searchText}
+            createBtn
+          />
+          <TimeInput onChange={this.setTime} time={estimatedTime} />
+          <FloatingActionButton mini style={style} onClick={() => this.handleOpen()}>
+            <CalendarIcon />
+          </FloatingActionButton>
+            <TextField
+              style={{ width: 125, marginRight: '20px' }}
+              value={startDate}
+              floatingLabelText="Start date"
               onClick={() => this.handleOpen()}
             />
-            <div style={{ float: 'right' }}>
-              <TextField
-                style={{ width: '150px', marginRight: '20px' }}
-                value={startDate}
-                floatingLabelText="Start date"
-                onClick={() => this.handleOpen()}
-              />
-              <TextField
-                style={{ width: '150px' }}
-                value={endDate}
-                floatingLabelText="End date"
-                onClick={() => this.handleOpen()}
-              />
-            </div>
-          </div>
-          <TimeInput onChange={this.setTime} />
+            <TextField
+              style={{ width: 125 }}
+              value={endDate}
+              floatingLabelText="End date"
+              onClick={() => this.handleOpen()}
+            />
           <TextField
             fullWidth
             hintText={'Add a Description'}
             floatingLabelText='Description (Optional)'
             floatingLabelFixed
+            value={this.state.description}
             onChange={this.setDescription}
+          />
+          <Toggle
+            label="Mark this task as a priority one"
+            labelPosition="right"
+            style={{ marginTop: 20, marginBottom: 20 }}
           />
           <RaisedButton
             label='Confirm'
-            onClick={this.confirmAddTask}
+            onClick={() => this.confirmAddTask(false)}
+            disabled={this.state.requiredFieldsFilled}
+            style={addTask.button}
+            primary
+          />
+          <RaisedButton
+            label='Add more'
+            onClick={() => this.confirmAddTask(true)}
             disabled={this.state.requiredFieldsFilled}
             style={addTask.button}
             primary

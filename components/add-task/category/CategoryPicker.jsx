@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { GridList, GridTile } from 'material-ui/GridList';
+import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Search from 'material-ui/svg-icons/action/search';
@@ -19,10 +20,24 @@ class CategoryPicker extends React.Component {
     this.state = {
       categories: CategoryManager.loadCategories(),
       chosenCategory: null, // TODO: Default to the first item
-      searchText: undefined
+      searchText: ''
     };
     this.setCategory = this.setCategory.bind(this);
     this.setSearchText = this.setSearchText.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.category && this.state.chosenCategory) {
+      if (!nextProps.filter && this.state.searchText) {
+        this.setState({
+          chosenCategory: null,
+          searchText: '',
+          categories: CategoryManager.loadCategories()
+        });
+      } else {
+        this.setState({ chosenCategory: null });
+      }
+    }
   }
 
   setCategory(category) {
@@ -35,20 +50,25 @@ class CategoryPicker extends React.Component {
     if (searchText && searchText.length > 0) {
       searchText = searchText.toLowerCase();
       const categories = this.state.categories.filter(category => category.title.toLowerCase().includes(searchText));
-      this.setState({ categories });
+      this.setState({ categories, searchText });
     } else {
-      this.setState({ categories: CategoryManager.loadCategories() });
+      this.setState({ categories: CategoryManager.loadCategories(), searchText });
     }
   }
 
   render() {
     const categories = this.state.categories;
     return (
-      <div>
+      <div style={{ marginTop: '10px' }}>
         <span style={categoryPicker.infoText}>Choose a Category</span>
+        {
+          this.props.createBtn &&
+          <FlatButton label="Create new" primary />
+        }
         <div style={{ position: 'relative', display: 'inline-block', float: 'right' }}>
           <Search style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red' }}/>
           <TextField
+            value={this.state.searchText}
             hintText="Search"
             style={{ textIndent: 30, width: '120px', paddingRight: 30 }}
             onChange={this.setSearchText}
@@ -84,6 +104,9 @@ class CategoryPicker extends React.Component {
 
 CategoryPicker.propTypes = {
   onChange: PropTypes.func.isRequired,
+  category: PropTypes.object,
+  filter: PropTypes.string,
+  createBtn: PropTypes.bool,
 };
 
 export default CategoryPicker;

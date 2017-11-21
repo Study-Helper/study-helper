@@ -13,12 +13,23 @@ class TimeInput extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.time) {
+      this.setState({ currentValue: '00:00' });
+    }
+  }
+
   handleChange(event) {
     const { value } = event.target;
     if (value.indexOf(':') > -1 && value.split(':').length === 2) {
       const hours = value.split(':')[0];
       const minutes = value.split(':')[1];
-      if (!isNaN(hours) && !isNaN(minutes)) {
+      if (!isNaN(hours) && !isNaN(minutes) && minutes <= 59) {
+        console.log('minutes[0]', minutes[0]);
+        console.log('>2', minutes.length > 2);
+        if (minutes[0] === '0' && minutes.length > 2) {
+          return;
+        }
         this.setState({ currentValue: value });
         this.props.onChange(value);
       }
@@ -40,6 +51,7 @@ class TimeInput extends Component {
 
 TimeInput.propTypes = {
   onChange: PropTypes.func.isRequired,
+  estimatedTime: PropTypes.string,
 };
 
 export default TimeInput;

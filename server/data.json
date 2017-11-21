@@ -45,15 +45,6 @@
             "startDate": "2017-08-13",
             "endDate": "2017-08-13"
         },
-        "_rh77azaaffk": {
-            "id": "_rh77azaaffk",
-            "name": "Do something2!",
-            "description": "Fun times.",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_rd5e1nh7sfa": {
             "id": "_rd5e1nh7sfa",
             "name": "Do something3!",
@@ -80,15 +71,6 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_ds1pulgb8zr4"
-        },
-        "_ds1pulgb8zr5": {
-            "name": "Filler task5",
-            "description": "Wohoolplp",
-            "estimatedDuration": "1 hour, 15 minutes",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ds1pulgb8zr5"
         },
         "_ududspx6ibt": {
             "name": "New task!",
@@ -117,14 +99,103 @@
             "endDate": "2017-09-05",
             "id": "_0c263k67ezur"
         },
-        "_d7919n84hvm": {
-            "name": "ddfdgd",
+        "_cu24vvirj27": {
+            "name": "Test task",
+            "description": "frrffr",
+            "estimatedDuration": "-",
+            "category": "Note",
+            "startDate": "2017-10-19",
+            "endDate": "2017-11-16",
+            "id": "_cu24vvirj27"
+        },
+        "_57bw3efp2vc": {
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Note",
+            "startDate": "2017-11-21",
+            "endDate": "2017-11-21",
+            "id": "_57bw3efp2vc"
+        },
+        "_ai30juwwlxp": {
+            "name": "huiohfrf",
+            "description": "deed",
+            "estimatedDuration": "-",
+            "category": "Exam",
+            "startDate": "2017-10-16",
+            "endDate": "2017-10-27",
+            "id": "_ai30juwwlxp"
+        },
+        "_k5xp92gcejf": {
+            "name": "e123",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Sport",
+            "startDate": "2017-11-21",
+            "endDate": "2017-11-21",
+            "id": "_k5xp92gcejf"
+        },
+        "_tkhlbnho16": {
+            "name": "rfrfrffr",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Sport",
+            "startDate": "2017-11-21",
+            "endDate": "2017-11-21",
+            "id": "_tkhlbnho16"
+        },
+        "_cxmp44qdzww": {
+            "name": "frrf",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Sport",
+            "startDate": "2017-11-21",
+            "endDate": "2017-11-21",
+            "id": "_cxmp44qdzww"
+        },
+        "_yqt6v93ypw": {
+            "name": "dede",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Exam",
+            "startDate": "2017-11-21",
+            "endDate": "2017-11-21",
+            "id": "_yqt6v93ypw"
+        },
+        "_8yw4k3zuow": {
+            "name": "rffrrffr",
             "description": "No description available",
             "estimatedDuration": "-",
             "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_d7919n84hvm"
+            "startDate": "2017-11-21",
+            "endDate": "2017-11-21",
+            "id": "_8yw4k3zuow"
+        },
+        "_fsaawefqwnl": {
+            "name": "ededdeded",
+            "description": "No description available",
+            "estimatedDuration": "-",
+            "category": "Exam",
+            "startDate": "2017-11-21",
+            "endDate": "2017-11-21",
+            "id": "_fsaawefqwnl"
+        },
+        "_307i7yckv4y": {
+            "name": "frfrfrfr",
+            "description": "ddede",
+            "estimatedDuration": "-",
+            "category": "Exam",
+            "startDate": "2017-10-05",
+            "endDate": "2017-11-15",
+            "id": "_307i7yckv4y"
+        },
+        "_c94ee0j435": {
+            "name": "frrrf",
+            "description": "frrffr",
+            "estimatedDuration": "-",
+            "category": "Note",
+            "startDate": "2017-10-12",
+            "endDate": "2017-11-22",
+            "id": "_c94ee0j435"
         }
     },
     "completed_tasks": {

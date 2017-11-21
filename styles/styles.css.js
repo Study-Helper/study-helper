@@ -102,6 +102,10 @@ export const categoryPicker = {
   infoText: {
     color: '#BDBDBD',
     fontFamily: 'Roboto',
+    fontSize: '18px',
+    height: '40px',
+    lineHeight: '40px',
+    marginRight: '10px'
   },
   categoryItemDefault: {
     height: '85px'
