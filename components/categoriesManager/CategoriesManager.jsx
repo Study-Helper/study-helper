@@ -252,7 +252,7 @@ class Calendar extends Component {
           >
             <div style={{ marginTop: -10 }}>
               <TextField
-                ref={textfield => { this.categoryName = textfield; }}
+                autoFocus
                 value={this.state.newCategoryName}
                 hintText="Category name"
                 floatingLabelText="Category name"

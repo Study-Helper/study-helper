@@ -18,10 +18,11 @@ class CategoryPicker extends React.Component {
   constructor(props) {
     super(props);
     const categories = CategoryManager.loadCategories();
+    const { fromManager, noNames } = this.props;
     this.state = {
       searchText: '',
       categories: categories,
-      chosenCategory: categories[0],
+      chosenCategory: (fromManager || noNames) ? undefined : categories[0],
       searchText: undefined
     };
     this.setCategory = this.setCategory.bind(this);
