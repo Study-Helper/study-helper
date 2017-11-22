@@ -89,7 +89,7 @@ export const categoryPicker = {
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    float: 'right',
+    float: 'right'
   },
   grid: {
     display: 'flex',
@@ -97,6 +97,14 @@ export const categoryPicker = {
     height: 125,
     overflowY: 'auto',
     border: '1px solid #E0E0E0'
+  },
+  largeGrid: {
+    display: 'flex',
+    width: 675,
+    maxHeight: 420,
+    overflowY: 'auto',
+    border: 'none',
+    marginTop: 10
   },
   // TODO: This is not well.
   infoText: {

@@ -24,7 +24,7 @@ import SettingsComponent from '../components/settings/Settings.jsx';
 import StatisticsComponent from '../components/statistics/Statistics.jsx';
 import AddTaskComponent from '../components/add-task/AddTaskComponent.jsx';
 import TaskStarted from '../components/task-started/TaskStarted.jsx';
-import CategoriesManager from '../components/categories/CategoriesManager.jsx';
+import CategoriesManager from '../components/categoriesManager/CategoriesManager.jsx';
 
 /* Import custom styles. */
 import { sidebar } from '../styles/styles.css.js';
