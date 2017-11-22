@@ -58,12 +58,12 @@ class CategoryPicker extends React.Component {
 
   render() {
     const categories = this.state.categories;
-    const { fromManager } = this.props;
+    const { fromManager, noNames } = this.props;
     const containerMargin = fromManager ? {} : { marginTop: '10px' };
     return (
       <div style={containerMargin}>
         {
-          !this.props.fromManager &&
+          !fromManager &&
           <div>
             <span style={categoryPicker.infoText}>Choose a Category</span>
             <FlatButton label="Create new" primary />
@@ -80,9 +80,9 @@ class CategoryPicker extends React.Component {
         }
         <div style={categoryPicker.root}>
           <GridList
-            cellHeight={100}
-            cols={6}
-            style={fromManager ? categoryPicker.largeGrid : categoryPicker.grid}
+            cellHeight={noNames ? 60 : 100}
+            cols={noNames ? 7 : 6}
+            style={(fromManager && !noNames) ? categoryPicker.largeGrid : categoryPicker.grid}
           >
             {categories.map((category, index) => (
               <GridTile
@@ -96,7 +96,7 @@ class CategoryPicker extends React.Component {
                   : categoryPicker.categoryItemDefault}
                 onClick={() => this.setCategory(category)}
               >
-                <CategoryItem category={category} />
+                <CategoryItem category={category} noNames={noNames} />
               </div>
               </GridTile>
             ))}
@@ -113,6 +113,7 @@ CategoryPicker.propTypes = {
   filter: PropTypes.string,
   createBtn: PropTypes.bool,
   fromManager: PropTypes.bool,
+  noNames: PropTypes.bool,
 };
 
 export default CategoryPicker;
