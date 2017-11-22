@@ -139,7 +139,7 @@ const TaskManager = {
     const [hours, minutes] = duration.split(':');
     const hoursAsInt = parseInt(hours);
     const minutesAsInt = parseInt(minutes);
-    const hoursText = !hoursAsInt ? '' : hoursAsInt > 1 ? `${hoursAsInt} hours, ` : `${hoursAsInt} hour`;
+    const hoursText = !hoursAsInt ? '' : hoursAsInt > 1 ? `${hoursAsInt} hours, ` : `${hoursAsInt} hour, `;
     const minutesText = !minutesAsInt ? '' : minutesAsInt > 1 ? `${minutesAsInt} minutes` : `${minutesAsInt} minute`;
     return hoursText + minutesText;
   },
