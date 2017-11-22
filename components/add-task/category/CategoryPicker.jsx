@@ -80,9 +80,9 @@ class CategoryPicker extends React.Component {
             </div>
           </div>
         }
-        <div style={categoryPicker.root}>
+        <div style={noNames ? categoryPicker.rootNoTitle : categoryPicker.root}>
           <GridList
-            cellHeight={noNames ? 60 : 100}
+            cellHeight={noNames ? 70 : 100}
             cols={noNames ? 7 : 6}
             style={(fromManager && !noNames) ? categoryPicker.largeGrid : categoryPicker.grid}
           >
@@ -94,7 +94,7 @@ class CategoryPicker extends React.Component {
               >
               <div
                 style={this.state.chosenCategory === category
-                  ? categoryPicker.categoryItemSelected
+                  ? (noNames ? categoryPicker.categoryNoTitleItemSelected : categoryPicker.categoryItemSelected)
                   : categoryPicker.categoryItemDefault}
                 onClick={() => this.setCategory(category)}
               >

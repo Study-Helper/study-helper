@@ -13,7 +13,7 @@ const CategoryItem = ({ category, noNames }) => (
     size={50}
     icon={CategoryManager.getCategoryIcon(category)}
     backgroundColor={CategoryManager.getCategoryBackgroundColor(category)}
-    style={categoryItem.avatar}
+    style={noNames ? categoryItem.avatarNoTitle : categoryItem.avatar}
    />
     {
       !noNames &&

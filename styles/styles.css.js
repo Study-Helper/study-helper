@@ -91,6 +91,10 @@ export const categoryPicker = {
     flexWrap: 'wrap',
     float: 'right'
   },
+  rootNoTitle: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
   grid: {
     display: 'flex',
     width: 650,
@@ -122,6 +126,11 @@ export const categoryPicker = {
     height: '85px',
     backgroundColor: 'rgba(220, 220, 220, 1)',
     borderRadius: '5px'
+  },
+  categoryNoTitleItemSelected: {
+    height: '65px', //85
+    backgroundColor: 'rgba(220, 220, 220, 1)',
+    borderRadius: '5px'
   }
 };
 
@@ -130,8 +139,12 @@ export const categoryItem = {
     marginLeft: '28px',
     marginTop: '7px'
   },
+  avatarNoTitle: {
+    marginLeft: '15px',
+    marginTop: '7px'
+  },
   font: {
-    textAlign:'center',
+    textAlign: 'center',
     fontSize: 'small',
     fontFamily: 'Roboto',
     color: 'rgba(0, 0, 0, 0.87)',
