@@ -210,14 +210,14 @@ class AddTaskComponent extends React.Component {
           <RaisedButton
             label='Confirm'
             onClick={() => this.confirmAddTask(false)}
-            disabled={this.state.requiredFieldsFilled}
+            disabled={this.state.requiredFieldsFilled}  // TODO
             style={addTask.button}
             primary
           />
           <RaisedButton
             label='Add more'
             onClick={() => this.confirmAddTask(true)}
-            disabled={this.state.requiredFieldsFilled}
+            disabled={this.state.requiredFieldsFilled}  // TODO
             style={addTask.button}
             primary
           />

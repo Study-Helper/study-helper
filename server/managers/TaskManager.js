@@ -127,6 +127,47 @@ const TaskManager = {
     const id = task.id;
     data.del(`todo_tasks[${id}]`);
     data.add(`completed_tasks[${id}]`, task);
+  },
+
+  // MARK: Utilities.
+
+  /**
+   * Turns something like 03:20 into '3 hours, 20 minutes'.
+   */
+  prettifyEstimatedDuration(task) {
+    const duration = task.estimatedDuration;
+    const [hours, minutes] = duration.split(':');
+    const hoursAsInt = parseInt(hours);
+    const minutesAsInt = parseInt(minutes);
+    const hoursText = !hoursAsInt ? '' : hoursAsInt > 1 ? `${hoursAsInt} hours, ` : `${hoursAsInt} hour`;
+    const minutesText = !minutesAsInt ? '' : minutesAsInt > 1 ? `${minutesAsInt} minutes` : `${minutesAsInt} minute`;
+    return hoursText + minutesText;
+  },
+
+  // MARK: Sorting.
+
+  /** @private */
+  sortTasksByNew(tasks) {
+    return this.loadTasksByDate(tasks[0].startDate);
+  },
+
+  /** @private */
+  sortTasksByCategory(tasks) {
+    return tasks.sort((task1, task2) => task1.category > task2.category);
+  },
+
+  /** @private */
+  sortTasksByDuration(tasks, duration) {
+    return tasks.sort((task1, task2) => task1.estimatedDuration < task2.estimatedDuration);
+  },
+
+  sortTasksBy(tasks, value) {
+    switch (value) {
+      case "New": return this.sortTasksByNew(tasks);
+      case "Category": return this.sortTasksByCategory(tasks);
+      case "Duration": return this.sortTasksByDuration(tasks);
+      default: return;
+    }
   }
 }
 

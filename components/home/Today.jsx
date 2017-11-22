@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import FontIcon from 'material-ui/FontIcon';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import RegularTaskList from '../list/RegularTaskList.jsx';
 import AddTaskButton from '../add-task/AddTaskButton.jsx';
 import Search from 'material-ui/svg-icons/action/search';
+import moment from 'moment';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import { appbar } from '../../styles/styles.css.js';
@@ -60,7 +60,7 @@ class Today extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{marginLeft: '15px'}} text={title || 'Today'} />
+            <ToolbarTitle style={{marginLeft: '15px'}} text={title || `Today - ${moment().format("MMMM Do")}`} />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>

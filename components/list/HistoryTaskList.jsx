@@ -168,7 +168,7 @@ class HistoryTaskList extends React.Component {
                       <ListItem
                         key={index}
                         primaryText={task.name}
-                        secondaryText={task.estimatedDuration}
+                        secondaryText={TaskManager.prettifyEstimatedDuration(task)}
                         nestedItems={[<TaskDescription key={1} task={task} />]}
                         leftAvatar={<Avatar
                           size={35}
