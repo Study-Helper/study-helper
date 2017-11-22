@@ -77,7 +77,10 @@ class Today extends React.Component {
         {
           this.state.tasks.length > 0 ?
           <Scrollbars style={{ width: 697, height: height || 540 }}>
-            <RegularTaskList tasks={this.state.tasks} />
+            <RegularTaskList
+              tasks={this.state.tasks}
+              withFilter={this.props.withFilter}
+            />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
             <div><ErrorIcon /></div>
@@ -99,6 +102,11 @@ Today.propTypes = {
   title: PropTypes.string,
   range: PropTypes.array,
   height: PropTypes.number,
+  withFilter: PropTypes.boolean
+};
+
+Today.defaultProps = {
+  withFilter: true
 };
 
 export default Today;

@@ -6,7 +6,7 @@ import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import RescueButton from './RescueButton.jsx';
-import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
+import ClearIcon from 'material-ui/svg-icons/content/clear';
 import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
@@ -138,8 +138,8 @@ class HistoryTaskList extends React.Component {
   /** @private */
   removeTaskOption(task, taskLocation) {
     return {
-      name: 'Delete Forever',
-      icon: <DeleteForeverIcon />,
+      name: 'Clear',
+      icon: <ClearIcon />,
       onClickFunction: () => this.openRemoveModal(task, taskLocation)
     }
   }

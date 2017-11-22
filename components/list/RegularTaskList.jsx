@@ -135,21 +135,23 @@ class RegularTaskList extends React.Component {
     const tasks = this.state.tasks;
     return (
       <div>
-        <ListItem
-          disabled
-          primaryText={"???"}
-          style={{color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
-        >
-        <DropDownMenu
-          value={this.state.sortValue}
-          onChange={this.handleSortChange}
-          style={{marginTop: '-22px', float:'right', width: '160px'}}
-        >
-          <MenuItem value={"New"} primaryText="New" />
-          <MenuItem value={"Category"} primaryText="Category" />
-          <MenuItem value={"Duration"} primaryText="Duration" />
-        </DropDownMenu>
-        </ListItem>
+        {
+          this.props.withFilter &&
+          <ListItem
+            disabled
+            style={{height: '20px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
+          >
+            <DropDownMenu
+              value={this.state.sortValue}
+              onChange={this.handleSortChange}
+              style={{marginTop: '-22px', float:'right', width: '160px'}}
+            >
+              <MenuItem value={"New"} primaryText="New" />
+              <MenuItem value={"Category"} primaryText="Category" />
+              <MenuItem value={"Duration"} primaryText="Duration" />
+            </DropDownMenu>
+          </ListItem>
+        }
         <List style={taskList.list}>
           {tasks.map((task, index) =>
             <div key={index}>
@@ -173,14 +175,11 @@ class RegularTaskList extends React.Component {
                   task={task}
                   indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
                 />
-                {/* TODO: Replace by a single component (like CheckButton) */}
                 <Link to={{ pathname: 'task-started', state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
                   <IconButton tooltip='Start!' style={taskList.iconButton}>
                     <PlayArrow />
                   </IconButton>
                 </Link>
-                {/* TODO: Replace by a single component (like CheckButton) */}
-                {/* TODO: Rescue from history. */}
               </ListItem>
               {index < tasks.length - 1 && 
                 <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
