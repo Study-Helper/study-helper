@@ -58,31 +58,36 @@ class CategoryPicker extends React.Component {
 
   render() {
     const categories = this.state.categories;
+    const { fromManager } = this.props;
+    const containerMargin = fromManager ? {} : { marginTop: '10px' };
     return (
-      <div style={{ marginTop: '10px' }}>
-        <span style={categoryPicker.infoText}>Choose a Category</span>
+      <div style={containerMargin}>
         {
-          this.props.createBtn &&
-          <FlatButton label="Create new" primary />
+          !this.props.fromManager &&
+          <div>
+            <span style={categoryPicker.infoText}>Choose a Category</span>
+            <FlatButton label="Create new" primary />
+            <div style={{ position: 'relative', display: 'inline-block', float: 'right' }}>
+              <Search style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red' }} />
+              <TextField
+                value={this.state.searchText}
+                hintText="Search"
+                style={{ textIndent: 30, width: '120px', paddingRight: 30 }}
+                onChange={this.setSearchText}
+              />
+            </div>
+          </div>
         }
-        <div style={{ position: 'relative', display: 'inline-block', float: 'right' }}>
-          <Search style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red' }}/>
-          <TextField
-            value={this.state.searchText}
-            hintText="Search"
-            style={{ textIndent: 30, width: '120px', paddingRight: 30 }}
-            onChange={this.setSearchText}
-          />
-        </div>
         <div style={categoryPicker.root}>
           <GridList
             cellHeight={100}
             cols={6}
-            style={categoryPicker.grid}
+            style={fromManager ? categoryPicker.largeGrid : categoryPicker.grid}
           >
             {categories.map((category, index) => (
               <GridTile
                 key={index}
+                rows={0}
                 titleBackground={'rgba(0, 0, 0, 0)'}
               >
               <div
@@ -107,6 +112,7 @@ CategoryPicker.propTypes = {
   category: PropTypes.object,
   filter: PropTypes.string,
   createBtn: PropTypes.bool,
+  fromManager: PropTypes.bool,
 };
 
 export default CategoryPicker;
