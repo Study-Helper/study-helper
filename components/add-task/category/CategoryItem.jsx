@@ -17,7 +17,7 @@ const CategoryItem = ({ category, noNames }) => (
    />
     {
       !noNames &&
-      <p style={categoryItem.font}>{category.title}</p>
+      <p style={categoryItem.font}>{category.name ? category.name : category.title}</p>
     }
   </div>
 );
