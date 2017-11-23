@@ -25,6 +25,7 @@ class Calendar extends Component {
       openEditMode: false,
       newCategory: undefined,
       newCategoryName: '',
+      fakeCategories: [],
     };
     this.setCategory = this.setCategory.bind(this);
     this.setNewCategory = this.setNewCategory.bind(this);
@@ -37,6 +38,10 @@ class Calendar extends Component {
     this.handleOpenEditMode = this.handleOpenEditMode.bind(this);
     this.handleCloseEditMode = this.handleCloseEditMode.bind(this);
     this.handleSaveCategory = this.handleSaveCategory.bind(this);
+  }
+
+  componentWillUpdate() {
+    console.log(this.state.fakeCategories);
   }
 
   setCategory(activeCategory) {
@@ -67,7 +72,6 @@ class Calendar extends Component {
   }
 
   handleOpenSeeTasks() {
-    console.log('open see tasks...');
     this.setState({ openSeeTasks: true });
   }
 
@@ -76,8 +80,8 @@ class Calendar extends Component {
   }
 
   handleOpenEditMode(isCreating) {
-    const { title } = this.state.activeCategory;
     if (!isCreating) {
+      const { title } = this.state.activeCategory;
         this.setState({
           openEditMode: true,
           isCreating,
@@ -95,19 +99,28 @@ class Calendar extends Component {
 
   handleSaveCategory() {
     if (this.state.isCreating) {
-      //TODO
-      //CREATE Category
-      //name: this.state.newCategoryName
-      //icon: this.state.newCategory
+      const newFake = {
+        name: this.state.newCategoryName,
+        title: this.state.newCategory.title,
+        icon: this.state.newCategory.title,
+      };
 
+      const copy = this.state.fakeCategories;
+      copy.push(newFake);
+
+      this.setState({
+        openEditMode: false,
+        newCategoryName: '',
+        newCategory: undefined,
+        fakeCategories: copy,
+      });
     } else {
       //TODO
       //EDIT Category
       //name: this.state.newCategoryName
-      //icon: this.state.newCategory
-
+      //icon: this.state.newCategory.title
     }
-    //this.setState({ openEditMode: false });
+    console.log(this.state);
   }
 
   updateCheck() {
@@ -156,8 +169,6 @@ class Calendar extends Component {
            onClick={() => this.handleSaveCategory()}
          />,
        ];
-
-       console.log(this.state);
 
     return (
       <div>
@@ -210,6 +221,7 @@ class Calendar extends Component {
           onChange={this.setCategory}
           category={this.state.activeCategory}
           fromManager
+          fakeCategories={this.state.fakeCategories}
         />
         {
           this.state.activeCategory &&
@@ -244,7 +256,7 @@ class Calendar extends Component {
           </Dialog>
         }
           <Dialog
-            title="Create category"
+            title={this.state.isCreating ? 'Create category' : 'Edit category'}
             actions={editModeActions}
             modal={false}
             open={this.state.openEditMode}
@@ -263,7 +275,7 @@ class Calendar extends Component {
               <div style={{ marginTop: 10 }}>
                 <CategoryPicker
                   onChange={this.setNewCategory}
-                  category={this.state.isCreating ? this.state.newCategory : this.state.activeCategory }
+                  category={this.state.isCreating ? this.state.newCategory : this.state.activeCategory}
                   noNames
                   fromManager
                 />

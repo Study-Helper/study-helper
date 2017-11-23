@@ -17,14 +17,15 @@ class CategoryPicker extends React.Component {
 
   constructor(props) {
     super(props);
-    const categories = CategoryManager.loadCategories();
     const { fromManager, noNames } = this.props;
+    const categories = noNames ? CategoryManager.loadFakeCategories() : CategoryManager.loadCategories();
     this.state = {
       searchText: '',
       categories: categories,
       chosenCategory: (fromManager || noNames) ? undefined : categories[0],
       searchText: undefined
     };
+    this.getCategories = this.getCategories.bind(this);
     this.setCategory = this.setCategory.bind(this);
     this.setSearchText = this.setSearchText.bind(this);
   }
@@ -35,12 +36,23 @@ class CategoryPicker extends React.Component {
         this.setState({
           chosenCategory: null,
           searchText: '',
-          categories: CategoryManager.loadCategories()
+          categories: nextProps.noNames ? CategoryManager.loadFakeCategories() : this.getCategories(nextProps.fakeCategories)
         });
       } else {
         this.setState({ chosenCategory: null });
       }
     }
+    if (nextProps.fakeCategories && nextProps.fakeCategories.length > 0)
+      this.setState({ categories: nextProps.noNames ? CategoryManager.loadFakeCategories() : this.getCategories(nextProps.fakeCategories) });
+  }
+
+  getCategories(fakeCategories) {
+    const cats = CategoryManager.loadCategories();
+    console.log('fks', fakeCategories);
+    if (fakeCategories && fakeCategories.length > 0) {
+      return cats.concat(fakeCategories);
+    }
+    return cats;
   }
 
   setCategory(category) {
@@ -117,6 +129,7 @@ CategoryPicker.propTypes = {
   createBtn: PropTypes.bool,
   fromManager: PropTypes.bool,
   noNames: PropTypes.bool,
+  fakeCategories: PropTypes.array,
 };
 
 export default CategoryPicker;
