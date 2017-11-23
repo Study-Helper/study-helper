@@ -21,6 +21,7 @@ import GradesComponent from '../components/grades/Grades.jsx';
 import SettingsComponent from '../components/settings/Settings.jsx';
 import StatisticsComponent from '../components/statistics/Statistics.jsx';
 import AddTaskComponent from '../components/add-task/AddTaskComponent.jsx';
+import EditTaskComponent from '../components/edit-task/EditTaskComponent.jsx';
 import TaskStarted from '../components/task-started/TaskStarted.jsx';
 import CategoriesManager from '../components/categoriesManager/CategoriesManager.jsx';
 
@@ -116,6 +117,7 @@ class App extends React.Component {
               <Route path='/history' component={TaskHistoryComponent} />
               <Route path='/settings' component={SettingsComponent} />
               <Route path='/add-task' component={AddTaskComponent} />
+              <Route path='/edit-task' component={EditTaskComponent} />
               <Route path='/task-started' component={TaskStarted} />
               <Route path='/categories' component={CategoriesManager} />
               <Redirect to='/home' />

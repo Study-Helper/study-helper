@@ -13,8 +13,6 @@ import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 import { taskList } from '../../styles/styles.css.js';
 
-/* Import these to call their static#openSelf. */
-import EditTaskModal from '../modals/task-modals/EditTaskModal.jsx';
 import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
 import RemoveAllTasksModal from '../modals/task-modals/RemoveAllTasksModal.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
@@ -148,9 +146,12 @@ class HistoryTaskList extends React.Component {
     return categories[category];
   }
 
-  /** @private */
-  openEditModal(task, taskLocation) {
-    EditTaskModal.openSelf(task, taskLocation);
+   /** @private */
+  goToEditTaskScreen(task, taskLocation) {
+    this.props.history.push({
+      pathname: '/edit-task',
+      state: { task, taskLocation }
+    });
   }
 
   /** @private */
@@ -172,7 +173,7 @@ class HistoryTaskList extends React.Component {
     return {
       name: 'Edit',
       icon: <EditIcon />,
-      onClickFunction: () => this.openEditModal(task, taskLocation)
+      onClickFunction: () => this.goToEditTaskScreen(task, taskLocation)
     }
   }
 
@@ -252,7 +253,6 @@ class HistoryTaskList extends React.Component {
             </div>
           )}
         </List>
-        <EditTaskModal />
         <RemoveTaskModal />
         <RemoveAllTasksModal />
       </div>

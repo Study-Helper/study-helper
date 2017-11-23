@@ -44,6 +44,7 @@ class TaskHistory extends React.Component {
             <HistoryTaskList
               deletedTasks={this.state.deletedTasks}
               completedTasks={this.state.completedTasks}
+              history={this.props.history} // Pass the history for some crazy hacks
             />
           </Scrollbars>
         }

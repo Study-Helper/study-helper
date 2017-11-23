@@ -80,6 +80,7 @@ class Today extends React.Component {
             <RegularTaskList
               tasks={this.state.tasks}
               withFilter={this.props.withFilter}
+              history={this.props.history} // Pass the history for some crazy hacks
             />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>

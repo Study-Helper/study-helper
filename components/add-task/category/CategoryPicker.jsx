@@ -19,6 +19,7 @@ class CategoryPicker extends React.Component {
     super(props);
     const { fromManager, noNames } = this.props;
     const categories = noNames ? CategoryManager.loadFakeCategories() : CategoryManager.loadCategories();
+    // TODO: When entering EditTaskComponent, set the default category to the task's category.
     this.state = {
       searchText: '',
       categories: categories,

@@ -7,7 +7,7 @@ class TimeInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentValue: '00:00',
+      currentValue: this.props.time || '00:00',
       emitWarning: false,
     };
     this.handleChange = this.handleChange.bind(this);

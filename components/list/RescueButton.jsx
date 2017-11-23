@@ -119,7 +119,7 @@ class RescueButton extends React.Component {
       <FlatButton
         primary
         label='Confirm'
-        onClick={this.rescue} // TODO: With a date.
+        onClick={this.rescue}
       />,
     ];
   }
@@ -128,7 +128,7 @@ class RescueButton extends React.Component {
     return (
       <div>
         <IconButton 
-          tooltip='Rescue!'
+          tooltip="Rescue!"
           style={taskList.iconButton}
           onClick={this.openDatePicker}
         >
@@ -136,14 +136,14 @@ class RescueButton extends React.Component {
         </IconButton>
         <Snackbar
           open={this.state.shouldRenderSnackbar}
-          message='Your task was rescued!'
-          action='undo'
+          message="Your task was rescued!"
+          action="undo"
           autoHideDuration={UNDO_TIME_MS}
           onActionTouchTap={this.handleUndo}
           onRequestClose={this.closeSnackbar}
         />
         <Dialog
-          title="Where should this task be placed?"
+          title="Rescuing Task - Choose a Date"
           actions={this.datePickerModalActions()}
           open={this.state.datePickerOpen}
           onRequestClose={this.cancelDatePicker}

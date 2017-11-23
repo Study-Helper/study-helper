@@ -13,8 +13,6 @@ import CheckButton from './CheckButton.jsx';
 import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
 
-/* Import these to call their static#openSelf. */
-import EditTaskModal from '../modals/task-modals/EditTaskModal.jsx';
 import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
 import SubjectManager from '../../server/managers/SubjectManager.js';
 

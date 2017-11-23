@@ -64,6 +64,11 @@ const CategoryManager = {
     return fakeCategories;
   },
 
+  loadCategoryByName(categoryTitle) {
+    const categories = this.loadCategories();
+    return categories.find(category => category.title === categoryTitle);
+  },
+
   getCategoryIcon(category) {
     console.log('category received', category);
     if( !categoryMap[category.title] ) {

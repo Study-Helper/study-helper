@@ -13,8 +13,6 @@ import CheckButton from './CheckButton.jsx';
 import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
 
-/* Import these to call their static#openSelf. */
-import EditTaskModal from '../modals/task-modals/EditTaskModal.jsx';
 import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
 import CategoryManager from '../../server/managers/CategoryManager.jsx';
@@ -31,6 +29,7 @@ class RegularTaskList extends React.Component {
     this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
     this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
+    this.goToEditTaskScreen = this.goToEditTaskScreen.bind(this);
   }
 
   componentWillMount() {
@@ -95,8 +94,11 @@ class RegularTaskList extends React.Component {
   }
 
   /** @private */
-  openEditModal(task) {
-    EditTaskModal.openSelf(task);
+  goToEditTaskScreen(task) {
+    this.props.history.push({
+      pathname: '/edit-task',
+      state: { task, taskLocation: 'todo_tasks' }
+    });
   }
 
   /** @private */
@@ -110,7 +112,7 @@ class RegularTaskList extends React.Component {
     return {
       name: 'Edit',
       icon: <EditIcon />,
-      onClickFunction: () => this.openEditModal(task)
+      onClickFunction: () => this.goToEditTaskScreen(task)
     }
   }
 
@@ -186,7 +188,6 @@ class RegularTaskList extends React.Component {
             </div>
           )}
         </List>
-        <EditTaskModal />
         <RemoveTaskModal />
       </div>
     );

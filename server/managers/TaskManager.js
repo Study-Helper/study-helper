@@ -139,6 +139,30 @@ const TaskManager = {
     data.modify(`${taskLocation}[${id}][category]`, newCategory);
   },
 
+  /**
+   * Update a task's estimated duration.
+   * @param task - task object.
+   * @param newEstimatedDuration - string of type hh:mm.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
+   */
+  updateEstimatedDuration(task, newEstimatedDuration, taskLocation) {
+    const id = task.id;
+    data.modify(`${taskLocation}[${id}][estimatedDuration]`, newEstimatedDuration);
+  },
+
+  /**
+   * Update a task's start (and optionally end) date(s).
+   * @param task - task object.
+   * @param newStartDate - string of type yyy-mm-dd.
+   * @param newEndDate - string of type yyy-mm-dd.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
+   */
+  updateStartAndEndDates(task, newStartDate, newEndDate, taskLocation) {
+    const id = task.id;
+    data.modify(`${taskLocation}[${id}][startDate]`, newStartDate);
+    data.modify(`${taskLocation}[${id}][endDate]`, newEndDate);
+  },
+
   // MARK: Task-History.
 
   checkTask(task) {
