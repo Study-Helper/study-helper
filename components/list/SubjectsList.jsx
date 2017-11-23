@@ -17,20 +17,17 @@ import { taskList } from '../../styles/styles.css.js';
 import EditTaskModal from '../modals/task-modals/EditTaskModal.jsx';
 import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
-import CategoryManager from '../../server/managers/CategoryManager.jsx';
 
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
+import SubjectIconsManager from '../../server/managers/SubjectIconsManager.jsx';
 
-class RegularTaskList extends React.Component {
+class SubjectsList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { tasks: props.tasks, sortValue: "New" }
+    this.state = { subjects: props.subjects }
     this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
     this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
     this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
-    this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   componentWillMount() {
@@ -123,74 +120,34 @@ class RegularTaskList extends React.Component {
     }
   }
 
-  handleSortChange(event, index, value) {
-    this.setState((prevState, props) => {
-      const tasks = prevState.tasks;
-      const sortedTasks = TaskManager.sortTasksBy(tasks, value);
-      return { sortValue: value, tasks: sortedTasks };
-    });
-  }
-
   render() {
-    const tasks = this.state.tasks;
+    const subjects = this.state.subjects;
     return (
       <div>
-        {
-          this.props.withFilter &&
-          <ListItem
-            disabled
-            style={{height: '20px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
-          >
-            <DropDownMenu
-              value={this.state.sortValue}
-              onChange={this.handleSortChange}
-              style={{marginTop: '-22px', float:'right', width: '160px'}}
-            >
-              <MenuItem value={"New"} primaryText="New" />
-              <MenuItem value={"Category"} primaryText="Category" />
-              <MenuItem value={"Duration"} primaryText="Duration" />
-            </DropDownMenu>
-          </ListItem>
-        }
         <List style={taskList.list}>
-          {tasks.map((task, index) =>
+          {subjects.map((subject, index) =>
             <div key={index}>
               <ListItem
                 key={index}
-                primaryText={task.name}
-                secondaryText={TaskManager.prettifyEstimatedDuration(task)}
-                nestedItems={[<TaskDescription key={1} task={task} />]}
+                primaryText={subject.name}
+                secondaryText={subject.mean}
+                nestedItems={[<div> Some text </div>]}
                 leftAvatar={<Avatar
                   size={35}
-                  icon={CategoryManager.getCategoryIconFromString(task.category)}
-                  backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
+                  icon={SubjectIconsManager.getSubjectIconFromString(subject.image)}
+                  backgroundColor={SubjectIconsManager.getSubjectBackgroundColorFromString(subject.image)}
                   style={taskList.avatar}
-                />}
-              >
-                <MoreOptionsButton options={[
-                  this.editTaskOption(task),
-                  this.removeTaskOption(task)
-                ]} />
-                <CheckButton
-                  task={task}
-                  indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
-                />
-                <Link to={{ pathname: 'task-started', state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
-                  <IconButton tooltip='Start!' style={taskList.iconButton}>
-                    <PlayArrow />
-                  </IconButton>
-                </Link>
+                />}>
+                
               </ListItem>
-              {index < tasks.length - 1 && 
+              {index < subjects.length - 1 && 
                 <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
             </div>
           )}
         </List>
-        <EditTaskModal />
-        <RemoveTaskModal />
       </div>
     );
   }
 }
 
-export default RegularTaskList;
+export default SubjectsList;

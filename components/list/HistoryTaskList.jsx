@@ -13,8 +13,8 @@ import Subheader from 'material-ui/Subheader';
 import { taskList } from '../../styles/styles.css.js';
 
 /* Import these to call their static#openSelf. */
-import EditTaskModal from '../modals/EditTaskModal.jsx';
-import RemoveTaskModal from '../modals/RemoveTaskModal.jsx';
+import EditTaskModal from '../modals/task-modals/EditTaskModal.jsx';
+import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
 import CategoryManager from '../../server/managers/CategoryManager.jsx';
 

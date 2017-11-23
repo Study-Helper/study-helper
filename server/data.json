@@ -35,10 +35,12 @@
             "category": "Presentation",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
-        },
+        }
+    },
+    "completed_tasks": {
         "_uhgggjh992k": {
             "id": "_uhgggjh992k",
-            "name": "Read the lecture notes from last Friday.",
+            "name": "nonRead the lecture notes from last Wednesday.",
             "description": "Fun times.",
             "estimatedDuration": "03:30",
             "category": "Email",
@@ -89,44 +91,6 @@
             "startDate": "2017-11-22",
             "endDate": "2017-11-22",
             "id": "_7dh9ujy5keu"
-        }
-    },
-    "completed_tasks": {
-        "_rd5e1xcaffk": {
-            "id": "_rd5e1xcaffk",
-            "name": "Do something else!",
-            "description": "Fun times.",
-            "estimatedDuration": "01:15",
-            "category": "Exam",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_lqi88q0s3d": {
-            "name": "Hello World 01",
-            "description": "No description available.",
-            "estimatedDuration": "00:30",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_lqi88q0s3d"
-        },
-        "_rd5e1nh7sfa": {
-            "id": "_rd5e1nh7sfa",
-            "name": "Do something3!",
-            "description": "Fun times.",
-            "estimatedDuration": "01:15",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_872hgf52ffk": {
-            "id": "_872hgf52ffk",
-            "name": "Go meet Johnny at the coffee shop.",
-            "description": "Fun times.",
-            "estimatedDuration": "02:15",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
         }
     },
     "deleted_tasks": {
@@ -228,6 +192,8 @@
                     "grade": 13
                 }
             },
+            "mean": 11.5,
+            "image": "Maths",
             "color": "rgba(211, 47, 47, 1)"
         },
         "_5kb2v3na13": {
@@ -245,11 +211,13 @@
                     "grade": 16
                 }
             },
+            "mean": 15,
+            "image": "Physics",
             "color": "rgba(123, 31, 162, 1)"
         },
         "_5kb2vwwa13": {
             "id": "_5kb2vwwa13",
-            "name": "Chemestry",
+            "name": "Arts",
             "tests": {
                 "_30mmtggpypo": {
                     "id": "_30mmtggpypo",
@@ -257,6 +225,8 @@
                     "grade": 16
                 }
             },
+            "mean": 16,
+            "image": "Arts",
             "color": "rgba(2, 136, 209, 1)"
         }
     }

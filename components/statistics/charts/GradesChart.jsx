@@ -80,24 +80,17 @@ class GradesChart extends React.Component {
   }
 
   load_data(){
-    let loc_total_mean = 0;
+    let mean_grade = 0;
+    let counter = 0;
     const subjects = SubjectManager.loadSubjects();
     subjects.forEach(subject => {
       labels.push(subject.name);
-      let mean_grade = 0;
-      let len = 0;
-      for(let key in subject.tests){
-        let test = subject.tests[key];
-        mean_grade += test.grade
-        len++;
-      }
-      mean_grade = len != 0 ? mean_grade/len : 0;
-      loc_total_mean += mean_grade;
-      grades.push(mean_grade);
+      grades.push(subject.mean);
       colors.push(subject.color);
+      mean_grade += subject.mean;
+      counter++;
     });
-    loc_total_mean = subjects.length != 0 ? loc_total_mean/subjects.length : 0;
-    this.setState({ mean: parseFloat(loc_total_mean).toFixed(2) });
+    this.setState({ mean: parseFloat(mean_grade/counter).toFixed(2) });
   }
 
   render() {

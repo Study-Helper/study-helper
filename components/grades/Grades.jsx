@@ -6,6 +6,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 import SubjectManager from '../../server/managers/SubjectManager.js';
+import SubjectsList from '../list/SubjectsList.jsx';
 
 import Add from 'material-ui/svg-icons/content/add';
 
@@ -40,9 +41,7 @@ class Grades extends React.Component {
         {
           this.state.subjects.length > 0 ?
           <Scrollbars style={{ width: 697, height: 540 }}>
-            //TODO HERE
-            <RegularTaskList tasks={this.state.tasks} />
-            //TODO HERE
+            <SubjectsList subjects={this.state.subjects} />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
             <div><ErrorIcon /></div>

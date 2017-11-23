@@ -60,6 +60,24 @@ const TaskManager = {
     return tasks;
   },
 
+  getNumberOfToDoTasks(){
+    let numberOfTasks = 0;
+    const taskKeys = Object.keys(data.get('todo_tasks'));
+    taskKeys.forEach(function(key) {
+      numberOfTasks++;
+    });
+    return numberOfTasks;
+  },
+
+  getNumberOfCompletedTasks(){
+    let numberOfTasks = 0;
+    const taskKeys = Object.keys(data.get('completed_tasks'));
+    taskKeys.forEach(function(key) {
+      numberOfTasks++;
+    });
+    return numberOfTasks;
+  },
+
   // MARK: CRUD task operations.
 
   /**
