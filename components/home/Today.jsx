@@ -102,7 +102,7 @@ Today.propTypes = {
   title: PropTypes.string,
   range: PropTypes.array,
   height: PropTypes.number,
-  withFilter: PropTypes.boolean
+  withFilter: PropTypes.bool
 };
 
 Today.defaultProps = {

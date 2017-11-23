@@ -1,12 +1,10 @@
 import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
-import RaisedButton from 'material-ui/RaisedButton';
 import { Scrollbars } from 'react-custom-scrollbars';
 import TextField from 'material-ui/TextField';
 import HistoryTaskList from '../list/HistoryTaskList.jsx';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
-import Clear from 'material-ui/svg-icons/action/delete-forever';
 import Search from 'material-ui/svg-icons/action/search';
 import TaskManager from '../../server/managers/TaskManager.js';
 
@@ -38,12 +36,6 @@ class TaskHistory extends React.Component {
                 <TextField hintText="Search" style={{textIndent: 30, 'width':'120px', paddingRight: 30}}/>
               </div>
             }
-            <RaisedButton 
-              label="Clear All"
-              labelPosition="before" 
-              primary 
-              icon={<Clear/>}
-            />
           </ToolbarGroup>
         </Toolbar>
         {

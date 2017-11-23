@@ -176,7 +176,7 @@ const TaskManager = {
 
   /** @private */
   sortTasksByDuration(tasks, duration) {
-    return tasks.sort((task1, task2) => task1.estimatedDuration < task2.estimatedDuration);
+    return tasks.sort((task1, task2) => task1.estimatedDuration > task2.estimatedDuration);
   },
 
   sortTasksBy(tasks, value) {
