@@ -202,12 +202,12 @@
             "tests": {
                 "_5kb2233a13": {
                     "id": "_5kb2233a13",
-                    "name": "T1",
+                    "name": "Teste 1",
                     "grade": 14
                 },
                 "_30mmtdgpypo": {
                     "id": "_30mmtdgpypo",
-                    "name": "T2",
+                    "name": "Segundo Teste",
                     "grade": 16
                 }
             },

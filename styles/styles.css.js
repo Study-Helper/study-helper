@@ -43,6 +43,17 @@ export const taskDescription = {
   }
 };
 
+export const subjectDescription = {
+  description: {
+    fontFamily: 'Roboto',
+    paddingLeft: '73px'
+  },
+  icon: {
+    paddingLeft: '20px',
+    paddingTop: '7px'
+  }
+};
+
 export const taskList = {
   list: {
     width: '695px',

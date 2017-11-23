@@ -5,7 +5,7 @@ import Avatar from 'material-ui/Avatar';
 import PlayArrow from 'material-ui/svg-icons/AV/play-arrow';
 import Done from 'material-ui/svg-icons/action/done';
 import IconButton from 'material-ui/IconButton';
-import TaskDescription from './TaskDescription.jsx';
+import SubjectDescription from './SubjectDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
@@ -16,7 +16,7 @@ import { taskList } from '../../styles/styles.css.js';
 /* Import these to call their static#openSelf. */
 import EditTaskModal from '../modals/task-modals/EditTaskModal.jsx';
 import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
-import TaskManager from '../../server/managers/TaskManager.js';
+import SubjectManager from '../../server/managers/SubjectManager.js';
 
 import SubjectIconsManager from '../../server/managers/SubjectIconsManager.jsx';
 
@@ -120,6 +120,24 @@ class SubjectsList extends React.Component {
     }
   }
 
+  /** @private */
+  getDescription(subject){
+    const listItems = [];
+    const subjectTests = SubjectManager.getAllTests(subject);
+    let index = 0;
+    //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
+    for(let key in subjectTests){
+      let test = subjectTests[key];
+      let description = test.name + ": " + test.grade;
+      listItems.push(<SubjectDescription description={description}/>);
+      if(index < subjectTests.length-1){
+        //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
+      }
+      index++;
+    }
+    return listItems;
+  }
+
   render() {
     const subjects = this.state.subjects;
     return (
@@ -130,8 +148,8 @@ class SubjectsList extends React.Component {
               <ListItem
                 key={index}
                 primaryText={subject.name}
-                secondaryText={subject.mean}
-                nestedItems={[<div> Some text </div>]}
+                secondaryText={"Average: " + subject.mean}
+                nestedItems={this.getDescription(subject)}
                 leftAvatar={<Avatar
                   size={35}
                   icon={SubjectIconsManager.getSubjectIconFromString(subject.image)}

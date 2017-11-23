@@ -11,7 +11,6 @@ import Grades from 'material-ui/svg-icons/action/chrome-reader-mode';
 import Timeline from 'material-ui/svg-icons/action/timeline';
 import Face from 'material-ui/svg-icons/action/face';
 import History from 'material-ui/svg-icons/action/history';
-import Book from 'material-ui/svg-icons/action/book';
 import Settings from 'material-ui/svg-icons/action/settings';
 
 /* Import the components for each menu item. */
@@ -19,7 +18,6 @@ import TodayComponent from '../components/home/Today.jsx';
 import TaskHistoryComponent from '../components/history/TaskHistory.jsx';
 import CalendarComponent from '../components/calendar/Calendar.jsx';
 import GradesComponent from '../components/grades/Grades.jsx';
-import ScheduleComponent from '../components/schedule/Schedule.jsx';
 import SettingsComponent from '../components/settings/Settings.jsx';
 import StatisticsComponent from '../components/statistics/Statistics.jsx';
 import AddTaskComponent from '../components/add-task/AddTaskComponent.jsx';
@@ -51,15 +49,6 @@ class App extends React.Component {
                 leftIcon={<Home style={sidebar.icon} />}
                 onClick={() => this.setActiveTab('Home')}
                 style={this.state.activeTab === 'Home' ? sidebar.focusedItem : sidebar.menuItem}
-              />
-            </Link>
-            <Divider style={{backgroundColor: '#EEEEEE'}} />
-            <Link to='/schedule' style={sidebar.link}>
-              <MenuItem
-                primaryText='Schedule'
-                leftIcon={<Book style={sidebar.icon} />}
-                onClick={() => this.setActiveTab('Schedule')}
-                style={this.state.activeTab === 'Schedule' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
             <Divider style={{backgroundColor: '#EEEEEE'}} />
@@ -121,7 +110,6 @@ class App extends React.Component {
           <div style={sidebar.component}>
             <Switch>
               <Route exact path='/home' component={TodayComponent} />
-              <Route path='/schedule' component={ScheduleComponent} />
               <Route path='/calendar' component={CalendarComponent} />
               <Route path='/grades' component={GradesComponent} />
               <Route path='/statistics' component={StatisticsComponent} />
