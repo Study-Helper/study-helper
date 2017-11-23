@@ -2,7 +2,7 @@
     "todo_tasks": {
         "_5kb2v3na13": {
             "id": "_5kb2v3na13",
-            "name": "Cleanup my room.",
+            "name": "Cleanup my room...",
             "description": "No description.",
             "estimatedDuration": "00:45",
             "category": "Studying",
@@ -38,26 +38,8 @@
         }
     },
     "completed_tasks": {
-        "_uhgggjh992k": {
-            "id": "_uhgggjh992k",
-            "name": "nonRead the lecture notes from last Wednesday.",
-            "description": "Fun times.",
-            "estimatedDuration": "03:30",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_nh7tuhmuo7p": {
-            "name": "Hello 123",
-            "description": "Nothing to say here!",
-            "estimatedDuration": "02:10",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_nh7tuhmuo7p"
-        },
         "_ta2lu23603": {
-            "name": "Hello World",
+            "name": "Hello World!",
             "description": "wooo",
             "estimatedDuration": "00:45",
             "category": "Exam",
@@ -91,6 +73,15 @@
             "startDate": "2017-11-22",
             "endDate": "2017-11-22",
             "id": "_7dh9ujy5keu"
+        },
+        "_uhgggjh992k": {
+            "id": "_uhgggjh992k",
+            "name": "nonRead the lecture notes from last Wednesday.",
+            "description": "Fun times.",
+            "estimatedDuration": "03:30",
+            "category": "Email",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
         }
     },
     "deleted_tasks": {

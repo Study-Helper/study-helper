@@ -1,8 +1,12 @@
 import React from 'react';
+import moment from 'moment';
 import Rescue from 'material-ui/svg-icons/content/redo';
 import IconButton from 'material-ui/IconButton';
 import Snackbar from 'material-ui/Snackbar';
+import FlatButton from 'material-ui/FlatButton';
 import TaskManager from '../../server/managers/TaskManager.js';
+import Dialog from 'material-ui/Dialog';
+import DatePicker from '../calendar/DatePicker.jsx';
 import { taskList } from '../../styles/styles.css.js';
 
 const UNDO_TIME_MS = 3000
@@ -15,16 +19,22 @@ class RescueButton extends React.Component {
       forTask: props.task,
       indexInTheList: props.indexInTheList,
       shouldRenderSnackbar: false,
-      taskWasRescued: false
+      taskWasRescued: false,
+      datePickerOpen: false,
+      rescueStartDate: moment().format('YYYY-MM-DD'),
+      rescueEndDate: moment().format('YYYY-MM-DD')
     }
     this.rescue = this.rescue.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
     this.onUndoTimeOut = this.onUndoTimeOut.bind(this);
     this.handleUndo = this.handleUndo.bind(this);
+    this.openDatePicker = this.openDatePicker.bind(this);
+    this.cancelDatePicker = this.cancelDatePicker.bind(this);
+    this.setDate = this.setDate.bind(this);
   }
 
   rescue() {
-    this.setState({ shouldRenderSnackbar: true });
+    this.setState({ shouldRenderSnackbar: true, datePickerOpen: false });
 
     // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
     setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
@@ -83,13 +93,44 @@ class RescueButton extends React.Component {
     TaskManager.remove(addedTask, 'todo_tasks');
   }
 
+  /** @private */
+  openDatePicker() {
+    this.setState({ datePickerOpen: true });
+  }
+
+  /** @private */
+  cancelDatePicker() {
+    this.setState({ datePickerOpen: false }); 
+  }
+
+  /** @private */
+  setDate(startDate, endDate) {
+    this.setState({ rescueStartDate: startDate, rescueEndDate: endDate });
+  }
+
+  /** @private */
+  datePickerModalActions() {
+    return [
+      <FlatButton
+        secondary
+        label='Cancel'
+        onClick={this.cancelDatePicker}
+      />,
+      <FlatButton
+        primary
+        label='Confirm'
+        onClick={this.rescue} // TODO: With a date.
+      />,
+    ];
+  }
+
   render() {
     return (
       <div>
         <IconButton 
           tooltip='Rescue!'
           style={taskList.iconButton}
-          onClick={this.rescue}
+          onClick={this.openDatePicker}
         >
           <Rescue />
         </IconButton>
@@ -101,6 +142,18 @@ class RescueButton extends React.Component {
           onActionTouchTap={this.handleUndo}
           onRequestClose={this.closeSnackbar}
         />
+        <Dialog
+          title="Rescuing Task - When?"
+          actions={this.datePickerModalActions()}
+          open={this.state.datePickerOpen}
+          onRequestClose={this.cancelDatePicker}
+        >
+          <DatePicker
+            startDate={this.state.rescueStartDate}
+            endDate={this.state.rescueEndDate}
+            onChange={this.setDate}
+          />
+        </Dialog>
       </div>
     );
   }
