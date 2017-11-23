@@ -143,7 +143,7 @@ class RescueButton extends React.Component {
           onRequestClose={this.closeSnackbar}
         />
         <Dialog
-          title="Rescuing Task - When?"
+          title="Where should this task be placed?"
           actions={this.datePickerModalActions()}
           open={this.state.datePickerOpen}
           onRequestClose={this.cancelDatePicker}
