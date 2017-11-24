@@ -161,6 +161,7 @@ class RemoveTaskModal extends React.Component {
           Are you sure you want to delete this task?
         </Dialog>
         <Snackbar
+          style={{marginLeft: '70px'}}
           open={this.state.shouldRenderSnackbar}
           message='Your task was deleted!'
           action='undo'

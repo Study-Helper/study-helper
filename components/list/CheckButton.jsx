@@ -102,6 +102,7 @@ class CheckButton extends React.Component {
           <Done />
         </IconButton>
         <Snackbar
+          style={{marginLeft: '70px'}}
           open={this.state.shouldRenderSnackbar}
           message='Your task was completed!'
           action='undo'

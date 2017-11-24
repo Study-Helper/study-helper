@@ -28,16 +28,31 @@ class Today extends React.Component {
   }
 
   componentWillMount() {
-    const { location } = this.props;
+    let location = this.props.location;
+    if (!location && this.props.calendarProps) {
+      location = this.props.calendarProps.location;
+    }
+
     if (location && location.state) {
-      const { from, task } = this.props.location.state;
-      const message = from === 'task-started' ? 'Task completed!' : 'Task added!';
+
+      if (location.state.noRender) return;
+      const { from, task } = location.state;
+
+      let message = '';
+      switch (from) {
+        case 'task-started': message = 'Task completed!'; break;
+        case 'task-added': message = 'Task added!'; break;
+        case 'task-edited': message = 'Task edited!'; break;
+        default: break;
+      }
+
       setTimeout(() => this.setState({
         shouldRenderSnackbar: true,
         snackbarMessage: message
       }), 150);
     }
   }
+
 
   componentWillReceiveProps(nextProps) {
     //TODO: consider endDate (range[1])
@@ -56,6 +71,20 @@ class Today extends React.Component {
 
   render() {
     const { title, height } = this.props;
+    const pathname = this.props.location
+      ? this.props.location.pathname
+      : this.props.calendarProps.location.pathname;
+    
+    // If we're on 'Today', pass today's date.
+    // Otherwise, we're on 'Calendar' - pass the picked date.
+    const startDate = this.props.location
+      ? moment().format('YYYY-MM-DD')
+      : this.props.calendarStartDate;
+
+    const endDate = this.props.location
+      ? moment().format('YYYY-MM-DD')
+      : this.props.calendarEndDate;
+
     return (
       <div>
         <Toolbar style={appbar.barLayout}>
@@ -71,7 +100,11 @@ class Today extends React.Component {
                 <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
               </div>
             }
-            <AddTaskButton startDate={'2017-09-05'} endDate={'2017-09-05'} />
+            <AddTaskButton
+              backPath={pathname}
+              startDate={startDate}
+              endDate={endDate}
+            />
           </ToolbarGroup>
         </Toolbar>
         {
@@ -80,7 +113,7 @@ class Today extends React.Component {
             <RegularTaskList
               tasks={this.state.tasks}
               withFilter={this.props.withFilter}
-              history={this.props.history} // Pass the history for some crazy hacks
+              history={this.props.history || this.props.calendarProps.history} // Pass the history for some crazy hacks
             />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
@@ -89,6 +122,7 @@ class Today extends React.Component {
           </div>
         }
         <Snackbar
+          style={{marginLeft: '70px'}}
           open={this.state.shouldRenderSnackbar}
           message={this.state.snackbarMessage}
           autoHideDuration={2000}

@@ -139,6 +139,7 @@ class RemoveAllTasksModal extends React.Component {
           Are you sure you want to clear all tasks?
         </Dialog>
         <Snackbar
+          style={{marginLeft: '70px'}}
           open={this.state.shouldRenderSnackbar}
           message='Your tasks were deleted!'
           action='undo'

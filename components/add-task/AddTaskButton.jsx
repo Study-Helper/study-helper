@@ -8,11 +8,11 @@ import { Link } from 'react-router-dom';
  * Passing startDate and endDate as the Link's state elements is a hacky
  * way to get them on the 'AddTask' screen, but...
  */
-const AddTaskButton = ({ startDate, endDate }) => (
-  <Link to={{ pathname: '/add-task', state: { startDate, endDate }}}>
+const AddTaskButton = ({ backPath, startDate, endDate }) => (
+  <Link to={{ pathname: '/add-task', state: { backPath, startDate, endDate }}}>
     <RaisedButton
-      style={{margin: '0px 25px 0px 20px'}}
       primary
+      style={{margin: '0px 25px 0px 20px'}}
       label='Add Task'
       labelPosition='before'
       icon={<Add />}

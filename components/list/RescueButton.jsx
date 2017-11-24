@@ -135,6 +135,7 @@ class RescueButton extends React.Component {
           <Rescue />
         </IconButton>
         <Snackbar
+          style={{marginLeft: '70px'}}
           open={this.state.shouldRenderSnackbar}
           message="Your task was rescued!"
           action="undo"

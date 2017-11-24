@@ -2,10 +2,10 @@
     "todo_tasks": {
         "_5kb2v3na13": {
             "id": "_5kb2v3na13",
-            "name": "Cleanup my room...!",
+            "name": "Cleanup my room...!!!!",
             "description": "No description...",
             "estimatedDuration": "00:06",
-            "category": "Sport",
+            "category": "Friends",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
@@ -14,7 +14,7 @@
             "name": "Order pizza for dinner.",
             "description": "Pepperoni #1.",
             "estimatedDuration": "00:05",
-            "category": "Note",
+            "category": "Family",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
@@ -44,6 +44,60 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_pavaa478ird"
+        },
+        "_b3kxsm38kjd": {
+            "name": "ola",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Sport",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_b3kxsm38kjd"
+        },
+        "_hk35og6r33q": {
+            "name": "woooooo!",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Family",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_hk35og6r33q"
+        },
+        "_mybucws9cyf": {
+            "name": "Gll",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Exam",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_mybucws9cyf"
+        },
+        "_fentalhb16b": {
+            "name": "yupi",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Note",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_fentalhb16b"
+        },
+        "_bpd1bh8lp6e": {
+            "name": "It works!",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Sport",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_bpd1bh8lp6e"
+        },
+        "_dfuqaign6jo": {
+            "name": "WOOOOOY",
+            "description": "No description available.",
+            "estimatedDuration": "02:01",
+            "category": "Sport",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_dfuqaign6jo"
         }
     },
     "completed_tasks": {
@@ -94,15 +148,6 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
-        "_30mmt3qpypo": {
-            "id": "_30mmt3qpypo",
-            "name": "Email over my IPM project!",
-            "description": "The Professors email is tir@fct.unl.pt.",
-            "estimatedDuration": "00:02",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
         "_rh77azaaffk": {
             "id": "_rh77azaaffk",
             "name": "!!!!Do something!!!!!!",
@@ -111,6 +156,51 @@
             "category": "Studying",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
+        },
+        "_mssoi5mzpbh": {
+            "name": "ellowh",
+            "description": "No description available.",
+            "estimatedDuration": "-",
+            "category": "Email",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_mssoi5mzpbh"
+        },
+        "_y38thjpz7al": {
+            "name": "hyyyyyuu",
+            "description": "Hello Worodl",
+            "estimatedDuration": "-",
+            "category": "Presentation",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_y38thjpz7al"
+        },
+        "_cuow8f1b3go": {
+            "name": "Hello World!!!!!!",
+            "description": "Wooop",
+            "estimatedDuration": "-",
+            "category": "Email",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_cuow8f1b3go"
+        },
+        "_dmj26lhz4is": {
+            "name": "Testing 1",
+            "description": "aaa",
+            "estimatedDuration": "-",
+            "category": "Note",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_dmj26lhz4is"
+        },
+        "_zd4y3rz7d3s": {
+            "name": "Hello 0101",
+            "description": "aaaaa",
+            "estimatedDuration": "00:01",
+            "category": "Sport",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_zd4y3rz7d3s"
         }
     },
     "categories": {

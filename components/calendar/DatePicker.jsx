@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { DateRange } from 'react-date-range';
 
 class DatePicker extends Component {
+
   constructor(props) {
     super(props);
     this.handleStartSelect = this.handleStartSelect.bind(this);

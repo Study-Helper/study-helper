@@ -95,9 +95,10 @@ class RegularTaskList extends React.Component {
 
   /** @private */
   goToEditTaskScreen(task) {
+    const backPath = this.props.history.location.pathname;
     this.props.history.push({
       pathname: '/edit-task',
-      state: { task, taskLocation: 'todo_tasks' }
+      state: { task, backPath, taskLocation: 'todo_tasks' }
     });
   }
 
@@ -177,7 +178,9 @@ class RegularTaskList extends React.Component {
                   task={task}
                   indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
                 />
-                <Link to={{ pathname: 'task-started', state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
+                <Link to={{
+                  pathname: 'task-started',
+                  state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
                   <IconButton tooltip='Start!' style={taskList.iconButton}>
                     <PlayArrow />
                   </IconButton>

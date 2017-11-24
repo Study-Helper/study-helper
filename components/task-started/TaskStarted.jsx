@@ -58,18 +58,6 @@ class TaskStarted extends Component {
     });
   }
 
-  checkTask() {
-    // TODO: This will probably be re-done (to use the CheckButton component,
-    // which grants the undo option).
-    TaskManager.add(this.props.location.state.task, 'completed_tasks');
-    TaskManager.remove(this.props.location.state.task, 'todo_tasks');
-    // Back to the home screen.
-    this.props.history.push({
-      pathname: '/home',
-      state: { from: 'task-started', task: this.props.location.state.task }
-    });
-  }
-
   handleOpen() {
    this.setState({ open: true });
   }

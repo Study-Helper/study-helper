@@ -70,7 +70,7 @@ const CategoryManager = {
   },
 
   getCategoryIcon(category) {
-    console.log('category received', category);
+    // console.log('category received', category);
     if( !categoryMap[category.title] ) {
       console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>> thisssss', category);
     }
