@@ -2,10 +2,10 @@
     "todo_tasks": {
         "_5kb2v3na13": {
             "id": "_5kb2v3na13",
-            "name": "Cleanup my room...!!",
+            "name": "Cleanup my room...!!!!",
             "description": "No description...",
             "estimatedDuration": "00:06",
-            "category": "Sport",
+            "category": "Friends",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
@@ -14,7 +14,7 @@
             "name": "Order pizza for dinner.",
             "description": "Pepperoni #1.",
             "estimatedDuration": "00:05",
-            "category": "Note",
+            "category": "Family",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
@@ -80,6 +80,24 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_fentalhb16b"
+        },
+        "_bpd1bh8lp6e": {
+            "name": "It works!",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Sport",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_bpd1bh8lp6e"
+        },
+        "_dfuqaign6jo": {
+            "name": "WOOOOOY",
+            "description": "No description available.",
+            "estimatedDuration": "02:01",
+            "category": "Sport",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_dfuqaign6jo"
         }
     },
     "completed_tasks": {
@@ -127,15 +145,6 @@
             "description": "Fun times.",
             "estimatedDuration": "01:15",
             "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_30mmt3qpypo": {
-            "id": "_30mmt3qpypo",
-            "name": "Email over my IPM project!",
-            "description": "The Professors email is tir@fct.unl.pt.",
-            "estimatedDuration": "00:02",
-            "category": "Presentation",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },

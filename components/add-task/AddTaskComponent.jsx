@@ -26,8 +26,8 @@ class AddTaskComponent extends React.Component {
     this.state = {
       open: false,
       title: '',
-      startDate: moment().format('YYYY-MM-DD'),
-      endDate: moment().format('YYYY-MM-DD'),
+      startDate: this.props.location.state.startDate,
+      endDate: this.props.location.state.endDate,
       estimatedTime: '00:01',
       description: '',
       searchText: undefined,
@@ -44,6 +44,7 @@ class AddTaskComponent extends React.Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.confirmAddTask = this.confirmAddTask.bind(this);
     this.resetFields = this.resetFields.bind(this);
+    this.goBackWithState = this.goBackWithState.bind(this);
   }
 
   componentDidMount() {
@@ -112,8 +113,6 @@ class AddTaskComponent extends React.Component {
     };
     TaskManager.add(taskToAdd, 'todo_tasks');
 
-    console.log(this.props.location.state);
-
     if (reset) {
       this.resetFields();
     } else {
@@ -124,8 +123,20 @@ class AddTaskComponent extends React.Component {
     }
   }
 
+  goBackWithState() {
+    const { backPath } = this.props.location.state;
+    // A "Task" to match the EditTaskComponent... Don't ask.
+    const fakeTask = {
+      startDate: this.props.location.state.startDate,
+      endDate: this.props.location.state.endDate
+    }
+    this.props.history.push({
+      pathname: backPath,
+      state: { noRender: true, from: 'task-added', task: fakeTask }
+    });
+  }
+
   render() {
-    const goBack = this.props.history.goBack;
     const actions = [
       <FlatButton
         label="Cancel"
@@ -151,7 +162,7 @@ class AddTaskComponent extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <IconButton onClick={goBack} tooltip='Back'><GoBack /></IconButton>
+            <IconButton onClick={this.goBackWithState} tooltip='Back'><GoBack /></IconButton>
             <ToolbarTitle style={{ marginLeft: '15px' }} text='Add Task' />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
@@ -172,7 +183,6 @@ class AddTaskComponent extends React.Component {
             hintText={'Title'}
             floatingLabelText='Task Title'
             onChange={this.setTitle}
-            // errorText='This field is required'
           />
           <CategoryPicker
             onChange={this.setCategory}
@@ -225,7 +235,7 @@ class AddTaskComponent extends React.Component {
           />
           <RaisedButton
             label='Cancel'
-            onClick={goBack}
+            onClick={this.goBackWithState}
             style={addTask.button}
             secondary
           />

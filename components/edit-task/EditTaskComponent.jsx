@@ -48,6 +48,7 @@ class EditTaskComponent extends React.Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.confirmEditTask = this.confirmEditTask.bind(this);
     this.resetFields = this.resetFields.bind(this);
+    this.goBackWithState = this.goBackWithState.bind(this)
   }
 
   setTitle(event) {
@@ -115,8 +116,15 @@ class EditTaskComponent extends React.Component {
     });
   }
 
+  goBackWithState() {
+    const { task, backPath } = this.props.location.state;
+    this.props.history.push({
+      pathname: backPath,
+      state: { noRender: true, from: 'task-edited', task }
+    });
+  }
+
   render() {
-    const goBack = this.props.history.goBack;
     const actions = [
       <FlatButton
         secondary
@@ -141,7 +149,7 @@ class EditTaskComponent extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <IconButton onClick={goBack} tooltip='Back'><GoBack /></IconButton>
+            <IconButton onClick={this.goBackWithState} tooltip='Back'><GoBack /></IconButton>
             <ToolbarTitle style={{ marginLeft: '15px' }} text='Edit Task' />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
@@ -207,7 +215,7 @@ class EditTaskComponent extends React.Component {
           />
           <RaisedButton
             label='Cancel'
-            onClick={goBack}
+            onClick={this.goBackWithState}
             style={addTask.button}
             secondary
           />

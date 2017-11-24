@@ -19,6 +19,15 @@ class Calendar extends Component {
     this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
+  componentWillMount() {
+    if (this.props.location.state && this.props.location.state.task) {
+      this.setState({
+        startDate: this.props.location.state.task.startDate,
+        endDate: this.props.location.state.task.endDate
+      });
+    }
+  }
+
   setDate(startDate, endDate) {
     this.setState({ startDate, endDate });
   }
@@ -36,7 +45,11 @@ class Calendar extends Component {
             <ToolbarTitle style={{ marginLeft: '15px' }} text="Calendar" />
           </ToolbarGroup>
         </Toolbar>
-        <DatePicker onChange={this.setDate} />
+        <DatePicker
+          startDate={this.state.startDate} // TODO: this.location.state.goBackStrtDate
+          endDate={this.state.endDate}
+          onChange={this.setDate}
+        />
         <p />
         <Today 
           title="Scheduled Tasks"
@@ -44,6 +57,8 @@ class Calendar extends Component {
           range={[startDate, endDate]}
           withFilter={false}
           calendarProps={this.props}
+          calendarStartDate={this.state.startDate}
+          calendarEndDate={this.state.endDate}
         />
       </div>
     );

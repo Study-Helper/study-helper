@@ -34,6 +34,8 @@ class Today extends React.Component {
     }
 
     if (location && location.state) {
+
+      if (location.state.noRender) return;
       const { from, task } = location.state;
 
       let message = '';
@@ -72,6 +74,17 @@ class Today extends React.Component {
     const pathname = this.props.location
       ? this.props.location.pathname
       : this.props.calendarProps.location.pathname;
+    
+    // If we're on 'Today', pass today's date.
+    // Otherwise, we're on 'Calendar' - pass the picked date.
+    const startDate = this.props.location
+      ? moment().format('YYYY-MM-DD')
+      : this.props.calendarStartDate;
+
+    const endDate = this.props.location
+      ? moment().format('YYYY-MM-DD')
+      : this.props.calendarEndDate;
+
     return (
       <div>
         <Toolbar style={appbar.barLayout}>
@@ -87,7 +100,11 @@ class Today extends React.Component {
                 <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
               </div>
             }
-            <AddTaskButton backPath={pathname} startDate={'2017-09-05'} endDate={'2017-09-05'} />
+            <AddTaskButton
+              backPath={pathname}
+              startDate={startDate}
+              endDate={endDate}
+            />
           </ToolbarGroup>
         </Toolbar>
         {
@@ -105,6 +122,7 @@ class Today extends React.Component {
           </div>
         }
         <Snackbar
+          style={{marginLeft: '70px'}}
           open={this.state.shouldRenderSnackbar}
           message={this.state.snackbarMessage}
           autoHideDuration={2000}
