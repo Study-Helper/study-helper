@@ -20,6 +20,8 @@ import TimeInput from '../add-task/TimeInput.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
 import CategoryManager from '../../server/managers/CategoryManager.jsx';
 
+const UNDO_TIME_MS = 3000
+
 class EditTaskComponent extends React.Component {
 
   constructor(props) {
@@ -107,7 +109,6 @@ class EditTaskComponent extends React.Component {
     TaskManager.updateEstimatedDuration(task, estimatedTime, taskLocation);
     TaskManager.updateStartAndEndDates(task, startDate, endDate, taskLocation);
 
-    // Go back and render the snackbar.
     this.props.history.goBack();
   }
 

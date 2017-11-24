@@ -6,17 +6,25 @@ import Today from '../home/Today.jsx';
 import { appbar } from '../../styles/styles.css.js';
 
 class Calendar extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       startDate: undefined,
       endDate: undefined,
+      shouldRenderSnackbar: false,
+      snackbarMessage: ''
     };
     this.setDate = this.setDate.bind(this);
+    this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
   setDate(startDate, endDate) {
     this.setState({ startDate, endDate });
+  }
+
+  closeSnackbar() {
+    this.setState({ shouldRenderSnackbar: false });
   }
 
   render() {
@@ -35,6 +43,7 @@ class Calendar extends Component {
           height={150}
           range={[startDate, endDate]}
           withFilter={false}
+          calendarProps={this.props}
         />
       </div>
     );

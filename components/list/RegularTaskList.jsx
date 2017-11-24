@@ -177,7 +177,9 @@ class RegularTaskList extends React.Component {
                   task={task}
                   indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
                 />
-                <Link to={{ pathname: 'task-started', state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
+                <Link to={{
+                  pathname: 'task-started',
+                  state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
                   <IconButton tooltip='Start!' style={taskList.iconButton}>
                     <PlayArrow />
                   </IconButton>

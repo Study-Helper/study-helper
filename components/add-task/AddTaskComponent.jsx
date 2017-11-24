@@ -28,12 +28,12 @@ class AddTaskComponent extends React.Component {
       title: '',
       startDate: moment().format('YYYY-MM-DD'),
       endDate: moment().format('YYYY-MM-DD'),
-      estimatedTime: undefined,
+      estimatedTime: '00:01',
       description: '',
       searchText: undefined,
       category: undefined,
       requiredFieldsFilled: false
-     };
+    };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.setTitle = this.setTitle.bind(this);
@@ -87,7 +87,6 @@ class AddTaskComponent extends React.Component {
   }
 
   resetFields() {
-    console.log('resetFields');
     this.setState({
       title: '',
       startDate: moment().format('YYYY-MM-DD'),
@@ -101,11 +100,11 @@ class AddTaskComponent extends React.Component {
   }
 
   confirmAddTask(reset) {
-    const { title, description, startDate, endDate, estimatedDuration, category } = this.state;
+    const { title, description, startDate, endDate, estimatedTime, category } = this.state;
     const taskToAdd = {
       name: title,
       description: description || 'No description available.',
-      estimatedDuration: estimatedDuration || '-',
+      estimatedDuration: estimatedTime || '-',
       category: category.title,
       startDate: startDate,
       endDate: endDate
@@ -116,8 +115,8 @@ class AddTaskComponent extends React.Component {
       this.resetFields();
     } else {
       this.props.history.push({
-        pathname: '/home',
-        state: { from: 'task-added', task: this.props.location.state.task }
+        pathname: this.props.location.state.from,
+        state: { from: 'task-added', task: taskToAdd }
       });
     }
   }

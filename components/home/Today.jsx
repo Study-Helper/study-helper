@@ -31,13 +31,22 @@ class Today extends React.Component {
     const { location } = this.props;
     if (location && location.state) {
       const { from, task } = this.props.location.state;
-      const message = from === 'task-started' ? 'Task completed!' : 'Task added!';
+
+      let message = '';
+      switch (from) {
+        case 'task-started': message = 'Task completed!'; break;
+        case 'task-added': message = 'Task added!'; break;
+        case 'task-edited': message = 'Task edited!'; break;
+        default: break;
+      }
+
       setTimeout(() => this.setState({
         shouldRenderSnackbar: true,
         snackbarMessage: message
       }), 150);
     }
   }
+
 
   componentWillReceiveProps(nextProps) {
     //TODO: consider endDate (range[1])
@@ -56,6 +65,9 @@ class Today extends React.Component {
 
   render() {
     const { title, height } = this.props;
+    const pathname = this.props.location
+      ? this.props.location.pathname
+      : this.props.calendarProps.location.pathname;
     return (
       <div>
         <Toolbar style={appbar.barLayout}>
@@ -71,7 +83,7 @@ class Today extends React.Component {
                 <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
               </div>
             }
-            <AddTaskButton startDate={'2017-09-05'} endDate={'2017-09-05'} />
+            <AddTaskButton from={pathname} startDate={'2017-09-05'} endDate={'2017-09-05'} />
           </ToolbarGroup>
         </Toolbar>
         {
