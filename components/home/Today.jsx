@@ -28,9 +28,13 @@ class Today extends React.Component {
   }
 
   componentWillMount() {
-    const { location } = this.props;
+    let location = this.props.location;
+    if (!location && this.props.calendarProps) {
+      location = this.props.calendarProps.location;
+    }
+
     if (location && location.state) {
-      const { from, task } = this.props.location.state;
+      const { from, task } = location.state;
 
       let message = '';
       switch (from) {
@@ -83,7 +87,7 @@ class Today extends React.Component {
                 <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
               </div>
             }
-            <AddTaskButton from={pathname} startDate={'2017-09-05'} endDate={'2017-09-05'} />
+            <AddTaskButton backPath={pathname} startDate={'2017-09-05'} endDate={'2017-09-05'} />
           </ToolbarGroup>
         </Toolbar>
         {
@@ -92,7 +96,7 @@ class Today extends React.Component {
             <RegularTaskList
               tasks={this.state.tasks}
               withFilter={this.props.withFilter}
-              history={this.props.history} // Pass the history for some crazy hacks
+              history={this.props.history || this.props.calendarProps.history} // Pass the history for some crazy hacks
             />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>

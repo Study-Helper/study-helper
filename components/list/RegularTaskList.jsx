@@ -95,9 +95,10 @@ class RegularTaskList extends React.Component {
 
   /** @private */
   goToEditTaskScreen(task) {
+    const backPath = this.props.history.location.pathname;
     this.props.history.push({
       pathname: '/edit-task',
-      state: { task, taskLocation: 'todo_tasks' }
+      state: { task, backPath, taskLocation: 'todo_tasks' }
     });
   }
 

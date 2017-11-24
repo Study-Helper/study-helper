@@ -100,7 +100,7 @@ class EditTaskComponent extends React.Component {
   }
 
   confirmEditTask() {
-    const { task, taskLocation } = this.props.location.state;
+    const { task, backPath, taskLocation } = this.props.location.state;
     const { title, description, startDate, endDate, estimatedTime, category } = this.state;
 
     TaskManager.updateName(task, title, taskLocation);
@@ -109,7 +109,10 @@ class EditTaskComponent extends React.Component {
     TaskManager.updateEstimatedDuration(task, estimatedTime, taskLocation);
     TaskManager.updateStartAndEndDates(task, startDate, endDate, taskLocation);
 
-    this.props.history.goBack();
+    this.props.history.push({
+      pathname: backPath,
+      state: { from: 'task-edited', task }
+    });
   }
 
   render() {

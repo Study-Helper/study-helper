@@ -100,22 +100,25 @@ class AddTaskComponent extends React.Component {
   }
 
   confirmAddTask(reset) {
+    const { backPath } = this.props.location.state;
     const { title, description, startDate, endDate, estimatedTime, category } = this.state;
     const taskToAdd = {
       name: title,
       description: description || 'No description available.',
-      estimatedDuration: estimatedTime || '-',
+      estimatedDuration: estimatedTime || '00:01',
       category: category.title,
       startDate: startDate,
       endDate: endDate
     };
     TaskManager.add(taskToAdd, 'todo_tasks');
 
+    console.log(this.props.location.state);
+
     if (reset) {
       this.resetFields();
     } else {
       this.props.history.push({
-        pathname: this.props.location.state.from,
+        pathname: backPath,
         state: { from: 'task-added', task: taskToAdd }
       });
     }
