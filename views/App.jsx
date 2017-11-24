@@ -143,22 +143,7 @@ class App extends React.Component {
               />
             </Link>
 
-            <div style={{marginBottom: '100px', backgroundColor: '#21405B', height: '60px', marginTop: '150px'}}>
-              <div style={{marginLeft: '5px'}}>
-                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
-                  <FontIcon className="fa fa-github" />
-                </IconButton>
-                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
-                  <FontIcon className="fa fa-facebook-square" />
-                </IconButton>
-                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
-                  <FontIcon className="fa fa-instagram" />
-                </IconButton>
-                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
-                  <FontIcon className="fa fa-dribbble" />
-                </IconButton>
-              </div>
-            </div>
+            
           </List>
 
           <div style={sidebar.component}>
