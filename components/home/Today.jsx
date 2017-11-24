@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
 import FontIcon from 'material-ui/FontIcon';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import RegularTaskList from '../list/RegularTaskList.jsx';
 import AddTaskButton from '../add-task/AddTaskButton.jsx';
 import Search from 'material-ui/svg-icons/action/search';
+import moment from 'moment';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import { appbar } from '../../styles/styles.css.js';
+import Snackbar from 'material-ui/Snackbar';
 import TaskManager from '../../server/managers/TaskManager.js';
 
 class Today extends React.Component {
@@ -19,19 +20,22 @@ class Today extends React.Component {
     super(props);
     // Synchronously load "today's" tasks.
     this.state = {
-      tasks: TaskManager.loadTasksByDate('2017-09-05')
+      tasks: TaskManager.loadTasksByDate('2017-09-05'),
+      shouldRenderSnackbar: false,
+      snackbarMessage: ''
     }
+    this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
   componentWillMount() {
     const { location } = this.props;
     if (location && location.state) {
       const { from, task } = this.props.location.state;
-
-      if (from === 'task-started') {
-        //task completed. TODO: show feedback message
-        console.log('Task completed:', task);
-      }
+      const message = from === 'task-started' ? 'Task completed!' : 'Task added!';
+      setTimeout(() => this.setState({
+        shouldRenderSnackbar: true,
+        snackbarMessage: message
+      }), 150);
     }
   }
 
@@ -45,13 +49,18 @@ class Today extends React.Component {
     });
   }
 
+  /** @private */
+  closeSnackbar() {
+    this.setState({ shouldRenderSnackbar: false });
+  }
+
   render() {
     const { title, height } = this.props;
     return (
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{marginLeft: '15px'}} text={title || 'Today'} />
+            <ToolbarTitle style={{marginLeft: '15px'}} text={title || `Today - ${moment().format("MMMM Do")}`} />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
@@ -68,13 +77,23 @@ class Today extends React.Component {
         {
           this.state.tasks.length > 0 ?
           <Scrollbars style={{ width: 697, height: height || 540 }}>
-            <RegularTaskList tasks={this.state.tasks} />
+            <RegularTaskList
+              tasks={this.state.tasks}
+              withFilter={this.props.withFilter}
+              history={this.props.history} // Pass the history for some crazy hacks
+            />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
             <div><ErrorIcon /></div>
             <div>No tasks to show!</div>
           </div>
         }
+        <Snackbar
+          open={this.state.shouldRenderSnackbar}
+          message={this.state.snackbarMessage}
+          autoHideDuration={2000}
+          onRequestClose={this.closeSnackbar}
+        />
       </div>
     );
   }
@@ -84,6 +103,11 @@ Today.propTypes = {
   title: PropTypes.string,
   range: PropTypes.array,
   height: PropTypes.number,
+  withFilter: PropTypes.bool
+};
+
+Today.defaultProps = {
+  withFilter: true
 };
 
 export default Today;

@@ -55,7 +55,25 @@ const CategoryManager = {
     return categories;
   },
 
+  loadFakeCategories() {
+    const fakeCategories = [];
+    const keys = Object.keys(categoryMap);
+    keys.forEach(function(key) {
+      fakeCategories.push({ title: key });
+    });
+    return fakeCategories;
+  },
+
+  loadCategoryByName(categoryTitle) {
+    const categories = this.loadCategories();
+    return categories.find(category => category.title === categoryTitle);
+  },
+
   getCategoryIcon(category) {
+    console.log('category received', category);
+    if( !categoryMap[category.title] ) {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>> thisssss', category);
+    }
     return categoryMap[category.title].icon;
   },
 

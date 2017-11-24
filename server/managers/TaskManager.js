@@ -60,18 +60,38 @@ const TaskManager = {
     return tasks;
   },
 
+  getNumberOfToDoTasks(){
+    let numberOfTasks = 0;
+    const taskKeys = Object.keys(data.get('todo_tasks'));
+    taskKeys.forEach(function(key) {
+      numberOfTasks++;
+    });
+    return numberOfTasks;
+  },
+
+  getNumberOfCompletedTasks(){
+    let numberOfTasks = 0;
+    const taskKeys = Object.keys(data.get('completed_tasks'));
+    taskKeys.forEach(function(key) {
+      numberOfTasks++;
+    });
+    return numberOfTasks;
+  },
+
   // MARK: CRUD task operations.
 
   /**
    * Adds a new task to the JSON file.
-   * NOTE: If the task has an ID, then it's a task that was removed, and
-   * we're undoing that action.
+   * NOTE: If the task has an ID, either:
+   * - It's a task that was removed, and we're undoing that action.
+   * - Or we're adding it to some list in the history.
    * @param task - task object.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
    */
-  add(task) {
+  add(task, taskLocation) {
     const id = task.id || generateRandomId();
     task.id = id;
-    data.add(`todo_tasks[${id}]`, task);
+    data.add(`${taskLocation}[${id}]`, task);
   },
 
   /**
@@ -119,12 +139,77 @@ const TaskManager = {
     data.modify(`${taskLocation}[${id}][category]`, newCategory);
   },
 
+  /**
+   * Update a task's estimated duration.
+   * @param task - task object.
+   * @param newEstimatedDuration - string of type hh:mm.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
+   */
+  updateEstimatedDuration(task, newEstimatedDuration, taskLocation) {
+    const id = task.id;
+    data.modify(`${taskLocation}[${id}][estimatedDuration]`, newEstimatedDuration);
+  },
+
+  /**
+   * Update a task's start (and optionally end) date(s).
+   * @param task - task object.
+   * @param newStartDate - string of type yyy-mm-dd.
+   * @param newEndDate - string of type yyy-mm-dd.
+   * @param taskLocation - String: 'todo_tasks', 'missed_tasks' or 'deleted_tasks'.
+   */
+  updateStartAndEndDates(task, newStartDate, newEndDate, taskLocation) {
+    const id = task.id;
+    data.modify(`${taskLocation}[${id}][startDate]`, newStartDate);
+    data.modify(`${taskLocation}[${id}][endDate]`, newEndDate);
+  },
+
   // MARK: Task-History.
 
   checkTask(task) {
     const id = task.id;
     data.del(`todo_tasks[${id}]`);
     data.add(`completed_tasks[${id}]`, task);
+  },
+
+  // MARK: Utilities.
+
+  /**
+   * Turns something like 03:20 into '3 hours, 20 minutes'.
+   */
+  prettifyEstimatedDuration(task) {
+    const duration = task.estimatedDuration;
+    const [hours, minutes] = duration.split(':');
+    const hoursAsInt = parseInt(hours);
+    const minutesAsInt = parseInt(minutes);
+    const hoursText = !hoursAsInt ? '' : hoursAsInt > 1 ? `${hoursAsInt} hours, ` : `${hoursAsInt} hour, `;
+    const minutesText = !minutesAsInt ? '' : minutesAsInt > 1 ? `${minutesAsInt} minutes` : `${minutesAsInt} minute`;
+    return hoursText + minutesText;
+  },
+
+  // MARK: Sorting.
+
+  /** @private */
+  sortTasksByNew(tasks) {
+    return this.loadTasksByDate(tasks[0].startDate);
+  },
+
+  /** @private */
+  sortTasksByCategory(tasks) {
+    return tasks.sort((task1, task2) => task1.category > task2.category);
+  },
+
+  /** @private */
+  sortTasksByDuration(tasks, duration) {
+    return tasks.sort((task1, task2) => task1.estimatedDuration > task2.estimatedDuration);
+  },
+
+  sortTasksBy(tasks, value) {
+    switch (value) {
+      case "New": return this.sortTasksByNew(tasks);
+      case "Category": return this.sortTasksByCategory(tasks);
+      case "Duration": return this.sortTasksByDuration(tasks);
+      default: return;
+    }
   }
 }
 

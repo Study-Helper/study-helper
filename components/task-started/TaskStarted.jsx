@@ -8,12 +8,14 @@ import Avatar from 'material-ui/Avatar';
 import Done from 'material-ui/svg-icons/action/done';
 import Pause from 'material-ui/svg-icons/av/pause';
 import Stop from 'material-ui/svg-icons/av/stop';
+import CheckButton from '../list/CheckButton.jsx';
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import FlatButton from 'material-ui/FlatButton';
 
 import TaskDescription from '../list/TaskDescription.jsx';
 import Timer from './Timer.jsx';
 import CategoryManager from '../../server/managers/CategoryManager.jsx';
+import TaskManager from '../../server/managers/TaskManager.js';
 import { appbar } from '../../styles/styles.css.js';
 
 class TaskStarted extends Component {
@@ -45,6 +47,23 @@ class TaskStarted extends Component {
   }
 
   checkTask() {
+    // TODO: This will probably be re-done (to use the CheckButton component,
+    // which grants the undo option).
+    TaskManager.add(this.props.location.state.task, 'completed_tasks');
+    TaskManager.remove(this.props.location.state.task, 'todo_tasks');
+    // Back to the home screen.
+    this.props.history.push({
+      pathname: '/home',
+      state: { from: 'task-started', task: this.props.location.state.task }
+    });
+  }
+
+  checkTask() {
+    // TODO: This will probably be re-done (to use the CheckButton component,
+    // which grants the undo option).
+    TaskManager.add(this.props.location.state.task, 'completed_tasks');
+    TaskManager.remove(this.props.location.state.task, 'todo_tasks');
+    // Back to the home screen.
     this.props.history.push({
       pathname: '/home',
       state: { from: 'task-started', task: this.props.location.state.task }
@@ -94,13 +113,12 @@ class TaskStarted extends Component {
             style={taskList.avatar}
           />}
         >
-          <IconButton
-            tooltip='Check!'
-            onClick={() => this.checkTask()}
-            style={taskList.iconButton}
-          >
-            <Done />
-          </IconButton>
+          <CheckButton
+            task={task}
+            indexInTheList={this.props.location.state.index}
+            history={this.props.history}
+            redirectsToHome
+          />
           <IconButton
             tooltip='Stop!'
             onClick={() => this.confirmStopTask()}

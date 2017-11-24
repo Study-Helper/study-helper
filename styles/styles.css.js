@@ -43,6 +43,17 @@ export const taskDescription = {
   }
 };
 
+export const subjectDescription = {
+  description: {
+    fontFamily: 'Roboto',
+    paddingLeft: '73px'
+  },
+  icon: {
+    paddingLeft: '20px',
+    paddingTop: '7px'
+  }
+};
+
 export const taskList = {
   list: {
     width: '695px',
@@ -81,12 +92,17 @@ export const addTask = {
   },
   button: {
     float: 'right',
-    marginTop: '40px'
+    marginLeft: '10px'
   }
 };
 
 export const categoryPicker = {
   root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    float: 'right'
+  },
+  rootNoTitle: {
     display: 'flex',
     flexWrap: 'wrap',
   },
@@ -97,16 +113,33 @@ export const categoryPicker = {
     overflowY: 'auto',
     border: '1px solid #E0E0E0'
   },
+  largeGrid: {
+    display: 'flex',
+    width: 675,
+    maxHeight: 420,
+    overflowY: 'auto',
+    border: 'none',
+    marginTop: 10
+  },
   // TODO: This is not well.
   infoText: {
     color: '#BDBDBD',
-    fontFamily: 'Roboto'
+    fontFamily: 'Roboto',
+    fontSize: '18px',
+    height: '40px',
+    lineHeight: '40px',
+    marginRight: '10px'
   },
   categoryItemDefault: {
     height: '85px'
   },
   categoryItemSelected: {
     height: '85px',
+    backgroundColor: 'rgba(220, 220, 220, 1)',
+    borderRadius: '5px'
+  },
+  categoryNoTitleItemSelected: {
+    height: '65px', //85
     backgroundColor: 'rgba(220, 220, 220, 1)',
     borderRadius: '5px'
   }
@@ -117,8 +150,12 @@ export const categoryItem = {
     marginLeft: '28px',
     marginTop: '7px'
   },
+  avatarNoTitle: {
+    marginLeft: '15px',
+    marginTop: '7px'
+  },
   font: {
-    textAlign:'center',
+    textAlign: 'center',
     fontSize: 'small',
     fontFamily: 'Roboto',
     color: 'rgba(0, 0, 0, 0.87)',
@@ -132,4 +169,3 @@ export const StudentsMeanText = {
   fontFamily: 'Roboto',
   color: 'rgba(0, 0, 0, 1)'
 };
-

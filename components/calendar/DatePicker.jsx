@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import { DateRange } from 'react-date-range';
 
@@ -10,8 +11,11 @@ class DatePicker extends Component {
   }
 
   handleStartSelect(date) {
-    const currDate = date.startDate.format('YYYY-MM-DD').toString();
-    this.props.onChange(currDate, currDate);
+    const validRange = this.props.startDate && this.props.endDate;
+    if (!validRange) {
+      const currDate = date.startDate.format('YYYY-MM-DD').toString();
+      this.props.onChange(currDate, currDate);
+    }
 	}
 
   handleChangeSelect(date) {
@@ -19,11 +23,15 @@ class DatePicker extends Component {
   }
 
   render() {
+    const { startDate, endDate } = this.props;
+    const validRange = (startDate && endDate);
     return (
       <div style={{ textAlign: 'center' }}>
         <DateRange
 					onInit={this.handleStartSelect}
 					onChange={this.handleChangeSelect}
+          startDate={validRange ? moment(startDate, 'YYYY-MM-DD') : undefined}
+          endDate={validRange ? moment(endDate, 'YYYY-MM-DD') : undefined}
           linkedCalendars
           theme={{
             Calendar: {
@@ -40,6 +48,8 @@ class DatePicker extends Component {
 }
 
 DatePicker.propTypes = {
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 

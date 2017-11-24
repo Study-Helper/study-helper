@@ -1,20 +1,20 @@
 import React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
-import Rescue from 'material-ui/svg-icons/content/redo';
 import IconButton from 'material-ui/IconButton';
 import TaskDescription from './TaskDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
-import DeleteForeverIcon from 'material-ui/svg-icons/action/delete-forever';
+import RescueButton from './RescueButton.jsx';
+import ClearIcon from 'material-ui/svg-icons/content/clear';
 import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import Divider from 'material-ui/Divider';
+import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 import { taskList } from '../../styles/styles.css.js';
 
-/* Import these to call their static#openSelf. */
-import EditTaskModal from '../modals/EditTaskModal.jsx';
-import RemoveTaskModal from '../modals/RemoveTaskModal.jsx';
+import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
+import RemoveAllTasksModal from '../modals/task-modals/RemoveAllTasksModal.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
 import CategoryManager from '../../server/managers/CategoryManager.jsx';
 
@@ -42,18 +42,24 @@ class HistoryTaskList extends React.Component {
     this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
     this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
     this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
+    this.subscribeToAllTasksRemovedEvent = this.subscribeToAllTasksRemovedEvent.bind(this);
+    this.subscribeToAllTasksAddedEvent = this.subscribeToAllTasksAddedEvent.bind(this);
   }
 
   componentWillMount() {
     this.subscribeToTaskUpdatedEvents();
     this.subscribeToTaskRemovedEvents();
     this.subscribeToTaskAddedEvents();
+    this.subscribeToAllTasksRemovedEvent();
+    this.subscribeToAllTasksAddedEvent();
   }
 
   componentWillUnmount() {
     PubSub.unsubscribe(this.taskUpdatedToken);
-    // PubSub.unsubscribe(this.taskAddedToken);
+    PubSub.unsubscribe(this.taskAddedToken);
     PubSub.unsubscribe(this.taskRemovedToken);
+    PubSub.unsubscribe(this.allTasksRemovedToken);
+    PubSub.unsubscribe(this.allTasksAddedToken);
   }
 
   /** @private */
@@ -61,7 +67,6 @@ class HistoryTaskList extends React.Component {
     this.taskUpdatedToken = PubSub.subscribe(
       'Task Updated',
       (message, data) => this.setState((prevState, props) => {
-        console.log(data.editedTaskLocation)
         const tasks = data.editedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks
           : this.state.completed.tasks;
@@ -76,7 +81,7 @@ class HistoryTaskList extends React.Component {
   /** @private */
   subscribeToTaskAddedEvents() {
      this.taskAddedToken = PubSub.subscribe(
-      'Task Added',
+      'History - Task Added',
       (message, data) => this.setState((prevState, props) => {
         const tasks = data.addedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks
@@ -96,7 +101,7 @@ class HistoryTaskList extends React.Component {
   /** @private */
   subscribeToTaskRemovedEvents() {
     this.taskRemovedToken = PubSub.subscribe(
-      'Task Removed',
+      'History - Task Removed',
       (message, data) => this.setState((prevState, props) => {
         const tasks = data.removedTaskLocation === 'deleted_tasks' 
           ? this.state.deleted.tasks
@@ -108,14 +113,45 @@ class HistoryTaskList extends React.Component {
     );
   }
 
+  /* @private */
+  subscribeToAllTasksRemovedEvent() {
+    this.allTasksRemovedToken = PubSub.subscribe(
+      'History - Removed All Tasks',
+      (message, data) => this.setState((prevState, props) => {
+        const tasks = data.removedTasksLocation === 'deleted_tasks' 
+          ? this.state.deleted.tasks
+          : this.state.completed.tasks;
+        tasks.splice(0, tasks.length);
+        return { tasks }
+      })
+    );
+  }
+
+  /* @private */
+  subscribeToAllTasksAddedEvent() {
+    this.allTasksAddedToken = PubSub.subscribe(
+      'History - Added Back All Tasks',
+      (message, data) => this.setState((prevState, props) => {
+        let tasks = data.addedTasksLocation === 'deleted_tasks' 
+          ? this.state.deleted.tasks
+          : this.state.completed.tasks;
+        tasks.splice(0, data.addedTasks.length, ...data.addedTasks);
+        return { tasks }
+      })
+    );
+  }
+
   /** @private */
   getCategoryAvatarData(category) {
     return categories[category];
   }
 
-  /** @private */
-  openEditModal(task, taskLocation) {
-    EditTaskModal.openSelf(task, taskLocation);
+   /** @private */
+  goToEditTaskScreen(task, taskLocation) {
+    this.props.history.push({
+      pathname: '/edit-task',
+      state: { task, taskLocation }
+    });
   }
 
   /** @private */
@@ -128,24 +164,36 @@ class HistoryTaskList extends React.Component {
   }
 
   /** @private */
+  openRemoveAllTasksModal(location) {
+    RemoveAllTasksModal.openSelf(location);
+  }
+
+  /** @private */
   editTaskOption(task, taskLocation) {
     return {
       name: 'Edit',
       icon: <EditIcon />,
-      onClickFunction: () => this.openEditModal(task, taskLocation)
+      onClickFunction: () => this.goToEditTaskScreen(task, taskLocation)
     }
   }
 
   /** @private */
   removeTaskOption(task, taskLocation) {
     return {
-      name: 'Delete Forever',
-      icon: <DeleteForeverIcon />,
+      name: 'Clear',
+      icon: <ClearIcon />,
       onClickFunction: () => this.openRemoveModal(task, taskLocation)
     }
   }
 
-  // TODO: Collapsable subheader?
+  removeAllOption(location) {
+    return {
+      name: 'Clear All',
+      icon: <ClearIcon />,
+      onClickFunction: () => this.openRemoveAllTasksModal(location)
+    }
+  }
+
   render() {
     const tasks = this.state.tasks;
     const { completed, deleted } = this.state;
@@ -169,7 +217,7 @@ class HistoryTaskList extends React.Component {
                       <ListItem
                         key={index}
                         primaryText={task.name}
-                        secondaryText={task.estimatedDuration}
+                        secondaryText={TaskManager.prettifyEstimatedDuration(task)}
                         nestedItems={[<TaskDescription key={1} task={task} />]}
                         leftAvatar={<Avatar
                           size={35}
@@ -182,15 +230,19 @@ class HistoryTaskList extends React.Component {
                           this.editTaskOption(task, data.source),
                           this.removeTaskOption(task, data.source)
                         ]} />
-                        <IconButton tooltip='Start!' style={taskList.iconButton}>
-                          <Rescue />
-                        </IconButton>
+                        <RescueButton 
+                          task={task}
+                          taskLocation={data.source}
+                          indexInTheList={data.tasks.findIndex(i => i.id === task.id)}
+                        />
                       </ListItem>
                       {index < data.tasks.length - 1 && 
                         <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
                     </div>
                   )}
-              />
+              >
+                <MoreOptionsButton options={[this.removeAllOption(data.source)]} />
+              </ListItem>
               {
                 data.tasks.length === 0 &&
                   <div style={{ textAlign: 'center', fontFamily: 'Roboto', padding: '20px 0 20px 0' }}>
@@ -201,8 +253,8 @@ class HistoryTaskList extends React.Component {
             </div>
           )}
         </List>
-        <EditTaskModal />
         <RemoveTaskModal />
+        <RemoveAllTasksModal />
       </div>
     );
   }

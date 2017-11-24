@@ -5,7 +5,7 @@ import Avatar from 'material-ui/Avatar';
 import PlayArrow from 'material-ui/svg-icons/AV/play-arrow';
 import Done from 'material-ui/svg-icons/action/done';
 import IconButton from 'material-ui/IconButton';
-import TaskDescription from './TaskDescription.jsx';
+import SubjectDescription from './SubjectDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
@@ -14,22 +14,18 @@ import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
 
 import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
-import TaskManager from '../../server/managers/TaskManager.js';
-import CategoryManager from '../../server/managers/CategoryManager.jsx';
+import SubjectManager from '../../server/managers/SubjectManager.js';
 
-import DropDownMenu from 'material-ui/DropDownMenu';
-import MenuItem from 'material-ui/MenuItem';
+import SubjectIconsManager from '../../server/managers/SubjectIconsManager.jsx';
 
-class RegularTaskList extends React.Component {
+class SubjectsList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { tasks: props.tasks, sortValue: "New" }
+    this.state = { subjects: props.subjects }
     this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
     this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
     this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
-    this.handleSortChange = this.handleSortChange.bind(this);
-    this.goToEditTaskScreen = this.goToEditTaskScreen.bind(this);
   }
 
   componentWillMount() {
@@ -94,11 +90,8 @@ class RegularTaskList extends React.Component {
   }
 
   /** @private */
-  goToEditTaskScreen(task) {
-    this.props.history.push({
-      pathname: '/edit-task',
-      state: { task, taskLocation: 'todo_tasks' }
-    });
+  openEditModal(task) {
+    EditTaskModal.openSelf(task);
   }
 
   /** @private */
@@ -112,7 +105,7 @@ class RegularTaskList extends React.Component {
     return {
       name: 'Edit',
       icon: <EditIcon />,
-      onClickFunction: () => this.goToEditTaskScreen(task)
+      onClickFunction: () => this.openEditModal(task)
     }
   }
 
@@ -125,73 +118,52 @@ class RegularTaskList extends React.Component {
     }
   }
 
-  handleSortChange(event, index, value) {
-    this.setState((prevState, props) => {
-      const tasks = prevState.tasks;
-      const sortedTasks = TaskManager.sortTasksBy(tasks, value);
-      return { sortValue: value, tasks: sortedTasks };
-    });
+  /** @private */
+  getDescription(subject){
+    const listItems = [];
+    const subjectTests = SubjectManager.getAllTests(subject);
+    let index = 0;
+    //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
+    for(let key in subjectTests){
+      let test = subjectTests[key];
+      let description = test.name + ": " + test.grade;
+      listItems.push(<SubjectDescription description={description}/>);
+      if(index < subjectTests.length-1){
+        //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
+      }
+      index++;
+    }
+    return listItems;
   }
 
   render() {
-    const tasks = this.state.tasks;
+    const subjects = this.state.subjects;
     return (
       <div>
-        {
-          this.props.withFilter &&
-          <ListItem
-            disabled
-            style={{height: '20px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
-          >
-            <DropDownMenu
-              value={this.state.sortValue}
-              onChange={this.handleSortChange}
-              style={{marginTop: '-22px', float:'right', width: '160px'}}
-            >
-              <MenuItem value={"New"} primaryText="New" />
-              <MenuItem value={"Category"} primaryText="Category" />
-              <MenuItem value={"Duration"} primaryText="Duration" />
-            </DropDownMenu>
-          </ListItem>
-        }
         <List style={taskList.list}>
-          {tasks.map((task, index) =>
+          {subjects.map((subject, index) =>
             <div key={index}>
               <ListItem
                 key={index}
-                primaryText={task.name}
-                secondaryText={TaskManager.prettifyEstimatedDuration(task)}
-                nestedItems={[<TaskDescription key={1} task={task} />]}
+                primaryText={subject.name}
+                secondaryText={"Average: " + subject.mean}
+                nestedItems={this.getDescription(subject)}
                 leftAvatar={<Avatar
                   size={35}
-                  icon={CategoryManager.getCategoryIconFromString(task.category)}
-                  backgroundColor={CategoryManager.getCategoryBackgroundColorFromString(task.category)}
+                  icon={SubjectIconsManager.getSubjectIconFromString(subject.image)}
+                  backgroundColor={SubjectIconsManager.getSubjectBackgroundColorFromString(subject.image)}
                   style={taskList.avatar}
-                />}
-              >
-                <MoreOptionsButton options={[
-                  this.editTaskOption(task),
-                  this.removeTaskOption(task)
-                ]} />
-                <CheckButton
-                  task={task}
-                  indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
-                />
-                <Link to={{ pathname: 'task-started', state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
-                  <IconButton tooltip='Start!' style={taskList.iconButton}>
-                    <PlayArrow />
-                  </IconButton>
-                </Link>
+                />}>
+                
               </ListItem>
-              {index < tasks.length - 1 && 
+              {index < subjects.length - 1 && 
                 <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
             </div>
           )}
         </List>
-        <RemoveTaskModal />
       </div>
     );
   }
 }
 
-export default RegularTaskList;
+export default SubjectsList;

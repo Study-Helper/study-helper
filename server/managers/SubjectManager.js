@@ -28,6 +28,14 @@ const SubjectManager = {
     });
     return subjects;
   },
+  getAllTests(subject){
+    const tests = [];
+    for(let key in subject.tests){
+      let test = subject.tests[key];
+      tests.push(test);
+    }
+    return tests;
+  }
 }
 
 export default SubjectManager;

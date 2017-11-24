@@ -15,25 +15,27 @@ import Toggle from 'material-ui/Toggle';
 import { appbar, addTask } from '../../styles/styles.css.js';
 
 import DatePicker from '../calendar/DatePicker.jsx';
-import CategoryPicker from './category/CategoryPicker.jsx';
-import TimeInput from './TimeInput.jsx';
+import CategoryPicker from '../add-task/category/CategoryPicker.jsx';
+import TimeInput from '../add-task/TimeInput.jsx';
 import TaskManager from '../../server/managers/TaskManager.js';
+import CategoryManager from '../../server/managers/CategoryManager.jsx';
 
-class AddTaskComponent extends React.Component {
+class EditTaskComponent extends React.Component {
 
   constructor(props) {
     super(props);
+    const { task } = this.props.location.state;
     this.state = {
       open: false,
-      title: '',
-      startDate: moment().format('YYYY-MM-DD'),
-      endDate: moment().format('YYYY-MM-DD'),
-      estimatedTime: undefined,
-      description: '',
+      title: task.name,
+      startDate: task.startDate,
+      endDate: task.endDate,
+      estimatedTime: task.estimatedDuration,
+      description: task.description || '',
+      category: CategoryManager.loadCategoryByName(task.category),
       searchText: undefined,
-      category: undefined,
       requiredFieldsFilled: false
-     };
+    };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.setTitle = this.setTitle.bind(this);
@@ -42,12 +44,8 @@ class AddTaskComponent extends React.Component {
     this.setDescription = this.setDescription.bind(this);
     this.setCategory = this.setCategory.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
-    this.confirmAddTask = this.confirmAddTask.bind(this);
+    this.confirmEditTask = this.confirmEditTask.bind(this);
     this.resetFields = this.resetFields.bind(this);
-  }
-
-  componentDidMount() {
-    this.taskTitleField.focus();
   }
 
   setTitle(event) {
@@ -59,7 +57,7 @@ class AddTaskComponent extends React.Component {
   }
 
   setCategory(category) {
-    this.setState({ category });
+    this.setState({ category: category.title });
   }
 
   setTime(estimatedTime) {
@@ -87,7 +85,6 @@ class AddTaskComponent extends React.Component {
   }
 
   resetFields() {
-    console.log('resetFields');
     this.setState({
       title: '',
       startDate: moment().format('YYYY-MM-DD'),
@@ -100,40 +97,31 @@ class AddTaskComponent extends React.Component {
     });
   }
 
-  confirmAddTask(reset) {
-    const { title, description, startDate, endDate, estimatedDuration, category } = this.state;
-    const taskToAdd = {
-      name: title,
-      description: description || 'No description available.',
-      estimatedDuration: estimatedDuration || '-',
-      category: category.title,
-      startDate: startDate,
-      endDate: endDate
-    };
-    TaskManager.add(taskToAdd, 'todo_tasks');
+  confirmEditTask() {
+    const { task, taskLocation } = this.props.location.state;
+    const { title, description, startDate, endDate, estimatedTime, category } = this.state;
 
-    if (reset) {
-      this.resetFields();
-    } else {
-      this.props.history.push({
-        pathname: '/home',
-        state: { from: 'task-added', task: this.props.location.state.task }
-      });
-    }
+    TaskManager.updateName(task, title, taskLocation);
+    TaskManager.updateDescription(task, description, taskLocation);
+    TaskManager.updateCategory(task, category, taskLocation);
+    TaskManager.updateEstimatedDuration(task, estimatedTime, taskLocation);
+    TaskManager.updateStartAndEndDates(task, startDate, endDate, taskLocation);
+
+    // Go back and render the snackbar.
+    this.props.history.goBack();
   }
 
   render() {
     const goBack = this.props.history.goBack;
     const actions = [
       <FlatButton
+        secondary
         label="Cancel"
-        primary
         onClick={this.handleClose}
       />,
       <FlatButton
-        label="Submit"
         primary
-        keyboardFocused
+        label="Submit"
         onClick={this.handleConfirm}
       />,
     ];
@@ -150,14 +138,14 @@ class AddTaskComponent extends React.Component {
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
             <IconButton onClick={goBack} tooltip='Back'><GoBack /></IconButton>
-            <ToolbarTitle style={{ marginLeft: '15px' }} text='Add Task' />
+            <ToolbarTitle style={{ marginLeft: '15px' }} text='Edit Task' />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             <RaisedButton
               style={{ margin: '0px 25px 0px 20px' }}
               primary
               onClick={() => this.resetFields()}
-              label='Clear fields'
+              label='Clear Fields'
               icon={<Clear />}
             />
           </ToolbarGroup>
@@ -170,7 +158,6 @@ class AddTaskComponent extends React.Component {
             hintText={'Title'}
             floatingLabelText='Task Title'
             onChange={this.setTitle}
-            // errorText='This field is required'
           />
           <CategoryPicker
             onChange={this.setCategory}
@@ -209,14 +196,7 @@ class AddTaskComponent extends React.Component {
           />
           <RaisedButton
             label='Confirm'
-            onClick={() => this.confirmAddTask(false)}
-            disabled={this.state.requiredFieldsFilled}  // TODO
-            style={addTask.button}
-            primary
-          />
-          <RaisedButton
-            label='Add more'
-            onClick={() => this.confirmAddTask(true)}
+            onClick={() => this.confirmEditTask()}
             disabled={this.state.requiredFieldsFilled}  // TODO
             style={addTask.button}
             primary
@@ -242,4 +222,4 @@ class AddTaskComponent extends React.Component {
   }
 }
 
-export default AddTaskComponent;
+export default EditTaskComponent;
