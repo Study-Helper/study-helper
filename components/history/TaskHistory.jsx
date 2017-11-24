@@ -25,7 +25,7 @@ class TaskHistory extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{'marginLeft': '15px'}} text="Task History" />
+            <ToolbarTitle style={{fontWeight: 'lighter', marginLeft: '15px'}} text="Task History" />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>

@@ -30,14 +30,16 @@ const styles = {
   header: {
     textAlign: 'center',
     fontFamily: 'Roboto',
-    fontSize: '135%'
+    fontWeight: 'lighter',
+    fontSize: '140%'
   },
   subheader: {
     textAlign: 'center',
     fontFamily: 'Roboto',
     marginTop: '-15px',
-    fontSize: '90%',
-    color: '#BDBDBD'
+    fontSize: '93%',
+    fontWeight: 'lighter',
+    color: '#9E9E9E'
   },
   progress: {
     paddingTop: '10px',

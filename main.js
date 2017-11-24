@@ -19,7 +19,8 @@ app.on('ready', () => {
     width: WINDOW_WIDTH,
     height: WINDOW_HEIGHT,
     resizable: false,
-    show: false
+    show: false,
+    titleBarStyle: 'hidden'
   });
 
   /* Create the Splash window. */

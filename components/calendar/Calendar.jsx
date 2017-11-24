@@ -32,7 +32,7 @@ class Calendar extends Component {
         <p />
         <Today 
           title="Scheduled Tasks"
-          height={150}
+          height={192}
           range={[startDate, endDate]}
           withFilter={false}
         />

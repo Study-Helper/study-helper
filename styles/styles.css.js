@@ -4,31 +4,56 @@ export const sidebar = {
   link: {
     textDecoration: 'none'
   },
-  menuItem: {
-    height: '60px',
-    lineHeight: '57px',
-    verticalAlign: 'top'
+  list: {
+    marginLeft: '-8px',
+    marginTop: '-8px',
+    width: '184.8px',
+    height: '615px',
+    backgroundColor: '#264864'
+  },
+  avatar: {
+    backgroundColor: 'rgba(0, 0, 0, 0)'
+  },
+  avatarIconColorFocused: '#FFFFFF',
+  avatarIconColorNormal: '#BDBDBD',
+  userAvatar: {
+    marginTop: '14px',
+    backgroundColor: '#03A9F4',
+    marginLeft: '5px'
   },
   icon: {
     width: '23px',
     height: '23px',
-    marginTop: '17px'
+    marginTop: '5px'
+  },
+  menuItem: {
+    height: '50px',
+    lineHeight: '13px',
+    verticalAlign: 'top',
+    color: '#BDBDBD',
+    fontSize: '15px',
+    fontWeight: 'lighter'
   },
   focusedItem: {
-    height: '60px',
-    lineHeight: '57px',
-    backgroundColor: 'rgba(0, 0, 255, 0.2)'
+    height: '50px',
+    lineHeight: '13px',
+    color: '#FFFFFF',
+    backgroundColor: '#03A9F4',
+    fontSize: '15px',
+    fontWeight: 'lighter'
   },
   component: {
-    paddingLeft: '177px'
+    paddingLeft: '177px',
+    marginTop: '-632px'
   }
 };
 
 export const appbar = {
   barLayout: {
     width: '705px',
-    height: '60px',
-    marginTop: '-8px'
+    height: '70px',
+    marginTop: '-8px',
+    backgroundColor: '#EEEEEE'
   }
 };
 
@@ -60,7 +85,8 @@ export const taskList = {
     marginTop: '-9px'
   },
   avatar: {
-    marginTop: '3px'
+    marginTop: '3px',
+    // borderRadius: '4px'
   },
   iconButton: {
     marginTop: '-7px',

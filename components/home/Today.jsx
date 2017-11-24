@@ -60,7 +60,7 @@ class Today extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{marginLeft: '15px'}} text={title || `Today - ${moment().format("MMMM Do")}`} />
+            <ToolbarTitle style={{fontWeight: 'lighter', marginLeft: '15px'}} text={title || `Today - ${moment().format("MMMM Do")}`} />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>

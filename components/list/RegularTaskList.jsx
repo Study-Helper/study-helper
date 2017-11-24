@@ -141,7 +141,7 @@ class RegularTaskList extends React.Component {
           this.props.withFilter &&
           <ListItem
             disabled
-            style={{height: '20px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
+            style={{height: '18px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
           >
             <DropDownMenu
               value={this.state.sortValue}
@@ -159,8 +159,8 @@ class RegularTaskList extends React.Component {
             <div key={index}>
               <ListItem
                 key={index}
-                primaryText={task.name}
-                secondaryText={TaskManager.prettifyEstimatedDuration(task)}
+                primaryText={<div style={{fontWeight: 'lighter'}}>{task.name}</div>}
+                secondaryText={<div style={{fontWeight: 'lighter'}}>{TaskManager.prettifyEstimatedDuration(task)}</div>}
                 nestedItems={[<TaskDescription key={1} task={task} />]}
                 leftAvatar={<Avatar
                   size={35}

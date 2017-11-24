@@ -1,7 +1,8 @@
 import React from 'react';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import Divider from 'material-ui/Divider';
+import { List, ListItem } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
+import FontIcon from 'material-ui/FontIcon';
+import IconButton from 'material-ui/IconButton';
 import { BrowserRouter as Router, Route, Redirect, Switch, Link } from 'react-router-dom';
 
 /* Import the sidebar icons. */
@@ -43,70 +44,122 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Drawer open width='21%' zDepth={1}>
+          <List style={sidebar.list}>
+            <ListItem              
+              primaryText={<div style={{fontSize: '14px', color: '#BDBDBD'}}>John Smith</div>}
+              secondaryText={<div style={{fontWeight: 'lighter', fontSize: '12px', color: '#9E9E9E'}}>john@sh.com</div>}
+              leftAvatar={<Avatar size={25} style={sidebar.userAvatar}>J</Avatar>}
+              style={{backgroundColor: '#21405B', height: '70px', marginTop: '-10px'}}
+            />
             <Link to='/home' style={sidebar.link}>
-              <MenuItem
+              <ListItem
                 primaryText='Home'
-                leftIcon={<Home style={sidebar.icon} />}
+                leftAvatar={<Avatar
+                  size={35}
+                  style={sidebar.avatar}
+                  icon={<Home style={sidebar.icon} />}
+                  color={this.state.activeTab === 'Home' ? sidebar.avatarIconColorFocused : sidebar.avatarIconColorNormal}
+                />}
                 onClick={() => this.setActiveTab('Home')}
                 style={this.state.activeTab === 'Home' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/calendar' style={sidebar.link}>
-              <MenuItem
+              <ListItem
                 primaryText='Calendar'
-                leftIcon={<Today style={sidebar.icon} />}
+                leftAvatar={<Avatar
+                  size={35}
+                  style={sidebar.avatar}
+                  icon={<Today style={sidebar.icon} />}
+                  color={this.state.activeTab === 'Calendar' ? sidebar.avatarIconColorFocused : sidebar.avatarIconColorNormal}
+                />}
                 onClick={() => this.setActiveTab('Calendar')}
                 style={this.state.activeTab === 'Calendar' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/grades' style={sidebar.link}>
-              <MenuItem
+              <ListItem
                 primaryText='Grades'
-                leftIcon={<Grades style={sidebar.icon} />}
+                leftAvatar={<Avatar
+                  size={35}
+                  style={sidebar.avatar}
+                  icon={<Grades style={sidebar.icon} />}
+                  color={this.state.activeTab === 'Grades' ? sidebar.avatarIconColorFocused : sidebar.avatarIconColorNormal}
+                />}
                 onClick={() => this.setActiveTab('Grades')}
                 style={this.state.activeTab === 'Grades' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/statistics' style={sidebar.link}>
-              <MenuItem
+              <ListItem
                 primaryText='Statistics'
-                leftIcon={<Timeline style={sidebar.icon} />}
+                leftAvatar={<Avatar
+                  size={35}
+                  style={sidebar.avatar}
+                  icon={<Timeline style={sidebar.icon} />}
+                  color={this.state.activeTab === 'Statistics' ? sidebar.avatarIconColorFocused : sidebar.avatarIconColorNormal}
+                />}
                 onClick={() => this.setActiveTab('Statistics')}
                 style={this.state.activeTab === 'Statistics' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider style={{ backgroundColor: '#EEEEEE' }} />
             <Link to='/categories' style={sidebar.link}>
-              <MenuItem
+              <ListItem
                 primaryText='Categories'
-                leftIcon={<Face style={sidebar.icon} />}
+                leftAvatar={<Avatar
+                  size={35}
+                  style={sidebar.avatar}
+                  icon={<Face style={sidebar.icon} />}
+                  color={this.state.activeTab === 'Categories' ? sidebar.avatarIconColorFocused : sidebar.avatarIconColorNormal}
+                />}
                 onClick={() => this.setActiveTab('Categories')}
                 style={this.state.activeTab === 'Categories' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/history' style={sidebar.link}>
-              <MenuItem
+              <ListItem
                 primaryText='History'
-                leftIcon={<History style={sidebar.icon} />}
+                leftAvatar={<Avatar
+                  size={35}
+                  style={sidebar.avatar}
+                  icon={<History style={sidebar.icon} />}
+                  color={this.state.activeTab === 'History' ? sidebar.avatarIconColorFocused : sidebar.avatarIconColorNormal}
+                />}
                 onClick={() => this.setActiveTab('History')}
                 style={this.state.activeTab === 'History' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-            <Divider style={{backgroundColor: '#EEEEEE'}} />
             <Link to='/settings' style={sidebar.link}>
-              <MenuItem
+              <ListItem
                 primaryText='Settings'
-                leftIcon={<Settings style={sidebar.icon} />}
+                leftAvatar={<Avatar
+                  size={35}
+                  style={sidebar.avatar}
+                  icon={<Settings style={sidebar.icon} />}
+                  color={this.state.activeTab === 'Settings' ? sidebar.avatarIconColorFocused : sidebar.avatarIconColorNormal}
+                />}
                 onClick={() => this.setActiveTab('Settings')}
                 style={this.state.activeTab === 'Settings' ? sidebar.focusedItem : sidebar.menuItem}
               />
             </Link>
-          </Drawer>
+
+            <div style={{marginBottom: '100px', backgroundColor: '#21405B', height: '60px', marginTop: '150px'}}>
+              <div style={{marginLeft: '5px'}}>
+                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
+                  <FontIcon className="fa fa-github" />
+                </IconButton>
+                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
+                  <FontIcon className="fa fa-facebook-square" />
+                </IconButton>
+                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
+                  <FontIcon className="fa fa-instagram" />
+                </IconButton>
+                <IconButton iconStyle={{color: '#12212d'}} style={{width: '5px', height: '5px', marginLeft: '10px'}}>
+                  <FontIcon className="fa fa-dribbble" />
+                </IconButton>
+              </div>
+            </div>
+          </List>
 
           <div style={sidebar.component}>
             <Switch>
