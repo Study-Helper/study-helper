@@ -1,7 +1,40 @@
 {
-    "todo_tasks": {},
-    "completed_tasks": {},
-    "deleted_tasks": {},
+    "todo_tasks": {
+        "_ums7v5rsld": {
+            "name": "dsad",
+            "description": "dasdd",
+            "estimatedDuration": "00:04",
+            "category": "Email",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_ums7v5rsld"
+        }
+    },
+    "completed_tasks": {
+        "_54fg5t1dn23": {
+            "name": "dqwd",
+            "description": "No description available.",
+            "estimatedDuration": "00:06",
+            "category": "Email",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 1,
+            "id": "_54fg5t1dn23"
+        }
+    },
+    "deleted_tasks": {
+        "_vsefjm9jss9": {
+            "name": "Lunch with friend",
+            "description": "No description available.",
+            "estimatedDuration": "00:50",
+            "category": "Lunch",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_vsefjm9jss9"
+        }
+    },
     "categories": {
         "_dsbz186sd4c": {
             "id": "_dsbz186sd4c",

@@ -151,16 +151,21 @@ class RegularTaskList extends React.Component {
           <ListItem
             disabled
             style={{height: '20px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
-          >
-            <DropDownMenu
-              value={this.state.sortValue}
-              onChange={this.handleSortChange}
-              style={{marginTop: '-22px', float:'right', width: '160px'}}
-            >
-              <MenuItem value={"Priority"} primaryText="Priority" />
-              <MenuItem value={"Category"} primaryText="Category" />
-              <MenuItem value={"Duration"} primaryText="Duration" />
-            </DropDownMenu>
+          > 
+            <div>
+              <div style={{marginTop: '1px'}}>
+                Order by:
+              </div>
+              <DropDownMenu
+                value={this.state.sortValue}
+                onChange={this.handleSortChange}
+                style={{marginTop: '-36px', 'marginLeft':'50px'}}
+              >
+                <MenuItem value={"Priority"} primaryText="Priority" />
+                <MenuItem value={"Category"} primaryText="Category" />
+                <MenuItem value={"Duration"} primaryText="Duration" />
+              </DropDownMenu>
+            </div>
           </ListItem>
         }
         <List style={taskList.list}>
