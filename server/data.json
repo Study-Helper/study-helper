@@ -1,128 +1,178 @@
 {
     "todo_tasks": {
         "_kuesdlfl29": {
-            "name": "rfrf",
+            "name": "Do the laundry",
             "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Lunch",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
+            "estimatedDuration": "00:25",
+            "category": "Home",
+            "startDate": "2017-11-26",
+            "endDate": "2017-11-26",
             "priority": 0,
             "id": "_kuesdlfl29"
         },
         "_ot8kph6c2e": {
-            "name": "5ttrr4r",
-            "description": "rffrrf",
-            "estimatedDuration": "00:01",
-            "category": "Email",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
+            "name": "Buy Carlos a gift",
+            "description": "Either some comfy clothes or some videogame...",
+            "estimatedDuration": "01:30",
+            "category": "Birthday",
+            "startDate": "2017-11-26",
+            "endDate": "2017-11-26",
             "priority": 0,
-            "id": "_ums7v5rsld"
+            "id": "_ot8kph6c2e"
         },
         "_ums7v5llll": {
-            "name": "dsad",
-            "description": "dasdd",
-            "estimatedDuration": "00:04",
-            "category": "Home",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
+            "name": "Study for the Machine Learning test",
+            "description": "Chapters 3 to 9",
+            "estimatedDuration": "02:15",
+            "category": "Studying",
+            "startDate": "2017-11-26",
+            "endDate": "2017-11-226",
             "priority": 0,
             "id": "_ums7v5llll"
         },
         "_ggr3d2mvukm": {
-            "name": "Hello World",
+            "name": "Buy a can of tuna",
             "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Presentation",
+            "estimatedDuration": "00:20",
+            "category": "Lunch",
+            "startDate": "2017-11-27",
+            "endDate": "2017-11-27",
+            "priority": 0,
+            "id": "_ggr3d2mvukm"
+        },
+        "_ggr3d28uuy7": {
+            "name": "Get a haircut",
+            "description": "Gonna try that new style!",
+            "estimatedDuration": "00:35",
+            "category": "Outdoors",
+            "startDate": "2017-11-27",
+            "endDate": "2017-11-27",
+            "priority": 0,
+            "id": "_ggr3d28uuy7"
+        },
+        "_ggyts66uuy7": {
+            "name": "Plan the weekly football game",
+            "description": "Gonna try that new style!",
+            "estimatedDuration": "00:10",
+            "category": "Sport",
+            "startDate": "2017-11-27",
+            "endDate": "2017-11-27",
+            "priority": 0,
+            "id": "_ggyts66uuy7"
+        },
+        "_othgy2bbne": {
+            "name": "Meet Johnny for breakast",
+            "description": "9 am on last week's place.",
+            "estimatedDuration": "01:30",
+            "category": "Outdoors",
+            "startDate": "2017-11-28",
+            "endDate": "2017-11-28",
+            "priority": 0,
+            "id": "_othgy2bbne"
+        },
+        "_othgllpp89": {
+            "name": "Make a doctor's appointment",
+            "description": "No description available.",
+            "estimatedDuration": "00:05",
+            "category": "Call",
+            "startDate": "2017-11-28",
+            "endDate": "2017-11-28",
+            "priority": 0,
+            "id": "_othgllpp89"
+        },
+        "_qiuk6cl1fgj": {
+            "name": "Meet Jane For Dinner",
+            "description": "Meet Jane at 18:30pm !",
+            "estimatedDuration": "01:30",
+            "category": "Lunch",
             "startDate": "2017-11-25",
             "endDate": "2017-11-25",
             "priority": 0,
-            "id": "_ggr3d2mvukm"
+            "id": "_qiuk6cl1fgj"
+        },
+        "_l8dt81q97a": {
+            "name": "Wash Car",
+            "description": "No description available.",
+            "estimatedDuration": "01:10",
+            "category": "Outdoors",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_l8dt81q97a"
+        },
+        "_d7uzltv27gm": {
+            "name": "Buy Corn, Carrots and Olive Oil",
+            "description": "Check for sales!",
+            "estimatedDuration": "00:40",
+            "category": "Shopping",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_d7uzltv27gm"
         }
     },
     "completed_tasks": {
         "_54fg5t1dn23": {
-            "name": "dqwd",
-            "description": "No description available.",
-            "estimatedDuration": "00:06",
-            "category": "Email",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_54fg5t1dn23"
-        },
-        "_54fg5tuuuu3": {
-            "name": "dqwss",
-            "description": "No description available.",
-            "estimatedDuration": "00:06",
-            "category": "Email",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_54fg5tuuuu3"
-        },
-        "_54fg5tiiii3": {
-            "name": "dqwd",
-            "description": "No description available.",
-            "estimatedDuration": "00:06",
-            "category": "Email",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_54fg5tiiii3"
-        },
-        "_54ggggiiii3": {
-            "name": "dqwd",
-            "description": "No description available.",
-            "estimatedDuration": "00:06",
-            "category": "Email",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_54ggggiiii3"
-        },
-        "_umsyyyylll": {
-            "name": "dsad",
-            "description": "dasdd",
-            "estimatedDuration": "00:04",
-            "category": "Email",
+            "name": "Write the Biology report",
+            "description": "It's due next wednesday.",
+            "estimatedDuration": "02:15",
+            "category": "Studying",
             "startDate": "2017-11-25",
             "endDate": "2017-11-25",
             "priority": 0,
-            "id": "_umsyyyylll"
+            "id": "_54fg5t1dn23"
+        },
+        "_54fg5tuuuu3": {
+            "name": "Attend the LaTeX workshop",
+            "description": "By Prof. João Lourenço.",
+            "estimatedDuration": "01:45",
+            "category": "Event",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_54fg5tuuuu3"
+        },
+        "_54fg5tiiii3": {
+            "name": "Buy some noodles for lunch",
+            "description": "No description available.",
+            "estimatedDuration": "00:20",
+            "category": "Lunch",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_54fg5tiiii3"
         }
     },
     "deleted_tasks": {
         "_vsefjm9jss9": {
-            "name": "Lunch with friend",
+            "name": "Organize my reminders",
             "description": "No description available.",
             "estimatedDuration": "00:50",
-            "category": "Lunch",
+            "category": "Note",
             "startDate": "2017-11-25",
             "endDate": "2017-11-25",
             "priority": 0,
             "id": "_vsefjm9jss9"
         },
         "_5uuysfdiii3": {
-            "name": "dqwd",
-            "description": "No description available.",
-            "estimatedDuration": "00:06",
-            "category": "Email",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
+            "name": "Learn the basics of React",
+            "description": "Start with Facebook's create-react-app.",
+            "estimatedDuration": "01:30",
+            "category": "Studying",
+            "startDate": "2017-11-24",
+            "endDate": "2017-11-24",
+            "priority": 0,
             "id": "_5uuysfdiii3"
         },
-        "_5uu999iiii3": {
-            "name": "dqwd",
-            "description": "No description available.",
-            "estimatedDuration": "00:06",
-            "category": "Email",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_5uu999iiii3"
+        "_othszz6c2e": {
+            "name": "Meet Johnny for breakast",
+            "description": "9 am on last week's place.",
+            "estimatedDuration": "01:00",
+            "category": "Outdoors",
+            "startDate": "2017-11-28",
+            "endDate": "2017-11-28",
+            "priority": 0,
+            "id": "_othszz6c2e"
         }
     },
     "categories": {
@@ -176,17 +226,79 @@
         }
     },
     "subjects": {
-        "_isdtq5bl83i": {
-            "id": "_isdtq5bl83i",
-            "name": "feffr",
+        "_qrlkhm5nri": {
+            "id": "_qrlkhm5nri",
+            "name": "Arts",
             "tests": {
-                "_s59zkvf1lzb": {
-                    "id": "_s59zkvf1lzb",
-                    "name": "rffrf",
-                    "grade": 20
+                "_1oal14sqx2p": {
+                    "id": "_1oal14sqx2p",
+                    "name": "Teste 1",
+                    "grade": 17
+                },
+                "_p7yflzqmy6j": {
+                    "id": "_p7yflzqmy6j",
+                    "name": "Teste 2",
+                    "grade": 15
                 }
             },
-            "mean": 20,
+            "mean": 16,
+            "image": "Arts",
+            "color": "#ffca28"
+        },
+        "_w8yw0wvupr": {
+            "id": "_w8yw0wvupr",
+            "name": "Finances",
+            "tests": {
+                "_vn7ilidk9n7": {
+                    "id": "_vn7ilidk9n7",
+                    "name": "Teste 1",
+                    "grade": 12
+                },
+                "_wi4cbmnhzfa": {
+                    "id": "_wi4cbmnhzfa",
+                    "name": "Teste 2",
+                    "grade": 11.6
+                }
+            },
+            "mean": 11.8,
+            "image": "Finances",
+            "color": "#ef5350"
+        },
+        "_ojngm2ywgmr": {
+            "id": "_ojngm2ywgmr",
+            "name": "Geography",
+            "tests": {
+                "_mf0m35ehhv": {
+                    "id": "_mf0m35ehhv",
+                    "name": "Teste 1",
+                    "grade": 14
+                },
+                "_5xw6g0fxunl": {
+                    "id": "_5xw6g0fxunl",
+                    "name": "Teste 2",
+                    "grade": 13.8
+                }
+            },
+            "mean": 13.9,
+            "image": "Geography",
+            "color": "#f06292"
+        },
+        "_f6bd6d476hc": {
+            "id": "_f6bd6d476hc",
+            "name": "Economy",
+            "tests": {
+                "_si984254aif": {
+                    "id": "_si984254aif",
+                    "name": "Teste 1",
+                    "grade": 15
+                },
+                "_a0c3zufr0n5": {
+                    "id": "_a0c3zufr0n5",
+                    "name": "Teste 2",
+                    "grade": 17
+                }
+            },
+            "mean": 16,
             "image": "Economy",
             "color": "#00c853"
         }
