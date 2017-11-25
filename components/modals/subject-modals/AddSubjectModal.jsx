@@ -13,19 +13,19 @@ import SubjectIconPicker from '../../grades/SubjectIconPicker.jsx';
 import PubSub from 'pubsub-js';
 
 class AddSubjectModal extends React.Component {
-  
+
   constructor(props) {
       super(props);
       this.state = {
           open: false,
           shouldRenderSnackbar: false
       }
- 
+
       this.closeWithoutSave = this.closeWithoutSave.bind(this);
       this.closeAndSave = this.closeAndSave.bind(this);
       this.closeSnackbar = this.closeSnackbar.bind(this);
       this.setNewIcon = this.setNewIcon.bind(this);
-    
+
       this.editedValues = {
         newName: '',
         newImage: ''
@@ -61,9 +61,9 @@ class AddSubjectModal extends React.Component {
   /** @private */
   closeAndSave() {
     this.setState({ open: false, shouldRenderSnackbar: true });
-    
+
     const { newName, newImage } = this.editedValues;
-    
+
     let subject = {
         "id": undefined,
         "name": newName,
@@ -114,15 +114,16 @@ class AddSubjectModal extends React.Component {
           open={this.state.open}
           onRequestClose={this.closeWithoutSave}>
             <TextField
+              autoFocus
               fullWidth
-              defaultValue={name} 
-              floatingLabelText="Subject Name" 
+              defaultValue={name}
+              floatingLabelText="Subject Name"
               onChange={(e, newValue) => this.editedValues.newName = newValue}
             />
             <br/>
             <p>Choose an icon</p>
             <div style={{ marginTop: 10 }}>
-              <SubjectIconPicker 
+              <SubjectIconPicker
                 onChange={this.setNewIcon}
               />
             </div>
@@ -138,5 +139,5 @@ class AddSubjectModal extends React.Component {
   }
 
 }
- 
+
  export default AddSubjectModal;
