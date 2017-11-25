@@ -27,7 +27,7 @@ class HistoryTaskList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       deleted: {
         tasks: props.deletedTasks,
         subheaderText: 'Deleted Tasks',
@@ -67,7 +67,7 @@ class HistoryTaskList extends React.Component {
     this.taskUpdatedToken = PubSub.subscribe(
       'Task Updated',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = data.editedTaskLocation === 'deleted_tasks' 
+        const tasks = data.editedTaskLocation === 'deleted_tasks'
           ? this.state.deleted.tasks
           : this.state.completed.tasks;
         const editedTask = data.editedTask;
@@ -83,7 +83,7 @@ class HistoryTaskList extends React.Component {
      this.taskAddedToken = PubSub.subscribe(
       'History - Task Added',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = data.addedTaskLocation === 'deleted_tasks' 
+        const tasks = data.addedTaskLocation === 'deleted_tasks'
           ? this.state.deleted.tasks
           : this.state.completed.tasks;
         // NOTE: data = { task, indexInTheList || undefined }
@@ -103,7 +103,7 @@ class HistoryTaskList extends React.Component {
     this.taskRemovedToken = PubSub.subscribe(
       'History - Task Removed',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = data.removedTaskLocation === 'deleted_tasks' 
+        const tasks = data.removedTaskLocation === 'deleted_tasks'
           ? this.state.deleted.tasks
           : this.state.completed.tasks;
         const localIndex = tasks.findIndex(i => i.id === data.removedTask.id);
@@ -118,7 +118,7 @@ class HistoryTaskList extends React.Component {
     this.allTasksRemovedToken = PubSub.subscribe(
       'History - Removed All Tasks',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = data.removedTasksLocation === 'deleted_tasks' 
+        const tasks = data.removedTasksLocation === 'deleted_tasks'
           ? this.state.deleted.tasks
           : this.state.completed.tasks;
         tasks.splice(0, tasks.length);
@@ -132,7 +132,7 @@ class HistoryTaskList extends React.Component {
     this.allTasksAddedToken = PubSub.subscribe(
       'History - Added Back All Tasks',
       (message, data) => this.setState((prevState, props) => {
-        let tasks = data.addedTasksLocation === 'deleted_tasks' 
+        let tasks = data.addedTasksLocation === 'deleted_tasks'
           ? this.state.deleted.tasks
           : this.state.completed.tasks;
         tasks.splice(0, data.addedTasks.length, ...data.addedTasks);
@@ -157,7 +157,7 @@ class HistoryTaskList extends React.Component {
 
   /** @private */
   openRemoveModal(task, taskLocation) {
-    const tasks = taskLocation === 'deleted_tasks' 
+    const tasks = taskLocation === 'deleted_tasks'
       ? this.state.deleted.tasks
       : this.state.completed.tasks;
     const indexInTheList = tasks.findIndex(i => i.id === task.id);
@@ -223,13 +223,13 @@ class HistoryTaskList extends React.Component {
                           this.editTaskOption(task, data.source),
                           this.removeTaskOption(task, data.source)
                         ]} />
-                        <RescueButton 
+                        <RescueButton
                           task={task}
                           taskLocation={data.source}
                           indexInTheList={data.tasks.findIndex(i => i.id === task.id)}
                         />
                       </ListItem>
-                      {index < data.tasks.length - 1 && 
+                      {index < data.tasks.length - 1 &&
                         <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
                     </div>
                   )}

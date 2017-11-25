@@ -9,6 +9,7 @@ class TimeInput extends Component {
     this.state = {
       currentValue: this.props.time || '00:00',
       emitWarning: false,
+      errorText: '',
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -24,29 +25,55 @@ class TimeInput extends Component {
     if (value.indexOf(':') > -1 && value.split(':').length === 2) {
       const hours = value.split(':')[0];
       const minutes = value.split(':')[1];
-      if (!isNaN(hours) && !isNaN(minutes) && minutes <= 59) {
-        // console.log('minutes[0]', minutes[0]);
-        // console.log('>2', minutes.length > 2);
-        if (minutes[0] === '0' && minutes.length > 2) {
-          return;
+      if (!isNaN(hours) && !isNaN(minutes)) {
+        if (minutes <= 59) {
+          if (minutes[0] === '0' && minutes.length > 2) {
+            this.setState({
+              currentValue: value,
+              emitWarning: true,
+               errorText: 'Invalid minutes!'
+             });
+            return;
+          }
+          this.setState({
+            currentValue: value,
+            emitWarning: false
+          });
+          this.props.onChange(value);
+        } else {
+          this.setState({
+            currentValue: value,
+            emitWarning: true,
+            errorText: 'Invalid minutes!'
+           });
         }
-        this.setState({ currentValue: value });
-        this.props.onChange(value);
+      } else {
+        this.setState({
+          currentValue: value,
+          emitWarning: true,
+          errorText: 'Invalid time! Valid example: 11:59'
+        });
       }
     }
   }
 
   render() {
-    return (
-      <TextField
-        hintText="00:00"
-        floatingLabelText="*Task Duration (HH:MM)"
-        value={this.state.currentValue}
-        onChange={this.handleChange}
-      />
-    );
+    const element = this.state.emitWarning ?
+    (<TextField
+      hintText="00:00"
+      floatingLabelText="Task duration (Hours:Minutes)"
+      value={this.state.currentValue}
+      onChange={this.handleChange}
+      errorText={this.state.errorText}
+    />) :
+    (<TextField
+      hintText="00:00"
+      floatingLabelText="Task duration (Hours:Minutes)"
+      value={this.state.currentValue}
+      onChange={this.handleChange}
+    />);
+    return element;
   }
-
 }
 
 TimeInput.propTypes = {

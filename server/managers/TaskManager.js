@@ -199,15 +199,20 @@ const TaskManager = {
   },
 
   /** @private */
+  sortTasksByPriority(tasks) {
+    return tasks.sort((task1, task2) => task1.priority < task2.priority);
+  },
+
+  /** @private */
   sortTasksByDuration(tasks, duration) {
     return tasks.sort((task1, task2) => task1.estimatedDuration > task2.estimatedDuration);
   },
 
   sortTasksBy(tasks, value) {
     switch (value) {
-      case "New": return this.sortTasksByNew(tasks);
       case "Category": return this.sortTasksByCategory(tasks);
       case "Duration": return this.sortTasksByDuration(tasks);
+      case "Priority": return this.sortTasksByPriority(tasks);
       default: return;
     }
   }

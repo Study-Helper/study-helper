@@ -108,7 +108,7 @@ class CategoryPicker extends React.Component {
                 titleBackground={'rgba(0, 0, 0, 0)'}
               >
               <div
-                style={this.state.chosenCategory === category
+                style={((this.state.chosenCategory && (this.state.chosenCategory.id && (this.state.chosenCategory.id === category.id))) || (this.state.chosenCategory === category))
                   ? (noNames ? categoryPicker.categoryNoTitleItemSelected : categoryPicker.categoryItemSelected)
                   : categoryPicker.categoryItemDefault}
                 onClick={() => this.setCategory(category)}

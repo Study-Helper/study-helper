@@ -9,9 +9,10 @@ import SubjectDescription from './SubjectDescription.jsx';
 import MoreOptionsButton from '../more-options/MoreOptionsButton.jsx';
 import EditIcon from 'material-ui/svg-icons/content/create';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
-import CheckButton from './CheckButton.jsx';
+import AddTestButton from './AddTestButton.jsx';
 import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
+import Add from 'material-ui/svg-icons/content/add';
 
 import EditSubjectModal from '../modals/subject-modals/EditSubjectModal.jsx';
 import RemoveSubjectModal from '../modals/subject-modals/RemoveSubjectModal.jsx';
@@ -145,6 +146,10 @@ class SubjectsList extends React.Component {
     return listItems;
   }
 
+  openAddTestModal(subject){
+    AddTestButton.openSelf(subject);
+  }
+
   render() {
     const subjects = this.state.subjects;
     return (
@@ -155,7 +160,10 @@ class SubjectsList extends React.Component {
               <ListItem
                 key={index}
                 primaryText={subject.name}
-                secondaryText={"Average: " + subject.mean}
+                secondaryText={
+                    "Average: " + ((subject.mean%1) == 0 ? subject.mean 
+                            : parseFloat(Math.round(subject.mean * 100) / 100).toFixed(2))
+                }
                 nestedItems={this.getDescription(subject)}
                 leftAvatar={
                   <Avatar
@@ -170,16 +178,20 @@ class SubjectsList extends React.Component {
                     this.editSubjectOption(subject),
                     this.removeSubjectOption(subject)
                 ]}/>
-                <CheckButton
-                  task={subject}
-                  indexInTheList={this.state.subjects.findIndex(i => i.id === subject.id)}
-                />
+                <IconButton
+                  tooltip='Add Test!' 
+                  style={taskList.iconButton}
+                  onClick={()=>this.openAddTestModal(subject)}
+                >
+                  <Add />
+                </IconButton>
               </ListItem>
               {index < subjects.length - 1 && 
                 <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
             </div>
           )}
         </List>
+        <AddTestButton />
         <EditSubjectModal />
         <RemoveSubjectModal />
       </div>

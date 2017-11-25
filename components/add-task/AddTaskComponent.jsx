@@ -32,6 +32,7 @@ class AddTaskComponent extends React.Component {
       description: '',
       searchText: undefined,
       category: undefined,
+      priority: 0,
       requiredFieldsFilled: false
     };
     this.handleOpen = this.handleOpen.bind(this);
@@ -40,6 +41,7 @@ class AddTaskComponent extends React.Component {
     this.setDate = this.setDate.bind(this);
     this.setTime = this.setTime.bind(this);
     this.setDescription = this.setDescription.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
     this.setCategory = this.setCategory.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.confirmAddTask = this.confirmAddTask.bind(this);
@@ -86,6 +88,10 @@ class AddTaskComponent extends React.Component {
     this.setState({ description: event.target.value });
   }
 
+  handleToggle(event, isInputChecked) {
+    this.setState({ priority: isInputChecked ? 1 : 0 });
+  }
+
   handleOpen() {
     this.setState({ open: true });
   }
@@ -111,21 +117,23 @@ class AddTaskComponent extends React.Component {
       description: '',
       searchText: undefined,
       category: undefined,
-      requiredFieldsFilled: false
+      requiredFieldsFilled: false,
+      priority: 0,
     });
   }
 
   confirmAddTask(reset) {
     const { backPath } = this.props.location.state;
-    const { title, description, startDate, endDate, estimatedTime, category } = this.state;
-    
+    const { title, description, startDate, endDate, estimatedTime, category, priority } = this.state;
+
     const taskToAdd = {
       name: title,
       description: description || 'No description available.',
       estimatedDuration: estimatedTime || '00:01',
       category: category.title,
       startDate: startDate,
-      endDate: endDate
+      endDate: endDate,
+      priority,
     };
     TaskManager.add(taskToAdd, 'todo_tasks');
 
@@ -233,6 +241,8 @@ class AddTaskComponent extends React.Component {
           <Toggle
             label="Mark this task as a priority one"
             labelPosition="right"
+            toggled={this.state.priority === 1}
+            onToggle={this.handleToggle}
             style={{ marginTop: 20, marginBottom: 20 }}
           />
           <RaisedButton
