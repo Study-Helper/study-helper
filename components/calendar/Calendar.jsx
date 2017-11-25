@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import NvUp from 'material-ui/svg-icons/navigation/expand-less';
+import NvDown from 'material-ui/svg-icons/navigation/expand-more';
 
 import DatePicker from './DatePicker.jsx';
 import Today from '../home/Today.jsx';
@@ -13,10 +16,12 @@ class Calendar extends Component {
       startDate: undefined,
       endDate: undefined,
       shouldRenderSnackbar: false,
-      snackbarMessage: ''
+      snackbarMessage: '',
+      open: true,
     };
     this.setDate = this.setDate.bind(this);
     this.closeSnackbar = this.closeSnackbar.bind(this);
+    this.handleCalendarPane = this.handleCalendarPane.bind(this);
   }
 
   componentWillMount() {
@@ -36,6 +41,10 @@ class Calendar extends Component {
     this.setState({ shouldRenderSnackbar: false });
   }
 
+  handleCalendarPane() {
+    this.setState({ open: !this.state.open });
+  }
+
   render() {
     const { startDate, endDate } = this.state;
     return (
@@ -44,16 +53,32 @@ class Calendar extends Component {
           <ToolbarGroup firstChild>
             <ToolbarTitle style={{ marginLeft: '15px' }} text="Calendar" />
           </ToolbarGroup>
+          <ToolbarGroup lastChild>
+            <FloatingActionButton
+              mini
+              style={{ marginRight: 25 }}
+               onClick={() => this.handleCalendarPane()}
+            >
+              {
+                this.state.open ?
+                <NvDown /> :
+                <NvUp />
+              }
+            </FloatingActionButton>
+          </ToolbarGroup>
         </Toolbar>
-        <DatePicker
-          startDate={this.state.startDate} // TODO: this.location.state.goBackStrtDate
-          endDate={this.state.endDate}
-          onChange={this.setDate}
-        />
+        {
+          this.state.open &&
+          <DatePicker
+            startDate={this.state.startDate} // TODO: this.location.state.goBackStrtDate
+            endDate={this.state.endDate}
+            onChange={this.setDate}
+          />
+        }
         <p />
-        <Today 
+        <Today
           title="Scheduled Tasks"
-          height={150}
+          height={this.state.open ? 150 : 500}
           range={[startDate, endDate]}
           withFilter={false}
           calendarProps={this.props}
