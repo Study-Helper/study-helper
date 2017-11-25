@@ -52,15 +52,24 @@ class AddTaskComponent extends React.Component {
   }
 
   setTitle(event) {
-    this.setState({ title: event.target.value });
+    const { startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && event.target.value;
+    this.setState({ title: event.target.value, requiredFieldsFilled: filled });
   }
 
   setDate(startDate, endDate) {
-    this.setState({ nstartDate: startDate, nendDate: endDate });
+    const { title, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title;
+    this.setState({ nstartDate: startDate, nendDate: endDate, requiredFieldsFilled: filled });
   }
 
   setCategory(category) {
-    this.setState({ category });
+    const { title, startDate, endDate } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title;
+    this.setState({ category, requiredFieldsFilled: filled });
   }
 
   setTime(estimatedTime) {
@@ -95,8 +104,7 @@ class AddTaskComponent extends React.Component {
       estimatedTime: undefined,
       description: '',
       searchText: undefined,
-      category: undefined,
-      requiredFieldsFilled: false
+      category: undefined
     });
   }
 
@@ -151,7 +159,7 @@ class AddTaskComponent extends React.Component {
       />,
     ];
 
-    const { startDate, endDate, estimatedTime } = this.state;
+    const { startDate, endDate, estimatedTime, requiredFieldsFilled } = this.state;
 
     const style = {
       marginLeft: 40,
@@ -223,14 +231,14 @@ class AddTaskComponent extends React.Component {
           <RaisedButton
             label='Add'
             onClick={() => this.confirmAddTask(false)}
-            disabled={this.state.requiredFieldsFilled}  // TODO
-            style={{float: 'right', marginTop: '30px', marginRight: '5px'}}
+            disabled={!requiredFieldsFilled}
+            style={addTask.button}
             primary
           />
           {/*<RaisedButton
             label='Add more'
             onClick={() => this.confirmAddTask(true)}
-            disabled={this.state.requiredFieldsFilled}  // TODO
+            disabled={!requiredFieldsFilled}
             style={addTask.button}
             primary
           />*/}

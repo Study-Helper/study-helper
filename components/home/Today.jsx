@@ -46,10 +46,20 @@ class Today extends React.Component {
         default: break;
       }
 
-      setTimeout(() => this.setState({
-        shouldRenderSnackbar: true,
-        snackbarMessage: message
-      }), 150);
+      setTimeout(
+        () => this.setState((prevState, props) => {
+          const tasks = prevState.tasks;
+          // Huge hacks...
+          if (from === 'task-started') {
+            const localIndex = tasks.findIndex(i => i.id === task.id);
+            tasks.splice(localIndex, 1);
+          }
+          return {
+            shouldRenderSnackbar: true,
+            snackbarMessage: message,
+            tasks
+          }
+        }), 50);
     }
   }
 
@@ -71,17 +81,29 @@ class Today extends React.Component {
 
   render() {
     const { title, height } = this.props;
-    const pathname = this.props.location
-      ? this.props.location.pathname
-      : this.props.calendarProps.location.pathname;
+    
+    let pathname = this.props.location
+    if (!pathname && this.props.calendarProps) {
+      pathname = this.props.calendarProps.location.pathname;
+    } else if (!pathname && this.props.categoriesProps) {
+      console.log("CAT PROPS!")
+      pathname = this.props.categoriesProps.location.pathname;
+    }
+
+    let history = this.props.history;
+    if (!history && this.props.calendarProps) {
+      history = this.props.calendarProps.history;
+    } else if (!history && this.props.categoriesProps) {
+      history = this.props.categoriesProps.history;
+    }
     
     // If we're on 'Today', pass today's date.
     // Otherwise, we're on 'Calendar' - pass the picked date.
-    const startDate = this.props.location
+    const startDate = this.props.location || !this.props.calendarStartDate
       ? moment().format('YYYY-MM-DD')
       : this.props.calendarStartDate;
 
-    const endDate = this.props.location
+    const endDate = this.props.location || !this.props.calendarEndDate
       ? moment().format('YYYY-MM-DD')
       : this.props.calendarEndDate;
 
@@ -113,7 +135,7 @@ class Today extends React.Component {
             <RegularTaskList
               tasks={this.state.tasks}
               withFilter={this.props.withFilter}
-              history={this.props.history || this.props.calendarProps.history} // Pass the history for some crazy hacks
+              history={history} // Pass the history for some crazy hacks
             />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
