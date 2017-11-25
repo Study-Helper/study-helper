@@ -271,40 +271,8 @@
                     "grade": 16
                 }
             },
-            "mean": 16,
+            "mean": 14,
             "image": "Arts",
-            "color": "rgba(2, 136, 209, 1)"
-        },
-        "_r27n8bczmlh": {
-            "id": "_r27n8bczmlh",
-            "name": "Economy",
-            "tests": {},
-            "mean": 0,
-            "image": "Finances",
-            "color": "#ef5350"
-        },
-        "_e0zh1wnzw1v": {
-            "id": "_e0zh1wnzw1v",
-            "name": "ffrf",
-            "tests": {},
-            "mean": 0,
-            "image": "Economy",
-            "color": "#00c853"
-        }
-    },
-    "deleted_subjects": {
-        "_5kb2vwbv13": {
-            "id": "_5kb2vwbv13",
-            "name": "Human Interaction",
-            "tests": {
-                "_30emtggpypo": {
-                    "id": "_30emtggpypo",
-                    "name": "Test one",
-                    "grade": 13
-                }
-            },
-            "mean": 13,
-            "image": "Social",
             "color": "rgba(2, 136, 209, 1)"
         }
     }

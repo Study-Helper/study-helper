@@ -55,6 +55,19 @@ const SubjectManager = {
     data.modify(`${location}[${id}][image]`, newImage);
   },
 
+  addTest(subject, newName, newGrade){
+    const id = subject.id;
+    const testId = generateRandomId();
+    const test = {
+      "id": testId,
+      "name": newName,
+      "grade": parseFloat(newGrade)
+    };
+    subject.tests[testId] = test;
+    subject.mean = this.calcNewMean(subject);
+    data.modify(`${"subjects"}[${id}]`, subject);
+  },
+
   getAllTests(subject){
     const tests = [];
     for(let key in subject.tests){
@@ -62,6 +75,16 @@ const SubjectManager = {
       tests.push(test);
     }
     return tests;
+  },
+
+  calcNewMean(subject){
+    const allTests = this.getAllTests(subject);
+    let newMean = 0;
+    allTests.map((test, index)=>{
+      newMean+=test.grade;
+    });
+    newMean = newMean/(allTests.length);
+    return newMean;
   }
 }
 

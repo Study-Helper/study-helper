@@ -91,8 +91,6 @@ class RemoveSubjectModal extends React.Component {
     // be interested in the event.
     // Physicall removals will be handled there, to make it easier.
     PubSub.publish(eventName, eventData);
-
-    SubjectManager.add(eventData.removedSubject, 'deleted_subjects');
   }
 
   /** @private */
@@ -118,10 +116,6 @@ class RemoveSubjectModal extends React.Component {
 
     // Publish the event.
     PubSub.publish(eventName, eventData);
-    
-    // If we're undoing from a task that was deleted from 'todo_tasks',
-    // remove it from 'deleted_tasks'.
-    SubjectManager.remove(eventData.addedSubject, 'deleted_subjects');
   }
 
   /** @private */
