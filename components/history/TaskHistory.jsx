@@ -3,6 +3,7 @@ import FontIcon from 'material-ui/FontIcon';
 import { Scrollbars } from 'react-custom-scrollbars';
 import TextField from 'material-ui/TextField';
 import HistoryTaskList from '../list/HistoryTaskList.jsx';
+import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
 import Snackbar from 'material-ui/Snackbar';
@@ -64,14 +65,18 @@ class TaskHistory extends React.Component {
           </ToolbarGroup>
         </Toolbar>
         {
-          this.state.deletedTasks.length > 0 &&
+          this.state.deletedTasks.length > 0 ?
           <Scrollbars style={{ width: 697, height: 550 }}>
             <HistoryTaskList
               deletedTasks={this.state.deletedTasks}
               completedTasks={this.state.completedTasks}
               history={this.props.history} // Pass the history for some crazy hacks
             />
-          </Scrollbars>
+          </Scrollbars> :
+          <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
+            <div><ErrorIcon /></div>
+            <div>No history to show!</div>
+          </div>
         }
         <Snackbar
           style={{marginLeft: '70px'}}

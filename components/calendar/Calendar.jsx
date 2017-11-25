@@ -75,10 +75,13 @@ class Calendar extends Component {
             onChange={this.setDate}
           />
         }
-        <p />
+        <p style={{ textAlign: 'center', fontFamily: 'Roboto' }}>
+          {!this.state.open &&
+            `Selected date range: ${startDate} - ${endDate}`}
+        </p>
         <Today
           title="Scheduled Tasks"
-          height={this.state.open ? 150 : 500}
+          height={this.state.open ? 150 : 490}
           range={[startDate, endDate]}
           withFilter={false}
           calendarProps={this.props}

@@ -120,6 +120,13 @@ class Today extends React.Component {
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             {
+              this.state.tasks.length > 0 &&
+              <div style={{position: 'relative', display: 'inline-block'}}>
+                <Search style={{position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red'}}/>
+                <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
+              </div>
+            }
+            {
               !this.props.fromCategoriesManager &&
               <AddTaskButton
                 backPath={pathname}
