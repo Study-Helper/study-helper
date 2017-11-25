@@ -135,6 +135,13 @@ class RegularTaskList extends React.Component {
     });
   }
 
+  getSecondaryTitle(task) {
+    if (task.priority === 1) {
+      return `${TaskManager.prettifyEstimatedDuration(task)} | Priority task`;
+    }
+    return TaskManager.prettifyEstimatedDuration(task);
+  }
+
   render() {
     const tasks = this.state.tasks;
     return (
@@ -162,7 +169,7 @@ class RegularTaskList extends React.Component {
               <ListItem
                 key={index}
                 primaryText={task.name}
-                secondaryText={TaskManager.prettifyEstimatedDuration(task)}
+                secondaryText={this.getSecondaryTitle(task)}
                 nestedItems={[<TaskDescription key={1} task={task} />]}
                 style={(task.priority === 1) ? { backgroundColor: red100 } : {}}
                 leftAvatar={<Avatar
