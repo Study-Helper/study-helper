@@ -1,6 +1,58 @@
 {
-    "todo_tasks": {},
-    "completed_tasks": {},
+    "todo_tasks": {
+        "_kuesdlfl29": {
+            "name": "rfrf",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Lunch",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_kuesdlfl29"
+        },
+        "_ot8kph6c2e": {
+            "name": "5ttrr4r",
+            "description": "rffrrf",
+            "estimatedDuration": "00:01",
+            "category": "Email",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_ot8kph6c2e"
+        },
+        "_k7u84krzl6n": {
+            "name": "gggtrfr",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Studying",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_k7u84krzl6n"
+        },
+        "_croopzg93at": {
+            "name": "rfrfrrf",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Lunch",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_croopzg93at"
+        }
+    },
+    "completed_tasks": {
+        "_akq8yjp3xg6": {
+            "name": "rfgggrg",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Sport",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 1,
+            "id": "_akq8yjp3xg6"
+        }
+    },
     "deleted_tasks": {},
     "categories": {
         "_dsbz186sd4c": {
@@ -52,5 +104,20 @@
             "title": "Birthday"
         }
     },
-    "subjects": {}
+    "subjects": {
+        "_v8nvbfc62h": {
+            "id": "_v8nvbfc62h",
+            "name": "gtgtgt",
+            "tests": {
+                "_vy6pkz8joq8": {
+                    "id": "_vy6pkz8joq8",
+                    "name": "de",
+                    "grade": 10
+                }
+            },
+            "mean": 10,
+            "image": "Economy",
+            "color": "#00c853"
+        }
+    }
 }

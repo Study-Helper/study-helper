@@ -69,8 +69,15 @@ class Calendar extends Component {
   handleCloseWarning(confirmed) {
     if (confirmed) {
       this.deleteCategory();
+      this.setState({
+        openWarning: false,
+        checked: false,
+        snackMessage: 'Category deleted successfully!',
+        openSnack: true
+      });
+    } else {
+      this.setState({ openWarning: false, checked: false });
     }
-    this.setState({ openWarning: false, checked: false });
   }
 
   handleOpenSeeTasks() {
@@ -115,7 +122,7 @@ class Calendar extends Component {
         newCategoryName: '',
         newCategory: undefined,
         fakeCategories: copy,
-        snackMessage: 'Category created successfuly!',
+        snackMessage: 'Category created successfully!',
         openSnack: true,
       });
     } else {
@@ -125,7 +132,7 @@ class Calendar extends Component {
       //icon: this.state.newCategory.title
       this.setState({
         openEditMode: false,
-        snackMessage: 'Category edited successfuly!',
+        snackMessage: 'Category edited successfully!',
         openSnack: true,
        });
     }
