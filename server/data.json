@@ -54,10 +54,10 @@
             "name": "teste",
             "description": "No description available.",
             "estimatedDuration": "00:01",
-            "category": "Email",
+            "category": "Exam",
             "startDate": "2017-11-25",
             "endDate": "2017-11-25",
-            "priority": 0,
+            "priority": 1,
             "id": "_cfgkk6zj1tj"
         },
         "_nrj3ed6wyn": {

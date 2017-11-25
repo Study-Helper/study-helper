@@ -150,6 +150,11 @@ const TaskManager = {
     data.modify(`${taskLocation}[${id}][estimatedDuration]`, newEstimatedDuration);
   },
 
+  updatePriority(task, newPriority, taskLocation) {
+    const id = task.id;
+    data.modify(`${taskLocation}[${id}][priority]`, newPriority);
+  },
+
   /**
    * Update a task's start (and optionally end) date(s).
    * @param task - task object.
