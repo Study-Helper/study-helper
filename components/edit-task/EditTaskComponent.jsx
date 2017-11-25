@@ -73,10 +73,16 @@ class EditTaskComponent extends React.Component {
   }
 
   setTime(estimatedTime) {
+    const { title, startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title && estimatedTime;
     this.setState({ estimatedTime });
   }
 
   setDescription(event) {
+    const { title, startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title;
     this.setState({ description: event.target.value });
   }
 

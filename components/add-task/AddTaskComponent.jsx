@@ -73,10 +73,16 @@ class AddTaskComponent extends React.Component {
   }
 
   setTime(estimatedTime) {
+    const { title, startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title && estimatedTime;
     this.setState({ estimatedTime });
   }
 
   setDescription(event) {
+    const { title, startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title;
     this.setState({ description: event.target.value });
   }
 
@@ -109,7 +115,6 @@ class AddTaskComponent extends React.Component {
   }
 
   confirmAddTask(reset) {
-    console.log("//"); console.log(this.props.location.state); console.log("//");
     const { backPath } = this.props.location.state;
     const { title, description, startDate, endDate, estimatedTime, category } = this.state;
     
