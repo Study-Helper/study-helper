@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { List, ListItem } from 'material-ui/List';
+import { red100 } from 'material-ui/styles/colors';
 import Avatar from 'material-ui/Avatar';
 import PlayArrow from 'material-ui/svg-icons/AV/play-arrow';
 import Done from 'material-ui/svg-icons/action/done';
@@ -24,7 +25,7 @@ class RegularTaskList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { tasks: props.tasks, sortValue: "New" }
+    this.state = { tasks: TaskManager.sortTasksByPriority(props.tasks), sortValue: 'Priority' }
     this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
     this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
     this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
@@ -149,7 +150,7 @@ class RegularTaskList extends React.Component {
               onChange={this.handleSortChange}
               style={{marginTop: '-22px', float:'right', width: '160px'}}
             >
-              <MenuItem value={"New"} primaryText="New" />
+              <MenuItem value={"Priority"} primaryText="Priority" />
               <MenuItem value={"Category"} primaryText="Category" />
               <MenuItem value={"Duration"} primaryText="Duration" />
             </DropDownMenu>
@@ -163,6 +164,7 @@ class RegularTaskList extends React.Component {
                 primaryText={task.name}
                 secondaryText={TaskManager.prettifyEstimatedDuration(task)}
                 nestedItems={[<TaskDescription key={1} task={task} />]}
+                style={(task.priority === 1) ? { backgroundColor: red100 } : {}}
                 leftAvatar={<Avatar
                   size={35}
                   icon={CategoryManager.getCategoryIconFromString(task.category)}

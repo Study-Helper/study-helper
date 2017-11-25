@@ -36,6 +36,7 @@ class EditTaskComponent extends React.Component {
       description: task.description || '',
       category: CategoryManager.loadCategoryByName(task.category),
       searchText: undefined,
+      priority: task.priority || 0,
       requiredFieldsFilled: false
     };
     this.handleOpen = this.handleOpen.bind(this);
@@ -44,6 +45,7 @@ class EditTaskComponent extends React.Component {
     this.setDate = this.setDate.bind(this);
     this.setTime = this.setTime.bind(this);
     this.setDescription = this.setDescription.bind(this);
+    this.handleToggle = this.handleToggle.bind(this);
     this.setCategory = this.setCategory.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.confirmEditTask = this.confirmEditTask.bind(this);
@@ -86,6 +88,10 @@ class EditTaskComponent extends React.Component {
     this.setState({ description: event.target.value });
   }
 
+  handleToggle(event, isInputChecked) {
+    this.setState({ priority: isInputChecked ? 1 : 0 });
+  }
+
   handleOpen() {
     this.setState({ open: true });
   }
@@ -111,7 +117,8 @@ class EditTaskComponent extends React.Component {
       description: '',
       searchText: undefined,
       category: undefined,
-      requiredFieldsFilled: false
+      requiredFieldsFilled: false,
+      priority: 0,
     });
   }
 
@@ -219,6 +226,8 @@ class EditTaskComponent extends React.Component {
           />
           <Toggle
             label="Mark this task as a priority one"
+            toggled={this.state.priority === 1}
+            onToggle={this.handleToggle}
             labelPosition="right"
             style={{ marginTop: 20, marginBottom: 20 }}
           />

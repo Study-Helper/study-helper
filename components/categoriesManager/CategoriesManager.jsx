@@ -141,6 +141,7 @@ class Calendar extends Component {
     const actions = [
        <FlatButton
          label="Cancel"
+         secondary
          keyboardFocused
          onClick={() => this.handleCloseWarning(false)}
        />,
@@ -161,6 +162,7 @@ class Calendar extends Component {
       const editModeActions = [
          <FlatButton
            label="Cancel"
+           secondary
            onClick={() => this.handleCloseEditMode()}
          />,
          <FlatButton
@@ -256,7 +258,7 @@ class Calendar extends Component {
               title="Scheduled Tasks"
               height={300}
               withFilter={false}
-              fromCategoriesManager 
+              fromCategoriesManager
               category={this.state.isCreating ? this.state.newCategory : this.state.activeCategory}
             />
           </Dialog>
