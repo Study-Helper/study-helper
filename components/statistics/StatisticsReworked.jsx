@@ -77,6 +77,7 @@ class StatisticsReworked extends React.Component {
             <div key={index}>
               <ListItem
                 key={index}
+                disableTouchRipple
                 style={{fontFamily: 'Roboto'}}
                 primaryText={data.primary}
                 leftAvatar={this.getAvatar(index)}
@@ -91,6 +92,7 @@ class StatisticsReworked extends React.Component {
 
         <ListItem
           disabled
+          disableTouchRipple
           primaryText={'Charts'}
           style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#F5F5F5', marginRight: '-10px'}}
         >

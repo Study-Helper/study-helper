@@ -207,6 +207,7 @@ class HistoryTaskList extends React.Component {
             <div key={index}>
               <ListItem
                 disabled
+                disableTouchRipple
                 primaryText={data.subheaderText}
                 secondaryText={`${data.tasks.length} items`}
                 style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
@@ -217,6 +218,7 @@ class HistoryTaskList extends React.Component {
                     <div key={index}>
                       <ListItem
                         key={index}
+                        disableTouchRipple
                         primaryText={task.name}
                         secondaryText={TaskManager.prettifyEstimatedDuration(task)}
                         nestedItems={[<TaskDescription key={1} task={task} />]}
