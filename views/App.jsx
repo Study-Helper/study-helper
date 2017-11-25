@@ -19,7 +19,7 @@ import TaskHistoryComponent from '../components/history/TaskHistory.jsx';
 import CalendarComponent from '../components/calendar/Calendar.jsx';
 import GradesComponent from '../components/grades/Grades.jsx';
 import SettingsComponent from '../components/settings/Settings.jsx';
-import StatisticsComponent from '../components/statistics/Statistics.jsx';
+import StatisticsComponent from '../components/statistics/StatisticsReworked.jsx';
 import AddTaskComponent from '../components/add-task/AddTaskComponent.jsx';
 import EditTaskComponent from '../components/edit-task/EditTaskComponent.jsx';
 import TaskStarted from '../components/task-started/TaskStarted.jsx';

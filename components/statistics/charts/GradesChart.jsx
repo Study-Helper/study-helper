@@ -47,9 +47,7 @@ class GradesChart extends React.Component {
     this.setState({options: {
         maintainAspectRatio: false,
         layout: {
-          padding: {
-            bottom: 30
-          }
+          padding: { top: -50, right: 20, bottom: 150, left: 20 }
         },
         scales: {
           xAxes: [{
@@ -72,8 +70,7 @@ class GradesChart extends React.Component {
           display: false
         },
         title: { 
-          display: true,
-          text: 'Grades' 
+          display: true
         }
       }
     });
@@ -96,16 +93,16 @@ class GradesChart extends React.Component {
   render() {
     return (
       <div>
+        <p style={{color: '#616161', fontFamily: 'Roboto', textAlign: 'center'}}>
+          Your Average Score is {this.state.mean}!
+        </p>
         <div>
           <Bar
             data={this.state.data}
-            width={900}
-            height={350}
+            width={100}
+            height={320}
             options={this.state.options}
           />
-        </div>
-        <div style={StudentsMeanText}>
-          Your Average Score is {this.state.mean}!
         </div>
       </div>
     )

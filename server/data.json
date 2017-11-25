@@ -28,7 +28,7 @@
             "estimatedDuration": "00:02",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
-            "priority": 0
+            "priority": 1
         },
         "_30mmt3qpypo": {
             "id": "_30mmt3qpypo",
@@ -38,7 +38,7 @@
             "category": "Presentation",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
-            "priority": 0
+            "priority": 1
         },
         "_yqwdogr6cfd": {
             "name": "DADADAADADADADADADADAD",
@@ -116,15 +116,6 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_pavaa478ird"
-        },
-        "_brgyzm00usc": {
-            "name": "iojoij",
-            "description": "No description available.",
-            "estimatedDuration": "-",
-            "category": "Studying",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "id": "_brgyzm00usc"
         }
     },
     "deleted_tasks": {
@@ -147,21 +138,11 @@
             "priority": 1,
             "id": "_y53cionby5o"
         },
-        "_sn0esgotp89": {
-            "name": "ffrrffrfrf",
-            "description": "No description available.",
-            "estimatedDuration": "00:08",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 0,
-            "id": "_sn0esgotp89"
-        },
-        "_k8ww191u6pp": {
-            "name": "rfrfrfr",
-            "description": "No description available.",
-            "estimatedDuration": "00:08",
-            "category": "Exam",
+        "_y38thjpz7al": {
+            "name": "hyyyyyuu",
+            "description": "Hello Worodl",
+            "estimatedDuration": "00:20",
+            "category": "Presentation",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "priority": 1,
@@ -187,9 +168,9 @@
             "priority": 1,
             "id": "_xemmctpv48"
         },
-        "_eorrop4sce": {
-            "name": "dsdadasd",
-            "description": "dqw",
+        "_zd4y3rz7d3s": {
+            "name": "Hello 0101",
+            "description": "aaaaa",
             "estimatedDuration": "00:01",
             "category": "Studying",
             "startDate": "2017-11-25",

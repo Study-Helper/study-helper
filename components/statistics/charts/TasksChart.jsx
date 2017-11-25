@@ -23,18 +23,19 @@ class TaskChart extends React.Component {
   }
 
   set_chart_data(){
-    this.setState({data: { 
+    this.setState({
+      data: { 
         labels: ["Tasks Completed", "Tasks Incompleted"],
         datasets: [{
           label: 'Incompleted Vs Completed Taks',
-          data: [numberOfToDoTasks, numberOfCompletedTasks],
+          data: [numberOfCompletedTasks, numberOfToDoTasks],
           backgroundColor: [
-              'rgba(255, 99, 132, 0.4)',
-              'rgba(54, 162, 235, 0.4)'
+            '#FF4081',
+            '#00BCD4'
           ],
           borderColor: [
-              'rgba(255,255,255,1)',
-              'rgba(255, 255, 255, 1)'
+            'rgba(255,255,255,1)',
+            'rgba(255, 255, 255, 1)'
           ],
           borderWidth: 1
         }]
@@ -43,20 +44,18 @@ class TaskChart extends React.Component {
   }
 
   set_chart_options(){
-    this.setState({options: {
+    this.setState({
+      options: {
         maintainAspectRatio: false,
+        layout: { padding: { bottom: 510, top: 20, right: 100, left: 100 } },
         legend: {
-          display: true,
           position: "bottom",
-          fullWidth: true,
+          display: true,          
+          fullWidth: false,
           reverse: false,
           labels: {
-            fontColor: "rgb(255, 99, 132)"
+            fontColor: "#616161"
           }
-        },
-        title: { 
-          display: true,
-          text: 'Tasks Done' 
         }
       }
     });
@@ -69,12 +68,13 @@ class TaskChart extends React.Component {
 
   render() {
     return (
-      <Pie data={this.state.data}
-          width={900}
-          height={300}
-          options={this.state.options}
+      <Pie 
+        data={this.state.data}
+        options={this.state.options}
+        width={20}
+        height={20}
       /> 
-    )
+    );
   }
 }
 
