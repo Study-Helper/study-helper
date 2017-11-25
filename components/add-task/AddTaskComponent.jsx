@@ -109,8 +109,10 @@ class AddTaskComponent extends React.Component {
   }
 
   confirmAddTask(reset) {
+    console.log("//"); console.log(this.props.location.state); console.log("//");
     const { backPath } = this.props.location.state;
     const { title, description, startDate, endDate, estimatedTime, category } = this.state;
+    
     const taskToAdd = {
       name: title,
       description: description || 'No description available.',

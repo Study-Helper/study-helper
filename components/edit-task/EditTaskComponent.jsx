@@ -115,7 +115,7 @@ class EditTaskComponent extends React.Component {
 
     TaskManager.updateName(task, title, taskLocation);
     TaskManager.updateDescription(task, description, taskLocation);
-    TaskManager.updateCategory(task, category, taskLocation);
+    TaskManager.updateCategory(task, category.title, taskLocation);
     TaskManager.updateEstimatedDuration(task, estimatedTime, taskLocation);
     TaskManager.updateStartAndEndDates(task, startDate, endDate, taskLocation);
 
@@ -126,6 +126,7 @@ class EditTaskComponent extends React.Component {
   }
 
   goBackWithState() {
+    console.log("Back with state"); console.log(this.props.location.state);
     const { task, backPath } = this.props.location.state;
     this.props.history.push({
       pathname: backPath,
