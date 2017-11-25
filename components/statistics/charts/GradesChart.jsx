@@ -47,7 +47,7 @@ class GradesChart extends React.Component {
     this.setState({options: {
         maintainAspectRatio: false,
         layout: {
-          padding: { top: -50, right: 20, bottom: 150, left: 20 }
+          padding: { top: -50, right: 20, bottom: 140, left: 20 }
         },
         scales: {
           xAxes: [{
