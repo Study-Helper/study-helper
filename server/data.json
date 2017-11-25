@@ -1,5 +1,14 @@
 {
     "todo_tasks": {
+        "_5kb2v3na13": {
+            "id": "_5kb2v3na13",
+            "name": "Cleanup my room...!!!!",
+            "description": "No description...",
+            "estimatedDuration": "00:06",
+            "category": "Friends",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
         "_o6n3bpjs3r": {
             "id": "_o6n3bpjs3r",
             "name": "Order pizza for dinner.",
@@ -18,6 +27,15 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
+        "_30mmt3qpypo": {
+            "id": "_30mmt3qpypo",
+            "name": "Email over my IPM project.",
+            "description": "The Professors email is tir@fct.unl.pt.",
+            "estimatedDuration": "00:02",
+            "category": "Presentation",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05"
+        },
         "_yqwdogr6cfd": {
             "name": "DADADAADADADADADADADAD",
             "description": "No description available.",
@@ -26,6 +44,15 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_yqwdogr6cfd"
+        },
+        "_cfgkk6zj1tj": {
+            "name": "teste",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Email",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "id": "_cfgkk6zj1tj"
         }
     },
     "completed_tasks": {
@@ -82,25 +109,6 @@
             "startDate": "2017-11-25",
             "endDate": "2017-11-25",
             "id": "_brgyzm00usc"
-        },
-        "_5kb2v3na13": {
-            "id": "_5kb2v3na13",
-            "name": "Physics",
-            "tests": {
-                "_5kb2233a13": {
-                    "id": "_5kb2233a13",
-                    "name": "Teste 1",
-                    "grade": 14
-                },
-                "_30mmtdgpypo": {
-                    "id": "_30mmtdgpypo",
-                    "name": "Segundo Teste",
-                    "grade": 16
-                }
-            },
-            "mean": 15,
-            "image": "Physics",
-            "color": "rgba(123, 31, 162, 1)"
         }
     },
     "deleted_tasks": {
@@ -166,6 +174,15 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_zd4y3rz7d3s"
+        },
+        "_bl7zycuiuk4": {
+            "name": "lol",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Email",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_bl7zycuiuk4"
         }
     },
     "categories": {
@@ -271,8 +288,32 @@
                     "grade": 16
                 }
             },
-            "mean": 14,
+            "mean": 16,
             "image": "Arts",
+            "color": "rgba(2, 136, 209, 1)"
+        },
+        "_r27n8bczmlh": {
+            "id": "_r27n8bczmlh",
+            "name": "Economy",
+            "tests": {},
+            "mean": 0,
+            "image": "Finances",
+            "color": "#ef5350"
+        }
+    },
+    "deleted_subjects": {
+        "_5kb2vwbv13": {
+            "id": "_5kb2vwbv13",
+            "name": "Human Interaction",
+            "tests": {
+                "_30emtggpypo": {
+                    "id": "_30emtggpypo",
+                    "name": "Test one",
+                    "grade": 13
+                }
+            },
+            "mean": 13,
+            "image": "Social",
             "color": "rgba(2, 136, 209, 1)"
         }
     }
