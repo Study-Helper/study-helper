@@ -135,6 +135,13 @@ class RegularTaskList extends React.Component {
     });
   }
 
+  getSecondaryTitle(task) {
+    if (task.priority === 1) {
+      return `${TaskManager.prettifyEstimatedDuration(task)} | Priority task`;
+    }
+    return TaskManager.prettifyEstimatedDuration(task);
+  }
+
   render() {
     const tasks = this.state.tasks;
     return (
@@ -143,17 +150,22 @@ class RegularTaskList extends React.Component {
           this.props.withFilter &&
           <ListItem
             disabled
-            style={{height: '18px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
-          >
-            <DropDownMenu
-              value={this.state.sortValue}
-              onChange={this.handleSortChange}
-              style={{marginTop: '-22px', float:'right', width: '160px'}}
-            >
-              <MenuItem value={"Priority"} primaryText="Priority" />
-              <MenuItem value={"Category"} primaryText="Category" />
-              <MenuItem value={"Duration"} primaryText="Duration" />
-            </DropDownMenu>
+            style={{height: '19px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
+          > 
+            <div>
+              <div style={{marginTop: '1px'}}>
+                Order by:
+              </div>
+              <DropDownMenu
+                value={this.state.sortValue}
+                onChange={this.handleSortChange}
+                style={{marginTop: '-36px', 'marginLeft':'50px'}}
+              >
+                <MenuItem value={"Priority"} primaryText="Priority" />
+                <MenuItem value={"Category"} primaryText="Category" />
+                <MenuItem value={"Duration"} primaryText="Duration" />
+              </DropDownMenu>
+            </div>
           </ListItem>
         }
         <List style={taskList.list}>
@@ -161,8 +173,8 @@ class RegularTaskList extends React.Component {
             <div key={index}>
               <ListItem
                 key={index}
-                primaryText={<div style={{fontWeight: 'lighter'}}>{task.name}</div>}
-                secondaryText={<div style={{fontWeight: 'lighter'}}>{TaskManager.prettifyEstimatedDuration(task)}</div>}
+                primaryText={task.name}
+                secondaryText={this.getSecondaryTitle(task)}
                 nestedItems={[<TaskDescription key={1} task={task} />]}
                 style={(task.priority === 1) ? { backgroundColor: red100 } : {}}
                 leftAvatar={<Avatar

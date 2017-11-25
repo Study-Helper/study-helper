@@ -37,7 +37,7 @@ class EditTaskComponent extends React.Component {
       category: CategoryManager.loadCategoryByName(task.category),
       searchText: undefined,
       priority: task.priority || 0,
-      requiredFieldsFilled: false
+      requiredFieldsFilled: true
     };
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);

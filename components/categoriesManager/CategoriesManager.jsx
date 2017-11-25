@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
+import Snackbar from 'material-ui/Snackbar';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
@@ -38,6 +39,7 @@ class Calendar extends Component {
     this.handleOpenEditMode = this.handleOpenEditMode.bind(this);
     this.handleCloseEditMode = this.handleCloseEditMode.bind(this);
     this.handleSaveCategory = this.handleSaveCategory.bind(this);
+    this.closeSnack = this.closeSnack.bind(this);
   }
 
   componentWillUpdate() {
@@ -113,14 +115,24 @@ class Calendar extends Component {
         newCategoryName: '',
         newCategory: undefined,
         fakeCategories: copy,
+        snackMessage: 'Category created successfuly!',
+        openSnack: true,
       });
     } else {
       //TODO
       //EDIT Category
       //name: this.state.newCategoryName
       //icon: this.state.newCategory.title
+      this.setState({
+        openEditMode: false,
+        snackMessage: 'Category edited successfuly!',
+        openSnack: true,
+       });
     }
-    console.log(this.state);
+  }
+
+  closeSnack() {
+    this.setState({ openSnack: false });
   }
 
   updateCheck() {
@@ -168,6 +180,7 @@ class Calendar extends Component {
          <FlatButton
            label="Save"
            primary
+           disabled={!this.state.newCategoryName || this.state.newCategoryName.length <= 0 || this.state.newCategory === undefined}
            onClick={() => this.handleSaveCategory()}
          />,
        ];
@@ -292,6 +305,12 @@ class Calendar extends Component {
               </div>
             </div>
           </Dialog>
+          <Snackbar
+          open={this.state.openSnack}
+          message={this.state.snackMessage}
+          autoHideDuration={2000}
+          onRequestClose={this.closeSnack}
+          />
       </div>
     );
   }

@@ -13,6 +13,8 @@ import AddTestButton from './AddTestButton.jsx';
 import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
 import Add from 'material-ui/svg-icons/content/add';
+import { Scrollbars } from 'react-custom-scrollbars';
+import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 
 import EditSubjectModal from '../modals/subject-modals/EditSubjectModal.jsx';
 import RemoveSubjectModal from '../modals/subject-modals/RemoveSubjectModal.jsx';
@@ -24,7 +26,7 @@ class SubjectsList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { subjects: props.subjects }
+    this.state = { subjects: SubjectManager.loadSubjects() }
     this.subscribeToSubjectUpdatedEvents = this.subscribeToSubjectUpdatedEvents.bind(this);
     this.subscribeToSubjectRemovedEvents = this.subscribeToSubjectRemovedEvents.bind(this);
     this.subscribeToSubjectAddedEvents = this.subscribeToSubjectAddedEvents.bind(this);
@@ -153,47 +155,57 @@ class SubjectsList extends React.Component {
   render() {
     const subjects = this.state.subjects;
     return (
-      <div>
-        <List style={taskList.list}>
-          {subjects.map((subject, index) =>
-            <div key={index}>
-              <ListItem
-                key={index}
-                primaryText={subject.name}
-                secondaryText={
-                    "Average: " + ((subject.mean%1) == 0 ? subject.mean 
-                            : parseFloat(Math.round(subject.mean * 100) / 100).toFixed(2))
-                }
-                nestedItems={this.getDescription(subject)}
-                leftAvatar={
-                  <Avatar
-                    size={35}
-                    icon={SubjectIconsManager.getSubjectIconFromString(subject.image)}
-                    backgroundColor={SubjectIconsManager.getSubjectBackgroundColorFromString(subject.image)}
-                    style={taskList.avatar}
-                  />
-                }
-              >
-                <MoreOptionsButton options={[
-                    this.editSubjectOption(subject),
-                    this.removeSubjectOption(subject)
-                ]}/>
-                <IconButton
-                  tooltip='Add Test!' 
-                  style={taskList.iconButton}
-                  onClick={()=>this.openAddTestModal(subject)}
-                >
-                  <Add />
-                </IconButton>
-              </ListItem>
-              {index < subjects.length - 1 && 
-                <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
-            </div>
-          )}
-        </List>
-        <AddTestButton />
-        <EditSubjectModal />
-        <RemoveSubjectModal />
+      <div>{  
+        this.state.subjects.length > 0 ?
+        <Scrollbars style={{ width: 697, height: 540 }}>
+          <div>
+            <List style={taskList.list}>
+              {subjects.map((subject, index) =>
+                <div key={index}>
+                  <ListItem
+                    key={index}
+                    primaryText={subject.name}
+                    secondaryText={
+                        "Average: " + ((subject.mean%1) == 0 ? subject.mean 
+                                : parseFloat(Math.round(subject.mean * 100) / 100).toFixed(2))
+                    }
+                    nestedItems={this.getDescription(subject)}
+                    leftAvatar={
+                      <Avatar
+                        size={35}
+                        icon={SubjectIconsManager.getSubjectIconFromString(subject.image)}
+                        backgroundColor={SubjectIconsManager.getSubjectBackgroundColorFromString(subject.image)}
+                        style={taskList.avatar}
+                      />
+                    }
+                  >
+                    <MoreOptionsButton options={[
+                        this.editSubjectOption(subject),
+                        this.removeSubjectOption(subject)
+                    ]}/>
+                    <IconButton
+                      tooltip='Add Test!' 
+                      style={taskList.iconButton}
+                      onClick={()=>this.openAddTestModal(subject)}
+                    >
+                      <Add />
+                    </IconButton>
+                  </ListItem>
+                  {index < subjects.length - 1 && 
+                    <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
+                </div>
+              )}
+            </List>
+            <AddTestButton />
+            <EditSubjectModal />
+            <RemoveSubjectModal />
+          </div>
+        </Scrollbars> :
+        <div style={{ color: '#9E9E9E', textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
+          <div><ErrorIcon /></div>
+          <div>No subjects to show!</div>
+        </div>
+        }
       </div>
     );
   }

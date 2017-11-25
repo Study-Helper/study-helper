@@ -4,24 +4,33 @@ import React from 'react';
 // TODO: All 300 or 200 or whatever.
 import {
   blue500,
-  redA200,
-  amber400,
-  greenA700,
+  grey500,
+  green500,
+  red500,
+  deepPurple500,
   cyan500,
-  blueA200,
-  red400,
-  pink300
+  lime500,
+  amber500,
+  brown500,
+  deepOrange500,
+  teal500,
+  pink500
 } from 'material-ui/styles/colors';
 
 /* Import a whole lot of icons. */
-import ActionAssignment from 'material-ui/svg-icons/action/assignment';
-import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
-import AssignmentTurnedIn from 'material-ui/svg-icons/action/assignment-turned-in';
-import ChangeHistory from 'material-ui/svg-icons/action/change-history';
-import Dashboard from 'material-ui/svg-icons/action/dashboard';
-import Message from 'material-ui/svg-icons/communication/message';
-import Headset from 'material-ui/svg-icons/hardware/headset';
-import Idk from 'material-ui/svg-icons/image/adjust';
+import Shopping from 'material-ui/svg-icons/action/shopping-cart';
+import Cake from 'material-ui/svg-icons/social/cake';
+import Phone from 'material-ui/svg-icons/communication/call';
+import Home from 'material-ui/svg-icons/action/home';
+import Outdoors from 'material-ui/svg-icons/image/nature-people';
+import Lunch from 'material-ui/svg-icons/maps/local-dining';
+import Event from 'material-ui/svg-icons/action/today';
+import Presentation from 'material-ui/svg-icons/action/record-voice-over';
+import Book from 'material-ui/svg-icons/action/book';
+import Mail from 'material-ui/svg-icons/maps/local-post-office';
+import Sport from 'material-ui/svg-icons/places/fitness-center';
+import Note from 'material-ui/svg-icons/action/announcement';
+
 
 const DATA_JSON = './server/data.json';
 
@@ -95,36 +104,52 @@ const CategoryManager = {
 // When a new category is added, check the map by map[key]
 const categoryMap = {
   Sport: {
-    icon: <ActionAssignment />,
-    backgroundColor: blue500
+    icon: <Sport/>,
+    backgroundColor: grey500
   },
   Note: {
-    icon: <EditorInsertChart />,
-    backgroundColor: redA200
+    icon: <Note/>,
+    backgroundColor: blue500
   },
-  Exam: {
-    icon: <AssignmentTurnedIn />,
-    backgroundColor: amber400
+  Lunch: {
+    icon: <Lunch/>,
+    backgroundColor: amber500
   },
   Presentation: {
-    icon: <ChangeHistory />,
-    backgroundColor: greenA700
+    icon: <Presentation/>,
+    backgroundColor: deepPurple500
   },
   Email: {
-    icon: <Dashboard />,
-    backgroundColor: cyan500
+    icon: <Mail/>,
+    backgroundColor: teal500
   },
   Studying: {
-    icon: <Message />,
-    backgroundColor: red400
+    icon: <Book/>,
+    backgroundColor: brown500
   },
-  Friends: {
-    icon: <Headset />,
-    backgroundColor: blueA200
+  Event: {
+    icon: <Event/>,
+    backgroundColor: red500
   },
-  Family: {
-    icon: <Idk />,
-    backgroundColor: pink300
+  Outdoors: {
+    icon: <Outdoors/>,
+    backgroundColor: green500
+  },
+  Shopping: {
+    icon: <Shopping/>,
+    backgroundColor: deepOrange500
+  },
+  Home: {
+    icon: <Home/>,
+    backgroundColor: pink500
+  },
+  Call: {
+    icon: <Phone/>,
+    backgroundColor: cyan500
+  },
+  Birthday: {
+    icon: <Cake/>,
+    backgroundColor: lime500
   }
 };
 
