@@ -245,7 +245,7 @@ class HistoryTaskList extends React.Component {
               </ListItem>
               {
                 data.tasks.length === 0 &&
-                  <div style={{ textAlign: 'center', fontFamily: 'Roboto', padding: '20px 0 20px 0' }}>
+                  <div style={{ color: '#9E9E9E', textAlign: 'center', fontFamily: 'Roboto', padding: '20px 0 20px 0' }}>
                     <div><ErrorIcon /></div>
                   <div>No tasks to show!</div>
                 </div>

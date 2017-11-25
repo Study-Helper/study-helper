@@ -170,9 +170,10 @@ class EditTaskComponent extends React.Component {
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             <RaisedButton
-              style={{ margin: '0px 30px 0px 20px' }}
               primary
+              style={{ margin: '0px 30px 0px 20px' }}
               onClick={() => this.resetFields()}
+              labelPosition={'before'}
               label='Clear Fields'
               icon={<Clear />}
             />
@@ -184,7 +185,7 @@ class EditTaskComponent extends React.Component {
             value={this.state.title}
             fullWidth
             hintText={'Title'}
-            floatingLabelText='Task Title'
+            floatingLabelText='*Task Title'
             onChange={this.setTitle}
           />
           <CategoryPicker
@@ -200,19 +201,19 @@ class EditTaskComponent extends React.Component {
             <TextField
               style={{ width: 125, marginRight: '20px' }}
               value={startDate}
-              floatingLabelText="Start date"
+              floatingLabelText="*Start Date"
               onClick={() => this.handleOpen()}
             />
             <TextField
               style={{ width: 125 }}
               value={endDate}
-              floatingLabelText="End date"
+              floatingLabelText="*End Date"
               onClick={() => this.handleOpen()}
             />
           <TextField
             fullWidth
             hintText={'Add a Description'}
-            floatingLabelText='Description (Optional)'
+            floatingLabelText='Description'
             floatingLabelFixed
             value={this.state.description}
             onChange={this.setDescription}

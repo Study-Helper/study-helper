@@ -140,7 +140,7 @@ class Today extends React.Component {
               history={history} // Pass the history for some crazy hacks
             />
           </Scrollbars> :
-          <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
+          <div style={{ color: '#9E9E9E', textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
             <div><ErrorIcon /></div>
             <div>No tasks to show!</div>
           </div>
