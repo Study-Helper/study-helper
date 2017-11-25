@@ -23,7 +23,8 @@ class CategoryPicker extends React.Component {
     this.state = {
       searchText: '',
       categories: categories,
-      chosenCategory: (fromManager || noNames) ? undefined : categories[0],
+      chosenCategory: undefined, // Bug where the category seems to be selected, but it's not...
+      // chosenCategory: (fromManager || noNames) ? undefined : categories[0],
       searchText: undefined
     };
     this.getCategories = this.getCategories.bind(this);

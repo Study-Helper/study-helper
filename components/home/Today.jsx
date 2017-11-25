@@ -34,7 +34,7 @@ class Today extends React.Component {
     }
 
     if (location && location.state) {
-
+      
       if (location.state.noRender) return;
       const { from, task } = location.state;
 
@@ -82,11 +82,13 @@ class Today extends React.Component {
   render() {
     const { title, height } = this.props;
     
-    let pathname = this.props.location
+    let pathname = undefined;
+    if (this.props.location) {
+      pathname = this.props.location.pathname;
+    }
     if (!pathname && this.props.calendarProps) {
       pathname = this.props.calendarProps.location.pathname;
     } else if (!pathname && this.props.categoriesProps) {
-      console.log("CAT PROPS!")
       pathname = this.props.categoriesProps.location.pathname;
     }
 

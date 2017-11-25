@@ -46,7 +46,11 @@ function generateRandomId() {
 const SubjectIconsManager = {
 
   getAllIcons(){
-    return subjectIconsMap;
+    let icons = [];
+    for(let key in subjectIconsMap){
+      icons.push(key);
+    }
+    return icons;
   },
 
   getSubjectIconFromString(iconName) {

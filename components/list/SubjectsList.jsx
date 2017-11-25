@@ -13,7 +13,8 @@ import CheckButton from './CheckButton.jsx';
 import Divider from 'material-ui/Divider';
 import { taskList } from '../../styles/styles.css.js';
 
-import RemoveTaskModal from '../modals/task-modals/RemoveTaskModal.jsx';
+import EditSubjectModal from '../modals/subject-modals/EditSubjectModal.jsx';
+import RemoveSubjectModal from '../modals/subject-modals/RemoveSubjectModal.jsx';
 import SubjectManager from '../../server/managers/SubjectManager.js';
 
 import SubjectIconsManager from '../../server/managers/SubjectIconsManager.jsx';
@@ -23,63 +24,63 @@ class SubjectsList extends React.Component {
   constructor(props) {
     super(props);
     this.state = { subjects: props.subjects }
-    this.subscribeToTaskUpdatedEvents = this.subscribeToTaskUpdatedEvents.bind(this);
-    this.subscribeToTaskRemovedEvents = this.subscribeToTaskRemovedEvents.bind(this);
-    this.subscribeToTaskAddedEvents = this.subscribeToTaskAddedEvents.bind(this);
+    this.subscribeToSubjectUpdatedEvents = this.subscribeToSubjectUpdatedEvents.bind(this);
+    this.subscribeToSubjectRemovedEvents = this.subscribeToSubjectRemovedEvents.bind(this);
+    this.subscribeToSubjectAddedEvents = this.subscribeToSubjectAddedEvents.bind(this);
   }
 
   componentWillMount() {
-    this.subscribeToTaskUpdatedEvents();
-    this.subscribeToTaskRemovedEvents();
-    this.subscribeToTaskAddedEvents();
+    this.subscribeToSubjectUpdatedEvents();
+    this.subscribeToSubjectRemovedEvents();
+    this.subscribeToSubjectAddedEvents();
   }
 
   componentWillUnmount() {
-    PubSub.unsubscribe(this.taskUpdatedToken);
-    PubSub.unsubscribe(this.taskAddedToken);
-    PubSub.unsubscribe(this.taskRemovedToken);
+    PubSub.unsubscribe(this.subjectUpdatedToken);
+    PubSub.unsubscribe(this.subjectAddedToken);
+    PubSub.unsubscribe(this.subjectRemovedToken);
   }
 
   /** @private */
-  subscribeToTaskUpdatedEvents() {
-    this.taskUpdatedToken = PubSub.subscribe(
-      'Task Updated',
+  subscribeToSubjectUpdatedEvents() {
+    this.subjectUpdatedToken = PubSub.subscribe(
+      'Subject Updated',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = prevState.tasks;
-        const localIndex = tasks.findIndex(i => i.id === data.editedTask.id);
-        tasks[localIndex] = data.editedTask;
-        return { tasks }
+        const subjects = prevState.subjects;
+        const localIndex = subjects.findIndex(i => i.id === data.editedSubject.id);
+        subjects[localIndex] = data.editedSubject;
+        return { subjects }
       })
     );
   }
 
   /** @private */
-  subscribeToTaskAddedEvents() {
-     this.taskAddedToken = PubSub.subscribe(
-      'Regular - Task Added',
+  subscribeToSubjectAddedEvents() {
+     this.subjectAddedToken = PubSub.subscribe(
+      'Subject Added',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = prevState.tasks;
+        const subjects = prevState.subjects;
         // NOTE: data = { task, indexInTheList || undefined }
-        const task = data.addedTask;
+        const subject = data.addedSubject;
         const index = data.indexInTheList;
         // Iff we're coming from and undo, indexInTheList is not undefined.
         // Otherwise, add it to the end.
-        const indexToInsert = index !== undefined ? index : tasks.length;
-        tasks.splice(indexToInsert, 0, task);
-        return { tasks }
+        const indexToInsert = index !== undefined ? index : subjects.length;
+        subjects.splice(indexToInsert, 0, subject);
+        return { subjects }
       })
     );
   }
 
   /** @private */
-  subscribeToTaskRemovedEvents() {
-    this.taskRemovedToken = PubSub.subscribe(
-      'Regular - Task Removed',
+  subscribeToSubjectRemovedEvents() {
+    this.subjectRemovedToken = PubSub.subscribe(
+      'Subject Removed',
       (message, data) => this.setState((prevState, props) => {
-        const tasks = prevState.tasks;
-        const localIndex = tasks.findIndex(i => i.id === data.removedTask.id);
-        tasks.splice(localIndex, 1);
-        return { tasks }
+        const subjects = prevState.subjects;
+        const localIndex = subjects.findIndex(i => i.id === data.removedSubject.id);
+        subjects.splice(localIndex, 1);
+        return {subjects }
       })
     );
   }
@@ -89,32 +90,35 @@ class SubjectsList extends React.Component {
     return categories[category];
   }
 
-  /** @private */
-  openEditModal(task) {
-    EditTaskModal.openSelf(task);
-  }
 
   /** @private */
-  openRemoveModal(task) {
-    const indexInTheList = this.state.tasks.findIndex(i => i.id === task.id);
-    RemoveTaskModal.openSelf(task, indexInTheList);
+  openRemoveModal(subject) {
+    const indexInTheList = this.state.subjects.findIndex(i => i.id === subject.id);
+    RemoveSubjectModal.openSelf(subject, indexInTheList);
   }
 
+
   /** @private */
-  editTaskOption(task) {
+  openEditModal(subject) {
+    EditSubjectModal.openSelf(subject);
+  }
+
+
+  /** @private */
+  editSubjectOption(subject) {
     return {
       name: 'Edit',
       icon: <EditIcon />,
-      onClickFunction: () => this.openEditModal(task)
+      onClickFunction: () => this.openEditModal(subject)
     }
   }
 
   /** @private */
-  removeTaskOption(task) {
+  removeSubjectOption(subject) {
     return {
       name: 'Remove',
       icon: <DeleteIcon />,
-      onClickFunction: () => this.openRemoveModal(task)
+      onClickFunction: () => this.openRemoveModal(subject)
     }
   }
 
@@ -122,17 +126,22 @@ class SubjectsList extends React.Component {
   getDescription(subject){
     const listItems = [];
     const subjectTests = SubjectManager.getAllTests(subject);
-    let index = 0;
-    //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
-    for(let key in subjectTests){
-      let test = subjectTests[key];
-      let description = test.name + ": " + test.grade;
-      listItems.push(<SubjectDescription description={description}/>);
-      if(index < subjectTests.length-1){
-        //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
+    if(subjectTests.length != 0){
+      let index = 0;
+      //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
+      for(let key in subjectTests){
+        let test = subjectTests[key];
+        let description = test.name + ": " + test.grade;
+        listItems.push(<SubjectDescription description={description}/>);
+        if(index < subjectTests.length-1){
+          //listItems.push(<Divider style={{backgroundColor: '#EEEEEE', width: '600px', marginLeft: '40px'}} />);
+        }
+        index++;
       }
-      index++;
+    } else {
+      listItems.push(<SubjectDescription description={'No tests available.'}/>);
     }
+    
     return listItems;
   }
 
@@ -148,19 +157,31 @@ class SubjectsList extends React.Component {
                 primaryText={subject.name}
                 secondaryText={"Average: " + subject.mean}
                 nestedItems={this.getDescription(subject)}
-                leftAvatar={<Avatar
-                  size={35}
-                  icon={SubjectIconsManager.getSubjectIconFromString(subject.image)}
-                  backgroundColor={SubjectIconsManager.getSubjectBackgroundColorFromString(subject.image)}
-                  style={taskList.avatar}
-                />}>
-                
+                leftAvatar={
+                  <Avatar
+                    size={35}
+                    icon={SubjectIconsManager.getSubjectIconFromString(subject.image)}
+                    backgroundColor={SubjectIconsManager.getSubjectBackgroundColorFromString(subject.image)}
+                    style={taskList.avatar}
+                  />
+                }
+              >
+                <MoreOptionsButton options={[
+                    this.editSubjectOption(subject),
+                    this.removeSubjectOption(subject)
+                ]}/>
+                <CheckButton
+                  task={subject}
+                  indexInTheList={this.state.subjects.findIndex(i => i.id === subject.id)}
+                />
               </ListItem>
               {index < subjects.length - 1 && 
                 <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
             </div>
           )}
         </List>
+        <EditSubjectModal />
+        <RemoveSubjectModal />
       </div>
     );
   }

@@ -73,10 +73,16 @@ class EditTaskComponent extends React.Component {
   }
 
   setTime(estimatedTime) {
+    const { title, startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title && estimatedTime;
     this.setState({ estimatedTime });
   }
 
   setDescription(event) {
+    const { title, startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title;
     this.setState({ description: event.target.value });
   }
 
@@ -115,7 +121,7 @@ class EditTaskComponent extends React.Component {
 
     TaskManager.updateName(task, title, taskLocation);
     TaskManager.updateDescription(task, description, taskLocation);
-    TaskManager.updateCategory(task, category, taskLocation);
+    TaskManager.updateCategory(task, category.title, taskLocation);
     TaskManager.updateEstimatedDuration(task, estimatedTime, taskLocation);
     TaskManager.updateStartAndEndDates(task, startDate, endDate, taskLocation);
 
@@ -126,6 +132,7 @@ class EditTaskComponent extends React.Component {
   }
 
   goBackWithState() {
+    console.log("Back with state"); console.log(this.props.location.state);
     const { task, backPath } = this.props.location.state;
     this.props.history.push({
       pathname: backPath,

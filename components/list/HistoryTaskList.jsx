@@ -148,9 +148,10 @@ class HistoryTaskList extends React.Component {
 
    /** @private */
   goToEditTaskScreen(task, taskLocation) {
+    const backPath = this.props.history.location.pathname;
     this.props.history.push({
       pathname: '/edit-task',
-      state: { task, taskLocation }
+      state: { task, backPath, taskLocation }
     });
   }
 

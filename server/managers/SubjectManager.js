@@ -1,3 +1,5 @@
+import SubjectIconsManager from './SubjectIconsManager.jsx';
+
 const DATA_JSON = './server/data.json';
 
 /**
@@ -19,6 +21,7 @@ function generateRandomId() {
  * Singleton-like subject manager.
  */
 const SubjectManager = {
+  
   loadSubjects() {
     const subjects = [];
     const subjectKeys = Object.keys(data.get('subjects'));
@@ -28,6 +31,30 @@ const SubjectManager = {
     });
     return subjects;
   },
+
+  add(subject, location){
+    const id = subject.id || generateRandomId();
+    const color = subject.color || SubjectIconsManager.getSubjectBackgroundColorFromString(subject.image);
+    subject.id = id;
+    subject.color = color;
+    data.add(`${location}[${id}]`, subject);
+  },
+
+  remove(subject, location){
+    const id = subject.id;
+    data.del(`${location}[${id}]`);
+  },
+
+  updateName(subject, newName, location) {
+    const id = subject.id;
+    data.modify(`${location}[${id}][name]`, newName);
+  },
+
+  updateImage(subject, newImage, location){
+    const id = subject.id;
+    data.modify(`${location}[${id}][image]`, newImage);
+  },
+
   getAllTests(subject){
     const tests = [];
     for(let key in subject.tests){

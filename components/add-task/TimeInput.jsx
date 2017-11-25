@@ -25,8 +25,8 @@ class TimeInput extends Component {
       const hours = value.split(':')[0];
       const minutes = value.split(':')[1];
       if (!isNaN(hours) && !isNaN(minutes) && minutes <= 59) {
-        console.log('minutes[0]', minutes[0]);
-        console.log('>2', minutes.length > 2);
+        // console.log('minutes[0]', minutes[0]);
+        // console.log('>2', minutes.length > 2);
         if (minutes[0] === '0' && minutes.length > 2) {
           return;
         }

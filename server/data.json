@@ -36,77 +36,14 @@
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
         },
-        "_pavaa478ird": {
-            "name": "hhhhhhhhhhh",
-            "description": "No description available.",
-            "estimatedDuration": "00:25",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_pavaa478ird"
-        },
-        "_b3kxsm38kjd": {
-            "name": "ola",
+        "_yqwdogr6cfd": {
+            "name": "DADADAADADADADADADADAD",
             "description": "No description available.",
             "estimatedDuration": "00:01",
-            "category": "Sport",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_b3kxsm38kjd"
-        },
-        "_hk35og6r33q": {
-            "name": "woooooo!",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Family",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_hk35og6r33q"
-        },
-        "_mybucws9cyf": {
-            "name": "Gll",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Exam",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_mybucws9cyf"
-        },
-        "_fentalhb16b": {
-            "name": "yupi",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_fentalhb16b"
-        },
-        "_bpd1bh8lp6e": {
-            "name": "It works!",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Sport",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_bpd1bh8lp6e"
-        },
-        "_dfuqaign6jo": {
-            "name": "WOOOOOY",
-            "description": "No description available.",
-            "estimatedDuration": "02:01",
-            "category": "Sport",
+            "category": "Presentation",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05",
             "id": "_dfuqaign6jo"
-        },
-        "_eafwbjbs07": {
-            "name": "hello!",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Exam",
-            "startDate": "2017-11-14",
-            "endDate": "2017-11-14",
-            "id": "_eafwbjbs07"
         }
     },
     "completed_tasks": {
@@ -145,6 +82,24 @@
             "category": "Email",
             "startDate": "2017-09-05",
             "endDate": "2017-09-05"
+        },
+        "_pavaa478ird": {
+            "name": "hhhhhhhhhhh",
+            "description": "No description available.",
+            "estimatedDuration": "00:25",
+            "category": "Note",
+            "startDate": "2017-09-05",
+            "endDate": "2017-09-05",
+            "id": "_pavaa478ird"
+        },
+        "_brgyzm00usc": {
+            "name": "iojoij",
+            "description": "No description available.",
+            "estimatedDuration": "-",
+            "category": "Studying",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "id": "_brgyzm00usc"
         }
     },
     "deleted_tasks": {
@@ -317,6 +272,30 @@
             },
             "mean": 16,
             "image": "Arts",
+            "color": "rgba(2, 136, 209, 1)"
+        },
+        "_r27n8bczmlh": {
+            "id": "_r27n8bczmlh",
+            "name": "Economy",
+            "tests": {},
+            "mean": 0,
+            "image": "Finances",
+            "color": "#ef5350"
+        }
+    },
+    "deleted_subjects": {
+        "_5kb2vwbv13": {
+            "id": "_5kb2vwbv13",
+            "name": "Human Interaction",
+            "tests": {
+                "_30emtggpypo": {
+                    "id": "_30emtggpypo",
+                    "name": "Test one",
+                    "grade": 13
+                }
+            },
+            "mean": 13,
+            "image": "Social",
             "color": "rgba(2, 136, 209, 1)"
         }
     }

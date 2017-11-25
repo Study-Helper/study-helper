@@ -69,7 +69,7 @@ export const taskDescription = {
   },
   icon: {
     paddingLeft: '20px',
-    paddingTop: '7px'
+    paddingTop: '5px'
   }
 };
 

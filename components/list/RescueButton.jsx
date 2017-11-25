@@ -39,6 +39,11 @@ class RescueButton extends React.Component {
     // After {UNDO_TIME_MS} miliseconds, erase the task if it wasn't rescued.
     setTimeout(this.onUndoTimeOut, UNDO_TIME_MS);
 
+    // Update the start/end date fields of the to-be-rescued task.
+    const { rescueStartDate, rescueEndDate } = this.state;
+    this.state.forTask.startDate = rescueStartDate;
+    this.state.forTask.endDate = rescueEndDate;
+
     // Prepare the parameters for the publishing.
     const eventName = 'History - Task Removed';
     const eventData = {

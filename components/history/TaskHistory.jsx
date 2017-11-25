@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import HistoryTaskList from '../list/HistoryTaskList.jsx';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 
+import Snackbar from 'material-ui/Snackbar';
 import Search from 'material-ui/svg-icons/action/search';
 import TaskManager from '../../server/managers/TaskManager.js';
 
@@ -16,8 +17,32 @@ class TaskHistory extends React.Component {
     super(props);
     this.state = {
       deletedTasks: TaskManager.loadStoredDeletedTasks(),
-      completedTasks: TaskManager.loadStoredCompletedTasks()
+      completedTasks: TaskManager.loadStoredCompletedTasks(),
+      shouldRenderSnackbar: false,
+      snackbarMessage: ''
     }
+    this.closeSnackbar = this.closeSnackbar.bind(this);
+  }
+
+  componentWillMount() {
+    let location = this.props.location;
+
+    if (location && location.state) {
+      if (location.state.noRender) return;
+
+      const { from, task } = location.state;
+      const message = 'Task edited!';
+
+      setTimeout(() => this.setState({
+        shouldRenderSnackbar: true,
+        snackbarMessage: message
+      }), 50);
+    }
+  }
+
+  /** @private */
+  closeSnackbar() {
+    this.setState({ shouldRenderSnackbar: false });
   }
 
   render() {
@@ -48,6 +73,13 @@ class TaskHistory extends React.Component {
             />
           </Scrollbars>
         }
+        <Snackbar
+          style={{marginLeft: '70px'}}
+          open={this.state.shouldRenderSnackbar}
+          message={this.state.snackbarMessage}
+          autoHideDuration={2000}
+          onRequestClose={this.closeSnackbar}
+        />
       </div>
     );
   }
