@@ -1,335 +1,56 @@
 {
-    "todo_tasks": {
-        "_5kb2v3na13": {
-            "id": "_5kb2v3na13",
-            "name": "Cleanup my room...!!!!",
-            "description": "No description...",
-            "estimatedDuration": "00:06",
-            "category": "Friends",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 0
-        },
-        "_o6n3bpjs3r": {
-            "id": "_o6n3bpjs3r",
-            "name": "Order pizza for dinner.",
-            "description": "Pepperoni #1.",
-            "estimatedDuration": "00:05",
-            "category": "Family",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 0
-        },
-        "_3wa8g8ppiie": {
-            "id": "_3wa8g8ppiie",
-            "name": "New name!",
-            "description": "New description!",
-            "category": "Exam",
-            "estimatedDuration": "00:02",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 1
-        },
-        "_30mmt3qpypo": {
-            "id": "_30mmt3qpypo",
-            "name": "Email over my IPM project.",
-            "description": "The Professors email is tir@fct.unl.pt.",
-            "estimatedDuration": "00:02",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 1
-        },
-        "_yqwdogr6cfd": {
-            "name": "DADADAADADADADADADADAD",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 0,
-            "id": "_yqwdogr6cfd"
-        },
-        "_cfgkk6zj1tj": {
-            "name": "teste",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Exam",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_cfgkk6zj1tj"
-        },
-        "_nrj3ed6wyn": {
-            "name": "xx312x21x3123x13x",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Presentation",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 0,
-            "id": "_nrj3ed6wyn"
-        },
-        "_wqe5fgqv3d8": {
-            "name": "asd",
-            "description": "No description available.",
-            "estimatedDuration": "00:45",
-            "category": "Studying",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 0,
-            "id": "_wqe5fgqv3d8"
-        },
-        "_lmq5bjd0x2h": {
-            "name": "sadsadqqwd",
-            "description": "No description available.",
-            "estimatedDuration": "00:35",
-            "category": "Presentation",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 0,
-            "id": "_lmq5bjd0x2h"
-        }
-    },
-    "completed_tasks": {
-        "_ta2lu23603": {
-            "name": "Hello World!",
-            "description": "wooo",
-            "estimatedDuration": "00:45",
-            "category": "Exam",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_ta2lu23603"
-        },
-        "_rjztk3mvhlj": {
-            "name": "kjhsrgkjerag",
-            "description": "No description available.",
-            "estimatedDuration": "01:15",
-            "category": "Studying",
-            "startDate": "2017-11-22",
-            "endDate": "2017-11-22",
-            "id": "_rjztk3mvhlj"
-        },
-        "_7dh9ujy5keu": {
-            "name": "O hello",
-            "description": "No description available.",
-            "estimatedDuration": "01:30",
-            "category": "Exam",
-            "startDate": "2017-11-22",
-            "endDate": "2017-11-22",
-            "id": "_7dh9ujy5keu"
-        },
-        "_uhgggjh992k": {
-            "id": "_uhgggjh992k",
-            "name": "nonRead the lecture notes from last Wednesday.",
-            "description": "Fun times.",
-            "estimatedDuration": "03:30",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_pavaa478ird": {
-            "name": "hhhhhhhhhhh",
-            "description": "No description available.",
-            "estimatedDuration": "00:25",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_pavaa478ird"
-        }
-    },
-    "deleted_tasks": {
-        "_bl7zycuiuk4": {
-            "name": "lol",
-            "description": "No description available.",
-            "estimatedDuration": "00:01",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_bl7zycuiuk4"
-        },
-        "_y53cionby5o": {
-            "name": "rfffr",
-            "description": "frf",
-            "estimatedDuration": "00:01",
-            "category": "Exam",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 1,
-            "id": "_y53cionby5o"
-        },
-        "_y38thjpz7al": {
-            "name": "hyyyyyuu",
-            "description": "Hello Worodl",
-            "estimatedDuration": "00:20",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 1,
-            "id": "_k8ww191u6pp"
-        },
-        "_9d0y8ihckhf": {
-            "name": "eeffrffr",
-            "description": "No description available.",
-            "estimatedDuration": "00:10",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 1,
-            "id": "_9d0y8ihckhf"
-        },
-        "_xemmctpv48": {
-            "name": "tggrgtgt",
-            "description": "No description available.",
-            "estimatedDuration": "00:25",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "priority": 1,
-            "id": "_xemmctpv48"
-        },
-        "_zd4y3rz7d3s": {
-            "name": "Hello 0101",
-            "description": "aaaaa",
-            "estimatedDuration": "00:01",
-            "category": "Studying",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_eorrop4sce"
-        },
-        "_etcv59bx1ad": {
-            "name": "qwesad",
-            "description": "No description available.",
-            "estimatedDuration": "00:30",
-            "category": "Presentation",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 0,
-            "id": "_etcv59bx1ad"
-        }
-    },
+    "todo_tasks": {},
+    "completed_tasks": {},
+    "deleted_tasks": {},
     "categories": {
         "_dsbz186sd4c": {
             "id": "_dsbz186sd4c",
-            "title": "Studying"
+            "title": "Sport"
         },
         "_re6potwcn": {
             "id": "_re6potwcn",
-            "title": "Exam"
+            "title": "Note"
         },
         "_re1pzzwcn": {
             "id": "_re1pzzwcn",
-            "title": "Note"
+            "title": "Lunch"
         },
         "_ff9potwxc": {
             "id": "_ff9potwxc",
-            "title": "Email"
+            "title": "Presentation"
         },
         "_op7potdvc": {
             "id": "_op7potdvc",
-            "title": "Sport"
+            "title": "Email"
         },
         "_op7678dvc": {
             "id": "_op7678dvc",
-            "title": "Presentation"
+            "title": "Studying"
         },
         "_op81jh6vc": {
             "id": "_op81jh6vc",
-            "title": "Friends"
+            "title": "Event"
         },
         "_ijs7jh6vc": {
             "id": "_ijs7jh6vc",
-            "title": "Family"
+            "title": "Outdoors"
+        },
+        "_o45potdvc": {
+            "id": "_o45potdvc",
+            "title": "Shopping"
+        },
+        "_op6678dvc": {
+            "id": "_op6678dvc",
+            "title": "Home"
+        },
+        "_o45tjhiuy": {
+            "id": "_o45tjhiuy",
+            "title": "Call"
+        },
+        "_45s7bbnvc": {
+            "id": "_45s7bbnvc",
+            "title": "Birthday"
         }
     },
-    "subjects": {
-        "_30mmt3qpypo": {
-            "id": "_30mmt3qpypo",
-            "name": "Maths",
-            "tests": {
-                "_5kb223vg13": {
-                    "id": "_5kb223vg13",
-                    "name": "T1",
-                    "grade": 10
-                },
-                "_30mmtd45ypo": {
-                    "id": "_30mmtd45ypo",
-                    "name": "T2",
-                    "grade": 13
-                },
-                "_2pfuxy2uaom": {
-                    "id": "_2pfuxy2uaom",
-                    "name": "3",
-                    "grade": 3
-                }
-            },
-            "mean": 8.666666666666666,
-            "image": "Maths",
-            "color": "rgba(211, 47, 47, 1)"
-        },
-        "_5kb2v3na13": {
-            "id": "_5kb2v3na13",
-            "name": "Physics",
-            "tests": {
-                "_5kb2233a13": {
-                    "id": "_5kb2233a13",
-                    "name": "Teste 1",
-                    "grade": 14
-                },
-                "_30mmtdgpypo": {
-                    "id": "_30mmtdgpypo",
-                    "name": "Segundo Teste",
-                    "grade": 16
-                }
-            },
-            "mean": 15,
-            "image": "Physics",
-            "color": "rgba(123, 31, 162, 1)"
-        },
-        "_5kb2vwwa13": {
-            "id": "_5kb2vwwa13",
-            "name": "Arts",
-            "tests": {
-                "_30mmtggpypo": {
-                    "id": "_30mmtggpypo",
-                    "name": "T1",
-                    "grade": 16
-                }
-            },
-            "mean": 16,
-            "image": "Arts",
-            "color": "rgba(2, 136, 209, 1)"
-        },
-        "_r27n8bczmlh": {
-            "id": "_r27n8bczmlh",
-            "name": "Economy",
-            "tests": {
-                "_ko0r8ld9bwk": {
-                    "id": "_ko0r8ld9bwk",
-                    "name": "T1",
-                    "grade": 13
-                }
-            },
-            "mean": 13,
-            "image": "Finances",
-            "color": "#ef5350"
-        }
-    },
-    "deleted_subjects": {
-        "_5kb2vwbv13": {
-            "id": "_5kb2vwbv13",
-            "name": "Human Interaction",
-            "tests": {
-                "_30emtggpypo": {
-                    "id": "_30emtggpypo",
-                    "name": "Test one",
-                    "grade": 13
-                }
-            },
-            "mean": 13,
-            "image": "Social",
-            "color": "rgba(2, 136, 209, 1)"
-        }
-    }
+    "subjects": {}
 }
