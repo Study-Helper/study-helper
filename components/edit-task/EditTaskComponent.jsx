@@ -52,15 +52,24 @@ class EditTaskComponent extends React.Component {
   }
 
   setTitle(event) {
-    this.setState({ title: event.target.value });
+    const { startDate, endDate, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && event.target.value;
+    this.setState({ title: event.target.value, requiredFieldsFilled: filled });
   }
 
   setDate(startDate, endDate) {
-    this.setState({ nstartDate: startDate, nendDate: endDate });
+    const { title, category } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title;
+    this.setState({ nstartDate: startDate, nendDate: endDate, requiredFieldsFilled: filled });
   }
 
   setCategory(category) {
-    this.setState({ category: category.title });
+    const { title, startDate, endDate } = this.state;
+    // Check if the confirm button can be enabled.
+    const filled = startDate && endDate && category && title;
+    this.setState({ category, requiredFieldsFilled: filled });
   }
 
   setTime(estimatedTime) {
@@ -138,7 +147,7 @@ class EditTaskComponent extends React.Component {
       />,
     ];
 
-    const { startDate, endDate, estimatedTime } = this.state;
+    const { startDate, endDate, estimatedTime, requiredFieldsFilled } = this.state;
 
     const style = {
       marginLeft: 40,
@@ -209,7 +218,7 @@ class EditTaskComponent extends React.Component {
           <RaisedButton
             label='Confirm'
             onClick={() => this.confirmEditTask()}
-            disabled={this.state.requiredFieldsFilled}  // TODO
+            disabled={!requiredFieldsFilled}
             style={addTask.button}
             primary
           />
