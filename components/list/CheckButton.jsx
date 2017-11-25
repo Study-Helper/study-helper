@@ -50,7 +50,7 @@ class CheckButton extends React.Component {
     if (this.props.redirectsToHome) {
       this.props.history.push({
         pathname: '/home',
-        state: { from: 'task-started' }
+        state: { from: 'task-started', task: this.state.forTask }
       });
     }
   }

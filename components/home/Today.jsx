@@ -46,10 +46,20 @@ class Today extends React.Component {
         default: break;
       }
 
-      setTimeout(() => this.setState({
-        shouldRenderSnackbar: true,
-        snackbarMessage: message
-      }), 150);
+      setTimeout(
+        () => this.setState((prevState, props) => {
+          const tasks = prevState.tasks;
+          // Huge hacks...
+          if (from === 'task-started') {
+            const localIndex = tasks.findIndex(i => i.id === task.id);
+            tasks.splice(localIndex, 1);
+          }
+          return {
+            shouldRenderSnackbar: true,
+            snackbarMessage: message,
+            tasks
+          }
+        }), 50);
     }
   }
 
