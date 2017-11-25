@@ -104,7 +104,8 @@ class AddTaskComponent extends React.Component {
       estimatedTime: undefined,
       description: '',
       searchText: undefined,
-      category: undefined
+      category: undefined,
+      requiredFieldsFilled: false
     });
   }
 
@@ -147,14 +148,13 @@ class AddTaskComponent extends React.Component {
   render() {
     const actions = [
       <FlatButton
+        secondary
         label="Cancel"
-        primary
         onClick={this.handleClose}
       />,
       <FlatButton
-        label="Submit"
         primary
-        keyboardFocused
+        label="Submit"
         onClick={this.handleConfirm}
       />,
     ];
@@ -190,7 +190,7 @@ class AddTaskComponent extends React.Component {
             value={this.state.title}
             fullWidth
             hintText={'Title'}
-            floatingLabelText='Task Title'
+            floatingLabelText='*Task Title'
             onChange={this.setTitle}
           />
           <CategoryPicker
@@ -200,25 +200,25 @@ class AddTaskComponent extends React.Component {
             createBtn
           />
           <TimeInput onChange={this.setTime} time={estimatedTime} />
-          <FloatingActionButton mini style={style} onClick={() => this.handleOpen()}>
+          <FloatingActionButton mini zDepth={1} style={style} onClick={() => this.handleOpen()}>
             <CalendarIcon />
           </FloatingActionButton>
             <TextField
               style={{ width: 125, marginRight: '20px' }}
               value={startDate}
-              floatingLabelText="Start date"
+              floatingLabelText="*Start Date"
               onClick={() => this.handleOpen()}
             />
             <TextField
               style={{ width: 125 }}
               value={endDate}
-              floatingLabelText="End date"
+              floatingLabelText="*End Date"
               onClick={() => this.handleOpen()}
             />
           <TextField
             fullWidth
             hintText={'Add a Description'}
-            floatingLabelText='Description (Optional)'
+            floatingLabelText='Description'
             floatingLabelFixed
             value={this.state.description}
             onChange={this.setDescription}
@@ -232,7 +232,7 @@ class AddTaskComponent extends React.Component {
             label='Add'
             onClick={() => this.confirmAddTask(false)}
             disabled={!requiredFieldsFilled}
-            style={addTask.button}
+            style={{float: 'right', marginTop: '5px', marginRight: '-6px'}}
             primary
           />
           {/*<RaisedButton
@@ -245,7 +245,7 @@ class AddTaskComponent extends React.Component {
           <FlatButton
             label='Cancel'
             onClick={this.goBackWithState}
-            style={{float: 'right', marginTop: '30px', marginRight: '5px'}}
+            style={{float: 'right', marginTop: '5px', marginRight: '5px'}}
             secondary
           />
         </div>

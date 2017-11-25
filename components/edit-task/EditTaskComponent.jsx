@@ -163,7 +163,7 @@ class EditTaskComponent extends React.Component {
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             <RaisedButton
-              style={{ margin: '0px 25px 0px 20px' }}
+              style={{ margin: '0px 30px 0px 20px' }}
               primary
               onClick={() => this.resetFields()}
               label='Clear Fields'
@@ -187,7 +187,7 @@ class EditTaskComponent extends React.Component {
             createBtn
           />
           <TimeInput onChange={this.setTime} time={estimatedTime} />
-          <FloatingActionButton mini style={style} onClick={() => this.handleOpen()}>
+          <FloatingActionButton mini zDepth={1} style={style} onClick={() => this.handleOpen()}>
             <CalendarIcon />
           </FloatingActionButton>
             <TextField
@@ -219,13 +219,13 @@ class EditTaskComponent extends React.Component {
             label='Confirm'
             onClick={() => this.confirmEditTask()}
             disabled={!requiredFieldsFilled}
-            style={addTask.button}
+            style={{float: 'right', marginTop: '5px', marginRight: '-6px'}}
             primary
           />
-          <RaisedButton
+          <FlatButton
             label='Cancel'
             onClick={this.goBackWithState}
-            style={addTask.button}
+            style={{float: 'right', marginTop: '5px', marginRight: '5px'}}
             secondary
           />
         </div>

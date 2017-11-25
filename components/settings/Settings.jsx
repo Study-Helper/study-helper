@@ -108,13 +108,13 @@ class Settings extends React.Component {
         <RaisedButton
           label="Save"
           onClick={this.handleClose}
-          style={{float: 'right', marginTop: '70px', marginRight: '15px'}}
+          style={{float: 'right', marginTop: '75px', marginRight: '12px'}}
           primary
         />
         <FlatButton
           label="Cancel"
           onClick={this.handleClose}
-          style={{float: 'right', paddingLeft: '15px', marginTop: '70px', marginRight: '15px'}}
+          style={{float: 'right', marginTop: '75px', marginRight: '12px'}}
           secondary
         />
       </div>

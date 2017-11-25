@@ -40,7 +40,7 @@ class TimeInput extends Component {
     return (
       <TextField
         hintText="00:00"
-        floatingLabelText="Task duration (Hours:Minutes)"
+        floatingLabelText="*Task Duration (HH:MM)"
         value={this.state.currentValue}
         onChange={this.handleChange}
       />

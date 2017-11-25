@@ -84,7 +84,7 @@ class CategoryPicker extends React.Component {
             <span style={categoryPicker.infoText}>Choose a Category</span>
             <FlatButton label="Create new" primary />
             <div style={{ position: 'relative', display: 'inline-block', float: 'right' }}>
-              <Search style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red' }} />
+              <Search style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: '#757575' }} />
               <TextField
                 value={this.state.searchText}
                 hintText="Search"

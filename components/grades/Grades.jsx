@@ -30,10 +30,11 @@ class Grades extends React.Component {
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
-            <RaisedButton 
+            <RaisedButton
+              primary
               label="Add Subject"
               labelPosition="before"
-              primary
+              style={{margin: '0px 30px 0px 20px'}}
               icon={<Add/>}
             />
           </ToolbarGroup>

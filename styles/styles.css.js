@@ -90,8 +90,7 @@ export const taskList = {
     marginTop: '-9px'
   },
   avatar: {
-    marginTop: '3px',
-    borderRadius: '2px'
+    marginTop: '3px'
   },
   iconButton: {
     marginTop: '-7px',
@@ -142,7 +141,8 @@ export const categoryPicker = {
     width: 650,
     height: 125,
     overflowY: 'auto',
-    border: '1px solid #E0E0E0'
+    border: '1px solid #E0E0E0',
+    paddingBottom: '25px'
   },
   largeGrid: {
     display: 'flex',
@@ -155,6 +155,8 @@ export const categoryPicker = {
   infoText: {
     color: '#BDBDBD',
     fontFamily: 'Roboto',
+    marginTop: '240px',
+    paddingRight: '5px',
     fontSize: '15px',
     lineHeight: '40px'
   },
