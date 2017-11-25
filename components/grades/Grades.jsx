@@ -26,7 +26,7 @@ class Grades extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{'marginLeft': '15px'}} text="Grades" />
+            <ToolbarTitle style={appbar.header} text="Grades" />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>

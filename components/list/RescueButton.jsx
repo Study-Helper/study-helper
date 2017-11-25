@@ -132,7 +132,7 @@ class RescueButton extends React.Component {
           style={taskList.iconButton}
           onClick={this.openDatePicker}
         >
-          <Rescue />
+          <Rescue color={'#757575'} />
         </IconButton>
         <Snackbar
           style={{marginLeft: '70px'}}

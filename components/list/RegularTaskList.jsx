@@ -182,7 +182,7 @@ class RegularTaskList extends React.Component {
                   pathname: 'task-started',
                   state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
                   <IconButton tooltip='Start!' style={taskList.iconButton}>
-                    <PlayArrow />
+                    <PlayArrow color={'#757575'} />
                   </IconButton>
                 </Link>
               </ListItem>

@@ -54,6 +54,11 @@ export const appbar = {
     height: '70px',
     marginTop: '-8px',
     backgroundColor: '#EEEEEE'
+  },
+  header: {
+    fontWeight: 'lighter',
+    marginLeft: '15px',
+    color: '#757575'
   }
 };
 
@@ -86,7 +91,7 @@ export const taskList = {
   },
   avatar: {
     marginTop: '3px',
-    // borderRadius: '4px'
+    borderRadius: '2px'
   },
   iconButton: {
     marginTop: '-7px',
@@ -147,14 +152,11 @@ export const categoryPicker = {
     border: 'none',
     marginTop: 10
   },
-  // TODO: This is not well.
   infoText: {
     color: '#BDBDBD',
     fontFamily: 'Roboto',
-    fontSize: '18px',
-    height: '40px',
-    lineHeight: '40px',
-    marginRight: '10px'
+    fontSize: '15px',
+    lineHeight: '40px'
   },
   categoryItemDefault: {
     height: '85px'
@@ -162,10 +164,10 @@ export const categoryPicker = {
   categoryItemSelected: {
     height: '85px',
     backgroundColor: 'rgba(220, 220, 220, 1)',
-    borderRadius: '5px'
+    borderRadius: '2px'
   },
   categoryNoTitleItemSelected: {
-    height: '65px', //85
+    height: '65px',
     backgroundColor: 'rgba(220, 220, 220, 1)',
     borderRadius: '5px'
   }

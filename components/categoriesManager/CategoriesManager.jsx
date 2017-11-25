@@ -174,12 +174,12 @@ class Calendar extends Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{ marginLeft: '15px' }} text="Categories" />
+            <ToolbarTitle style={appbar.header} text="Categories" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             <div style={{ position: 'relative', display: 'inline-block' }}>
               <Search
-                style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red' }}
+                style={{ position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: '#757575' }}
               />
               <TextField
                 hintText="Search"
@@ -187,8 +187,9 @@ class Calendar extends Component {
               />
             </div>
             <RaisedButton
-              style={{ margin: '0px 25px 0px 20px' }}
               primary
+              style={{ margin: '0px 30px 0px 20px' }}
+              labelPosition='before'
               label='Add Category'
               onClick={() => this.handleOpenEditMode(true)}
               icon={<Add />}

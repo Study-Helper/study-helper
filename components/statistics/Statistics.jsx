@@ -31,7 +31,7 @@ class Statistics extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{'marginLeft': '15px'}} text="Statistics" />
+            <ToolbarTitle style={appbar.header} text="Statistics" />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
         </Toolbar>

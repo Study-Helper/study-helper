@@ -89,14 +89,14 @@ class Today extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{fontWeight: 'lighter', marginLeft: '15px'}} text={title || `Today - ${moment().format("MMMM Do")}`} />
+            <ToolbarTitle style={appbar.header} text={title || `Today - ${moment().format("MMMM Do")}`} />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             {
               this.state.tasks.length > 0 &&
               <div style={{position: 'relative', display: 'inline-block'}}>
-                <Search style={{position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red'}}/>
+                <Search style={{position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: '#757575'}}/>
                 <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
               </div>
             }

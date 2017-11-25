@@ -42,11 +42,11 @@ class Calendar extends Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{ marginLeft: '15px' }} text="Calendar" />
+            <ToolbarTitle style={appbar.header} text="Calendar" />
           </ToolbarGroup>
         </Toolbar>
         <DatePicker
-          startDate={this.state.startDate} // TODO: this.location.state.goBackStrtDate
+          startDate={this.state.startDate}
           endDate={this.state.endDate}
           onChange={this.setDate}
         />

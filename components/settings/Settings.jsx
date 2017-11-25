@@ -60,7 +60,7 @@ class Settings extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{'marginLeft': '15px'}} text="Settings" />
+            <ToolbarTitle style={appbar.header} text="Settings" />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
         </Toolbar>
@@ -108,13 +108,13 @@ class Settings extends React.Component {
         <RaisedButton
           label="Save"
           onClick={this.handleClose}
-          style={{float: 'right', marginTop: '60px', marginRight: '15px'}}
+          style={{float: 'right', marginTop: '70px', marginRight: '15px'}}
           primary
         />
         <FlatButton
           label="Cancel"
           onClick={this.handleClose}
-          style={{float: 'right', marginTop: '60px', marginRight: '15px'}}
+          style={{float: 'right', paddingLeft: '15px', marginTop: '70px', marginRight: '15px'}}
           secondary
         />
       </div>

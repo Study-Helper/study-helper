@@ -25,15 +25,15 @@ class TaskHistory extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{fontWeight: 'lighter', marginLeft: '15px'}} text="Task History" />
+            <ToolbarTitle style={appbar.header} text="Task History" />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             {
               this.state.deletedTasks.length > 0 &&
               <div style={{position: 'relative', display: 'inline-block'}}>
-                <Search style={{position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: 'red'}}/>
-                <TextField hintText="Search" style={{textIndent: 30, 'width':'120px', paddingRight: 30}}/>
+                <Search style={{position: 'absolute', left: 0, top: 15, width: 20, height: 20, color: '#757575'}}/>
+                <TextField hintText="Search" style={{textIndent: 30, width: '120px', float: 'right', marginRight: '30px'}}/>
               </div>
             }
           </ToolbarGroup>

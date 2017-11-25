@@ -167,8 +167,9 @@ class AddTaskComponent extends React.Component {
           </ToolbarGroup>
           <ToolbarGroup lastChild>
             <RaisedButton
-              style={{ margin: '0px 25px 0px 20px' }}
               primary
+              style={{ margin: '0px 30px 0px 20px' }}
+              labelPosition='before'
               onClick={() => this.resetFields()}
               label='Clear fields'
               icon={<Clear />}
@@ -220,23 +221,23 @@ class AddTaskComponent extends React.Component {
             style={{ marginTop: 20, marginBottom: 20 }}
           />
           <RaisedButton
-            label='Confirm'
+            label='Add'
             onClick={() => this.confirmAddTask(false)}
             disabled={this.state.requiredFieldsFilled}  // TODO
-            style={addTask.button}
+            style={{float: 'right', marginTop: '30px', marginRight: '5px'}}
             primary
           />
-          <RaisedButton
+          {/*<RaisedButton
             label='Add more'
             onClick={() => this.confirmAddTask(true)}
             disabled={this.state.requiredFieldsFilled}  // TODO
             style={addTask.button}
             primary
-          />
-          <RaisedButton
+          />*/}
+          <FlatButton
             label='Cancel'
             onClick={this.goBackWithState}
-            style={addTask.button}
+            style={{float: 'right', marginTop: '30px', marginRight: '5px'}}
             secondary
           />
         </div>

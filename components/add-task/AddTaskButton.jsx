@@ -12,7 +12,7 @@ const AddTaskButton = ({ backPath, startDate, endDate }) => (
   <Link to={{ pathname: '/add-task', state: { backPath, startDate, endDate }}}>
     <RaisedButton
       primary
-      style={{margin: '0px 25px 0px 20px'}}
+      style={{margin: '0px 30px 0px 20px'}}
       label='Add Task'
       labelPosition='before'
       icon={<Add />}

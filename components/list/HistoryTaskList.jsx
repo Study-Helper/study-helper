@@ -186,14 +186,6 @@ class HistoryTaskList extends React.Component {
     }
   }
 
-  removeAllOption(location) {
-    return {
-      name: 'Clear All',
-      icon: <ClearIcon />,
-      onClickFunction: () => this.openRemoveAllTasksModal(location)
-    }
-  }
-
   render() {
     const tasks = this.state.tasks;
     const { completed, deleted } = this.state;
@@ -208,7 +200,7 @@ class HistoryTaskList extends React.Component {
                 disabled
                 primaryText={<div style={{fontWeight: 'lighter'}}>{data.subheaderText}</div>}
                 secondaryText={<div style={{fontWeight: 'lighter'}}>{`${data.tasks.length} items`}</div>}
-                style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#FAFAFA'}}
+                style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
                 initiallyOpen
                 nestedListStyle={{marginTop: '-9px'}}
                 nestedItems={
@@ -241,7 +233,14 @@ class HistoryTaskList extends React.Component {
                     </div>
                   )}
               >
-                <MoreOptionsButton options={[this.removeAllOption(data.source)]} />
+                <IconButton
+                  disabled={!data.tasks.length}
+                  tooltip="Clear All!"
+                  style={taskList.iconButton}
+                  onClick={() => this.openRemoveAllTasksModal(data.source)}
+                >
+                  <ClearIcon color={'#757575'} />
+                </IconButton>
               </ListItem>
               {
                 data.tasks.length === 0 &&
