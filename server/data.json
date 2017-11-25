@@ -69,6 +69,26 @@
             "endDate": "2017-11-25",
             "priority": 0,
             "id": "_nrj3ed6wyn"
+        },
+        "_wqe5fgqv3d8": {
+            "name": "asd",
+            "description": "No description available.",
+            "estimatedDuration": "00:45",
+            "category": "Studying",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_wqe5fgqv3d8"
+        },
+        "_lmq5bjd0x2h": {
+            "name": "sadsadqqwd",
+            "description": "No description available.",
+            "estimatedDuration": "00:35",
+            "category": "Presentation",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_lmq5bjd0x2h"
         }
     },
     "completed_tasks": {
@@ -177,6 +197,16 @@
             "endDate": "2017-11-25",
             "priority": 1,
             "id": "_eorrop4sce"
+        },
+        "_etcv59bx1ad": {
+            "name": "qwesad",
+            "description": "No description available.",
+            "estimatedDuration": "00:30",
+            "category": "Presentation",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_etcv59bx1ad"
         }
     },
     "categories": {
@@ -274,8 +304,14 @@
         "_r27n8bczmlh": {
             "id": "_r27n8bczmlh",
             "name": "Economy",
-            "tests": {},
-            "mean": 0,
+            "tests": {
+                "_ko0r8ld9bwk": {
+                    "id": "_ko0r8ld9bwk",
+                    "name": "T1",
+                    "grade": 13
+                }
+            },
+            "mean": 13,
             "image": "Finances",
             "color": "#ef5350"
         }
