@@ -60,16 +60,6 @@
             "priority": 0,
             "id": "_cfgkk6zj1tj"
         },
-        "_18bj3tki6os": {
-            "name": "deeded",
-            "description": "No description available.",
-            "estimatedDuration": "00:10",
-            "category": "Exam",
-            "startDate": "2017-11-25",
-            "endDate": "2017-11-25",
-            "priority": 1,
-            "id": "_18bj3tki6os"
-        },
         "_nrj3ed6wyn": {
             "name": "xx312x21x3123x13x",
             "description": "No description available.",
@@ -196,6 +186,16 @@
             "endDate": "2017-09-05",
             "priority": 1,
             "id": "_xemmctpv48"
+        },
+        "_eorrop4sce": {
+            "name": "dsdadasd",
+            "description": "dqw",
+            "estimatedDuration": "00:01",
+            "category": "Studying",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 1,
+            "id": "_eorrop4sce"
         }
     },
     "categories": {

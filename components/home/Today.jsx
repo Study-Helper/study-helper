@@ -18,7 +18,7 @@ class Today extends React.Component {
 
   constructor(props) {
     super(props);
-    const loadedTasks = TaskManager.loadTasksByDate('2017-09-05');
+    const loadedTasks = TaskManager.loadTasksByDate(moment().format('YYYY-MM-DD'));
     const { fromCategoriesManager, category } = this.props;
     // Synchronously load "today's" tasks.
     this.state = {
