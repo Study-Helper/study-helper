@@ -170,23 +170,32 @@ class RegularTaskList extends React.Component {
                   style={taskList.avatar}
                 />}
               >
-                <MoreOptionsButton options={[
-                  this.editTaskOption(task),
-                  this.removeTaskOption(task)
-                ]} />
-                <CheckButton
-                  task={task}
-                  indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
-                />
-                <Link to={{
-                  pathname: 'task-started',
-                  state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
-                  <IconButton tooltip='Start!' style={taskList.iconButton}>
-                    <PlayArrow />
-                  </IconButton>
-                </Link>
+                {
+                  !this.props.fromCategoriesManager &&
+                  <MoreOptionsButton options={[
+                    this.editTaskOption(task),
+                    this.removeTaskOption(task)
+                  ]} />
+                }
+                {
+                  !this.props.fromCategoriesManager &&
+                  <CheckButton
+                    task={task}
+                    indexInTheList={this.state.tasks.findIndex(i => i.id === task.id)}
+                  />
+                }
+                {
+                  !this.props.fromCategoriesManager &&
+                  <Link to={{
+                    pathname: 'task-started',
+                    state: { task, taskList, index: this.state.tasks.findIndex(i => i.id === task.id) } }}>
+                    <IconButton tooltip='Start!' style={taskList.iconButton}>
+                      <PlayArrow />
+                    </IconButton>
+                  </Link>
+                }
               </ListItem>
-              {index < tasks.length - 1 && 
+              {index < tasks.length - 1 &&
                 <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
             </div>
           )}

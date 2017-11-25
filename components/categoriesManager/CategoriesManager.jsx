@@ -252,7 +252,13 @@ class Calendar extends Component {
             onRequestClose={() => this.handleCloseSeeTasks()}
             contentStyle={customContentStyle}
           >
-            <Today title="Scheduled Tasks" height={300} />
+            <Today
+              title="Scheduled Tasks"
+              height={300}
+              withFilter={false}
+              fromCategoriesManager 
+              category={this.state.isCreating ? this.state.newCategory : this.state.activeCategory}
+            />
           </Dialog>
         }
           <Dialog

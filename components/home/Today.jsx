@@ -18,9 +18,11 @@ class Today extends React.Component {
 
   constructor(props) {
     super(props);
+    const loadedTasks = TaskManager.loadTasksByDate('2017-09-05');
+    const { fromCategoriesManager, category } = this.props;
     // Synchronously load "today's" tasks.
     this.state = {
-      tasks: TaskManager.loadTasksByDate('2017-09-05'),
+      tasks: fromCategoriesManager ? loadedTasks.filter(t => t.category === category.title) : loadedTasks,
       shouldRenderSnackbar: false,
       snackbarMessage: ''
     }
@@ -34,7 +36,7 @@ class Today extends React.Component {
     }
 
     if (location && location.state) {
-      
+
       if (location.state.noRender) return;
       const { from, task } = location.state;
 
@@ -81,7 +83,7 @@ class Today extends React.Component {
 
   render() {
     const { title, height } = this.props;
-    
+
     let pathname = undefined;
     if (this.props.location) {
       pathname = this.props.location.pathname;
@@ -98,7 +100,7 @@ class Today extends React.Component {
     } else if (!history && this.props.categoriesProps) {
       history = this.props.categoriesProps.history;
     }
-    
+
     // If we're on 'Today', pass today's date.
     // Otherwise, we're on 'Calendar' - pass the picked date.
     const startDate = this.props.location || !this.props.calendarStartDate
@@ -124,11 +126,14 @@ class Today extends React.Component {
                 <TextField hintText="Search" style={{textIndent: 30, width:'120px', paddingRight: 30}}/>
               </div>
             }
-            <AddTaskButton
-              backPath={pathname}
-              startDate={startDate}
-              endDate={endDate}
-            />
+            {
+              !this.props.fromCategoriesManager &&
+              <AddTaskButton
+                backPath={pathname}
+                startDate={startDate}
+                endDate={endDate}
+              />
+            }
           </ToolbarGroup>
         </Toolbar>
         {
@@ -138,6 +143,7 @@ class Today extends React.Component {
               tasks={this.state.tasks}
               withFilter={this.props.withFilter}
               history={history} // Pass the history for some crazy hacks
+              fromCategoriesManager={this.props.fromCategoriesManager}
             />
           </Scrollbars> :
           <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '50px' }}>
@@ -161,7 +167,9 @@ Today.propTypes = {
   title: PropTypes.string,
   range: PropTypes.array,
   height: PropTypes.number,
-  withFilter: PropTypes.bool
+  withFilter: PropTypes.bool,
+  fromCategoriesManager: PropTypes.bool,
+  category: PropTypes.object,
 };
 
 Today.defaultProps = {
