@@ -4,16 +4,20 @@ import ActionInfo from 'material-ui/svg-icons/action/description';
 import { subjectDescription, taskDescription} from '../../styles/styles.css.js';
 
 import Book from 'material-ui/svg-icons/action/book';
+import Info from 'material-ui/svg-icons/action/info-outline';
 
 const SubjectDescription = ({ description }) => (
-  <ListItem 
+	<ListItem 
     disabled 
     style={subjectDescription.description} 
     key={1}
-    leftIcon={<Book style={taskDescription.icon} />}
+    leftIcon={
+    	description === 'No tests available.' ? <Info style={taskDescription.icon} /> :
+    		<Book style={taskDescription.icon} />
+    }
     secondaryText={ description }
     secondaryTextLines={2}
-  />
+	 />
 );
 
 export default SubjectDescription;

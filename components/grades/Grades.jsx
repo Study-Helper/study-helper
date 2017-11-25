@@ -7,8 +7,9 @@ import ErrorIcon from 'material-ui/svg-icons/alert/error-outline';
 import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
 import SubjectManager from '../../server/managers/SubjectManager.js';
 import SubjectsList from '../list/SubjectsList.jsx';
+import AddSubjectModal from '../modals/Subject-modals/AddSubjectModal.jsx';
 
-import Add from 'material-ui/svg-icons/content/add';
+import Add from 'material-ui/svg-icons/av/playlist-add';
 
 import { appbar } from '../../styles/styles.css.js';
 
@@ -19,6 +20,10 @@ class Grades extends React.Component {
     this.state = {
       subjects: SubjectManager.loadSubjects()
     }
+  }
+
+  openAddModal() {
+    AddSubjectModal.openSelf();
   }
 
   render() {
@@ -35,19 +40,23 @@ class Grades extends React.Component {
               labelPosition="before"
               primary
               icon={<Add/>}
+              onClick={() => this.openAddModal()}
             />
           </ToolbarGroup>
         </Toolbar>
-        {
-          this.state.subjects.length > 0 ?
-          <Scrollbars style={{ width: 697, height: 540 }}>
-            <SubjectsList subjects={this.state.subjects} />
-          </Scrollbars> :
-          <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
-            <div><ErrorIcon /></div>
-            <div>No subjects to show</div>
-          </div>
-        }
+        <div>
+            {
+              this.state.subjects.length > 0 ?
+              <Scrollbars style={{ width: 697, height: 540 }}>
+                <SubjectsList subjects={this.state.subjects} />
+              </Scrollbars> :
+              <div style={{ textAlign: 'center', fontFamily: 'Roboto', marginTop: '30px' }}>
+                <div><ErrorIcon /></div>
+                <div>No subjects to show</div>
+              </div>
+            }
+        </div>
+        <AddSubjectModal />
       </div>
     );
   }
