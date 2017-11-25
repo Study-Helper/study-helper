@@ -19,11 +19,13 @@ class Timer extends Component {
   }
 
   componentDidMount() {
+    const durationArr = this.props.estimatedDuration.split(':');
+    const hours = durationArr[0];
+    const minutes = durationArr[1];
+    const totalEstimatedSeconds = (minutes * 60) + (hours * 3600);
+    const limitSeconds = totalEstimatedSeconds * 0.75;
+    this.setState({ totalEstimatedSeconds, limitSeconds });
     this.setTimer();
-  }
-
-  componentWillUnmount() {
-   clearInterval(this.state.intervalId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -33,6 +35,10 @@ class Timer extends Component {
     } else if (!nextProps.paused && this.state.intervalId === undefined) {
       this.setTimer();
     }
+  }
+
+  componentWillUnmount() {
+   clearInterval(this.state.intervalId);
   }
 
   setTimer() {
@@ -55,9 +61,10 @@ class Timer extends Component {
   }
 
   handleFeedback() {
-    if (this.state.seconds >= 10) {
-      this.setState({ currentColor: '#8A0808', currentMessage: 'You failed miserably :(' });
-    } else if (this.state.seconds >= 5) {
+    const totalSeconds = this.state.seconds + (this.state.minutes * 60) + (this.state.hours * 3600);
+    if (totalSeconds > this.state.totalEstimatedSeconds) {
+      this.setState({ currentColor: '#8A0808', currentMessage: "You're too late!" });
+    } else if (totalSeconds >= this.state.limitSeconds) {
       this.setState({ currentColor: '#DBA901', currentMessage: 'Hurry up! Time is passing by...' });
     }
   }
@@ -96,6 +103,7 @@ class Timer extends Component {
 
 Timer.propTypes = {
   paused: PropTypes.bool.isRequired,
+  estimatedDuration: PropTypes.string.isRequired,
 };
 
 export default Timer;

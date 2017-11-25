@@ -92,7 +92,7 @@ class TaskStarted extends Component {
         <div style={{width: '695px'}}>
         <ListItem
           primaryText={task.name}
-          secondaryText={task.estimatedDuration}
+          secondaryText={`Estimated duration: ${task.estimatedDuration}`}
           nestedItems={[<TaskDescription key={1} task={task} />]}
           leftAvatar={<Avatar
             size={35}
@@ -132,7 +132,7 @@ class TaskStarted extends Component {
             </IconButton>
           }
         </ListItem>
-        <Timer paused={this.state.paused} />
+        <Timer paused={this.state.paused} estimatedDuration={task.estimatedDuration} />
         </div>
         <Dialog
           title="Warning"
