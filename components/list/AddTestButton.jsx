@@ -181,6 +181,7 @@ class AddTestButton extends React.Component {
               </div>
             </div>
         </Dialog>
+      
         <Snackbar
           open={this.state.shouldRenderSnackbar}
           message='Test successfuly added!'

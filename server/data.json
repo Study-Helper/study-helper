@@ -69,6 +69,16 @@
             "endDate": "2017-11-25",
             "priority": 1,
             "id": "_18bj3tki6os"
+        },
+        "_nrj3ed6wyn": {
+            "name": "xx312x21x3123x13x",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Presentation",
+            "startDate": "2017-11-25",
+            "endDate": "2017-11-25",
+            "priority": 0,
+            "id": "_nrj3ed6wyn"
         }
     },
     "completed_tasks": {
@@ -128,69 +138,6 @@
         }
     },
     "deleted_tasks": {
-        "_rd5e1naappk": {
-            "id": "_rd5e1naappk",
-            "name": "Do something.........",
-            "description": "Fun times.",
-            "estimatedDuration": "01:15",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_rh77azaaffk": {
-            "id": "_rh77azaaffk",
-            "name": "!!!!Do something!!!!!!",
-            "description": "Fun times.",
-            "estimatedDuration": "01:00",
-            "category": "Studying",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05"
-        },
-        "_mssoi5mzpbh": {
-            "name": "ellowh",
-            "description": "No description available.",
-            "estimatedDuration": "-",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_mssoi5mzpbh"
-        },
-        "_y38thjpz7al": {
-            "name": "hyyyyyuu",
-            "description": "Hello Worodl",
-            "estimatedDuration": "-",
-            "category": "Presentation",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_y38thjpz7al"
-        },
-        "_cuow8f1b3go": {
-            "name": "Hello World!!!!!!",
-            "description": "Wooop",
-            "estimatedDuration": "-",
-            "category": "Email",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_cuow8f1b3go"
-        },
-        "_dmj26lhz4is": {
-            "name": "Testing 1",
-            "description": "aaa",
-            "estimatedDuration": "-",
-            "category": "Note",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_dmj26lhz4is"
-        },
-        "_zd4y3rz7d3s": {
-            "name": "Hello 0101",
-            "description": "aaaaa",
-            "estimatedDuration": "00:01",
-            "category": "Sport",
-            "startDate": "2017-09-05",
-            "endDate": "2017-09-05",
-            "id": "_zd4y3rz7d3s"
-        },
         "_bl7zycuiuk4": {
             "name": "lol",
             "description": "No description available.",
@@ -283,26 +230,6 @@
         "_ijs7jh6vc": {
             "id": "_ijs7jh6vc",
             "title": "Family"
-        },
-        "_ijs7jh6vc1": {
-            "id": "_ijs7jh6vc1",
-            "title": "Family"
-        },
-        "_ijs7jh6vc2": {
-            "id": "_ijs7jh6vc2",
-            "title": "Family"
-        },
-        "_ijs7jh6vc3": {
-            "id": "_ijs7jh6vc3",
-            "title": "Family"
-        },
-        "_ijs7jh6vc4": {
-            "id": "_ijs7jh6vc4",
-            "title": "Family"
-        },
-        "_ijs7jh6vc5": {
-            "id": "_ijs7jh6vc5",
-            "title": "Family"
         }
     },
     "subjects": {
@@ -319,9 +246,14 @@
                     "id": "_30mmtd45ypo",
                     "name": "T2",
                     "grade": 13
+                },
+                "_2pfuxy2uaom": {
+                    "id": "_2pfuxy2uaom",
+                    "name": "3",
+                    "grade": 3
                 }
             },
-            "mean": 11.5,
+            "mean": 8.666666666666666,
             "image": "Maths",
             "color": "rgba(211, 47, 47, 1)"
         },

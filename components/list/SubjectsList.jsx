@@ -160,7 +160,10 @@ class SubjectsList extends React.Component {
               <ListItem
                 key={index}
                 primaryText={subject.name}
-                secondaryText={"Average: " + subject.mean}
+                secondaryText={
+                    "Average: " + ((subject.mean%1) == 0 ? subject.mean 
+                            : parseFloat(Math.round(subject.mean * 100) / 100).toFixed(2))
+                }
                 nestedItems={this.getDescription(subject)}
                 leftAvatar={
                   <Avatar
