@@ -7,9 +7,10 @@ import Book from 'material-ui/svg-icons/action/book';
 import Info from 'material-ui/svg-icons/action/info-outline';
 
 const SubjectDescription = ({ description }) => (
-	<ListItem 
-    disabled 
-    style={subjectDescription.description} 
+	<ListItem
+    disabled
+		disableTouchRipple
+    style={subjectDescription.description}
     key={1}
     leftIcon={
     	description === 'No tests available.' ? <Info style={taskDescription.icon} /> :

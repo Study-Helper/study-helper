@@ -144,7 +144,7 @@ class SubjectsList extends React.Component {
     } else {
       listItems.push(<SubjectDescription description={'No tests available.'}/>);
     }
-    
+
     return listItems;
   }
 
@@ -155,7 +155,7 @@ class SubjectsList extends React.Component {
   render() {
     const subjects = this.state.subjects;
     return (
-      <div>{  
+      <div>{
         this.state.subjects.length > 0 ?
         <Scrollbars style={{ width: 697, height: 540 }}>
           <div>
@@ -164,9 +164,10 @@ class SubjectsList extends React.Component {
                 <div key={index}>
                   <ListItem
                     key={index}
+                    disableTouchRipple
                     primaryText={subject.name}
                     secondaryText={
-                        "Average: " + ((subject.mean%1) == 0 ? subject.mean 
+                        "Average: " + ((subject.mean%1) == 0 ? subject.mean
                                 : parseFloat(Math.round(subject.mean * 100) / 100).toFixed(2))
                     }
                     nestedItems={this.getDescription(subject)}
@@ -184,14 +185,14 @@ class SubjectsList extends React.Component {
                         this.removeSubjectOption(subject)
                     ]}/>
                     <IconButton
-                      tooltip='Add Test!' 
+                      tooltip='Add Test!'
                       style={taskList.iconButton}
                       onClick={()=>this.openAddTestModal(subject)}
                     >
                       <Add />
                     </IconButton>
                   </ListItem>
-                  {index < subjects.length - 1 && 
+                  {index < subjects.length - 1 &&
                     <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />}
                 </div>
               )}

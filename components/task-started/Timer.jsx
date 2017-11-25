@@ -73,7 +73,7 @@ class Timer extends Component {
     const tstyle = { backgroundColor: this.state.currentColor };
     return (
       <div className="timer" style={tstyle}>
-        <div style={{'marginTop':'20px'}}>
+        <div style={{'marginTop':'10px'}}>
           <div className="timer-status__label" style={{'marginBottom':'30px'}}>
             Time Elapsed:
           </div>

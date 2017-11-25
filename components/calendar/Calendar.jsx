@@ -78,7 +78,7 @@ class Calendar extends Component {
         }
         <p style={{ textAlign: 'center', fontFamily: 'Roboto' }}>
           {!this.state.open &&
-            `Selected date range: ${startDate} - ${endDate}`}
+            `Date range: ${startDate} - ${endDate}`}
         </p>
         <Today
           title="Scheduled Tasks"

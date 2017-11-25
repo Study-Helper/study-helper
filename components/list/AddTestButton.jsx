@@ -12,7 +12,7 @@ import SubjectManager from '../../server/managers/SubjectManager.js';
 import PubSub from 'pubsub-js';
 
 class AddTestButton extends React.Component {
-  
+
   constructor(props) {
       super(props);
       this.state = {
@@ -23,13 +23,13 @@ class AddTestButton extends React.Component {
           didFillGrade: false,
           errorMessage: ""
       }
- 
+
       this.closeWithoutSave = this.closeWithoutSave.bind(this);
       this.closeAndSave = this.closeAndSave.bind(this);
       this.closeSnackbar = this.closeSnackbar.bind(this);
       this.getErrorText = this.getErrorText.bind(this);
       this.setErrorMessage = this.setErrorMessage.bind(this);
-    
+
       this.editedValues = {
         newName: '',
         newGrade: ''
@@ -66,9 +66,9 @@ class AddTestButton extends React.Component {
   /** @private */
   closeAndSave() {
     this.setState({ open: false, shouldRenderSnackbar: true });
-    
+
     const { newName, newGrade } = this.editedValues;
-  
+
     SubjectManager.addTest(this.state.subject, newName, newGrade);
 
     PubSub.publish('Subject Updated', {
@@ -118,10 +118,11 @@ class AddTestButton extends React.Component {
           modal={false}
           open={this.state.open}
           onRequestClose={this.closeWithoutSave}>
-            <div style={{'marginLeft': '30px'}}>
-              Test:
               <TextField
-                floatingLabelText="Name" 
+                autoFocus
+                fullWidth
+                hintText="Test name"
+                floatingLabelText="Test name"
                 onChange={(e, newValue) => {
                   if(!(newValue == "")){
                     this.editedValues.newName = newValue;
@@ -133,18 +134,13 @@ class AddTestButton extends React.Component {
                       didFillName: false
                     });
                   }
-                  
+
                 }}
-                style = {{'marginLeft':'15px'}}
               />
-              <p/>
-              <div style={{'width':'100%'}}>
-                <div style={{'float':'left', 'width':'100px', 'marginTop':'40px'}}>
-                  Grade:
-                </div>
-                <div style={{'float':'left', 'width':'100px', 'marginLeft':'-40px'}}>
                   <TextField
-                    floatingLabelText="Grade" 
+                    fullWidth
+                    hintText="Your grade"
+                    floatingLabelText="Your grade"
                     onChange={(e, newValue) => {
                       let isNumber = newValue;
                       isNumber = newValue/2;
@@ -175,13 +171,9 @@ class AddTestButton extends React.Component {
                       }
                     }}
                     errorText={this.getErrorText()}
-                    style={{'width':'248px'}}
-                  /> 
-                </div>
-              </div>
-            </div>
+                  />
         </Dialog>
-      
+
         <Snackbar
           open={this.state.shouldRenderSnackbar}
           message='Test successfuly added!'

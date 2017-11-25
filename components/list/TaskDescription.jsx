@@ -8,9 +8,10 @@ import { taskDescription } from '../../styles/styles.css.js';
  * Example usage: <TaskDescription task={myTask} />
  */
 const TaskDescription = ({ task }) => (
-	<ListItem 
-	  disabled 
-	  style={taskDescription.description} 
+	<ListItem
+	  disabled
+		disableTouchRipple 
+	  style={taskDescription.description}
 	  key={1}
 	  leftIcon={
 	  	task.description === 'No description available.' ? <Info style={taskDescription.icon} /> :

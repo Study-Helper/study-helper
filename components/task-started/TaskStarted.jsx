@@ -91,6 +91,7 @@ class TaskStarted extends Component {
         </Toolbar>
         <div style={{width: '695px'}}>
         <ListItem
+          disableTouchRipple
           primaryText={task.name}
           secondaryText={`Estimated duration: ${task.estimatedDuration}`}
           nestedItems={[<TaskDescription key={1} task={task} />]}

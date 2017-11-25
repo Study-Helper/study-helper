@@ -2,7 +2,13 @@ import React from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
+import Avatar from 'material-ui/Avatar';
+import PlaylistAddCheck from 'material-ui/svg-icons/av/playlist-add-check';
+import Timeline from 'material-ui/svg-icons/action/timeline';
+import Timelapse from 'material-ui/svg-icons/image/timelapse';
+import TagFaces from 'material-ui/svg-icons/image/tag-faces';
 import { List, ListItem } from 'material-ui/List';
+import { blue500, indigo500, teal500, yellow500 } from 'material-ui/styles/colors';
 import GradesChart from './charts/GradesChart.jsx';
 import TasksChart from './charts/TasksChart.jsx';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
@@ -45,6 +51,16 @@ class StatisticsReworked extends React.Component {
     this.setState({ chart });
   }
 
+  getAvatar(index) {
+    switch (index) {
+      case 0: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: blue500 }} icon={<PlaylistAddCheck />} />;
+      case 1: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: indigo500 }} icon={<TagFaces />} />;
+      case 2: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: teal500 }} icon={<Timeline />} />;
+      case 3: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: yellow500 }} icon={<Timelapse />} />;
+      default: return;
+    }
+  }
+
   render() {
     const chart = this.state.chart === "grades" ? <GradesChart /> : <TasksChart />;
     return (
@@ -56,14 +72,15 @@ class StatisticsReworked extends React.Component {
           </ToolbarGroup>
         </Toolbar>
 
-        <Subheader style={{fontFamily: 'Roboto'}}>Insights</Subheader>
-        <List style={{marginTop: '-9px'}}>
+        <List style={{marginTop: '-9px', marginRight: '-10px'}}>
           {this.state.insights.map((data, index) =>
             <div key={index}>
               <ListItem
                 key={index}
+                disableTouchRipple
                 style={{fontFamily: 'Roboto'}}
                 primaryText={data.primary}
+                leftAvatar={this.getAvatar(index)}
               >
                 <div style={{float: 'right', marginRight: '15px'}}>{data.value}</div>
               </ListItem>
@@ -72,11 +89,12 @@ class StatisticsReworked extends React.Component {
             </div>
           )}
         </List>
-        
+
         <ListItem
           disabled
+          disableTouchRipple
           primaryText={'Charts'}
-          style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#F5F5F5', marginRight: '-10px'}}
+          style={{color: '#757575', fontFamily: 'Roboto', backgroundColor: '#F5F5F5', marginRight: '-5px'}}
         >
           <DropDownMenu
             value={this.state.chart}

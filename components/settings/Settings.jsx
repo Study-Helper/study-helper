@@ -71,6 +71,7 @@ class Settings extends React.Component {
             <div key={index}>
               <ListItem
                 key={index}
+                disableTouchRipple
                 style={{fontFamily: 'Roboto'}}
                 primaryText={data.primary}
                 secondaryText={data.secondary}
@@ -81,7 +82,7 @@ class Settings extends React.Component {
           )}
         </List>
         <Subheader style={{fontFamily: 'Roboto'}}>Customization</Subheader>
-        <ListItem primaryText={'Application Idiom'}>
+        <ListItem disableTouchRipple primaryText={'Application Idiom'}>
           <DropDownMenu
             value={this.state.idiom}
             onChange={this.handleIdiomChange}
@@ -93,7 +94,7 @@ class Settings extends React.Component {
           </DropDownMenu>
         </ListItem>
         <Divider style={{backgroundColor: '#EEEEEE', width: '650px', marginLeft: '20px'}} />
-        <ListItem primaryText={'Color Theme'}>
+        <ListItem disableTouchRipple primaryText={'Color Theme'}>
           <DropDownMenu
             value={this.state.theme}
             onChange={this.handleThemeChange}
