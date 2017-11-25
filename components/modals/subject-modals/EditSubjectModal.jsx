@@ -13,7 +13,7 @@ import SubjectIconPicker from '../../grades/SubjectIconPicker.jsx';
 import PubSub from 'pubsub-js';
 
 class EditSubjectModal extends React.Component {
-	
+
 	constructor(props) {
     	super(props);
      	this.state = {
@@ -21,25 +21,25 @@ class EditSubjectModal extends React.Component {
    			forSubject: null,
        		shouldRenderSnackbar: false
      	}
- 
+
      	this.closeWithoutSave = this.closeWithoutSave.bind(this);
      	this.closeAndSave = this.closeAndSave.bind(this);
      	this.closeSnackbar = this.closeSnackbar.bind(this);
  		  this.setNewIcon = this.setNewIcon.bind(this);
- 		
+
      	this.editedValues = {
        		newName: '',
 	       	newImage: ''
      	}
    	}
- 
+
    	/**
      * Call this function to open the Edit Task Modal.
     */
    	static openSelf(subject, subjectLocation = 'subjects') {
    		PubSub.publish('Open Edit Subject Modal', { subject, subjectLocation });
    	}
- 
+
    	componentWillMount() {
     	this.token = PubSub.subscribe(
        		'Open Edit Subject Modal',
@@ -50,11 +50,11 @@ class EditSubjectModal extends React.Component {
        		})
      	);
    	}
- 
+
    	componentWillUnmount() {
     	PubSub.unsubscribe(this.token);
    	}
- 
+
    	/** @private */
    	closeWithoutSave() {
     	this.setState({ open: false });
@@ -63,14 +63,14 @@ class EditSubjectModal extends React.Component {
        		newImage: ''
      	}
    	}
- 
+
    	/** @private */
    	closeAndSave() {
     	this.setState({ open: false, shouldRenderSnackbar: true });
-     	
+
      	const subject = this.state.forSubject;
      	const { newName, newImage } = this.editedValues;
-     	
+
      	let somethingChanged = false;
      	if (newName && subject.name !== newName) {
        		subject.name = newName;
@@ -82,7 +82,7 @@ class EditSubjectModal extends React.Component {
        		somethingChanged = true;
        		SubjectManager.updateImage(subject, newImage, this.state.subjectLocation);
      	}
-     	
+
      	if (somethingChanged) {
        		PubSub.publish('Subject Updated', {
          		editedSubject: subject,
@@ -90,12 +90,12 @@ class EditSubjectModal extends React.Component {
        	  });
      	}
    	}
- 
+
    	/** @private */
    	closeSnackbar() {
     	this.setState({ shouldRenderSnackbar: false });
    	}
- 
+
    	/** @private */
    	actions() {
      	return [
@@ -130,15 +130,16 @@ class EditSubjectModal extends React.Component {
 	           		onRequestClose={this.closeWithoutSave}
 	         	>
 		           	<TextField
+									autoFocus
 		             	fullWidth
-		             	defaultValue={name} 
-		             	floatingLabelText="Subject Name" 
+		             	defaultValue={name}
+		             	floatingLabelText="Subject Name"
 		             	onChange={(e, newValue) => this.editedValues.newName = newValue}
 		           	/>
 		           	<br/>
 		           	<p>Choose an icon</p>
 		            <div style={{ marginTop: 10 }}>
-		            	<SubjectIconPicker 
+		            	<SubjectIconPicker
 		            		onChange={this.setNewIcon}
                   			category={this.state.forSubject.image}
                   		/>
@@ -154,5 +155,5 @@ class EditSubjectModal extends React.Component {
 	    );
 	}
 }
- 
+
  export default EditSubjectModal;
