@@ -95,5 +95,20 @@
             "title": "Birthday"
         }
     },
-    "subjects": {}
+    "subjects": {
+        "_isdtq5bl83i": {
+            "id": "_isdtq5bl83i",
+            "name": "feffr",
+            "tests": {
+                "_s59zkvf1lzb": {
+                    "id": "_s59zkvf1lzb",
+                    "name": "rffrf",
+                    "grade": 20
+                }
+            },
+            "mean": 20,
+            "image": "Economy",
+            "color": "#00c853"
+        }
+    }
 }
