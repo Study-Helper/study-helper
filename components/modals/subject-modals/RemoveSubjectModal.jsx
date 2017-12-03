@@ -146,7 +146,7 @@ class RemoveSubjectModal extends React.Component {
           open={this.state.open}
           onRequestClose={this.closeWithoutSave}
         >
-          Are you sure you want to delete subject "{this.state.forSubject.name}"?
+          Are you sure you want to remove subject "{this.state.forSubject.name}"?
         </Dialog>
         <Snackbar
           open={this.state.shouldRenderSnackbar}
