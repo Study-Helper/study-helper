@@ -82,7 +82,7 @@ class RemoveSubjectModal extends React.Component {
 
     // Prepare the parameters for the publishing.
     const eventName = 'Subject Removed';
-    const eventData = { 
+    const eventData = {
       removedSubject: this.state.forSubject,
       removedSubjectLocation: this.state.subjectLocation
     }
@@ -146,7 +146,7 @@ class RemoveSubjectModal extends React.Component {
           open={this.state.open}
           onRequestClose={this.closeWithoutSave}
         >
-          Are you sure you want to delete this subject?
+          Are you sure you want to delete subject "{this.state.forSubject.name}"?
         </Dialog>
         <Snackbar
           open={this.state.shouldRenderSnackbar}

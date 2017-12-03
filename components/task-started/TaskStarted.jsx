@@ -71,13 +71,13 @@ class TaskStarted extends Component {
     const { task, taskList } = this.props.location.state;
     const actions = [
       <FlatButton
-        primary
-        label='No'
+        secondary
+        label='Cancel'
         onClick={this.handleClose}
       />,
       <FlatButton
         primary
-        label='Yes'
+        label='Stop task'
         onClick={this.stopTask}
       />,
     ];
@@ -142,7 +142,7 @@ class TaskStarted extends Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          Are you sure you want to stop this task?
+          Are you sure you want to stop task "{task.name}"?
         </Dialog>
       </div>
     );

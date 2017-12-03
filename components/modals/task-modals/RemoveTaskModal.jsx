@@ -82,7 +82,7 @@ class RemoveTaskModal extends React.Component {
 
     // Prepare the parameters for the publishing.
     const eventName = location === 'todo_tasks' ? 'Regular - Task Removed' : 'History - Task Removed';
-    const eventData = { 
+    const eventData = {
       removedTask: this.state.forTask,
       removedTaskLocation: this.state.taskLocation
     }
@@ -92,7 +92,7 @@ class RemoveTaskModal extends React.Component {
     // Physicall removals will be handled there, to make it easier.
     PubSub.publish(eventName, eventData);
 
-    // If we're removing from 'todo_tasks', physically add the removed task to the 
+    // If we're removing from 'todo_tasks', physically add the removed task to the
     // 'deleted_tasks' JSON object.
     if (location === 'todo_tasks') {
       TaskManager.add(eventData.removedTask, 'deleted_tasks');
@@ -122,7 +122,7 @@ class RemoveTaskModal extends React.Component {
 
     // Publish the event.
     PubSub.publish(eventName, eventData);
-    
+
     // If we're undoing from a task that was deleted from 'todo_tasks',
     // remove it from 'deleted_tasks'.
     if (location === 'todo_tasks') {
@@ -158,7 +158,7 @@ class RemoveTaskModal extends React.Component {
           open={this.state.open}
           onRequestClose={this.closeWithoutSave}
         >
-          Are you sure you want to delete this task?
+          Are you sure you want to remove task "{this.state.forTask.name}"?
         </Dialog>
         <Snackbar
           style={{marginLeft: '70px'}}

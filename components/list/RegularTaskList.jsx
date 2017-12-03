@@ -151,7 +151,7 @@ class RegularTaskList extends React.Component {
           <ListItem
             disabled
             style={{height: '18px', color: '#757575', paddingRight: '0px', fontFamily: 'Roboto', backgroundColor: '#F5F5F5'}}
-          > 
+          >
             <div>
               <div style={{marginTop: '1px'}}>
                 Order by:

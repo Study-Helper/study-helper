@@ -73,6 +73,7 @@ class Calendar extends Component {
         openWarning: false,
         checked: false,
         snackMessage: 'Category deleted successfully!',
+        showUndo: true,
         openSnack: true
       });
     } else {
@@ -85,7 +86,7 @@ class Calendar extends Component {
   }
 
   handleCloseSeeTasks() {
-    this.setState({ openSeeTasks: false });
+    this.setState({ openSeeTasks: false, showUndo: false });
   }
 
   handleOpenEditMode(isCreating) {
@@ -124,6 +125,7 @@ class Calendar extends Component {
         fakeCategories: copy,
         snackMessage: 'Category created successfully!',
         openSnack: true,
+        showUndo: false,
       });
     } else {
       //TODO
@@ -134,6 +136,7 @@ class Calendar extends Component {
         openEditMode: false,
         snackMessage: 'Category edited successfully!',
         openSnack: true,
+        showUndo: true,
        });
     }
   }
@@ -315,6 +318,7 @@ class Calendar extends Component {
           <Snackbar
           open={this.state.openSnack}
           message={this.state.snackMessage}
+          action={this.state.showUndo ? 'undo' : undefined}
           autoHideDuration={2000}
           onRequestClose={this.closeSnack}
           />
