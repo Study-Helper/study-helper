@@ -128,7 +128,7 @@ class RemoveSubjectModal extends React.Component {
       />,
       <FlatButton
         primary
-        label='Delete'
+        label='Remove'
         onClick={this.closeAndSave}
       />,
     ];

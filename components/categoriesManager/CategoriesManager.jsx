@@ -260,7 +260,7 @@ class Calendar extends Component {
             onRequestClose={() => this.handleCloseWarning(false)}
           >
             <div>
-              <p>{`Are you sure you want to delete "${this.state.activeCategory.title}" category?`}</p>
+              <p>{`Are you sure you want to remove "${this.state.activeCategory.title}" category?`}</p>
               <Checkbox
                 label="Delete all tasks associated to this category."
                 checked={this.state.checked}
