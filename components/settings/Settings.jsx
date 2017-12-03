@@ -20,7 +20,7 @@ class Settings extends React.Component {
     this.state = {
       toggableData: [
         {
-          primary: 'Show Notification',
+          primary: 'Show Notifications',
           secondary: 'Display native macOS notifications',
           isToggled: true
         },

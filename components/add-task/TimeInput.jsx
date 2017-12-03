@@ -61,14 +61,14 @@ class TimeInput extends Component {
     const element = this.state.emitWarning ?
     (<TextField
       hintText="00:00"
-      floatingLabelText="Task duration (Hours:Minutes)"
+      floatingLabelText="Task Duration (Hours:Minutes)"
       value={this.state.currentValue}
       onChange={this.handleChange}
       errorText={this.state.errorText}
     />) :
     (<TextField
       hintText="00:00"
-      floatingLabelText="Task duration (Hours:Minutes)"
+      floatingLabelText="Task Duration (Hours:Minutes)"
       value={this.state.currentValue}
       onChange={this.handleChange}
     />);

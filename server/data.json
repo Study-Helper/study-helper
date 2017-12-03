@@ -74,7 +74,7 @@
             "name": "Make a doctor's appointment",
             "description": "No description available.",
             "estimatedDuration": "00:05",
-            "category": "Call",
+            "category": "Note",
             "startDate": "2017-11-28",
             "endDate": "2017-11-28",
             "priority": 0,
@@ -109,6 +109,26 @@
             "endDate": "2017-11-25",
             "priority": 0,
             "id": "_d7uzltv27gm"
+        },
+        "_m8b4milzz1j": {
+            "name": "Hello World!!",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Note",
+            "startDate": "2017-12-03",
+            "endDate": "2017-12-03",
+            "priority": 0,
+            "id": "_m8b4milzz1j"
+        },
+        "_06du6788guag": {
+            "name": "Ex Ex Exam",
+            "description": "No description available.",
+            "estimatedDuration": "00:01",
+            "category": "Exam",
+            "startDate": "2017-12-03",
+            "endDate": "2017-12-03",
+            "priority": 0,
+            "id": "_06du6788guag"
         }
     },
     "completed_tasks": {
@@ -218,7 +238,7 @@
         },
         "_o45tjhiuy": {
             "id": "_o45tjhiuy",
-            "title": "Call"
+            "title": "Exam"
         },
         "_45s7bbnvc": {
             "id": "_45s7bbnvc",

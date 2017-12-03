@@ -20,7 +20,7 @@ import {
 /* Import a whole lot of icons. */
 import Shopping from 'material-ui/svg-icons/action/shopping-cart';
 import Cake from 'material-ui/svg-icons/social/cake';
-import Phone from 'material-ui/svg-icons/communication/call';
+import ContentPaste from 'material-ui/svg-icons/content/content-paste';
 import Home from 'material-ui/svg-icons/action/home';
 import Outdoors from 'material-ui/svg-icons/image/nature-people';
 import Lunch from 'material-ui/svg-icons/maps/local-dining';
@@ -143,8 +143,8 @@ const categoryMap = {
     icon: <Home/>,
     backgroundColor: pink500
   },
-  Call: {
-    icon: <Phone/>,
+  Exam: {
+    icon: <ContentPaste/>,
     backgroundColor: cyan500
   },
   Birthday: {

@@ -8,7 +8,7 @@ import Timeline from 'material-ui/svg-icons/action/timeline';
 import Timelapse from 'material-ui/svg-icons/image/timelapse';
 import TagFaces from 'material-ui/svg-icons/image/tag-faces';
 import { List, ListItem } from 'material-ui/List';
-import { blue500, indigo500, teal500, yellow500 } from 'material-ui/styles/colors';
+import { blue500, indigo500, teal500, amber500 } from 'material-ui/styles/colors';
 import GradesChart from './charts/GradesChart.jsx';
 import TasksChart from './charts/TasksChart.jsx';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
@@ -56,7 +56,7 @@ class StatisticsReworked extends React.Component {
       case 0: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: blue500 }} icon={<PlaylistAddCheck />} />;
       case 1: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: indigo500 }} icon={<TagFaces />} />;
       case 2: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: teal500 }} icon={<Timeline />} />;
-      case 3: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: yellow500 }} icon={<Timelapse />} />;
+      case 3: return <Avatar size={35} style={{ marginTop: '3px', backgroundColor: amber500 }} icon={<Timelapse />} />;
       default: return;
     }
   }
@@ -67,8 +67,7 @@ class StatisticsReworked extends React.Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{'marginLeft': '15px'}} text="Statistics" />
-            <FontIcon className="muidocs-icon-custom-sort" />
+            <ToolbarTitle style={appbar.header} text="Statistics" />
           </ToolbarGroup>
         </Toolbar>
 
