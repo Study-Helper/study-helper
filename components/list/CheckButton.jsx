@@ -99,7 +99,7 @@ class CheckButton extends React.Component {
           style={taskList.iconButton}
           onClick={this.check}
         >
-          <Done color={'#616161'}/>
+          <Done color={'#424242'}/>
         </IconButton>
         <Snackbar
           style={{marginLeft: '70px'}}

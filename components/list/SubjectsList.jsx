@@ -189,7 +189,7 @@ class SubjectsList extends React.Component {
                       style={taskList.iconButton}
                       onClick={()=>this.openAddTestModal(subject)}
                     >
-                      <Add color='#616161' />
+                      <Add color='#424242' />
                     </IconButton>
                   </ListItem>
                   {index < subjects.length - 1 &&

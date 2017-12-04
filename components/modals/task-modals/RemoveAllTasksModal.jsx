@@ -128,6 +128,7 @@ class RemoveAllTasksModal extends React.Component {
   render() {
     if (!this.state.tasks) return null;
     const actions = this.actions();
+    const simpleSectionString = this.state.location.split('_')[0];
     return (
       <div>
         <Dialog
@@ -136,7 +137,7 @@ class RemoveAllTasksModal extends React.Component {
           open={this.state.open}
           onRequestClose={this.closeWithoutSave}
         >
-          Are you sure you want to clear all tasks?
+          Are you sure you want to clear all {simpleSectionString} tasks?
         </Dialog>
         <Snackbar
           style={{marginLeft: '70px'}}

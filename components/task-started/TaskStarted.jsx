@@ -85,7 +85,7 @@ class TaskStarted extends Component {
       <div>
         <Toolbar style={appbar.barLayout}>
           <ToolbarGroup firstChild>
-            <ToolbarTitle style={{ marginLeft: '15px' }} text={"It's time to work hard!"} />
+            <ToolbarTitle style={appbar.header} text={"It's time to work hard!"} />
             <FontIcon className="muidocs-icon-custom-sort" />
           </ToolbarGroup>
         </Toolbar>
@@ -113,7 +113,7 @@ class TaskStarted extends Component {
             onClick={() => this.confirmStopTask()}
             style={taskList.iconButton}
           >
-            <Stop />
+            <Stop color={'#424242'} />
           </IconButton>
           {
             this.state.paused ?
@@ -122,7 +122,7 @@ class TaskStarted extends Component {
               onClick={() => this.changeStatus()}
               style={taskList.iconButton}
             >
-              <PlayArrow />
+              <PlayArrow color={'#424242'} />
             </IconButton> :
             <IconButton
               tooltip='Pause!'
